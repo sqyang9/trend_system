@@ -1,0 +1,439 @@
+// Trend BB Squeeze V8.4 - 止损模式可切换版
+// 1）保留 V8.2 全部逻辑（BB 挤压 + 评分 + 智能止损 + 做空 + Sharpe 风控）
+// 2）新增参数 useIntrabarStop：
+//    - false：收盘止损（接近原 V8.2 模式，收益高但更乐观）
+//    - true ：保护止损（开仓即挂 stop，盘中触发就走，更接近实盘挂SL）
+
+//@version=6
+strategy("Trend Squeeze V8.4 [BTC 4h]", 
+     overlay = true,
+     initial_capital = 10000,
+     default_qty_type = strategy.percent_of_equity,
+     default_qty_value = 60,                    // 单笔名义仓位≈60%净值，可按需要调整
+     commission_type = strategy.commission.percent,
+     commission_value = 0.06,                   // 大致双边 0.03%×2，自行改
+     slippage = 1,
+     pyramiding = 0,
+     process_orders_on_close = true)            // 保持与 V8.2 一致：信号 Bar 收盘成交
+
+// ============================================================
+// 1. 输入参数
+// ============================================================
+
+// --- 优化1：挤压阈值 ---
+group_squeeze = "【优化1】挤压阈值"
+squeezeLookback   = input.int(20, "BB周期", minval = 10, maxval = 50, group = group_squeeze)
+squeezeThreshold  = input.float(0.9, "挤压阈值", minval = 0.5, maxval = 1.5, step = 0.05, group = group_squeeze, tooltip = "越低=挤压越极端，信号更少但质量更高")
+minSqueezeCandles = input.int(4, "最小挤压K线数", minval = 1, maxval = 20, group = group_squeeze)
+
+// --- 优化2：智能止损 + 部分止盈 ---
+group_stop = "【优化2】智能止损"
+atrPeriod      = input.int(14, "ATR周期", minval = 5, maxval = 50, group = group_stop)
+initialStopATR = input.float(2.4, "初始止损(ATR倍数)", minval = 1.0, maxval = 5.0, step = 0.1, group = group_stop)
+trailStartATR  = input.float(3, "启动追踪止损(ATR倍数)", minval = 0.5, maxval = 5.0, step = 0.1, group = group_stop)
+trailOffsetATR = input.float(2.8, "追踪止损距离(ATR倍数)", minval = 0.5, maxval = 5.0, step = 0.1, group = group_stop)
+breakEvenATR   = input.float(1.7, "保本止损触发(ATR倍数)", minval = 0.3, maxval = 5.0, step = 0.1, group = group_stop)
+
+// ★ 新增止损模式开关
+useIntrabarStop = input.bool(true, "使用保护止损(盘中触发挂单)", group = group_stop,tooltip = "勾选：开仓即挂stop，盘中触发就止损，更接近实盘风控；不勾选：只在K线收盘根据当根最高/最低价判定止损，接近原V8.2。")
+
+group_tp  = "【优化2】部分止盈"
+enablePartialTP = input.bool(true, "启用部分止盈", group = group_tp)
+tp1_ATR        = input.float(2.1, "TP1触发(ATR倍数)", minval = 1.0, maxval = 10.0, step = 0.1, group = group_tp)
+tp1_Pct        = input.float(30.0, "TP1平仓比例(%)", minval = 5.0, maxval = 80.0, step = 5.0, group = group_tp)
+tp2_ATR        = input.float(3.5, "TP2触发(ATR倍数)", minval = 1.0, maxval = 15.0, step = 0.1, group = group_tp)
+tp2_Pct        = input.float(30.0, "TP2平仓比例(%)", minval = 5.0, maxval = 80.0, step = 5.0, group = group_tp)
+
+// --- 优化3：做空设置 ---
+group_short = "【优化3】做空设置"
+enableShort   = input.bool(true, "启用做空", group = group_short)
+shortOnlyBear = input.bool(true, "仅在熊市做空", group = group_short)
+shortSqueezeThreshold = input.float(0.9, "做空挤压阈值", minval = 0.5, maxval = 1.5, step = 0.05, group = group_short)
+
+// --- 市场环境 & 评分 ---
+group_env = "市场环境过滤"
+emaTrendLen   = input.int(200, "趋势EMA周期", minval = 50, maxval = 400, group = group_env)
+useEnvFilter  = input.bool(true, "使用趋势过滤(EMA)", group = group_env)
+useAdxFilter  = input.bool(true, "使用ADX趋势强度过滤", group = group_env)
+adxPeriod     = input.int(11, "ADX周期", minval = 5, maxval = 50, group = group_env)
+adxTrendLevel = input.float(20.0, "强趋势ADX阈值", minval = 5.0, maxval = 50.0, step = 1.0, group = group_env)
+
+group_score = "信号评分"
+minLongScore  = input.int(1, "做多最低分数", minval = 1, maxval = 5, group = group_score)
+minShortScore = input.int(3, "做空最低分数", minval = 1, maxval = 5, group = group_score)
+
+// --- Sharpe 优化：风险控制 ---
+group_risk = "【Sharpe优化】风险控制"
+enableDailyLossLimit = input.bool(true, "启用当日亏损限制", group = group_risk)
+dailyLossLimitPct    = input.float(1.5, "单日最大亏损(%权益)", minval = 0.5, maxval = 10.0, step = 0.5, group = group_risk)
+cooldownBarsAfterHit = input.int(3, "触发后冷静期(条K)", minval = 1, maxval = 48, group = group_risk)
+
+// ============================================================
+// 2. 指标计算
+// ============================================================
+
+atr      = ta.atr(atrPeriod)
+emaTrend = ta.ema(close, emaTrendLen)
+
+// 布林带
+bbBasis = ta.sma(close, squeezeLookback)
+bbDev   = ta.stdev(close, squeezeLookback)
+bbUpper = bbBasis + 2.0 * bbDev
+bbLower = bbBasis - 2.0 * bbDev
+bbWidth = (bbUpper - bbLower) / bbBasis
+
+// 挤压（多、空可用不同阈值）
+bbWidthMA   = ta.sma(bbWidth, 200)
+bbWidthNorm = bbWidthMA == 0.0 ? 0.0 : bbWidth / bbWidthMA
+inSqueezeLong  = bbWidthNorm < squeezeThreshold
+inSqueezeShort = bbWidthNorm < shortSqueezeThreshold
+
+// 连续挤压计数
+var int squeezeCountLong  = 0
+var int squeezeCountShort = 0
+
+if inSqueezeLong
+    squeezeCountLong += 1
+else
+    squeezeCountLong := 0
+
+if inSqueezeShort
+    squeezeCountShort += 1
+else
+    squeezeCountShort := 0
+
+squeezeQualityLong  = squeezeCountLong  >= minSqueezeCandles
+squeezeQualityShort = squeezeCountShort >= minSqueezeCandles
+
+// 动量
+mom = ta.mom(close, 12)
+momUp   = mom > 0 and mom > mom[1]
+momDown = mom < 0 and mom < mom[1]
+
+// 成交量
+volMA    = ta.sma(volume, 20)
+volSpike = volume > volMA * 1.2
+
+// RSI（观察用）
+rsi = ta.rsi(close, 14)
+
+// 趋势 & ADX
+bull = close > emaTrend
+bear = close < emaTrend
+[_, _, adx] = ta.dmi(adxPeriod, adxPeriod)
+strongTrend = adx > adxTrendLevel
+
+// ============================================================
+// 3. 评分系统
+// ============================================================
+
+// 做多评分
+longScore = 0
+longScore += inSqueezeLong[1] and not inSqueezeLong ? 1 : 0       // 挤压释放
+longScore += close > bbUpper ? 1 : 0                               // 突破上轨
+longScore += squeezeQualityLong[1] ? 1 : 0                         // 挤压质量
+longScore += momUp ? 1 : 0                                         // 动量向上
+longScore += volSpike ? 1 : 0                                      // 放量
+
+// 做空评分
+shortScore = 0
+shortScore += inSqueezeShort[1] and not inSqueezeShort ? 1 : 0     // 挤压释放
+shortScore += close < bbLower ? 1 : 0                              // 跌破下轨
+shortScore += squeezeQualityShort[1] ? 1 : 0                       // 挤压质量
+shortScore += momDown ? 1 : 0                                      // 动量向下
+shortScore += volSpike ? 1 : 0                                     // 放量
+
+// ============================================================
+// 4. 环境过滤 + Sharpe 风控开关
+// ============================================================
+
+// EMA + ADX 环境过滤
+longEnvOK  = useEnvFilter ? bull  : true
+shortEnvOK = useEnvFilter ? bear  : true
+longTrendOK  = not useAdxFilter or strongTrend
+shortTrendOK = not useAdxFilter or strongTrend
+
+longAllowedEnv  = longEnvOK  and longTrendOK
+shortAllowedEnv = shortEnvOK and shortTrendOK and (not shortOnlyBear or bear)
+
+// --- 当日亏损限制 ---
+var float dayStartEquity = na
+var bool  dayLimitHit    = false
+var int   barsSinceHit   = 0
+
+newDay = ta.change(time("D")) != 0
+
+if newDay
+    dayStartEquity := strategy.equity
+    dayLimitHit    := false
+    barsSinceHit   := 0
+else
+    if dayLimitHit
+        barsSinceHit += 1
+
+dayPnlPct = na(dayStartEquity) or dayStartEquity == 0.0 ? 0.0 : (strategy.equity - dayStartEquity) / dayStartEquity * 100.0
+
+if enableDailyLossLimit and not dayLimitHit and dayStartEquity != 0.0
+    if dayPnlPct <= -dailyLossLimitPct
+        dayLimitHit := true
+        barsSinceHit := 0
+
+cooldownPassed = barsSinceHit >= cooldownBarsAfterHit
+riskAllowed = not enableDailyLossLimit ? true : (not dayLimitHit or cooldownPassed)
+
+// ============================================================
+// 5. 交易信号
+// ============================================================
+
+longSignal  = riskAllowed and longAllowedEnv  and longScore  >= minLongScore  and strategy.position_size == 0
+shortSignal = riskAllowed and enableShort and shortAllowedEnv and shortScore >= minShortScore and strategy.position_size == 0
+
+// ============================================================
+// 6. 持仓状态变量
+// ============================================================
+
+var float entryPrice        = na
+var float stopLossPrice     = na
+var float highestSinceEntry = na
+var float lowestSinceEntry  = na
+var bool  tp1Done           = false
+var bool  tp2Done           = false
+var bool  breakEvenDone     = false
+var bool  trailingActive    = false
+
+// 标注用：本根K是否触发了 TP1 / TP2 / SL
+var bool tp1HitLong  = false
+var bool tp2HitLong  = false
+var bool slHitLong   = false
+var bool tp1HitShort = false
+var bool tp2HitShort = false
+var bool slHitShort  = false
+
+// 每根K线开始都先重置为 false
+tp1HitLong  := false
+tp2HitLong  := false
+slHitLong   := false
+tp1HitShort := false
+tp2HitShort := false
+slHitShort  := false
+
+// === 多头入场 ===
+if longSignal
+    strategy.entry("Long", strategy.long)
+    entryPrice        := close
+    stopLossPrice     := close - initialStopATR * atr
+    highestSinceEntry := close
+    lowestSinceEntry  := close
+    tp1Done           := false
+    tp2Done           := false
+    breakEvenDone     := false
+    trailingActive    := false
+
+// === 空头入场 ===
+if shortSignal
+    strategy.entry("Short", strategy.short)
+    entryPrice        := close
+    stopLossPrice     := close + initialStopATR * atr
+    highestSinceEntry := close
+    lowestSinceEntry  := close
+    tp1Done           := false
+    tp2Done           := false
+    breakEvenDone     := false
+    trailingActive    := false
+
+// --- 多头持仓管理 ---
+if strategy.position_size > 0
+    highestSinceEntry := math.max(highestSinceEntry, high)
+    currentProfit = high - entryPrice
+    profitATR     = currentProfit / atr
+
+    // 1) 保本
+    if profitATR >= breakEvenATR and not breakEvenDone
+        stopLossPrice := math.max(stopLossPrice, entryPrice)
+        breakEvenDone := true
+
+    // 2) 追踪止损
+    if profitATR >= trailStartATR
+        trailingActive := true
+        newTrail = highestSinceEntry - trailOffsetATR * atr
+        stopLossPrice := math.max(stopLossPrice, newTrail)
+
+    // 3) 部分止盈
+    if enablePartialTP
+        if profitATR >= tp1_ATR and not tp1Done
+            strategy.close("Long", qty_percent = tp1_Pct, comment = "TP1")
+            tp1Done   := true
+            tp1HitLong := true
+
+        if profitATR >= tp2_ATR and not tp2Done
+            strategy.close("Long", qty_percent = tp2_Pct, comment = "TP2")
+            tp2Done   := true
+            tp2HitLong := true
+
+    // 4) 止损执行：两种模式
+    if useIntrabarStop
+        // 保护止损：开仓即挂stop，盘中触发就走
+        strategy.exit("Long SL", from_entry = "Long", stop = stopLossPrice, comment = "SL")
+    else
+        // 收盘止损：本bar的最低价触及止损，则在收盘价平仓
+        if low <= stopLossPrice
+            strategy.close("Long", comment = "SL")
+
+// --- 空头持仓管理 ---
+if strategy.position_size < 0
+    lowestSinceEntry := math.min(lowestSinceEntry, low)
+    currentProfit = entryPrice - low
+    profitATR     = currentProfit / atr
+
+    // 1) 保本
+    if profitATR >= breakEvenATR and not breakEvenDone
+        stopLossPrice := math.min(stopLossPrice, entryPrice)
+        breakEvenDone := true
+
+    // 2) 追踪止损
+    if profitATR >= trailStartATR
+        trailingActive := true
+        newTrail = lowestSinceEntry + trailOffsetATR * atr
+        stopLossPrice := math.min(stopLossPrice, newTrail)
+
+    // 3) 部分止盈
+    if enablePartialTP
+        if profitATR >= tp1_ATR and not tp1Done
+            strategy.close("Short", qty_percent = tp1_Pct, comment = "TP1")
+            tp1Done     := true
+            tp1HitShort := true
+
+        if profitATR >= tp2_ATR and not tp2Done
+            strategy.close("Short", qty_percent = tp2_Pct, comment = "TP2")
+            tp2Done     := true
+            tp2HitShort := true
+
+    // 4) 止损执行
+    if useIntrabarStop
+        strategy.exit("Short SL", from_entry = "Short", stop = stopLossPrice, comment = "SL")
+    else
+        if high >= stopLossPrice
+            strategy.close("Short", comment = "SL")
+
+// ============================================================
+// 7. 退出类型标记（SL 圆点）
+// ============================================================
+
+// 前一根K的持仓状态
+wasLong  = strategy.position_size[1] > 0
+wasShort = strategy.position_size[1] < 0
+nowFlat  = strategy.position_size == 0
+
+// 本根K是否是“平多 / 平空”的那根
+longExitBar  = wasLong  and nowFlat
+shortExitBar = wasShort and nowFlat
+
+// 用前一根的 stopLossPrice 判断是否是止损触发（简单近似）
+slHitLong  := longExitBar  and low  <= stopLossPrice[1]
+slHitShort := shortExitBar and high >= stopLossPrice[1]
+
+// ============================================================
+// 8. 可视化
+// ============================================================
+
+plot(bbUpper, "BB上轨", color = color.new(color.blue, 70))
+plot(bbBasis, "BB中轨", color = color.new(color.gray, 70))
+plot(bbLower, "BB下轨", color = color.new(color.blue, 70))
+plot(emaTrend, "趋势EMA", color = color.orange)
+
+// 止损线
+plot(strategy.position_size != 0 ? stopLossPrice : na, "止损线", style = plot.style_linebr, color = color.red)
+
+// 信号箭头
+plotshape(longSignal,
+     title     = "Buy",
+     text      = "Buy",
+     location  = location.belowbar,
+     color     = color.new(color.lime, 0),
+     style     = shape.triangleup,
+     size      = size.tiny)
+
+plotshape(shortSignal,
+     title     = "Short",
+     text      = "Short",
+     location  = location.abovebar,
+     color     = color.new(color.red, 0),
+     style     = shape.triangledown,
+     size      = size.tiny)
+
+// 平仓：Sell（平多）/ Close（平空）
+plotshape(longExitBar,
+     title     = "Sell",
+     text      = "Sell",
+     location  = location.abovebar,
+     color     = color.new(color.orange, 0),
+     style     = shape.xcross,
+     size      = size.tiny)
+
+plotshape(shortExitBar,
+     title     = "Close",
+     text      = "Close",
+     location  = location.belowbar,
+     color     = color.new(color.fuchsia, 0),
+     style     = shape.xcross,
+     size      = size.tiny)
+
+// TP / SL 小点标记（不加文字，只是小圆点）
+plotshape(tp1HitLong,
+     title    = "TP1 Long",
+     location = location.abovebar,
+     style    = shape.circle,
+     size     = size.tiny,
+     color    = color.new(color.teal, 0))
+
+plotshape(tp2HitLong,
+     title    = "TP2 Long",
+     location = location.abovebar,
+     style    = shape.circle,
+     size     = size.tiny,
+     color    = color.new(color.blue, 0))
+
+plotshape(tp1HitShort,
+     title    = "TP1 Short",
+     location = location.belowbar,
+     style    = shape.circle,
+     size     = size.tiny,
+     color    = color.new(color.teal, 0))
+
+plotshape(tp2HitShort,
+     title    = "TP2 Short",
+     location = location.belowbar,
+     style    = shape.circle,
+     size     = size.tiny,
+     color    = color.new(color.blue, 0))
+
+// 止损：多头在下方，空头在上方，红点
+plotshape(slHitLong,
+     title    = "SL Long",
+     location = location.belowbar,
+     style    = shape.circle,
+     size     = size.tiny,
+     color    = color.new(color.red, 0))
+
+plotshape(slHitShort,
+     title    = "SL Short",
+     location = location.abovebar,
+     style    = shape.circle,
+     size     = size.tiny,
+     color    = color.new(color.red, 0))
+
+// 右上角简单显示环境信息
+var table info = table.new(position.top_right, 2, 4, border_width = 1, border_color = color.new(color.white, 70))
+
+if barstate.islast
+    table.cell(info, 0, 0, "状态", text_color = color.white, bgcolor = color.new(color.black, 80))
+    table.cell(info, 1, 0, "数值", text_color = color.white, bgcolor = color.new(color.black, 80))
+
+    table.cell(info, 0, 1, "牛熊", text_color = color.white)
+    table.cell(info, 1, 1, bull ? "牛市" : bear ? "熊市" : "震荡", text_color = bull ? color.lime : bear ? color.red : color.orange)
+
+    table.cell(info, 0, 2, "ADX", text_color = color.white)
+    table.cell(info, 1, 2, str.tostring(adx, "#.0"), text_color = strongTrend ? color.lime : color.gray)
+
+    table.cell(info, 0, 3, "当日PnL(%)", text_color = color.white)
+    table.cell(info, 1, 3, str.tostring(dayPnlPct, "#.00"), text_color = dayPnlPct < 0 ? color.red : color.lime)
