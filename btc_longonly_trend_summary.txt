@@ -1,0 +1,10 @@
+﻿old_v85_longshort_primary=False
+btc_longonly_primary=True
+research_optimal=lb20_stop3.2_trail5.0_beoff
+default_research_tuple=next_bar_open + legacy_bar_extrema + midpoint + full_model
+stress_gate_tuple=live_runner_next_5m_close + segment_path_same_bar + pessimistic + full_model
+launch_optimal=LAUNCH_NO_GO
+launch_35pct_main_blocker=baseline_gate_trade_count_mismatch_for_low_frequency_trend_mother
+full_size_baseline_gate_not_only_trade_count=True
+independent_bh_winner_claim=False
+continue_only_on=squeeze_release_20 / lb20_stop3.2_trail5.0_beoff

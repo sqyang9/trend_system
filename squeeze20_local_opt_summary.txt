@@ -1,0 +1,5 @@
+﻿research_optimal=lb20_stop3.2_trail5.0_beoff
+launch_optimal=LAUNCH_NO_GO
+upgrade_research_optimal=True
+launch_35pct_main_blocker=baseline_gate_trade_count_mismatch_for_low_frequency_trend_mother
+keep_digging=True

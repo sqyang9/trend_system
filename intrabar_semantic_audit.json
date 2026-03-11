@@ -1,0 +1,807 @@
+{
+  "synthetic": [
+    {
+      "scenario": "long_be_same_bar_pullback",
+      "engine": "legacy",
+      "side": "long",
+      "bar": {
+        "open": 1000.0,
+        "high": 1020.0,
+        "low": 999.0,
+        "close": 1005.0,
+        "volume": 1.0
+      },
+      "before": {
+        "flat": false,
+        "qty": 1.0,
+        "stop": 974.0,
+        "tp1_filled": false,
+        "tp2_filled": false,
+        "be": false,
+        "trail": false
+      },
+      "triggers": [],
+      "after": {
+        "flat": false,
+        "qty": 1.0,
+        "stop": 1000.0,
+        "tp1_filled": false,
+        "tp2_filled": false,
+        "be": true,
+        "trail": false
+      }
+    },
+    {
+      "scenario": "long_be_same_bar_pullback",
+      "engine": "v2_optimistic",
+      "side": "long",
+      "bar": {
+        "open": 1000.0,
+        "high": 1020.0,
+        "low": 999.0,
+        "close": 1005.0,
+        "volume": 1.0
+      },
+      "before": {
+        "flat": false,
+        "qty": 1.0,
+        "stop": 974.0,
+        "tp1_filled": false,
+        "tp2_filled": false,
+        "be": false,
+        "trail": false
+      },
+      "triggers": [
+        {
+          "reason": "BE",
+          "price": 1000.0,
+          "qty": 1.0
+        }
+      ],
+      "after": {
+        "flat": true
+      }
+    },
+    {
+      "scenario": "long_be_same_bar_pullback",
+      "engine": "v2_midpoint",
+      "side": "long",
+      "bar": {
+        "open": 1000.0,
+        "high": 1020.0,
+        "low": 999.0,
+        "close": 1005.0,
+        "volume": 1.0
+      },
+      "before": {
+        "flat": false,
+        "qty": 1.0,
+        "stop": 974.0,
+        "tp1_filled": false,
+        "tp2_filled": false,
+        "be": false,
+        "trail": false
+      },
+      "triggers": [],
+      "after": {
+        "flat": false,
+        "qty": 1.0,
+        "stop": 1000.0,
+        "tp1_filled": false,
+        "tp2_filled": false,
+        "be": true,
+        "trail": false
+      }
+    },
+    {
+      "scenario": "long_be_same_bar_pullback",
+      "engine": "v2_volatility_aware",
+      "side": "long",
+      "bar": {
+        "open": 1000.0,
+        "high": 1020.0,
+        "low": 999.0,
+        "close": 1005.0,
+        "volume": 1.0
+      },
+      "before": {
+        "flat": false,
+        "qty": 1.0,
+        "stop": 974.0,
+        "tp1_filled": false,
+        "tp2_filled": false,
+        "be": false,
+        "trail": false
+      },
+      "triggers": [],
+      "after": {
+        "flat": false,
+        "qty": 1.0,
+        "stop": 1000.0,
+        "tp1_filled": false,
+        "tp2_filled": false,
+        "be": true,
+        "trail": false
+      }
+    },
+    {
+      "scenario": "long_be_same_bar_pullback",
+      "engine": "v2_pessimistic",
+      "side": "long",
+      "bar": {
+        "open": 1000.0,
+        "high": 1020.0,
+        "low": 999.0,
+        "close": 1005.0,
+        "volume": 1.0
+      },
+      "before": {
+        "flat": false,
+        "qty": 1.0,
+        "stop": 974.0,
+        "tp1_filled": false,
+        "tp2_filled": false,
+        "be": false,
+        "trail": false
+      },
+      "triggers": [],
+      "after": {
+        "flat": false,
+        "qty": 1.0,
+        "stop": 1000.0,
+        "tp1_filled": false,
+        "tp2_filled": false,
+        "be": true,
+        "trail": false
+      }
+    },
+    {
+      "scenario": "long_tp_trail_same_bar_pullback",
+      "engine": "legacy",
+      "side": "long",
+      "bar": {
+        "open": 1000.0,
+        "high": 1040.0,
+        "low": 1008.0,
+        "close": 1010.0,
+        "volume": 1.0
+      },
+      "before": {
+        "flat": false,
+        "qty": 1.0,
+        "stop": 974.0,
+        "tp1_filled": false,
+        "tp2_filled": false,
+        "be": false,
+        "trail": false
+      },
+      "triggers": [
+        {
+          "reason": "TP1",
+          "price": 1024.0,
+          "qty": 0.3
+        },
+        {
+          "reason": "TP2",
+          "price": 1040.0,
+          "qty": 0.3
+        }
+      ],
+      "after": {
+        "flat": false,
+        "qty": 0.39999999999999997,
+        "stop": 1014.0,
+        "tp1_filled": true,
+        "tp2_filled": true,
+        "be": true,
+        "trail": true
+      }
+    },
+    {
+      "scenario": "long_tp_trail_same_bar_pullback",
+      "engine": "v2_optimistic",
+      "side": "long",
+      "bar": {
+        "open": 1000.0,
+        "high": 1040.0,
+        "low": 1008.0,
+        "close": 1010.0,
+        "volume": 1.0
+      },
+      "before": {
+        "flat": false,
+        "qty": 1.0,
+        "stop": 974.0,
+        "tp1_filled": false,
+        "tp2_filled": false,
+        "be": false,
+        "trail": false
+      },
+      "triggers": [
+        {
+          "reason": "TP1",
+          "price": 1024.0,
+          "qty": 0.3
+        },
+        {
+          "reason": "TP2",
+          "price": 1040.0,
+          "qty": 0.3
+        },
+        {
+          "reason": "TRAIL",
+          "price": 1014.0,
+          "qty": 0.39999999999999997
+        }
+      ],
+      "after": {
+        "flat": true
+      }
+    },
+    {
+      "scenario": "long_tp_trail_same_bar_pullback",
+      "engine": "v2_midpoint",
+      "side": "long",
+      "bar": {
+        "open": 1000.0,
+        "high": 1040.0,
+        "low": 1008.0,
+        "close": 1010.0,
+        "volume": 1.0
+      },
+      "before": {
+        "flat": false,
+        "qty": 1.0,
+        "stop": 974.0,
+        "tp1_filled": false,
+        "tp2_filled": false,
+        "be": false,
+        "trail": false
+      },
+      "triggers": [
+        {
+          "reason": "TP1",
+          "price": 1024.0,
+          "qty": 0.3
+        },
+        {
+          "reason": "TP2",
+          "price": 1040.0,
+          "qty": 0.3
+        },
+        {
+          "reason": "TRAIL",
+          "price": 1014.0,
+          "qty": 0.39999999999999997
+        }
+      ],
+      "after": {
+        "flat": true
+      }
+    },
+    {
+      "scenario": "long_tp_trail_same_bar_pullback",
+      "engine": "v2_volatility_aware",
+      "side": "long",
+      "bar": {
+        "open": 1000.0,
+        "high": 1040.0,
+        "low": 1008.0,
+        "close": 1010.0,
+        "volume": 1.0
+      },
+      "before": {
+        "flat": false,
+        "qty": 1.0,
+        "stop": 974.0,
+        "tp1_filled": false,
+        "tp2_filled": false,
+        "be": false,
+        "trail": false
+      },
+      "triggers": [
+        {
+          "reason": "TP1",
+          "price": 1024.0,
+          "qty": 0.3
+        },
+        {
+          "reason": "TP2",
+          "price": 1040.0,
+          "qty": 0.3
+        },
+        {
+          "reason": "TRAIL",
+          "price": 1014.0,
+          "qty": 0.39999999999999997
+        }
+      ],
+      "after": {
+        "flat": true
+      }
+    },
+    {
+      "scenario": "long_tp_trail_same_bar_pullback",
+      "engine": "v2_pessimistic",
+      "side": "long",
+      "bar": {
+        "open": 1000.0,
+        "high": 1040.0,
+        "low": 1008.0,
+        "close": 1010.0,
+        "volume": 1.0
+      },
+      "before": {
+        "flat": false,
+        "qty": 1.0,
+        "stop": 974.0,
+        "tp1_filled": false,
+        "tp2_filled": false,
+        "be": false,
+        "trail": false
+      },
+      "triggers": [
+        {
+          "reason": "TP1",
+          "price": 1024.0,
+          "qty": 0.3
+        },
+        {
+          "reason": "TP2",
+          "price": 1040.0,
+          "qty": 0.3
+        },
+        {
+          "reason": "TRAIL",
+          "price": 1014.0,
+          "qty": 0.39999999999999997
+        }
+      ],
+      "after": {
+        "flat": true
+      }
+    },
+    {
+      "scenario": "short_be_same_bar_rebound",
+      "engine": "legacy",
+      "side": "short",
+      "bar": {
+        "open": 1000.0,
+        "high": 1002.0,
+        "low": 982.0,
+        "close": 995.0,
+        "volume": 1.0
+      },
+      "before": {
+        "flat": false,
+        "qty": 1.0,
+        "stop": 1026.0,
+        "tp1_filled": false,
+        "tp2_filled": false,
+        "be": false,
+        "trail": false
+      },
+      "triggers": [],
+      "after": {
+        "flat": false,
+        "qty": 1.0,
+        "stop": 1000.0,
+        "tp1_filled": false,
+        "tp2_filled": false,
+        "be": true,
+        "trail": false
+      }
+    },
+    {
+      "scenario": "short_be_same_bar_rebound",
+      "engine": "v2_optimistic",
+      "side": "short",
+      "bar": {
+        "open": 1000.0,
+        "high": 1002.0,
+        "low": 982.0,
+        "close": 995.0,
+        "volume": 1.0
+      },
+      "before": {
+        "flat": false,
+        "qty": 1.0,
+        "stop": 1026.0,
+        "tp1_filled": false,
+        "tp2_filled": false,
+        "be": false,
+        "trail": false
+      },
+      "triggers": [
+        {
+          "reason": "BE",
+          "price": 1000.0,
+          "qty": 1.0
+        }
+      ],
+      "after": {
+        "flat": true
+      }
+    },
+    {
+      "scenario": "short_be_same_bar_rebound",
+      "engine": "v2_midpoint",
+      "side": "short",
+      "bar": {
+        "open": 1000.0,
+        "high": 1002.0,
+        "low": 982.0,
+        "close": 995.0,
+        "volume": 1.0
+      },
+      "before": {
+        "flat": false,
+        "qty": 1.0,
+        "stop": 1026.0,
+        "tp1_filled": false,
+        "tp2_filled": false,
+        "be": false,
+        "trail": false
+      },
+      "triggers": [],
+      "after": {
+        "flat": false,
+        "qty": 1.0,
+        "stop": 1000.0,
+        "tp1_filled": false,
+        "tp2_filled": false,
+        "be": true,
+        "trail": false
+      }
+    },
+    {
+      "scenario": "short_be_same_bar_rebound",
+      "engine": "v2_volatility_aware",
+      "side": "short",
+      "bar": {
+        "open": 1000.0,
+        "high": 1002.0,
+        "low": 982.0,
+        "close": 995.0,
+        "volume": 1.0
+      },
+      "before": {
+        "flat": false,
+        "qty": 1.0,
+        "stop": 1026.0,
+        "tp1_filled": false,
+        "tp2_filled": false,
+        "be": false,
+        "trail": false
+      },
+      "triggers": [],
+      "after": {
+        "flat": false,
+        "qty": 1.0,
+        "stop": 1000.0,
+        "tp1_filled": false,
+        "tp2_filled": false,
+        "be": true,
+        "trail": false
+      }
+    },
+    {
+      "scenario": "short_be_same_bar_rebound",
+      "engine": "v2_pessimistic",
+      "side": "short",
+      "bar": {
+        "open": 1000.0,
+        "high": 1002.0,
+        "low": 982.0,
+        "close": 995.0,
+        "volume": 1.0
+      },
+      "before": {
+        "flat": false,
+        "qty": 1.0,
+        "stop": 1026.0,
+        "tp1_filled": false,
+        "tp2_filled": false,
+        "be": false,
+        "trail": false
+      },
+      "triggers": [],
+      "after": {
+        "flat": false,
+        "qty": 1.0,
+        "stop": 1000.0,
+        "tp1_filled": false,
+        "tp2_filled": false,
+        "be": true,
+        "trail": false
+      }
+    },
+    {
+      "scenario": "short_tp_trail_same_bar_rebound",
+      "engine": "legacy",
+      "side": "short",
+      "bar": {
+        "open": 1000.0,
+        "high": 992.0,
+        "low": 960.0,
+        "close": 990.0,
+        "volume": 1.0
+      },
+      "before": {
+        "flat": false,
+        "qty": 1.0,
+        "stop": 1026.0,
+        "tp1_filled": false,
+        "tp2_filled": false,
+        "be": false,
+        "trail": false
+      },
+      "triggers": [
+        {
+          "reason": "TP1",
+          "price": 976.0,
+          "qty": 0.3
+        },
+        {
+          "reason": "TP2",
+          "price": 960.0,
+          "qty": 0.3
+        }
+      ],
+      "after": {
+        "flat": false,
+        "qty": 0.39999999999999997,
+        "stop": 986.0,
+        "tp1_filled": true,
+        "tp2_filled": true,
+        "be": true,
+        "trail": true
+      }
+    },
+    {
+      "scenario": "short_tp_trail_same_bar_rebound",
+      "engine": "v2_optimistic",
+      "side": "short",
+      "bar": {
+        "open": 1000.0,
+        "high": 992.0,
+        "low": 960.0,
+        "close": 990.0,
+        "volume": 1.0
+      },
+      "before": {
+        "flat": false,
+        "qty": 1.0,
+        "stop": 1026.0,
+        "tp1_filled": false,
+        "tp2_filled": false,
+        "be": false,
+        "trail": false
+      },
+      "triggers": [
+        {
+          "reason": "TP1",
+          "price": 976.0,
+          "qty": 0.3
+        },
+        {
+          "reason": "TP2",
+          "price": 960.0,
+          "qty": 0.3
+        },
+        {
+          "reason": "TRAIL",
+          "price": 986.0,
+          "qty": 0.39999999999999997
+        }
+      ],
+      "after": {
+        "flat": true
+      }
+    },
+    {
+      "scenario": "short_tp_trail_same_bar_rebound",
+      "engine": "v2_midpoint",
+      "side": "short",
+      "bar": {
+        "open": 1000.0,
+        "high": 992.0,
+        "low": 960.0,
+        "close": 990.0,
+        "volume": 1.0
+      },
+      "before": {
+        "flat": false,
+        "qty": 1.0,
+        "stop": 1026.0,
+        "tp1_filled": false,
+        "tp2_filled": false,
+        "be": false,
+        "trail": false
+      },
+      "triggers": [
+        {
+          "reason": "TP1",
+          "price": 976.0,
+          "qty": 0.3
+        },
+        {
+          "reason": "TP2",
+          "price": 960.0,
+          "qty": 0.3
+        },
+        {
+          "reason": "TRAIL",
+          "price": 986.0,
+          "qty": 0.39999999999999997
+        }
+      ],
+      "after": {
+        "flat": true
+      }
+    },
+    {
+      "scenario": "short_tp_trail_same_bar_rebound",
+      "engine": "v2_volatility_aware",
+      "side": "short",
+      "bar": {
+        "open": 1000.0,
+        "high": 992.0,
+        "low": 960.0,
+        "close": 990.0,
+        "volume": 1.0
+      },
+      "before": {
+        "flat": false,
+        "qty": 1.0,
+        "stop": 1026.0,
+        "tp1_filled": false,
+        "tp2_filled": false,
+        "be": false,
+        "trail": false
+      },
+      "triggers": [
+        {
+          "reason": "TP1",
+          "price": 976.0,
+          "qty": 0.3
+        },
+        {
+          "reason": "TP2",
+          "price": 960.0,
+          "qty": 0.3
+        },
+        {
+          "reason": "TRAIL",
+          "price": 986.0,
+          "qty": 0.39999999999999997
+        }
+      ],
+      "after": {
+        "flat": true
+      }
+    },
+    {
+      "scenario": "short_tp_trail_same_bar_rebound",
+      "engine": "v2_pessimistic",
+      "side": "short",
+      "bar": {
+        "open": 1000.0,
+        "high": 992.0,
+        "low": 960.0,
+        "close": 990.0,
+        "volume": 1.0
+      },
+      "before": {
+        "flat": false,
+        "qty": 1.0,
+        "stop": 1026.0,
+        "tp1_filled": false,
+        "tp2_filled": false,
+        "be": false,
+        "trail": false
+      },
+      "triggers": [
+        {
+          "reason": "TP1",
+          "price": 976.0,
+          "qty": 0.3
+        },
+        {
+          "reason": "TP2",
+          "price": 960.0,
+          "qty": 0.3
+        },
+        {
+          "reason": "TRAIL",
+          "price": 986.0,
+          "qty": 0.39999999999999997
+        }
+      ],
+      "after": {
+        "flat": true
+      }
+    }
+  ],
+  "real_bridge_audit": {
+    "legacy_reference": {
+      "name": "legacy_reference",
+      "stats": {
+        "FinalEquity": 73902.18137515335,
+        "TotalReturn_pct": 639.0218137515335,
+        "CAGR": 0.37900134775816197,
+        "Sharpe": 1.1826818199480027,
+        "MaxDD_pct": -0.21163811100385943,
+        "ProfitFactor": 1.3678142972599825,
+        "Trades": 791,
+        "WinRate_pct": 65.10745891276865,
+        "LongTrades": 577,
+        "ShortTrades": 214,
+        "LongPnL": 46313.33099416475,
+        "ShortPnL": 26111.959177781842,
+        "GrossProfit": 269332.508601126,
+        "GrossLoss": 196907.2184291795,
+        "Years": 6.22404745608031,
+        "ExitReasons": {
+          "SL": 439,
+          "TP1": 227,
+          "TP2": 125
+        }
+      },
+      "exit_reason_counts": {
+        "SL": 439,
+        "TP1": 227,
+        "TP2": 125
+      },
+      "median_hold_min": 3740.0,
+      "mean_hold_min": 4513.843236409608,
+      "same_timestamp_exits": 0,
+      "within_5m_exits": 0,
+      "within_60m_exits": 0
+    },
+    "v2_bridge": {
+      "name": "v2_bridge",
+      "stats": {
+        "FinalEquity": 1270.7289945721936,
+        "TotalReturn_pct": -87.29271005427806,
+        "CAGR": -0.28212185095488496,
+        "Sharpe": -1.023474409894553,
+        "MaxDD_pct": -0.8755772208566607,
+        "ProfitFactor": 0.6837730083285736,
+        "Trades": 813,
+        "WinRate_pct": 57.93357933579336,
+        "LongTrades": 590,
+        "ShortTrades": 223,
+        "LongPnL": -6505.640875608948,
+        "ShortPnL": -1251.6305903803914,
+        "GrossProfit": 16773.434862993094,
+        "GrossLoss": -24530.70632898243,
+        "Years": 6.224047456080311,
+        "ExitReasons": {
+          "TP1": 266,
+          "SL": 173,
+          "BE": 169,
+          "TP2": 159,
+          "TRAIL": 46
+        },
+        "EntryExecutionMode": "signal_close",
+        "IntrabarPathMode": "optimistic",
+        "SlippageFixedBps": 0.0,
+        "SlippageStopExtraBps": 0.0,
+        "SlippageBreakoutExtraBps": 0.0
+      },
+      "exit_reason_counts": {
+        "TP1": 266,
+        "SL": 173,
+        "BE": 169,
+        "TP2": 159,
+        "TRAIL": 46
+      },
+      "median_hold_min": 2600.0,
+      "mean_hold_min": 3481.2115621156213,
+      "same_timestamp_exits": 1,
+      "within_5m_exits": 2,
+      "within_60m_exits": 15
+    }
+  }
+}

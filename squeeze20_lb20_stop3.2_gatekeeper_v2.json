@@ -1,0 +1,301 @@
+{
+  "variant_label": "lb20_stop3.2_trail5.0_beoff",
+  "stats": {
+    "Return_pct": 470.50521663778085,
+    "CAGR_pct": 32.28362329842642,
+    "Sharpe": 0.9331808105370669,
+    "MaxDD_pct": -34.48598633579923,
+    "PF": 1.9473497384118057,
+    "Trades": 56
+  },
+  "buy_hold_delta": {
+    "return_vs_bh_pct": -385.6502574028512,
+    "cagr_vs_bh_pct": -11.443498075761681,
+    "maxdd_vs_bh_pct": 42.55602683993907,
+    "sharpe_vs_bh": 0.18329082199529034,
+    "calmar_vs_bh": 0.36856244000700844
+  },
+  "behavior": {
+    "avg_hold_4h_bars": 61.7235863095238,
+    "median_hold_4h_bars": 40.364583333333336,
+    "top10_winner_contrib_pct": 81.60158095336637,
+    "exit_mix": {
+      "TRAIL": 0.7142857142857143,
+      "SL": 0.2857142857142857
+    }
+  },
+  "gatekeeper_v2": {
+    "full_size": {
+      "baseline_gate": {
+        "Sharpe": 0.9331808105370669,
+        "MaxDD_pct": -0.34485986335799235,
+        "ProfitFactor": 1.9473497384118057,
+        "Trades": 56,
+        "pass": false
+      },
+      "yearly": {
+        "rows": [
+          {
+            "year": 2020,
+            "Return_pct": 140.04876686662215,
+            "Sharpe": 2.089288327643737,
+            "MaxDD_pct": -0.3233998436743013,
+            "Trades": 12
+          },
+          {
+            "year": 2021,
+            "Return_pct": 48.80991003824271,
+            "Sharpe": 0.8689227368938572,
+            "MaxDD_pct": -0.26778854206653957,
+            "Trades": 7
+          },
+          {
+            "year": 2022,
+            "Return_pct": -2.476501610713344,
+            "Sharpe": -0.11012928868615497,
+            "MaxDD_pct": -0.09865595505070557,
+            "Trades": 3
+          },
+          {
+            "year": 2023,
+            "Return_pct": 38.761668145007235,
+            "Sharpe": 1.2364680099847585,
+            "MaxDD_pct": -0.17756128387309023,
+            "Trades": 9
+          },
+          {
+            "year": 2024,
+            "Return_pct": 20.086039423370615,
+            "Sharpe": 0.6146241485823265,
+            "MaxDD_pct": -0.3448598633579937,
+            "Trades": 12
+          },
+          {
+            "year": 2025,
+            "Return_pct": 11.452707574093024,
+            "Sharpe": 0.546837548103003,
+            "MaxDD_pct": -0.1690258972003591,
+            "Trades": 10
+          },
+          {
+            "year": 2026,
+            "Return_pct": 1.410576493176996,
+            "Sharpe": 0.5249605623416376,
+            "MaxDD_pct": -0.04315885712306733,
+            "Trades": 1
+          }
+        ],
+        "positive_ratio": 0.8571428571428571,
+        "avg_sharpe": 0.824424577837595,
+        "worst_return_pct": -2.476501610713344,
+        "pass": true
+      },
+      "rolling_oos": {
+        "rows": [
+          {
+            "oos_year": 2021,
+            "Return_pct": 48.80991003824271,
+            "Sharpe": 0.8689227368938572,
+            "Trades": 7
+          },
+          {
+            "oos_year": 2022,
+            "Return_pct": -2.476501610713344,
+            "Sharpe": -0.11012928868615497,
+            "Trades": 3
+          },
+          {
+            "oos_year": 2023,
+            "Return_pct": 38.761668145007235,
+            "Sharpe": 1.2364680099847585,
+            "Trades": 9
+          },
+          {
+            "oos_year": 2024,
+            "Return_pct": 20.086039423370615,
+            "Sharpe": 0.6146241485823265,
+            "Trades": 12
+          },
+          {
+            "oos_year": 2025,
+            "Return_pct": 11.452707574093024,
+            "Sharpe": 0.546837548103003,
+            "Trades": 10
+          },
+          {
+            "oos_year": 2026,
+            "Return_pct": 1.410576493176996,
+            "Sharpe": 0.5249605623416376,
+            "Trades": 1
+          }
+        ],
+        "avg_sharpe": 0.6136139528699046,
+        "positive_ratio": 0.8333333333333334,
+        "pass": true
+      },
+      "regime": {
+        "rows": [
+          {
+            "regime": "bull_2020_2021",
+            "Return_pct": 238.02772969781728,
+            "Sharpe": 1.46156307801086,
+            "MaxDD_pct": -0.33661076555855485,
+            "Trades": 20
+          },
+          {
+            "regime": "bear_2022",
+            "Return_pct": -2.476501610713344,
+            "Sharpe": -0.11012928868615497,
+            "MaxDD_pct": -0.09865595505070557,
+            "Trades": 3
+          },
+          {
+            "regime": "mixed_2023_2025",
+            "Return_pct": 74.4332133042652,
+            "Sharpe": 0.7256971531650964,
+            "MaxDD_pct": -0.34485986335799235,
+            "Trades": 31
+          }
+        ],
+        "pass": true
+      },
+      "cost_stress": {
+        "rows": [
+          {
+            "commission_pct": 0.06,
+            "Return_pct": 470.50521663778085,
+            "Sharpe": 0.9331808105370669,
+            "MaxDD_pct": -0.34485986335799235
+          },
+          {
+            "commission_pct": 0.1,
+            "Return_pct": 445.7757871204744,
+            "Sharpe": 0.9113053555444914,
+            "MaxDD_pct": -0.3475842247411538
+          },
+          {
+            "commission_pct": 0.15,
+            "Return_pct": 416.34035491058637,
+            "Sharpe": 0.8840136369537239,
+            "MaxDD_pct": -0.35097680226785455
+          },
+          {
+            "commission_pct": 0.2,
+            "Return_pct": 388.46554818781624,
+            "Sharpe": 0.8567842151552275,
+            "MaxDD_pct": -0.3543551178862824
+          }
+        ],
+        "pass": true
+      },
+      "slippage_stress": {
+        "rows": [
+          {
+            "scenario": "default",
+            "Return_pct": 470.50521663778085,
+            "Sharpe": 0.9331808105370669,
+            "MaxDD_pct": -0.34485986335799235
+          },
+          {
+            "scenario": "stress_1",
+            "Return_pct": 423.1461182286474,
+            "Sharpe": 0.8910723257089339,
+            "MaxDD_pct": -0.3495698394325436
+          },
+          {
+            "scenario": "stress_2",
+            "Return_pct": 371.25609827550585,
+            "Sharpe": 0.8402567643410608,
+            "MaxDD_pct": -0.3557395941830296
+          }
+        ],
+        "pass": true
+      },
+      "execution_mode_stress": {
+        "rows": [
+          {
+            "mode": "next_bar_open",
+            "Return_pct": 470.50521663778085,
+            "Sharpe": 0.9331808105370669,
+            "MaxDD_pct": -0.34485986335799235
+          },
+          {
+            "mode": "live_runner_next_5m_close",
+            "Return_pct": 475.7217786907088,
+            "Sharpe": 0.9381871033989351,
+            "MaxDD_pct": -0.34286322350860354
+          }
+        ],
+        "pass": true
+      },
+      "intrabar_path_stress": {
+        "rows": [
+          {
+            "scenario": "default",
+            "Return_pct": 470.50521663778085,
+            "Sharpe": 0.9331808105370669,
+            "MaxDD_pct": -0.34485986335799235
+          },
+          {
+            "scenario": "stress",
+            "Return_pct": 475.7217786907088,
+            "Sharpe": 0.9381871033989351,
+            "MaxDD_pct": -0.34286322350860354
+          }
+        ],
+        "pass": true
+      },
+      "live_safety_check": {
+        "has_protection_interface": true,
+        "paper_protection_roundtrip": true,
+        "state_has_protection_bucket": true,
+        "state_has_strategy_targets": true,
+        "runner_has_native_protection_sync": true,
+        "runner_has_kill_switch_mode": true,
+        "reconcile_detects_missing_protection": true,
+        "pass": true
+      },
+      "baseline_stats": {
+        "FinalEquity": 57050.52166377809,
+        "TotalReturn_pct": 470.50521663778085,
+        "CAGR": 0.3228362329842642,
+        "Sharpe": 0.9331808105370669,
+        "MaxDD_pct": -0.34485986335799235,
+        "ProfitFactor": 1.9473497384118057,
+        "Trades": 56,
+        "WinRate_pct": 48.214285714285715,
+        "LongTrades": 56,
+        "ShortTrades": 0,
+        "LongPnL": 48285.12191800264,
+        "ShortPnL": 0.0,
+        "GrossProfit": 99253.75573950003,
+        "GrossLoss": -50968.63382149738,
+        "Years": 6.224047456080311,
+        "ExitReasons": {
+          "TRAIL": 40,
+          "SL": 16
+        },
+        "EntryExecutionMode": "next_bar_open",
+        "IntrabarPathMode": "midpoint",
+        "IntrabarExecutionModel": "legacy_bar_extrema",
+        "CandidateName": "squeeze_release_20"
+      },
+      "gate_summary": {
+        "baseline_gate": false,
+        "yearly": true,
+        "rolling_oos": true,
+        "regime": true,
+        "cost_stress": true,
+        "slippage_stress": true,
+        "execution_mode_stress": true,
+        "intrabar_path_stress": true,
+        "live_safety_check": true
+      },
+      "final_pass": false,
+      "trend_gate_mismatch": {
+        "likely_trade_count_mismatch": false,
+        "comment": "No obvious gate mismatch detected."
+      }
+    }
+  }
+}

@@ -1,0 +1,7 @@
+default_intrabar_model=legacy_bar_extrema
+stress_intrabar_model=segment_path_same_bar
+default_research_tuple=next_bar_open+midpoint+full_model
+stress_tuple=live_runner_next_5m_close+pessimistic+full_model
+legacy_closest_model=legacy_bar_extrema
+launch_no_go_mainly_due_to_intrabar_model=yes
+pause_parameter_optimization=yes

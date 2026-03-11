@@ -1,0 +1,27 @@
+{
+  "variant_label": "lb20_stop3.2_trail5.0_beoff_35pct",
+  "position_pct": 35.0,
+  "baseline_gate": {
+    "Sharpe": 0.9257158546015805,
+    "MaxDD_pct": -0.14723986373007902,
+    "ProfitFactor": 2.3763790002471814,
+    "Trades": 56,
+    "pass": false
+  },
+  "gate_summary": {
+    "baseline_gate": false,
+    "yearly": true,
+    "rolling_oos": true,
+    "regime": true,
+    "cost_stress": true,
+    "slippage_stress": true,
+    "execution_mode_stress": true,
+    "intrabar_path_stress": true,
+    "live_safety_check": true
+  },
+  "trend_gate_mismatch": {
+    "likely_trade_count_mismatch": true,
+    "comment": "Legacy baseline_gate trade threshold may be too high for a low-frequency trend mother."
+  },
+  "final_pass": false
+}

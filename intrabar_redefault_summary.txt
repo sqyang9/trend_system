@@ -1,0 +1,7 @@
+# Intrabar Redefault Re-evaluation
+
+- default_tuple: next_bar_open+legacy_bar_extrema+midpoint+full_model
+- launch_final_pass: False
+- launch_baseline: {"Return_pct": 38.004569, "CAGR_pct": 5.311618, "Sharpe": 0.842333, "MaxDD_pct": -4.473131, "PF": 3.146052, "Trades": 66}
+- launch_gate_summary: {"baseline_gate": false, "yearly": false, "rolling_oos": false, "regime": true, "cost_stress": true, "slippage_stress": true, "execution_mode_stress": true, "intrabar_path_stress": true, "live_safety_check": true}
+- research_baseline: {"Return_pct": 4.849322, "CAGR_pct": 0.763727, "Sharpe": 0.162546, "MaxDD_pct": -9.597734, "PF": 1.513509, "Trades": 13}

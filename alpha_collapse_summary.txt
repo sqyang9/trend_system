@@ -1,0 +1,10 @@
+alpha collapse summary
+legacy reference: 639.02% return, 791 trade legs
+launch final: 34.63% return, 4.89% CAGR, 0.775 Sharpe, 69 trade legs
+biggest drag 1: H. engine_semantic_migration (-726.31pp)
+biggest drag 2: B. base_slippage (-1.07pp)
+biggest drag 3: n/a (0.00pp)
+core conclusion: the first collapse is expectancy collapse from legacy->v2 intrabar semantics, not pure signal loss.
+trade-count collapse is mostly trade-leg compression from removing partial TP, plus launch sizing changing daily-loss gating.
+recommended daily research default: next_bar_open + midpoint + full_model
+strict stress regime should remain: live_runner_next_5m_close + pessimistic + full_model
