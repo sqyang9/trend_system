@@ -1,0 +1,4 @@
+promotion_answer=NO. Risk-Off does not yet clear promotion-candidate validation.
+evidence_level_after_round=aligned but preliminary
+baseline_promotion_recommendation=NO. Keep Risk-Off below baseline and continue to treat it as aligned but preliminary.
+preferred_system_direction=AddOn + Risk-Off is still the preferred direction for validation, but not yet baseline-worthy.

@@ -1,0 +1,1822 @@
+{
+  "generated_at_local": "2026-03-14T09:36:36.445503",
+  "seed": 20260309,
+  "research_optimal": {
+    "label": "lb20_stop3.2_trail5.0_beoff",
+    "params": {
+      "candidate_name": "squeeze_release_20",
+      "description": "Squeeze release plus 20-bar breakout inside a bullish EMA200 regime, designed to enter expansion after compression.",
+      "breakout_mode": "squeeze_release",
+      "donchian_entry_len": 20,
+      "squeeze_threshold": 0.9,
+      "squeeze_bars": 6,
+      "ema_len": 200,
+      "ema_slope_len": 20,
+      "use_ema_slope": true,
+      "adx_period": 14,
+      "adx_min": 10.0,
+      "use_adx_filter": true,
+      "close_location_min": 0.6,
+      "range_atr_min": 0.55,
+      "volume_multiple": 1.0,
+      "structure_lookback": 20,
+      "initial_stop_atr": 3.2,
+      "trail_atr_mult": 5.0,
+      "trail_activate_atr": 2.5,
+      "swing_trail_lookback": 20,
+      "use_swing_trail": false,
+      "break_even_after_atr": 1000000000.0,
+      "position_pct": 100.0,
+      "init_equity": 10000.0,
+      "commission_pct": 0.06,
+      "entry_execution_mode": "next_bar_open",
+      "close_delay_bps": 8.0,
+      "intrabar_execution_model": "legacy_bar_extrema",
+      "intrabar_path_mode": "midpoint",
+      "slippage_fixed_bps": 5.0,
+      "slippage_breakout_extra_bps": 5.0,
+      "slippage_stop_extra_bps": 8.0,
+      "slippage_range_weight": 0.05,
+      "slippage_max_bps": 25.0,
+      "slippage_breakout_atr_threshold": 1.1,
+      "enable_daily_loss_limit": false,
+      "daily_loss_limit_pct": 1.5,
+      "cooldown_bars": 0
+    }
+  },
+  "default_tuple": "next_bar_open + legacy_bar_extrema + midpoint + full_model",
+  "stress_tuple": "live_runner_next_5m_close + segment_path_same_bar + pessimistic + full_model",
+  "scope": {
+    "study_type": "promotion_v2_structure_repair",
+    "candidate_count": 6,
+    "candidates": [
+      {
+        "name": "RO_EMA200_FLAT",
+        "ema_len": 200,
+        "kind": "flat",
+        "description": "Baseline aligned flat Risk-Off on EMA200."
+      },
+      {
+        "name": "RO_EMA220_FLAT",
+        "ema_len": 220,
+        "kind": "flat",
+        "description": "Baseline aligned flat Risk-Off on EMA220."
+      },
+      {
+        "name": "RO_EMA200_HYST_OFF2_ON1",
+        "ema_len": 200,
+        "kind": "hysteresis",
+        "off_confirm": 2,
+        "on_confirm": 1,
+        "description": "Require 2 bearish bars to switch flat, recover on first bullish bar."
+      },
+      {
+        "name": "RO_EMA220_HYST_OFF2_ON1",
+        "ema_len": 220,
+        "kind": "hysteresis",
+        "off_confirm": 2,
+        "on_confirm": 1,
+        "description": "Require 2 bearish bars to switch flat, recover on first bullish bar."
+      },
+      {
+        "name": "RO_EMA200_TWOSTAGE_50_TO_0",
+        "ema_len": 200,
+        "kind": "two_stage",
+        "soft_weight": 0.5,
+        "hard_confirm": 2,
+        "on_confirm": 1,
+        "description": "First bearish bar cuts core to 50%; persistent bearish regime goes flat."
+      },
+      {
+        "name": "RO_EMA220_TWOSTAGE_50_TO_0",
+        "ema_len": 220,
+        "kind": "two_stage",
+        "soft_weight": 0.5,
+        "hard_confirm": 2,
+        "on_confirm": 1,
+        "description": "First bearish bar cuts core to 50%; persistent bearish regime goes flat."
+      }
+    ],
+    "note": "Only EMA200/220 small repairs. No new EMA search, no Bear Short, no AddOn changes."
+  },
+  "full_sample": {
+    "Core+AddOnOverlay": {
+      "metrics": {
+        "TotalReturn_pct": 960.7197325501561,
+        "CAGR_pct": 46.14378086734574,
+        "Sharpe": 0.7911655969260962,
+        "Calmar": 0.6355073753154802,
+        "MaxDD_pct": -72.6093553901541,
+        "PF": 1.0267713205199516,
+        "Exposure_pct": 108.79297705446815,
+        "MaxDDDuration_bars_4h": 5078,
+        "MaxDDDuration_days": 846.3333333333334
+      },
+      "avg_core_exposure_pct": 100.0,
+      "riskoff_active_ratio_pct": 0.0,
+      "state_changes": 0,
+      "delta_vs_addon": {
+        "Return_pct": 0.0,
+        "CAGR_pct": 0.0,
+        "Sharpe": 0.0,
+        "Calmar": 0.0,
+        "MaxDD_improvement_pct": 0.0
+      }
+    },
+    "B&H": {
+      "metrics": {
+        "TotalReturn_pct": 856.155474040632,
+        "CAGR_pct": 43.7271213741881,
+        "Sharpe": 0.7498899885417762,
+        "Calmar": 0.5675750096826186,
+        "MaxDD_pct": -77.0420131757383,
+        "PF": 1.024375755939332,
+        "Exposure_pct": 100.0,
+        "MaxDDDuration_bars_4h": 5103,
+        "MaxDDDuration_days": 850.5
+      },
+      "avg_core_exposure_pct": 100.0,
+      "riskoff_active_ratio_pct": 0.0,
+      "state_changes": 0,
+      "delta_vs_addon": {
+        "Return_pct": -104.56425850952405,
+        "CAGR_pct": -2.4166594931576384,
+        "Sharpe": -0.041275608384319984,
+        "Calmar": -0.06793236563286154,
+        "MaxDD_improvement_pct": -4.432657785584212
+      }
+    },
+    "Core+AddOnOverlay+RO_EMA200_FLAT": {
+      "metrics": {
+        "TotalReturn_pct": 1319.6357755378833,
+        "CAGR_pct": 53.149996329411486,
+        "Sharpe": 1.0074723850567469,
+        "Calmar": 1.0476808656277936,
+        "MaxDD_pct": -50.7310938599254,
+        "PF": 1.0549005729480216,
+        "Exposure_pct": 67.71827578623268,
+        "MaxDDDuration_days": 783.8333333333334
+      },
+      "avg_core_exposure_pct": 58.91796789091709,
+      "riskoff_active_ratio_pct": 41.08203210908291,
+      "state_changes": 224,
+      "delta_vs_addon": {
+        "Return_pct": 358.9160429877272,
+        "CAGR_pct": 7.006215462065747,
+        "Sharpe": 0.21630678813065063,
+        "Calmar": 0.41217349031231343,
+        "MaxDD_improvement_pct": 21.87826153022869
+      },
+      "candidate": {
+        "name": "RO_EMA200_FLAT",
+        "ema_len": 200,
+        "kind": "flat",
+        "description": "Baseline aligned flat Risk-Off on EMA200."
+      }
+    },
+    "Core+AddOnOverlay+RO_EMA220_FLAT": {
+      "metrics": {
+        "TotalReturn_pct": 1626.5864245880216,
+        "CAGR_pct": 58.043095877193586,
+        "Sharpe": 1.0680092013935285,
+        "Calmar": 1.0971477751865155,
+        "MaxDD_pct": -52.90362628436833,
+        "PF": 1.0638918114385452,
+        "Exposure_pct": 67.72560662708013,
+        "MaxDDDuration_days": 790.5
+      },
+      "avg_core_exposure_pct": 58.92529873176453,
+      "riskoff_active_ratio_pct": 41.074701268235465,
+      "state_changes": 204,
+      "delta_vs_addon": {
+        "Return_pct": 665.8666920378655,
+        "CAGR_pct": 11.899315009847847,
+        "Sharpe": 0.2768436044674323,
+        "Calmar": 0.46164039987103533,
+        "MaxDD_improvement_pct": 19.705729105785764
+      },
+      "candidate": {
+        "name": "RO_EMA220_FLAT",
+        "ema_len": 220,
+        "kind": "flat",
+        "description": "Baseline aligned flat Risk-Off on EMA220."
+      }
+    },
+    "Core+AddOnOverlay+RO_EMA200_HYST_OFF2_ON1": {
+      "metrics": {
+        "TotalReturn_pct": 919.3380769907295,
+        "CAGR_pct": 45.21237368111217,
+        "Sharpe": 0.9270550239603333,
+        "Calmar": 0.761691282806204,
+        "MaxDD_pct": -59.35787201678595,
+        "PF": 1.0566813040478564,
+        "Exposure_pct": 64.25811890623855,
+        "MaxDDDuration_days": 841.3333333333334
+      },
+      "avg_core_exposure_pct": 55.45781101092295,
+      "riskoff_active_ratio_pct": 44.54218898907705,
+      "state_changes": 102,
+      "delta_vs_addon": {
+        "Return_pct": -41.38165555942658,
+        "CAGR_pct": -0.9314071862335709,
+        "Sharpe": 0.13588942703423712,
+        "Calmar": 0.12618390749072383,
+        "MaxDD_improvement_pct": 13.251483373368146
+      },
+      "candidate": {
+        "name": "RO_EMA200_HYST_OFF2_ON1",
+        "ema_len": 200,
+        "kind": "hysteresis",
+        "off_confirm": 2,
+        "on_confirm": 1,
+        "description": "Require 2 bearish bars to switch flat, recover on first bullish bar."
+      }
+    },
+    "Core+AddOnOverlay+RO_EMA220_HYST_OFF2_ON1": {
+      "metrics": {
+        "TotalReturn_pct": 1353.7516437470197,
+        "CAGR_pct": 53.735440529958936,
+        "Sharpe": 1.0324916581339418,
+        "Calmar": 0.9065144005172291,
+        "MaxDD_pct": -59.27698500906236,
+        "PF": 1.0680033921714118,
+        "Exposure_pct": 64.49270581335679,
+        "MaxDDDuration_days": 841.0
+      },
+      "avg_core_exposure_pct": 55.6923979180412,
+      "riskoff_active_ratio_pct": 44.307602081958805,
+      "state_changes": 92,
+      "delta_vs_addon": {
+        "Return_pct": 393.0319111968636,
+        "CAGR_pct": 7.591659662613196,
+        "Sharpe": 0.2413260612078456,
+        "Calmar": 0.2710070252017489,
+        "MaxDD_improvement_pct": 13.332370381091735
+      },
+      "candidate": {
+        "name": "RO_EMA220_HYST_OFF2_ON1",
+        "ema_len": 220,
+        "kind": "hysteresis",
+        "off_confirm": 2,
+        "on_confirm": 1,
+        "description": "Require 2 bearish bars to switch flat, recover on first bullish bar."
+      }
+    },
+    "Core+AddOnOverlay+RO_EMA200_TWOSTAGE_50_TO_0": {
+      "metrics": {
+        "TotalReturn_pct": 1335.837274973229,
+        "CAGR_pct": 53.429477055537646,
+        "Sharpe": 1.0095922806349718,
+        "Calmar": 0.9892950497867549,
+        "MaxDD_pct": -54.0076260030357,
+        "PF": 1.0550218385154353,
+        "Exposure_pct": 68.12896322058009,
+        "MaxDDDuration_days": 783.8333333333334
+      },
+      "avg_core_exposure_pct": 59.328494978374025,
+      "riskoff_active_ratio_pct": 41.08203210908291,
+      "state_changes": 318,
+      "delta_vs_addon": {
+        "Return_pct": 375.1175424230728,
+        "CAGR_pct": 7.285696188191906,
+        "Sharpe": 0.21842668370887552,
+        "Calmar": 0.3537876744712747,
+        "MaxDD_improvement_pct": 18.60172938711839
+      },
+      "candidate": {
+        "name": "RO_EMA200_TWOSTAGE_50_TO_0",
+        "ema_len": 200,
+        "kind": "two_stage",
+        "soft_weight": 0.5,
+        "hard_confirm": 2,
+        "on_confirm": 1,
+        "description": "First bearish bar cuts core to 50%; persistent bearish regime goes flat."
+      }
+    },
+    "Core+AddOnOverlay+RO_EMA220_TWOSTAGE_50_TO_0": {
+      "metrics": {
+        "TotalReturn_pct": 1778.0608835419223,
+        "CAGR_pct": 60.19291678689671,
+        "Sharpe": 1.0923516613599331,
+        "Calmar": 1.1023391919261893,
+        "MaxDD_pct": -54.60471443614164,
+        "PF": 1.066073263106418,
+        "Exposure_pct": 68.099906895634,
+        "MaxDDDuration_days": 783.8333333333334
+      },
+      "avg_core_exposure_pct": 59.29917161498424,
+      "riskoff_active_ratio_pct": 41.074701268235465,
+      "state_changes": 289,
+      "delta_vs_addon": {
+        "Return_pct": 817.3411509917662,
+        "CAGR_pct": 14.04913591955097,
+        "Sharpe": 0.3011860644338369,
+        "Calmar": 0.46683181661070916,
+        "MaxDD_improvement_pct": 18.00464095401245
+      },
+      "candidate": {
+        "name": "RO_EMA220_TWOSTAGE_50_TO_0",
+        "ema_len": 220,
+        "kind": "two_stage",
+        "soft_weight": 0.5,
+        "hard_confirm": 2,
+        "on_confirm": 1,
+        "description": "First bearish bar cuts core to 50%; persistent bearish regime goes flat."
+      }
+    }
+  },
+  "candidate_wf": {
+    "Core+AddOnOverlay+RO_EMA200_FLAT": {
+      "windows": [
+        {
+          "train_window": {
+            "start": "2020-01-01",
+            "end": "2023-01-01"
+          },
+          "test_window": {
+            "start": "2023-01-01",
+            "end": "2024-01-01"
+          },
+          "train_metrics": {
+            "TotalReturn_pct": 389.66500004997863,
+            "CAGR_pct": 69.80437138126716,
+            "Sharpe": 1.078692159383674,
+            "Calmar": 1.3759681897261145,
+            "MaxDD_pct": -50.7310938599254
+          },
+          "test_metrics": {
+            "TotalReturn_pct": 93.10506521710656,
+            "CAGR_pct": 93.2502494349472,
+            "Sharpe": 1.7507703156324272,
+            "Calmar": 4.721266816420931,
+            "MaxDD_pct": -19.75110771342463
+          },
+          "addon_test_metrics": {
+            "TotalReturn_pct": 130.81292299916797,
+            "CAGR_pct": 131.0335177791484,
+            "Sharpe": 2.032475737275773,
+            "Calmar": 7.096831678116926,
+            "MaxDD_pct": -18.46366431138421
+          },
+          "delta_vs_addon": {
+            "Return_pct": -37.70785778206141,
+            "CAGR_pct": -37.78326834420122,
+            "Sharpe": -0.2817054216433459,
+            "Calmar": -2.3755648616959952,
+            "MaxDD_improvement_pct": -1.2874434020404202
+          },
+          "strict_outperform": false
+        },
+        {
+          "train_window": {
+            "start": "2021-01-01",
+            "end": "2024-01-01"
+          },
+          "test_window": {
+            "start": "2024-01-01",
+            "end": "2025-01-01"
+          },
+          "train_metrics": {
+            "TotalReturn_pct": 130.06855338999642,
+            "CAGR_pct": 32.04442736278794,
+            "Sharpe": 0.7011520100170616,
+            "Calmar": 0.6316526004991421,
+            "MaxDD_pct": -50.7310938599254
+          },
+          "test_metrics": {
+            "TotalReturn_pct": 83.23020482743601,
+            "CAGR_pct": 83.05336197189534,
+            "Sharpe": 1.408114852050979,
+            "Calmar": 3.40630500836058,
+            "MaxDD_pct": -24.382244622265368
+          },
+          "addon_test_metrics": {
+            "TotalReturn_pct": 108.43770819415579,
+            "CAGR_pct": 108.19374202028142,
+            "Sharpe": 1.4586562406024315,
+            "Calmar": 3.718266164086027,
+            "MaxDD_pct": -29.09790134587531
+          },
+          "delta_vs_addon": {
+            "Return_pct": -25.207503366719777,
+            "CAGR_pct": -25.140380048386078,
+            "Sharpe": -0.050541388551452515,
+            "Calmar": -0.3119611557254469,
+            "MaxDD_improvement_pct": 4.715656723609943
+          },
+          "strict_outperform": false
+        },
+        {
+          "train_window": {
+            "start": "2022-01-01",
+            "end": "2025-01-01"
+          },
+          "test_window": {
+            "start": "2025-01-01",
+            "end": "2026-01-01"
+          },
+          "train_metrics": {
+            "TotalReturn_pct": 107.10975755221122,
+            "CAGR_pct": 27.465358428237874,
+            "Sharpe": 0.7303864845207266,
+            "Calmar": 0.5887511790472914,
+            "MaxDD_pct": -46.65019690097593
+          },
+          "test_metrics": {
+            "TotalReturn_pct": -15.714167948166002,
+            "CAGR_pct": -15.730622717382825,
+            "Sharpe": -0.45106413954174457,
+            "Calmar": -0.5393887466219419,
+            "MaxDD_pct": -29.163794787896148
+          },
+          "addon_test_metrics": {
+            "TotalReturn_pct": -5.823089868698828,
+            "CAGR_pct": -5.829542546025246,
+            "Sharpe": 0.051344693719564696,
+            "Calmar": -0.17968430509621466,
+            "MaxDD_pct": -32.443248412284696
+          },
+          "delta_vs_addon": {
+            "Return_pct": -9.891078079467174,
+            "CAGR_pct": -9.90108017135758,
+            "Sharpe": -0.5024088332613093,
+            "Calmar": -0.3597044415257272,
+            "MaxDD_improvement_pct": 3.279453624388548
+          },
+          "strict_outperform": false
+        }
+      ],
+      "strict_win_ratio": 0.0,
+      "avg_delta_return_pct": -24.26881307608279,
+      "avg_delta_calmar": -1.015743486315723
+    },
+    "Core+AddOnOverlay+RO_EMA220_FLAT": {
+      "windows": [
+        {
+          "train_window": {
+            "start": "2020-01-01",
+            "end": "2023-01-01"
+          },
+          "test_window": {
+            "start": "2023-01-01",
+            "end": "2024-01-01"
+          },
+          "train_metrics": {
+            "TotalReturn_pct": 417.0062536977299,
+            "CAGR_pct": 72.90750576728307,
+            "Sharpe": 1.1090224328645948,
+            "Calmar": 1.3914190879392518,
+            "MaxDD_pct": -52.39794853990543
+          },
+          "test_metrics": {
+            "TotalReturn_pct": 90.67307081978726,
+            "CAGR_pct": 90.81366455711925,
+            "Sharpe": 1.719568617760012,
+            "Calmar": 4.74766272541524,
+            "MaxDD_pct": -19.128078342839004
+          },
+          "addon_test_metrics": {
+            "TotalReturn_pct": 130.81292299916797,
+            "CAGR_pct": 131.0335177791484,
+            "Sharpe": 2.032475737275773,
+            "Calmar": 7.096831678116926,
+            "MaxDD_pct": -18.46366431138421
+          },
+          "delta_vs_addon": {
+            "Return_pct": -40.13985217938071,
+            "CAGR_pct": -40.21985322202916,
+            "Sharpe": -0.3129071195157611,
+            "Calmar": -2.349168952701686,
+            "MaxDD_improvement_pct": -0.6644140314547933
+          },
+          "strict_outperform": false
+        },
+        {
+          "train_window": {
+            "start": "2021-01-01",
+            "end": "2024-01-01"
+          },
+          "test_window": {
+            "start": "2024-01-01",
+            "end": "2025-01-01"
+          },
+          "train_metrics": {
+            "TotalReturn_pct": 144.8464768426331,
+            "CAGR_pct": 34.815498609386665,
+            "Sharpe": 0.7401101542715961,
+            "Calmar": 0.6580928577985542,
+            "MaxDD_pct": -52.90362628436833
+          },
+          "test_metrics": {
+            "TotalReturn_pct": 90.16050801122822,
+            "CAGR_pct": 89.96573064395315,
+            "Sharpe": 1.4753150432975901,
+            "Calmar": 3.8129297595225857,
+            "MaxDD_pct": -23.594908985477268
+          },
+          "addon_test_metrics": {
+            "TotalReturn_pct": 108.43770819415579,
+            "CAGR_pct": 108.19374202028142,
+            "Sharpe": 1.4586562406024315,
+            "Calmar": 3.718266164086027,
+            "MaxDD_pct": -29.09790134587531
+          },
+          "delta_vs_addon": {
+            "Return_pct": -18.277200182927572,
+            "CAGR_pct": -18.22801137632827,
+            "Sharpe": 0.016658802695158625,
+            "Calmar": 0.09466359543655889,
+            "MaxDD_improvement_pct": 5.502992360398043
+          },
+          "strict_outperform": true
+        },
+        {
+          "train_window": {
+            "start": "2022-01-01",
+            "end": "2025-01-01"
+          },
+          "test_window": {
+            "start": "2025-01-01",
+            "end": "2026-01-01"
+          },
+          "train_metrics": {
+            "TotalReturn_pct": 104.15257826284714,
+            "CAGR_pct": 26.8558304649426,
+            "Sharpe": 0.7185257086993643,
+            "Calmar": 0.5559314506005579,
+            "MaxDD_pct": -48.307809237867296
+          },
+          "test_metrics": {
+            "TotalReturn_pct": -5.281217746775047,
+            "CAGR_pct": -5.287086956759069,
+            "Sharpe": -0.06830132927608304,
+            "Calmar": -0.22599768618865984,
+            "MaxDD_pct": -23.39442958874136
+          },
+          "addon_test_metrics": {
+            "TotalReturn_pct": -5.823089868698828,
+            "CAGR_pct": -5.829542546025246,
+            "Sharpe": 0.051344693719564696,
+            "Calmar": -0.17968430509621466,
+            "MaxDD_pct": -32.443248412284696
+          },
+          "delta_vs_addon": {
+            "Return_pct": 0.541872121923781,
+            "CAGR_pct": 0.5424555892661775,
+            "Sharpe": -0.11964602299564774,
+            "Calmar": -0.04631338109244518,
+            "MaxDD_improvement_pct": 9.048818823543336
+          },
+          "strict_outperform": false
+        }
+      ],
+      "strict_win_ratio": 0.3333333333333333,
+      "avg_delta_return_pct": -19.291726746794833,
+      "avg_delta_calmar": -0.7669395794525241
+    },
+    "Core+AddOnOverlay+RO_EMA200_HYST_OFF2_ON1": {
+      "windows": [
+        {
+          "train_window": {
+            "start": "2020-01-01",
+            "end": "2023-01-01"
+          },
+          "test_window": {
+            "start": "2023-01-01",
+            "end": "2024-01-01"
+          },
+          "train_metrics": {
+            "TotalReturn_pct": 236.45804800149773,
+            "CAGR_pct": 49.84086911731207,
+            "Sharpe": 0.889109898443231,
+            "Calmar": 0.8396673840197212,
+            "MaxDD_pct": -59.35787201678595
+          },
+          "test_metrics": {
+            "TotalReturn_pct": 82.23528262992355,
+            "CAGR_pct": 82.36022788002309,
+            "Sharpe": 1.7323694618418235,
+            "Calmar": 4.860038457026334,
+            "MaxDD_pct": -16.94641485006192
+          },
+          "addon_test_metrics": {
+            "TotalReturn_pct": 130.81292299916797,
+            "CAGR_pct": 131.0335177791484,
+            "Sharpe": 2.032475737275773,
+            "Calmar": 7.096831678116926,
+            "MaxDD_pct": -18.46366431138421
+          },
+          "delta_vs_addon": {
+            "Return_pct": -48.57764036924442,
+            "CAGR_pct": -48.67328989912532,
+            "Sharpe": -0.30010627543394963,
+            "Calmar": -2.2367932210905916,
+            "MaxDD_improvement_pct": 1.5172494613222902
+          },
+          "strict_outperform": false
+        },
+        {
+          "train_window": {
+            "start": "2021-01-01",
+            "end": "2024-01-01"
+          },
+          "test_window": {
+            "start": "2024-01-01",
+            "end": "2025-01-01"
+          },
+          "train_metrics": {
+            "TotalReturn_pct": 49.98745323511626,
+            "CAGR_pct": 14.48118387514652,
+            "Sharpe": 0.441314046361532,
+            "Calmar": 0.24396399977161162,
+            "MaxDD_pct": -59.35787201678595
+          },
+          "test_metrics": {
+            "TotalReturn_pct": 70.53708911626299,
+            "CAGR_pct": 70.39200095223566,
+            "Sharpe": 1.2971463035676856,
+            "Calmar": 2.668619374089889,
+            "MaxDD_pct": -26.37768489417577
+          },
+          "addon_test_metrics": {
+            "TotalReturn_pct": 108.43770819415579,
+            "CAGR_pct": 108.19374202028142,
+            "Sharpe": 1.4586562406024315,
+            "Calmar": 3.718266164086027,
+            "MaxDD_pct": -29.09790134587531
+          },
+          "delta_vs_addon": {
+            "Return_pct": -37.9006190778928,
+            "CAGR_pct": -37.80174106804576,
+            "Sharpe": -0.16150993703474592,
+            "Calmar": -1.049646789996138,
+            "MaxDD_improvement_pct": 2.7202164516995424
+          },
+          "strict_outperform": false
+        },
+        {
+          "train_window": {
+            "start": "2022-01-01",
+            "end": "2025-01-01"
+          },
+          "test_window": {
+            "start": "2025-01-01",
+            "end": "2026-01-01"
+          },
+          "train_metrics": {
+            "TotalReturn_pct": 48.940452567556704,
+            "CAGR_pct": 14.200105231364923,
+            "Sharpe": 0.47735049870955754,
+            "Calmar": 0.26193064831682056,
+            "MaxDD_pct": -54.21322522818735
+          },
+          "test_metrics": {
+            "TotalReturn_pct": -1.3594526713012645,
+            "CAGR_pct": -1.360994653256098,
+            "Sharpe": 0.051535491023264504,
+            "Calmar": -0.06200404158759894,
+            "MaxDD_pct": -21.95009580679177
+          },
+          "addon_test_metrics": {
+            "TotalReturn_pct": -5.823089868698828,
+            "CAGR_pct": -5.829542546025246,
+            "Sharpe": 0.051344693719564696,
+            "Calmar": -0.17968430509621466,
+            "MaxDD_pct": -32.443248412284696
+          },
+          "delta_vs_addon": {
+            "Return_pct": 4.4636371973975635,
+            "CAGR_pct": 4.468547892769148,
+            "Sharpe": 0.00019079730369980785,
+            "Calmar": 0.11768026350861573,
+            "MaxDD_improvement_pct": 10.493152605492927
+          },
+          "strict_outperform": true
+        }
+      ],
+      "strict_win_ratio": 0.3333333333333333,
+      "avg_delta_return_pct": -27.338207416579888,
+      "avg_delta_calmar": -1.0562532491927046
+    },
+    "Core+AddOnOverlay+RO_EMA220_HYST_OFF2_ON1": {
+      "windows": [
+        {
+          "train_window": {
+            "start": "2020-01-01",
+            "end": "2023-01-01"
+          },
+          "test_window": {
+            "start": "2023-01-01",
+            "end": "2024-01-01"
+          },
+          "train_metrics": {
+            "TotalReturn_pct": 297.1134191695341,
+            "CAGR_pct": 58.35180058992453,
+            "Sharpe": 0.975408756096399,
+            "Calmar": 0.9843921815693497,
+            "MaxDD_pct": -59.27698500906236
+          },
+          "test_metrics": {
+            "TotalReturn_pct": 83.42054727161839,
+            "CAGR_pct": 83.54766415868546,
+            "Sharpe": 1.7272128397159607,
+            "Calmar": 4.812818230927495,
+            "MaxDD_pct": -17.359405684969055
+          },
+          "addon_test_metrics": {
+            "TotalReturn_pct": 130.81292299916797,
+            "CAGR_pct": 131.0335177791484,
+            "Sharpe": 2.032475737275773,
+            "Calmar": 7.096831678116926,
+            "MaxDD_pct": -18.46366431138421
+          },
+          "delta_vs_addon": {
+            "Return_pct": -47.39237572754958,
+            "CAGR_pct": -47.48585362046295,
+            "Sharpe": -0.3052628975598124,
+            "Calmar": -2.284013447189431,
+            "MaxDD_improvement_pct": 1.104258626415156
+          },
+          "strict_outperform": false
+        },
+        {
+          "train_window": {
+            "start": "2021-01-01",
+            "end": "2024-01-01"
+          },
+          "test_window": {
+            "start": "2024-01-01",
+            "end": "2025-01-01"
+          },
+          "train_metrics": {
+            "TotalReturn_pct": 79.29093602141609,
+            "CAGR_pct": 21.503897782096114,
+            "Sharpe": 0.5525233180296354,
+            "Calmar": 0.36276976264579863,
+            "MaxDD_pct": -59.27698500906236
+          },
+          "test_metrics": {
+            "TotalReturn_pct": 90.88950640990714,
+            "CAGR_pct": 90.69281890423456,
+            "Sharpe": 1.5125051362491935,
+            "Calmar": 3.566413966358468,
+            "MaxDD_pct": -25.429694858681138
+          },
+          "addon_test_metrics": {
+            "TotalReturn_pct": 108.43770819415579,
+            "CAGR_pct": 108.19374202028142,
+            "Sharpe": 1.4586562406024315,
+            "Calmar": 3.718266164086027,
+            "MaxDD_pct": -29.09790134587531
+          },
+          "delta_vs_addon": {
+            "Return_pct": -17.548201784248647,
+            "CAGR_pct": -17.500923116046863,
+            "Sharpe": 0.053848895646761985,
+            "Calmar": -0.15185219772755865,
+            "MaxDD_improvement_pct": 3.6682064871941726
+          },
+          "strict_outperform": false
+        },
+        {
+          "train_window": {
+            "start": "2022-01-01",
+            "end": "2025-01-01"
+          },
+          "test_window": {
+            "start": "2025-01-01",
+            "end": "2026-01-01"
+          },
+          "train_metrics": {
+            "TotalReturn_pct": 71.34136120994854,
+            "CAGR_pct": 19.659764248497,
+            "Sharpe": 0.593444156388635,
+            "Calmar": 0.3684465102750823,
+            "MaxDD_pct": -53.35853020786929
+          },
+          "test_metrics": {
+            "TotalReturn_pct": 6.164378253202485,
+            "CAGR_pct": 6.17163134248464,
+            "Sharpe": 0.3042749317559699,
+            "Calmar": 0.3244090969394901,
+            "MaxDD_pct": -19.024224045220883
+          },
+          "addon_test_metrics": {
+            "TotalReturn_pct": -5.823089868698828,
+            "CAGR_pct": -5.829542546025246,
+            "Sharpe": 0.051344693719564696,
+            "Calmar": -0.17968430509621466,
+            "MaxDD_pct": -32.443248412284696
+          },
+          "delta_vs_addon": {
+            "Return_pct": 11.987468121901312,
+            "CAGR_pct": 12.001173888509886,
+            "Sharpe": 0.25293023803640524,
+            "Calmar": 0.5040934020357047,
+            "MaxDD_improvement_pct": 13.419024367063813
+          },
+          "strict_outperform": true
+        }
+      ],
+      "strict_win_ratio": 0.3333333333333333,
+      "avg_delta_return_pct": -17.65103646329897,
+      "avg_delta_calmar": -0.6439240809604283
+    },
+    "Core+AddOnOverlay+RO_EMA200_TWOSTAGE_50_TO_0": {
+      "windows": [
+        {
+          "train_window": {
+            "start": "2020-01-01",
+            "end": "2023-01-01"
+          },
+          "test_window": {
+            "start": "2023-01-01",
+            "end": "2024-01-01"
+          },
+          "train_metrics": {
+            "TotalReturn_pct": 365.4338420466792,
+            "CAGR_pct": 66.95613798096154,
+            "Sharpe": 1.049965564535669,
+            "Calmar": 1.2397756791252024,
+            "MaxDD_pct": -54.00665548481031
+          },
+          "test_metrics": {
+            "TotalReturn_pct": 103.08836142169949,
+            "CAGR_pct": 103.25275205078897,
+            "Sharpe": 1.8660555990928305,
+            "Calmar": 5.484170647562935,
+            "MaxDD_pct": -18.827414149972267
+          },
+          "addon_test_metrics": {
+            "TotalReturn_pct": 130.81292299916797,
+            "CAGR_pct": 131.0335177791484,
+            "Sharpe": 2.032475737275773,
+            "Calmar": 7.096831678116926,
+            "MaxDD_pct": -18.46366431138421
+          },
+          "delta_vs_addon": {
+            "Return_pct": -27.724561577468478,
+            "CAGR_pct": -27.78076572835944,
+            "Sharpe": -0.16642013818294266,
+            "Calmar": -1.6126610305539915,
+            "MaxDD_improvement_pct": -0.3637498385880562
+          },
+          "strict_outperform": false
+        },
+        {
+          "train_window": {
+            "start": "2021-01-01",
+            "end": "2024-01-01"
+          },
+          "test_window": {
+            "start": "2024-01-01",
+            "end": "2025-01-01"
+          },
+          "train_metrics": {
+            "TotalReturn_pct": 132.215326008986,
+            "CAGR_pct": 32.45420260222516,
+            "Sharpe": 0.7061228319902683,
+            "Calmar": 0.600918888758431,
+            "MaxDD_pct": -54.0076260030357
+          },
+          "test_metrics": {
+            "TotalReturn_pct": 83.97976469003166,
+            "CAGR_pct": 83.80100192454638,
+            "Sharpe": 1.4150920553327844,
+            "Calmar": 3.3972054742920696,
+            "MaxDD_pct": -24.66762830764876
+          },
+          "addon_test_metrics": {
+            "TotalReturn_pct": 108.43770819415579,
+            "CAGR_pct": 108.19374202028142,
+            "Sharpe": 1.4586562406024315,
+            "Calmar": 3.718266164086027,
+            "MaxDD_pct": -29.09790134587531
+          },
+          "delta_vs_addon": {
+            "Return_pct": -24.45794350412413,
+            "CAGR_pct": -24.392740095735036,
+            "Sharpe": -0.043564185269647115,
+            "Calmar": -0.3210606897939572,
+            "MaxDD_improvement_pct": 4.430273038226552
+          },
+          "strict_outperform": false
+        },
+        {
+          "train_window": {
+            "start": "2022-01-01",
+            "end": "2025-01-01"
+          },
+          "test_window": {
+            "start": "2025-01-01",
+            "end": "2026-01-01"
+          },
+          "train_metrics": {
+            "TotalReturn_pct": 105.3312048042657,
+            "CAGR_pct": 27.09946764905733,
+            "Sharpe": 0.721412907169312,
+            "Calmar": 0.5431135501121387,
+            "MaxDD_pct": -49.89650441139243
+          },
+          "test_metrics": {
+            "TotalReturn_pct": -14.832212940102107,
+            "CAGR_pct": -14.847827571838012,
+            "Sharpe": -0.4126009071706827,
+            "Calmar": -0.5427815679298037,
+            "MaxDD_pct": -27.35506960648715
+          },
+          "addon_test_metrics": {
+            "TotalReturn_pct": -5.823089868698828,
+            "CAGR_pct": -5.829542546025246,
+            "Sharpe": 0.051344693719564696,
+            "Calmar": -0.17968430509621466,
+            "MaxDD_pct": -32.443248412284696
+          },
+          "delta_vs_addon": {
+            "Return_pct": -9.009123071403279,
+            "CAGR_pct": -9.018285025812766,
+            "Sharpe": -0.4639456008902474,
+            "Calmar": -0.363097262833589,
+            "MaxDD_improvement_pct": 5.088178805797547
+          },
+          "strict_outperform": false
+        }
+      ],
+      "strict_win_ratio": 0.0,
+      "avg_delta_return_pct": -20.397209384331962,
+      "avg_delta_calmar": -0.7656063277271792
+    },
+    "Core+AddOnOverlay+RO_EMA220_TWOSTAGE_50_TO_0": {
+      "windows": [
+        {
+          "train_window": {
+            "start": "2020-01-01",
+            "end": "2023-01-01"
+          },
+          "test_window": {
+            "start": "2023-01-01",
+            "end": "2024-01-01"
+          },
+          "train_metrics": {
+            "TotalReturn_pct": 401.71244960885434,
+            "CAGR_pct": 71.18558991288249,
+            "Sharpe": 1.0917602673059397,
+            "Calmar": 1.308212124532327,
+            "MaxDD_pct": -54.414409236828185
+          },
+          "test_metrics": {
+            "TotalReturn_pct": 104.90757090875582,
+            "CAGR_pct": 105.0755227534637,
+            "Sharpe": 1.8830039549255901,
+            "Calmar": 5.89786534048168,
+            "MaxDD_pct": -17.815856532404684
+          },
+          "addon_test_metrics": {
+            "TotalReturn_pct": 130.81292299916797,
+            "CAGR_pct": 131.0335177791484,
+            "Sharpe": 2.032475737275773,
+            "Calmar": 7.096831678116926,
+            "MaxDD_pct": -18.46366431138421
+          },
+          "delta_vs_addon": {
+            "Return_pct": -25.90535209041215,
+            "CAGR_pct": -25.95799502568471,
+            "Sharpe": -0.149471782350183,
+            "Calmar": -1.1989663376352464,
+            "MaxDD_improvement_pct": 0.6478077789795265
+          },
+          "strict_outperform": false
+        },
+        {
+          "train_window": {
+            "start": "2021-01-01",
+            "end": "2024-01-01"
+          },
+          "test_window": {
+            "start": "2024-01-01",
+            "end": "2025-01-01"
+          },
+          "train_metrics": {
+            "TotalReturn_pct": 156.96592706936002,
+            "CAGR_pct": 37.00599526737687,
+            "Sharpe": 0.7689760060894874,
+            "Calmar": 0.6777069644902937,
+            "MaxDD_pct": -54.60471443614164
+          },
+          "test_metrics": {
+            "TotalReturn_pct": 98.70468034094193,
+            "CAGR_pct": 98.48724055770278,
+            "Sharpe": 1.5607277252001723,
+            "Calmar": 4.418358985989216,
+            "MaxDD_pct": -22.2904569026667
+          },
+          "addon_test_metrics": {
+            "TotalReturn_pct": 108.43770819415579,
+            "CAGR_pct": 108.19374202028142,
+            "Sharpe": 1.4586562406024315,
+            "Calmar": 3.718266164086027,
+            "MaxDD_pct": -29.09790134587531
+          },
+          "delta_vs_addon": {
+            "Return_pct": -9.733027853213855,
+            "CAGR_pct": -9.706501462578643,
+            "Sharpe": 0.10207148459774085,
+            "Calmar": 0.7000928219031892,
+            "MaxDD_improvement_pct": 6.80744444320861
+          },
+          "strict_outperform": true
+        },
+        {
+          "train_window": {
+            "start": "2022-01-01",
+            "end": "2025-01-01"
+          },
+          "test_window": {
+            "start": "2025-01-01",
+            "end": "2026-01-01"
+          },
+          "train_metrics": {
+            "TotalReturn_pct": 121.40149956321213,
+            "CAGR_pct": 30.332112972775583,
+            "Sharpe": 0.7812799905116867,
+            "Calmar": 0.6096919122997201,
+            "MaxDD_pct": -49.74990214051673
+          },
+          "test_metrics": {
+            "TotalReturn_pct": -4.609234742580615,
+            "CAGR_pct": -4.614375466065179,
+            "Sharpe": -0.04330013836453123,
+            "Calmar": -0.20291656022663673,
+            "MaxDD_pct": -22.740260631815367
+          },
+          "addon_test_metrics": {
+            "TotalReturn_pct": -5.823089868698828,
+            "CAGR_pct": -5.829542546025246,
+            "Sharpe": 0.051344693719564696,
+            "Calmar": -0.17968430509621466,
+            "MaxDD_pct": -32.443248412284696
+          },
+          "delta_vs_addon": {
+            "Return_pct": 1.2138551261182133,
+            "CAGR_pct": 1.2151670799600671,
+            "Sharpe": -0.09464483208409592,
+            "Calmar": -0.02323225513042207,
+            "MaxDD_improvement_pct": 9.702987780469329
+          },
+          "strict_outperform": false
+        }
+      ],
+      "strict_win_ratio": 0.3333333333333333,
+      "avg_delta_return_pct": -11.474841605835932,
+      "avg_delta_calmar": -0.17403525695415975
+    }
+  },
+  "wf_selection": {
+    "windows": [
+      {
+        "test_year": 2023,
+        "selected_candidate": "Core+AddOnOverlay+RO_EMA220_FLAT",
+        "selected_test_metrics": {
+          "TotalReturn_pct": 90.67307081978726,
+          "CAGR_pct": 90.81366455711925,
+          "Sharpe": 1.719568617760012,
+          "Calmar": 4.74766272541524,
+          "MaxDD_pct": -19.128078342839004
+        },
+        "delta_vs_addon": {
+          "Return_pct": -40.13985217938071,
+          "CAGR_pct": -40.21985322202916,
+          "Sharpe": -0.3129071195157611,
+          "Calmar": -2.349168952701686,
+          "MaxDD_improvement_pct": -0.6644140314547933
+        },
+        "strict_outperform": false
+      },
+      {
+        "test_year": 2024,
+        "selected_candidate": "Core+AddOnOverlay+RO_EMA220_TWOSTAGE_50_TO_0",
+        "selected_test_metrics": {
+          "TotalReturn_pct": 98.70468034094193,
+          "CAGR_pct": 98.48724055770278,
+          "Sharpe": 1.5607277252001723,
+          "Calmar": 4.418358985989216,
+          "MaxDD_pct": -22.2904569026667
+        },
+        "delta_vs_addon": {
+          "Return_pct": -9.733027853213855,
+          "CAGR_pct": -9.706501462578643,
+          "Sharpe": 0.10207148459774085,
+          "Calmar": 0.7000928219031892,
+          "MaxDD_improvement_pct": 6.80744444320861
+        },
+        "strict_outperform": true
+      },
+      {
+        "test_year": 2025,
+        "selected_candidate": "Core+AddOnOverlay+RO_EMA220_TWOSTAGE_50_TO_0",
+        "selected_test_metrics": {
+          "TotalReturn_pct": -4.609234742580615,
+          "CAGR_pct": -4.614375466065179,
+          "Sharpe": -0.04330013836453123,
+          "Calmar": -0.20291656022663673,
+          "MaxDD_pct": -22.740260631815367
+        },
+        "delta_vs_addon": {
+          "Return_pct": 1.2138551261182133,
+          "CAGR_pct": 1.2151670799600671,
+          "Sharpe": -0.09464483208409592,
+          "Calmar": -0.02323225513042207,
+          "MaxDD_improvement_pct": 9.702987780469329
+        },
+        "strict_outperform": false
+      }
+    ],
+    "strict_win_ratio": 0.3333333333333333,
+    "avg_delta_return_pct": -16.21967496882545,
+    "avg_delta_calmar": -0.557436128642973
+  },
+  "time_slices": {
+    "rows": [
+      {
+        "slice": "bull_expansion",
+        "window": {
+          "start": "2020-04-01",
+          "end": "2021-11-10"
+        },
+        "Core+AddOnOverlay": {
+          "TotalReturn_pct": 968.8137824388778,
+          "CAGR_pct": 335.820709053078,
+          "Sharpe": 1.9722123403946852,
+          "Calmar": 6.549328621085162,
+          "MaxDD_pct": -51.27559303894507
+        },
+        "Core+AddOnOverlay+RO_EMA200_FLAT": {
+          "TotalReturn_pct": 660.9238574500972,
+          "CAGR_pct": 252.87508261013426,
+          "Sharpe": 1.9270974590488739,
+          "Calmar": 8.291413283931847,
+          "MaxDD_pct": -30.49842939323597
+        },
+        "Core+AddOnOverlay+RO_EMA200_FLAT_delta_vs_addon": {
+          "Return_pct": -307.88992498878054,
+          "CAGR_pct": -82.94562644294376,
+          "Sharpe": -0.04511488134581132,
+          "Calmar": 1.7420846628466853,
+          "MaxDD_improvement_pct": 20.7771636457091
+        },
+        "Core+AddOnOverlay+RO_EMA220_FLAT": {
+          "TotalReturn_pct": 735.7476619146313,
+          "CAGR_pct": 274.05117900996487,
+          "Sharpe": 2.003334018869526,
+          "Calmar": 10.126835015893198,
+          "MaxDD_pct": -27.061878521755823
+        },
+        "Core+AddOnOverlay+RO_EMA220_FLAT_delta_vs_addon": {
+          "Return_pct": -233.06612052424646,
+          "CAGR_pct": -61.76953004311315,
+          "Sharpe": 0.03112167847484093,
+          "Calmar": 3.5775063948080357,
+          "MaxDD_improvement_pct": 24.213714517189246
+        },
+        "Core+AddOnOverlay+RO_EMA200_HYST_OFF2_ON1": {
+          "TotalReturn_pct": 537.7593297964412,
+          "CAGR_pct": 216.20824128691112,
+          "Sharpe": 1.8183674315669074,
+          "Calmar": 6.627737655193709,
+          "MaxDD_pct": -32.621725924453784
+        },
+        "Core+AddOnOverlay+RO_EMA200_HYST_OFF2_ON1_delta_vs_addon": {
+          "Return_pct": -431.05445264243656,
+          "CAGR_pct": -119.6124677661669,
+          "Sharpe": -0.1538449088277778,
+          "Calmar": 0.07840903410854683,
+          "MaxDD_improvement_pct": 18.653867114491284
+        },
+        "Core+AddOnOverlay+RO_EMA220_HYST_OFF2_ON1": {
+          "TotalReturn_pct": 644.1941241310411,
+          "CAGR_pct": 248.03416977443763,
+          "Sharpe": 1.9279579988663251,
+          "Calmar": 9.61726056864483,
+          "MaxDD_pct": -25.790521947913504
+        },
+        "Core+AddOnOverlay+RO_EMA220_HYST_OFF2_ON1_delta_vs_addon": {
+          "Return_pct": -324.61965830783663,
+          "CAGR_pct": -87.78653927864039,
+          "Sharpe": -0.04425434152836005,
+          "Calmar": 3.0679319475596687,
+          "MaxDD_improvement_pct": 25.485071091031564
+        },
+        "Core+AddOnOverlay+RO_EMA200_TWOSTAGE_50_TO_0": {
+          "TotalReturn_pct": 677.1350822587821,
+          "CAGR_pct": 257.52765744136497,
+          "Sharpe": 1.943695116685995,
+          "Calmar": 8.55987211688238,
+          "MaxDD_pct": -30.085456175618663
+        },
+        "Core+AddOnOverlay+RO_EMA200_TWOSTAGE_50_TO_0_delta_vs_addon": {
+          "Return_pct": -291.6787001800957,
+          "CAGR_pct": -78.29305161171305,
+          "Sharpe": -0.028517223708690143,
+          "Calmar": 2.0105434957972177,
+          "MaxDD_improvement_pct": 21.190136863326405
+        },
+        "Core+AddOnOverlay+RO_EMA220_TWOSTAGE_50_TO_0": {
+          "TotalReturn_pct": 743.3562233475136,
+          "CAGR_pct": 276.16344375329237,
+          "Sharpe": 2.0097719093196296,
+          "Calmar": 10.201443132429745,
+          "MaxDD_pct": -27.07101732257725
+        },
+        "Core+AddOnOverlay+RO_EMA220_TWOSTAGE_50_TO_0_delta_vs_addon": {
+          "Return_pct": -225.45755909136415,
+          "CAGR_pct": -59.65726529978565,
+          "Sharpe": 0.037559568924944386,
+          "Calmar": 3.6521145113445828,
+          "MaxDD_improvement_pct": 24.204575716367817
+        }
+      },
+      {
+        "slice": "major_drawdown",
+        "window": {
+          "start": "2021-11-10",
+          "end": "2023-01-01"
+        },
+        "Core+AddOnOverlay": {
+          "TotalReturn_pct": -70.66407197450208,
+          "CAGR_pct": -65.85639539545679,
+          "Sharpe": -1.4228440415521566,
+          "Calmar": -0.9078473444999274,
+          "MaxDD_pct": -72.54126565929724
+        },
+        "Core+AddOnOverlay+RO_EMA200_FLAT": {
+          "TotalReturn_pct": -49.17004141964488,
+          "CAGR_pct": -44.73023946826557,
+          "Sharpe": -1.7508747967376905,
+          "Calmar": -0.8838458591140557,
+          "MaxDD_pct": -50.60864290647016
+        },
+        "Core+AddOnOverlay+RO_EMA200_FLAT_delta_vs_addon": {
+          "Return_pct": 21.494030554857197,
+          "CAGR_pct": 21.126155927191213,
+          "Sharpe": -0.32803075518553393,
+          "Calmar": 0.024001485385871768,
+          "MaxDD_improvement_pct": 21.93262275282708
+        },
+        "Core+AddOnOverlay+RO_EMA220_FLAT": {
+          "TotalReturn_pct": -50.88152994688959,
+          "CAGR_pct": -46.36436367538227,
+          "Sharpe": -1.8736920644181092,
+          "Calmar": -0.88685411708733,
+          "MaxDD_pct": -52.279583284402456
+        },
+        "Core+AddOnOverlay+RO_EMA220_FLAT_delta_vs_addon": {
+          "Return_pct": 19.782542027612486,
+          "CAGR_pct": 19.492031720074515,
+          "Sharpe": -0.4508480228659526,
+          "Calmar": 0.02099322741259746,
+          "MaxDD_improvement_pct": 20.261682374894782
+        },
+        "Core+AddOnOverlay+RO_EMA200_HYST_OFF2_ON1": {
+          "TotalReturn_pct": -58.11159429834527,
+          "CAGR_pct": -53.34911270106644,
+          "Sharpe": -2.540810165873876,
+          "Calmar": -0.9003009620746728,
+          "MaxDD_pct": -59.25697622062693
+        },
+        "Core+AddOnOverlay+RO_EMA200_HYST_OFF2_ON1_delta_vs_addon": {
+          "Return_pct": 12.552477676156812,
+          "CAGR_pct": 12.507282694390348,
+          "Sharpe": -1.1179661243217194,
+          "Calmar": 0.0075463824252546274,
+          "MaxDD_improvement_pct": 13.284289438670307
+        },
+        "Core+AddOnOverlay+RO_EMA220_HYST_OFF2_ON1": {
+          "TotalReturn_pct": -57.99033192451426,
+          "CAGR_pct": -53.23079704621727,
+          "Sharpe": -2.5216075193637404,
+          "Calmar": -0.8995368181966867,
+          "MaxDD_pct": -59.1757846587422
+        },
+        "Core+AddOnOverlay+RO_EMA220_HYST_OFF2_ON1_delta_vs_addon": {
+          "Return_pct": 12.67374004998782,
+          "CAGR_pct": 12.625598349239517,
+          "Sharpe": -1.0987634778115838,
+          "Calmar": 0.008310526303240695,
+          "MaxDD_improvement_pct": 13.365481000555036
+        },
+        "Core+AddOnOverlay+RO_EMA200_TWOSTAGE_50_TO_0": {
+          "TotalReturn_pct": -52.57008975894549,
+          "CAGR_pct": -47.983516114725624,
+          "Sharpe": -1.9198057567619897,
+          "Calmar": -0.890358849401841,
+          "MaxDD_pct": -53.89233357646954
+        },
+        "Core+AddOnOverlay+RO_EMA200_TWOSTAGE_50_TO_0_delta_vs_addon": {
+          "Return_pct": 18.093982215556586,
+          "CAGR_pct": 17.872879280731162,
+          "Sharpe": -0.4969617152098331,
+          "Calmar": 0.017488495098086476,
+          "MaxDD_improvement_pct": 18.6489320828277
+        },
+        "Core+AddOnOverlay+RO_EMA220_TWOSTAGE_50_TO_0": {
+          "TotalReturn_pct": -52.96577325903078,
+          "CAGR_pct": -48.36395880040796,
+          "Sharpe": -1.9810194230965255,
+          "Calmar": -0.8906634145355836,
+          "MaxDD_pct": -54.30105021842202
+        },
+        "Core+AddOnOverlay+RO_EMA220_TWOSTAGE_50_TO_0_delta_vs_addon": {
+          "Return_pct": 17.698298715471296,
+          "CAGR_pct": 17.49243659504883,
+          "Sharpe": -0.5581753815443689,
+          "Calmar": 0.017183929964343814,
+          "MaxDD_improvement_pct": 18.240215440875218
+        }
+      },
+      {
+        "slice": "recovery_phase",
+        "window": {
+          "start": "2023-01-01",
+          "end": "2024-03-15"
+        },
+        "Core+AddOnOverlay": {
+          "TotalReturn_pct": 278.31946793618425,
+          "CAGR_pct": 202.6660166382092,
+          "Sharpe": 2.506268173718711,
+          "Calmar": 10.976478624194367,
+          "MaxDD_pct": -18.46366431138421
+        },
+        "Core+AddOnOverlay+RO_EMA200_FLAT": {
+          "TotalReturn_pct": 212.73916899835643,
+          "CAGR_pct": 158.31545115712623,
+          "Sharpe": 2.3141692136143774,
+          "Calmar": 8.01552264582714,
+          "MaxDD_pct": -19.75110771342463
+        },
+        "Core+AddOnOverlay+RO_EMA200_FLAT_delta_vs_addon": {
+          "Return_pct": -65.58029893782782,
+          "CAGR_pct": -44.35056548108295,
+          "Sharpe": -0.19209896010433347,
+          "Calmar": -2.9609559783672275,
+          "MaxDD_improvement_pct": -1.2874434020404202
+        },
+        "Core+AddOnOverlay+RO_EMA220_FLAT": {
+          "TotalReturn_pct": 200.73121054244476,
+          "CAGR_pct": 150.03326536991906,
+          "Sharpe": 2.23744048596984,
+          "Calmar": 7.843614119558807,
+          "MaxDD_pct": -19.128078342839004
+        },
+        "Core+AddOnOverlay+RO_EMA220_FLAT_delta_vs_addon": {
+          "Return_pct": -77.5882573937395,
+          "CAGR_pct": -52.63275126829012,
+          "Sharpe": -0.2688276877488711,
+          "Calmar": -3.1328645046355605,
+          "MaxDD_improvement_pct": -0.6644140314547933
+        },
+        "Core+AddOnOverlay+RO_EMA200_HYST_OFF2_ON1": {
+          "TotalReturn_pct": 190.36095724322365,
+          "CAGR_pct": 142.83595609300042,
+          "Sharpe": 2.3081596817637977,
+          "Calmar": 8.428682842759423,
+          "MaxDD_pct": -16.94641485006192
+        },
+        "Core+AddOnOverlay+RO_EMA200_HYST_OFF2_ON1_delta_vs_addon": {
+          "Return_pct": -87.9585106929606,
+          "CAGR_pct": -59.83006054520877,
+          "Sharpe": -0.1981084919549132,
+          "Calmar": -2.547795781434944,
+          "MaxDD_improvement_pct": 1.5172494613222902
+        },
+        "Core+AddOnOverlay+RO_EMA220_HYST_OFF2_ON1": {
+          "TotalReturn_pct": 197.94740544894057,
+          "CAGR_pct": 148.10535486301282,
+          "Sharpe": 2.330158922608891,
+          "Calmar": 8.531706531361984,
+          "MaxDD_pct": -17.359405684969055
+        },
+        "Core+AddOnOverlay+RO_EMA220_HYST_OFF2_ON1_delta_vs_addon": {
+          "Return_pct": -80.37206248724368,
+          "CAGR_pct": -54.560661775196365,
+          "Sharpe": -0.1761092511098199,
+          "Calmar": -2.444772092832384,
+          "MaxDD_improvement_pct": 1.104258626415156
+        },
+        "Core+AddOnOverlay+RO_EMA200_TWOSTAGE_50_TO_0": {
+          "TotalReturn_pct": 229.37243316254435,
+          "CAGR_pct": 169.70048872082947,
+          "Sharpe": 2.404581440803152,
+          "Calmar": 9.013478291233076,
+          "MaxDD_pct": -18.827414149972267
+        },
+        "Core+AddOnOverlay+RO_EMA200_TWOSTAGE_50_TO_0_delta_vs_addon": {
+          "Return_pct": -48.9470347736399,
+          "CAGR_pct": -32.96552791737972,
+          "Sharpe": -0.10168673291555885,
+          "Calmar": -1.9630003329612915,
+          "MaxDD_improvement_pct": -0.3637498385880562
+        },
+        "Core+AddOnOverlay+RO_EMA220_TWOSTAGE_50_TO_0": {
+          "TotalReturn_pct": 229.49837370067874,
+          "CAGR_pct": 169.7863182490677,
+          "Sharpe": 2.397334803189032,
+          "Calmar": 9.530067664175949,
+          "MaxDD_pct": -17.815856532404684
+        },
+        "Core+AddOnOverlay+RO_EMA220_TWOSTAGE_50_TO_0_delta_vs_addon": {
+          "Return_pct": -48.82109423550551,
+          "CAGR_pct": -32.87969838914148,
+          "Sharpe": -0.10893337052967889,
+          "Calmar": -1.4464109600184187,
+          "MaxDD_improvement_pct": 0.6478077789795265
+        }
+      },
+      {
+        "slice": "sideways_volatility",
+        "window": {
+          "start": "2024-03-15",
+          "end": "2026-03-01"
+        },
+        "Core+AddOnOverlay": {
+          "TotalReturn_pct": -1.6738208067393345,
+          "CAGR_pct": -0.8575878396237191,
+          "Sharpe": 0.1692644908862254,
+          "Calmar": -0.018230365743305513,
+          "MaxDD_pct": -47.04172432407942
+        },
+        "Core+AddOnOverlay+RO_EMA200_FLAT": {
+          "TotalReturn_pct": -0.4346568632851877,
+          "CAGR_pct": -0.2220178309754406,
+          "Sharpe": 0.12243408484927151,
+          "Calmar": -0.006453684138377768,
+          "MaxDD_pct": -34.401719423356866
+        },
+        "Core+AddOnOverlay+RO_EMA200_FLAT_delta_vs_addon": {
+          "Return_pct": 1.2391639434541468,
+          "CAGR_pct": 0.6355700086482785,
+          "Sharpe": -0.046830406036953875,
+          "Calmar": 0.011776681604927744,
+          "MaxDD_improvement_pct": 12.640004900722552
+        },
+        "Core+AddOnOverlay+RO_EMA220_FLAT": {
+          "TotalReturn_pct": 18.18756167762725,
+          "CAGR_pct": 8.900367610414506,
+          "Sharpe": 0.3563138157017499,
+          "Calmar": 0.3544979747587212,
+          "MaxDD_pct": -25.106963210360465
+        },
+        "Core+AddOnOverlay+RO_EMA220_FLAT_delta_vs_addon": {
+          "Return_pct": 19.861382484366587,
+          "CAGR_pct": 9.757955450038224,
+          "Sharpe": 0.18704932481552453,
+          "Calmar": 0.3727283405020267,
+          "MaxDD_improvement_pct": 21.934761113718952
+        },
+        "Core+AddOnOverlay+RO_EMA200_HYST_OFF2_ON1": {
+          "TotalReturn_pct": 8.114484365551778,
+          "CAGR_pct": 4.06125591646227,
+          "Sharpe": 0.23440671485254214,
+          "Calmar": 0.16149454738154082,
+          "MaxDD_pct": -25.147944511509124
+        },
+        "Core+AddOnOverlay+RO_EMA200_HYST_OFF2_ON1_delta_vs_addon": {
+          "Return_pct": 9.788305172291112,
+          "CAGR_pct": 4.918843756085989,
+          "Sharpe": 0.06514222396631675,
+          "Calmar": 0.17972491312484634,
+          "MaxDD_improvement_pct": 21.893779812570294
+        },
+        "Core+AddOnOverlay+RO_EMA220_HYST_OFF2_ON1": {
+          "TotalReturn_pct": 27.34873090753911,
+          "CAGR_pct": 13.128733455572439,
+          "Sharpe": 0.46490934196933936,
+          "Calmar": 0.5417542737132925,
+          "MaxDD_pct": -24.233742293504147
+        },
+        "Core+AddOnOverlay+RO_EMA220_HYST_OFF2_ON1_delta_vs_addon": {
+          "Return_pct": 29.022551714278446,
+          "CAGR_pct": 13.986321295196158,
+          "Sharpe": 0.295644851083114,
+          "Calmar": 0.559984639456598,
+          "MaxDD_improvement_pct": 22.80798203057527
+        },
+        "Core+AddOnOverlay+RO_EMA200_TWOSTAGE_50_TO_0": {
+          "TotalReturn_pct": 0.6265448834117171,
+          "CAGR_pct": 0.31920209020110946,
+          "Sharpe": 0.13739015151918088,
+          "Calmar": 0.009844650910443335,
+          "MaxDD_pct": -32.42391153377472
+        },
+        "Core+AddOnOverlay+RO_EMA200_TWOSTAGE_50_TO_0_delta_vs_addon": {
+          "Return_pct": 2.3003656901510516,
+          "CAGR_pct": 1.1767899298248286,
+          "Sharpe": -0.03187433936704451,
+          "Calmar": 0.028075016653748848,
+          "MaxDD_improvement_pct": 14.617812790304697
+        },
+        "Core+AddOnOverlay+RO_EMA220_TWOSTAGE_50_TO_0": {
+          "TotalReturn_pct": 21.516762047705406,
+          "CAGR_pct": 10.45494081691103,
+          "Sharpe": 0.39329985054518596,
+          "Calmar": 0.42866805754960713,
+          "MaxDD_pct": -24.389362894624224
+        },
+        "Core+AddOnOverlay+RO_EMA220_TWOSTAGE_50_TO_0_delta_vs_addon": {
+          "Return_pct": 23.19058285444474,
+          "CAGR_pct": 11.312528656534749,
+          "Sharpe": 0.22403535965896057,
+          "Calmar": 0.4468984232929126,
+          "MaxDD_improvement_pct": 22.652361429455194
+        }
+      }
+    ]
+  },
+  "execution_stress": {
+    "Core+AddOnOverlay+RO_EMA200_FLAT": {
+      "delta_vs_default_same_scheme": {
+        "Return_pct": 121.60536049732082,
+        "CAGR_pct": 2.03573564113735,
+        "Sharpe": 0.025115140512384837,
+        "Calmar": 0.0442450963005363,
+        "MaxDD_improvement_pct": 0.19128265048093596
+      },
+      "delta_vs_addon_under_stress": {
+        "Return_pct": 480.52140348504804,
+        "CAGR_pct": 9.041951103203097,
+        "Sharpe": 0.24142192864303547,
+        "Calmar": 0.45641858661284973,
+        "MaxDD_improvement_pct": 22.069544180709627
+      }
+    },
+    "Core+AddOnOverlay+RO_EMA220_FLAT": {
+      "delta_vs_default_same_scheme": {
+        "Return_pct": 80.03000088483259,
+        "CAGR_pct": 1.1547099326174148,
+        "Sharpe": 0.013785633957266175,
+        "Calmar": 0.019409560169882045,
+        "MaxDD_improvement_pct": -0.11452507721442373
+      },
+      "delta_vs_addon_under_stress": {
+        "Return_pct": 745.8966929226981,
+        "CAGR_pct": 13.054024942465261,
+        "Sharpe": 0.29062923842469846,
+        "Calmar": 0.4810499600409174,
+        "MaxDD_improvement_pct": 19.59120402857134
+      }
+    },
+    "Core+AddOnOverlay+RO_EMA200_HYST_OFF2_ON1": {
+      "delta_vs_default_same_scheme": {
+        "Return_pct": 70.23765570306693,
+        "CAGR_pct": 1.563001585632101,
+        "Sharpe": 0.020805748957323345,
+        "Calmar": 0.03507688990512736,
+        "MaxDD_improvement_pct": 0.6514918314783174
+      },
+      "delta_vs_addon_under_stress": {
+        "Return_pct": 28.856000143640358,
+        "CAGR_pct": 0.63159439939853,
+        "Sharpe": 0.15669517599156046,
+        "Calmar": 0.1612607973958512,
+        "MaxDD_improvement_pct": 13.902975204846463
+      }
+    },
+    "Core+AddOnOverlay+RO_EMA220_HYST_OFF2_ON1": {
+      "delta_vs_default_same_scheme": {
+        "Return_pct": 118.6828491613187,
+        "CAGR_pct": 1.9506846569799379,
+        "Sharpe": 0.024351790407710405,
+        "Calmar": 0.0452100169186076,
+        "MaxDD_improvement_pct": 0.766218481741312
+      },
+      "delta_vs_addon_under_stress": {
+        "Return_pct": 511.7147603581823,
+        "CAGR_pct": 9.542344319593134,
+        "Sharpe": 0.265677851615556,
+        "Calmar": 0.3162170421203565,
+        "MaxDD_improvement_pct": 14.098588862833047
+      }
+    },
+    "Core+AddOnOverlay+RO_EMA200_TWOSTAGE_50_TO_0": {
+      "delta_vs_default_same_scheme": {
+        "Return_pct": 136.28366162546627,
+        "CAGR_pct": 2.2516597879908673,
+        "Sharpe": 0.027804758557808285,
+        "Calmar": 0.04164207250580698,
+        "MaxDD_improvement_pct": -0.002590177468839272
+      },
+      "delta_vs_addon_under_stress": {
+        "Return_pct": 511.40120404853906,
+        "CAGR_pct": 9.537355976182774,
+        "Sharpe": 0.2462314422666838,
+        "Calmar": 0.39542974697708166,
+        "MaxDD_improvement_pct": 18.59913920964955
+      }
+    },
+    "Core+AddOnOverlay+RO_EMA220_TWOSTAGE_50_TO_0": {
+      "delta_vs_default_same_scheme": {
+        "Return_pct": 117.17772576073457,
+        "CAGR_pct": 1.5653455871983226,
+        "Sharpe": 0.01863671484210494,
+        "Calmar": 0.027650375670489336,
+        "MaxDD_improvement_pct": -0.049119674420772697
+      },
+      "delta_vs_addon_under_stress": {
+        "Return_pct": 934.5188767525008,
+        "CAGR_pct": 15.614481506749293,
+        "Sharpe": 0.3198227792759418,
+        "Calmar": 0.4944821922811985,
+        "MaxDD_improvement_pct": 17.95552127959168
+      }
+    }
+  },
+  "causality_audit": {
+    "default_total_violations": 0,
+    "stress_total_violations": 0,
+    "default_details": {
+      "RO_EMA200_FLAT": {
+        "violations": 0,
+        "rebalance_count": 224,
+        "pass": true,
+        "execution_mode": "next_bar_open"
+      },
+      "RO_EMA220_FLAT": {
+        "violations": 0,
+        "rebalance_count": 204,
+        "pass": true,
+        "execution_mode": "next_bar_open"
+      },
+      "RO_EMA200_HYST_OFF2_ON1": {
+        "violations": 0,
+        "rebalance_count": 102,
+        "pass": true,
+        "execution_mode": "next_bar_open"
+      },
+      "RO_EMA220_HYST_OFF2_ON1": {
+        "violations": 0,
+        "rebalance_count": 92,
+        "pass": true,
+        "execution_mode": "next_bar_open"
+      },
+      "RO_EMA200_TWOSTAGE_50_TO_0": {
+        "violations": 0,
+        "rebalance_count": 318,
+        "pass": true,
+        "execution_mode": "next_bar_open"
+      },
+      "RO_EMA220_TWOSTAGE_50_TO_0": {
+        "violations": 0,
+        "rebalance_count": 289,
+        "pass": true,
+        "execution_mode": "next_bar_open"
+      }
+    },
+    "stress_details": {
+      "RO_EMA200_FLAT": {
+        "violations": 0,
+        "rebalance_count": 224,
+        "pass": true,
+        "execution_mode": "live_runner_next_5m_close"
+      },
+      "RO_EMA220_FLAT": {
+        "violations": 0,
+        "rebalance_count": 204,
+        "pass": true,
+        "execution_mode": "live_runner_next_5m_close"
+      },
+      "RO_EMA200_HYST_OFF2_ON1": {
+        "violations": 0,
+        "rebalance_count": 102,
+        "pass": true,
+        "execution_mode": "live_runner_next_5m_close"
+      },
+      "RO_EMA220_HYST_OFF2_ON1": {
+        "violations": 0,
+        "rebalance_count": 92,
+        "pass": true,
+        "execution_mode": "live_runner_next_5m_close"
+      },
+      "RO_EMA200_TWOSTAGE_50_TO_0": {
+        "violations": 0,
+        "rebalance_count": 318,
+        "pass": true,
+        "execution_mode": "live_runner_next_5m_close"
+      },
+      "RO_EMA220_TWOSTAGE_50_TO_0": {
+        "violations": 0,
+        "rebalance_count": 289,
+        "pass": true,
+        "execution_mode": "live_runner_next_5m_close"
+      }
+    }
+  },
+  "candidate_summary": {
+    "Core+AddOnOverlay+RO_EMA200_FLAT": {
+      "strict_win_ratio": 0.0,
+      "avg_delta_return_pct": -24.26881307608279,
+      "avg_delta_calmar": -1.015743486315723,
+      "bull_delta_return_pct": -307.88992498878054,
+      "recovery_delta_return_pct": -65.58029893782782,
+      "major_drawdown_delta_return_pct": 21.494030554857197,
+      "major_drawdown_delta_maxdd_improve_pct": 21.93262275282708,
+      "full_sample_delta_vs_addon": {
+        "Return_pct": 358.9160429877272,
+        "CAGR_pct": 7.006215462065747,
+        "Sharpe": 0.21630678813065063,
+        "Calmar": 0.41217349031231343,
+        "MaxDD_improvement_pct": 21.87826153022869
+      }
+    },
+    "Core+AddOnOverlay+RO_EMA220_FLAT": {
+      "strict_win_ratio": 0.3333333333333333,
+      "avg_delta_return_pct": -19.291726746794833,
+      "avg_delta_calmar": -0.7669395794525241,
+      "bull_delta_return_pct": -233.06612052424646,
+      "recovery_delta_return_pct": -77.5882573937395,
+      "major_drawdown_delta_return_pct": 19.782542027612486,
+      "major_drawdown_delta_maxdd_improve_pct": 20.261682374894782,
+      "full_sample_delta_vs_addon": {
+        "Return_pct": 665.8666920378655,
+        "CAGR_pct": 11.899315009847847,
+        "Sharpe": 0.2768436044674323,
+        "Calmar": 0.46164039987103533,
+        "MaxDD_improvement_pct": 19.705729105785764
+      }
+    },
+    "Core+AddOnOverlay+RO_EMA200_HYST_OFF2_ON1": {
+      "strict_win_ratio": 0.3333333333333333,
+      "avg_delta_return_pct": -27.338207416579888,
+      "avg_delta_calmar": -1.0562532491927046,
+      "bull_delta_return_pct": -431.05445264243656,
+      "recovery_delta_return_pct": -87.9585106929606,
+      "major_drawdown_delta_return_pct": 12.552477676156812,
+      "major_drawdown_delta_maxdd_improve_pct": 13.284289438670307,
+      "full_sample_delta_vs_addon": {
+        "Return_pct": -41.38165555942658,
+        "CAGR_pct": -0.9314071862335709,
+        "Sharpe": 0.13588942703423712,
+        "Calmar": 0.12618390749072383,
+        "MaxDD_improvement_pct": 13.251483373368146
+      }
+    },
+    "Core+AddOnOverlay+RO_EMA220_HYST_OFF2_ON1": {
+      "strict_win_ratio": 0.3333333333333333,
+      "avg_delta_return_pct": -17.65103646329897,
+      "avg_delta_calmar": -0.6439240809604283,
+      "bull_delta_return_pct": -324.61965830783663,
+      "recovery_delta_return_pct": -80.37206248724368,
+      "major_drawdown_delta_return_pct": 12.67374004998782,
+      "major_drawdown_delta_maxdd_improve_pct": 13.365481000555036,
+      "full_sample_delta_vs_addon": {
+        "Return_pct": 393.0319111968636,
+        "CAGR_pct": 7.591659662613196,
+        "Sharpe": 0.2413260612078456,
+        "Calmar": 0.2710070252017489,
+        "MaxDD_improvement_pct": 13.332370381091735
+      }
+    },
+    "Core+AddOnOverlay+RO_EMA200_TWOSTAGE_50_TO_0": {
+      "strict_win_ratio": 0.0,
+      "avg_delta_return_pct": -20.397209384331962,
+      "avg_delta_calmar": -0.7656063277271792,
+      "bull_delta_return_pct": -291.6787001800957,
+      "recovery_delta_return_pct": -48.9470347736399,
+      "major_drawdown_delta_return_pct": 18.093982215556586,
+      "major_drawdown_delta_maxdd_improve_pct": 18.6489320828277,
+      "full_sample_delta_vs_addon": {
+        "Return_pct": 375.1175424230728,
+        "CAGR_pct": 7.285696188191906,
+        "Sharpe": 0.21842668370887552,
+        "Calmar": 0.3537876744712747,
+        "MaxDD_improvement_pct": 18.60172938711839
+      }
+    },
+    "Core+AddOnOverlay+RO_EMA220_TWOSTAGE_50_TO_0": {
+      "strict_win_ratio": 0.3333333333333333,
+      "avg_delta_return_pct": -11.474841605835932,
+      "avg_delta_calmar": -0.17403525695415975,
+      "bull_delta_return_pct": -225.45755909136415,
+      "recovery_delta_return_pct": -48.82109423550551,
+      "major_drawdown_delta_return_pct": 17.698298715471296,
+      "major_drawdown_delta_maxdd_improve_pct": 18.240215440875218,
+      "full_sample_delta_vs_addon": {
+        "Return_pct": 817.3411509917662,
+        "CAGR_pct": 14.04913591955097,
+        "Sharpe": 0.3011860644338369,
+        "Calmar": 0.46683181661070916,
+        "MaxDD_improvement_pct": 18.00464095401245
+      }
+    }
+  },
+  "judgment": {
+    "promotion_v2_answer": "PARTIAL. Promotion v2 reduces opportunity cost, but it still does not clear the promotion bar.",
+    "best_repair_candidate": "Core+AddOnOverlay+RO_EMA220_TWOSTAGE_50_TO_0",
+    "promotion_status_after_v2": "aligned but preliminary",
+    "recommendation": "Keep AddOn-only baseline unchanged. At most, run one final narrow promotion check on the single best repair candidate.",
+    "answer_1": "Yes. The v1 failure is still consistent with bull/recovery opportunity cost. Best candidate still gives bull delta -225.46pp and recovery delta -48.82pp versus AddOn-only.",
+    "answer_2": "No repair candidate materially fixes the OOS issue. Best candidate is Core+AddOnOverlay+RO_EMA220_TWOSTAGE_50_TO_0, but strict OOS win ratio is still only 0.33.",
+    "answer_3": "No. Strict OOS win ratio does not improve beyond the v1 level of 0.33 in a meaningful way.",
+    "answer_4": "Yes. Best candidate lifts avg delta Return to -11.47pp and avg delta Calmar to -0.174 while keeping major-drawdown MaxDD improvement at +18.24pp.",
+    "answer_5": "No. Even after the repair test, Risk-Off should remain below promotion-candidate status.",
+    "answer_6": "Keep AddOn-only baseline unchanged. If Risk-Off work continues, narrow it to the single best repair candidate only."
+  }
+}

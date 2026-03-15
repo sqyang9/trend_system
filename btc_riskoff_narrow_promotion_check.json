@@ -1,0 +1,380 @@
+{
+  "generated_at_local": "2026-03-14T14:56:47.280951",
+  "seed": 20260309,
+  "research_optimal": {
+    "label": "lb20_stop3.2_trail5.0_beoff",
+    "params": {
+      "candidate_name": "squeeze_release_20",
+      "description": "Squeeze release plus 20-bar breakout inside a bullish EMA200 regime, designed to enter expansion after compression.",
+      "breakout_mode": "squeeze_release",
+      "donchian_entry_len": 20,
+      "squeeze_threshold": 0.9,
+      "squeeze_bars": 6,
+      "ema_len": 200,
+      "ema_slope_len": 20,
+      "use_ema_slope": true,
+      "adx_period": 14,
+      "adx_min": 10.0,
+      "use_adx_filter": true,
+      "close_location_min": 0.6,
+      "range_atr_min": 0.55,
+      "volume_multiple": 1.0,
+      "structure_lookback": 20,
+      "initial_stop_atr": 3.2,
+      "trail_atr_mult": 5.0,
+      "trail_activate_atr": 2.5,
+      "swing_trail_lookback": 20,
+      "use_swing_trail": false,
+      "break_even_after_atr": 1000000000.0,
+      "position_pct": 100.0,
+      "init_equity": 10000.0,
+      "commission_pct": 0.06,
+      "entry_execution_mode": "next_bar_open",
+      "close_delay_bps": 8.0,
+      "intrabar_execution_model": "legacy_bar_extrema",
+      "intrabar_path_mode": "midpoint",
+      "slippage_fixed_bps": 5.0,
+      "slippage_breakout_extra_bps": 5.0,
+      "slippage_stop_extra_bps": 8.0,
+      "slippage_range_weight": 0.05,
+      "slippage_max_bps": 25.0,
+      "slippage_breakout_atr_threshold": 1.1,
+      "enable_daily_loss_limit": false,
+      "daily_loss_limit_pct": 1.5,
+      "cooldown_bars": 0
+    }
+  },
+  "default_tuple": "next_bar_open + legacy_bar_extrema + midpoint + full_model",
+  "stress_tuple": "live_runner_next_5m_close + segment_path_same_bar + pessimistic + full_model",
+  "target_candidate": {
+    "name": "RO_EMA220_TWOSTAGE_50_TO_0",
+    "ema_len": 220,
+    "kind": "two_stage",
+    "soft_weight": 0.5,
+    "hard_confirm": 2,
+    "on_confirm": 1,
+    "description": "First bearish bar cuts core to 50%; persistent bearish regime goes flat."
+  },
+  "reference_candidate": {
+    "name": "RO_EMA220_FLAT",
+    "ema_len": 220,
+    "kind": "flat",
+    "description": "Baseline aligned flat Risk-Off on EMA220."
+  },
+  "full_sample": {
+    "Core+AddOnOverlay": {
+      "metrics": {
+        "TotalReturn_pct": 960.7197325501561,
+        "CAGR_pct": 46.14378086734574,
+        "Sharpe": 0.7911655969260962,
+        "Calmar": 0.6355073753154802,
+        "MaxDD_pct": -72.6093553901541,
+        "PF": 1.0267713205199516,
+        "Exposure_pct": 108.79297705446815,
+        "MaxDDDuration_bars_4h": 5078,
+        "MaxDDDuration_days": 846.3333333333334
+      }
+    },
+    "Core+AddOnOverlay+RO_EMA220_FLAT": {
+      "metrics": {
+        "TotalReturn_pct": 1626.5864245880216,
+        "CAGR_pct": 58.043095877193586,
+        "Sharpe": 1.0680092013935285,
+        "Calmar": 1.0971477751865155,
+        "MaxDD_pct": -52.90362628436833,
+        "PF": 1.0638918114385452,
+        "Exposure_pct": 67.72560662708013,
+        "MaxDDDuration_days": 790.5
+      }
+    },
+    "Core+AddOnOverlay+RO_EMA220_TWOSTAGE_50_TO_0": {
+      "metrics": {
+        "TotalReturn_pct": 1778.0608835419223,
+        "CAGR_pct": 60.19291678689671,
+        "Sharpe": 1.0923516613599331,
+        "Calmar": 1.1023391919261893,
+        "MaxDD_pct": -54.60471443614164,
+        "PF": 1.066073263106418,
+        "Exposure_pct": 68.099906895634,
+        "MaxDDDuration_days": 783.8333333333334
+      }
+    }
+  },
+  "oos_windows": [
+    {
+      "name": "OOS_2023",
+      "window": {
+        "start": "2023-01-01",
+        "end": "2024-01-01"
+      },
+      "addon_metrics": {
+        "TotalReturn_pct": 130.81292299916797,
+        "CAGR_pct": 131.0335177791484,
+        "Sharpe": 2.032475737275773,
+        "Calmar": 7.096831678116926,
+        "MaxDD_pct": -18.46366431138421
+      },
+      "candidate_metrics": {
+        "TotalReturn_pct": 104.90757090875582,
+        "CAGR_pct": 105.0755227534637,
+        "Sharpe": 1.8830039549255901,
+        "Calmar": 5.89786534048168,
+        "MaxDD_pct": -17.815856532404684
+      },
+      "delta_vs_addon": {
+        "Return_pct": -25.90535209041215,
+        "CAGR_pct": -25.95799502568471,
+        "Sharpe": -0.149471782350183,
+        "Calmar": -1.1989663376352464,
+        "MaxDD_improvement_pct": 0.6478077789795265
+      },
+      "strict_outperform": false,
+      "state_distribution": {
+        "state_1.00_pct": 69.22374429223744,
+        "state_0.50_pct": 0.8675799086757991,
+        "state_0.00_pct": 29.908675799086758
+      },
+      "state_changes": 52,
+      "pnl_attribution": {
+        "upside_drag_total": 54384.06500813701,
+        "downside_protection_total": 50500.489186333434,
+        "soft_upside_drag": 0.0,
+        "flat_upside_drag": 47034.82772270439,
+        "soft_downside_protection": 0.0,
+        "flat_downside_protection": 50500.489186333434
+      },
+      "monthly_diff": {
+        "worst_months": [
+          {
+            "month": "2023-09",
+            "delta_return_pct": -7.77009177718353
+          },
+          {
+            "month": "2023-04",
+            "delta_return_pct": -3.40991429472729
+          },
+          {
+            "month": "2023-03",
+            "delta_return_pct": -3.162897030090228
+          },
+          {
+            "month": "2023-05",
+            "delta_return_pct": -0.6590396629910904
+          },
+          {
+            "month": "2023-07",
+            "delta_return_pct": -0.3583990993776158
+          }
+        ],
+        "best_months": [
+          {
+            "month": "2023-08",
+            "delta_return_pct": 4.4632456421842885
+          },
+          {
+            "month": "2023-06",
+            "delta_return_pct": 0.8976751740365607
+          },
+          {
+            "month": "2023-11",
+            "delta_return_pct": 0.5951942678340982
+          },
+          {
+            "month": "2023-12",
+            "delta_return_pct": 0.08852880053826873
+          },
+          {
+            "month": "2023-01",
+            "delta_return_pct": 0.0
+          }
+        ]
+      }
+    },
+    {
+      "name": "OOS_2024",
+      "window": {
+        "start": "2024-01-01",
+        "end": "2025-01-01"
+      },
+      "addon_metrics": {
+        "TotalReturn_pct": 108.43770819415579,
+        "CAGR_pct": 108.19374202028142,
+        "Sharpe": 1.4586562406024315,
+        "Calmar": 3.718266164086027,
+        "MaxDD_pct": -29.09790134587531
+      },
+      "candidate_metrics": {
+        "TotalReturn_pct": 98.70468034094193,
+        "CAGR_pct": 98.48724055770278,
+        "Sharpe": 1.5607277252001723,
+        "Calmar": 4.418358985989216,
+        "MaxDD_pct": -22.2904569026667
+      },
+      "delta_vs_addon": {
+        "Return_pct": -9.733027853213855,
+        "CAGR_pct": -9.706501462578643,
+        "Sharpe": 0.10207148459774085,
+        "Calmar": 0.7000928219031892,
+        "MaxDD_improvement_pct": 6.80744444320861
+      },
+      "strict_outperform": true,
+      "state_distribution": {
+        "state_1.00_pct": 70.44626593806922,
+        "state_0.50_pct": 0.819672131147541,
+        "state_0.00_pct": 28.734061930783245
+      },
+      "state_changes": 49,
+      "pnl_attribution": {
+        "upside_drag_total": 213487.51143491955,
+        "downside_protection_total": 211362.19672881003,
+        "soft_upside_drag": 0.0,
+        "flat_upside_drag": 193961.95344213687,
+        "soft_downside_protection": 0.0,
+        "flat_downside_protection": 211362.19672881003
+      },
+      "monthly_diff": {
+        "worst_months": [
+          {
+            "month": "2024-05",
+            "delta_return_pct": -9.342508103050285
+          },
+          {
+            "month": "2024-10",
+            "delta_return_pct": -3.521573653282916
+          },
+          {
+            "month": "2024-08",
+            "delta_return_pct": -2.423794719418705
+          },
+          {
+            "month": "2024-09",
+            "delta_return_pct": -1.1713881447392271
+          },
+          {
+            "month": "2024-01",
+            "delta_return_pct": 0.0
+          }
+        ],
+        "best_months": [
+          {
+            "month": "2024-06",
+            "delta_return_pct": 5.38194555273529
+          },
+          {
+            "month": "2024-04",
+            "delta_return_pct": 4.687672785260133
+          },
+          {
+            "month": "2024-12",
+            "delta_return_pct": 1.4147312264863987
+          },
+          {
+            "month": "2024-03",
+            "delta_return_pct": 0.6671738779843839
+          },
+          {
+            "month": "2024-02",
+            "delta_return_pct": 0.4693435866599742
+          }
+        ]
+      }
+    },
+    {
+      "name": "OOS_2025",
+      "window": {
+        "start": "2025-01-01",
+        "end": "2026-01-01"
+      },
+      "addon_metrics": {
+        "TotalReturn_pct": -5.823089868698828,
+        "CAGR_pct": -5.829542546025246,
+        "Sharpe": 0.051344693719564696,
+        "Calmar": -0.17968430509621466,
+        "MaxDD_pct": -32.443248412284696
+      },
+      "candidate_metrics": {
+        "TotalReturn_pct": -4.609234742580615,
+        "CAGR_pct": -4.614375466065179,
+        "Sharpe": -0.04330013836453123,
+        "Calmar": -0.20291656022663673,
+        "MaxDD_pct": -22.740260631815367
+      },
+      "delta_vs_addon": {
+        "Return_pct": 1.2138551261182133,
+        "CAGR_pct": 1.2151670799600671,
+        "Sharpe": -0.09464483208409592,
+        "Calmar": -0.02323225513042207,
+        "MaxDD_improvement_pct": 9.702987780469329
+      },
+      "strict_outperform": false,
+      "state_distribution": {
+        "state_1.00_pct": 50.95890410958904,
+        "state_0.50_pct": 1.095890410958904,
+        "state_0.00_pct": 47.94520547945205
+      },
+      "state_changes": 68,
+      "pnl_attribution": {
+        "upside_drag_total": 491021.0073581354,
+        "downside_protection_total": 493299.93120076484,
+        "soft_upside_drag": 0.0,
+        "flat_upside_drag": 447980.8013642708,
+        "soft_downside_protection": 0.0,
+        "flat_downside_protection": 493299.93120076484
+      },
+      "monthly_diff": {
+        "worst_months": [
+          {
+            "month": "2025-04",
+            "delta_return_pct": -9.760153573839858
+          },
+          {
+            "month": "2025-09",
+            "delta_return_pct": -9.634911467091754
+          },
+          {
+            "month": "2025-03",
+            "delta_return_pct": -2.5732620140543117
+          },
+          {
+            "month": "2025-10",
+            "delta_return_pct": -1.8991223460705364
+          },
+          {
+            "month": "2025-06",
+            "delta_return_pct": -1.6174207810810026
+          }
+        ],
+        "best_months": [
+          {
+            "month": "2025-11",
+            "delta_return_pct": 16.44751721935692
+          },
+          {
+            "month": "2025-02",
+            "delta_return_pct": 9.212369062027935
+          },
+          {
+            "month": "2025-12",
+            "delta_return_pct": 2.787758008196717
+          },
+          {
+            "month": "2025-05",
+            "delta_return_pct": 0.09764730563231083
+          },
+          {
+            "month": "2025-07",
+            "delta_return_pct": 0.0751235942748174
+          }
+        ]
+      }
+    }
+  ],
+  "judgment": {
+    "main_finding": "The remaining blocker is still upside opportunity cost after Risk-Off, especially in recovery-like windows. The main drag is not the 50% bridge itself; it is staying flat for too long after risk conditions improve.",
+    "promotion_implication": "Do not promote Risk-Off yet. If work continues, focus only on re-entry timing out of flat state for RO_EMA220_TWOSTAGE_50_TO_0.",
+    "answer_1": "The main blocker is still recovery-side opportunity cost. Worst OOS window is OOS_2023 with dReturn -25.91pp and dCalmar -1.199.",
+    "answer_2": "The repaired structure does defend downside, but most of its remaining problem comes from missed upside while reduced. Largest upside-drag window is OOS_2025 with upside_drag 491021.01 versus downside_protection 493299.93.",
+    "answer_3": "The 50% soft stage is not the main problem. In OOS_2023, state_0.50 is only 0.9% of bars, while flat-state upside drag is 47034.83 and dominates the missed upside.",
+    "answer_4": "Promotion still fails because the candidate improves full-sample optics and downside control, but cannot convert that into repeated strict OOS wins. The next step, if any, should target re-entry timing out of flat state rather than the bear trigger itself."
+  }
+}

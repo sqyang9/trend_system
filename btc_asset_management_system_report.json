@@ -1,0 +1,1016 @@
+{
+  "generated_at_local": "2026-03-13T15:41:51.440417",
+  "seed": 20260309,
+  "research_optimal": {
+    "label": "lb20_stop3.2_trail5.0_beoff",
+    "params": {
+      "candidate_name": "squeeze_release_20",
+      "description": "Squeeze release plus 20-bar breakout inside a bullish EMA200 regime, designed to enter expansion after compression.",
+      "breakout_mode": "squeeze_release",
+      "donchian_entry_len": 20,
+      "squeeze_threshold": 0.9,
+      "squeeze_bars": 6,
+      "ema_len": 200,
+      "ema_slope_len": 20,
+      "use_ema_slope": true,
+      "adx_period": 14,
+      "adx_min": 10.0,
+      "use_adx_filter": true,
+      "close_location_min": 0.6,
+      "range_atr_min": 0.55,
+      "volume_multiple": 1.0,
+      "structure_lookback": 20,
+      "initial_stop_atr": 3.2,
+      "trail_atr_mult": 5.0,
+      "trail_activate_atr": 2.5,
+      "swing_trail_lookback": 20,
+      "use_swing_trail": false,
+      "break_even_after_atr": 1000000000.0,
+      "position_pct": 100.0,
+      "init_equity": 10000.0,
+      "commission_pct": 0.06,
+      "entry_execution_mode": "next_bar_open",
+      "close_delay_bps": 8.0,
+      "intrabar_execution_model": "legacy_bar_extrema",
+      "intrabar_path_mode": "midpoint",
+      "slippage_fixed_bps": 5.0,
+      "slippage_breakout_extra_bps": 5.0,
+      "slippage_stop_extra_bps": 8.0,
+      "slippage_range_weight": 0.05,
+      "slippage_max_bps": 25.0,
+      "slippage_breakout_atr_threshold": 1.1,
+      "enable_daily_loss_limit": false,
+      "daily_loss_limit_pct": 1.5,
+      "cooldown_bars": 0
+    }
+  },
+  "default_research_tuple": "next_bar_open + legacy_bar_extrema + midpoint + full_model",
+  "stress_tuple": "live_runner_next_5m_close + segment_path_same_bar + pessimistic + full_model",
+  "module_roles": {
+    "AddOnOverlay": "Keep the proven long-only trend sleeve unchanged as the return-enhancing leg.",
+    "RiskOffOverlay": "Reduce core BTC exposure only in clear bearish regimes to compress drawdown without turning into a short-term timing engine.",
+    "BearShortSleeve": "Only hedge extreme downside after bearish regime confirmation; do not run as a symmetric mirror of the long module."
+  },
+  "module_candidates": {
+    "risk_off": [
+      {
+        "name": "B1_TrendBreakRiskOff_ema200_flat",
+        "module_type": "Risk-Off",
+        "description": "Reduce core BTC exposure when price is below the long-term EMA and the EMA slope is negative.",
+        "params": {
+          "ema_len": 200,
+          "off_weight": 0.0
+        },
+        "detail": "avg core exposure 58.9%, state changes 223",
+        "combo_metrics": {
+          "TotalReturn_pct": 1574.9757682690997,
+          "CAGR_pct": 57.27437517953793,
+          "Sharpe": 1.057699402335812,
+          "Calmar": 1.1681859965592,
+          "MaxDD_pct": -49.02847264753652,
+          "PF": 1.0596292328415733,
+          "ExposureNet_pct": 67.71094494538524,
+          "ExposureGross_pct": 67.71094494538524,
+          "MaxDDDuration_bars_4h": 4533,
+          "MaxDDDuration_days": 755.5
+        },
+        "module_stats": {
+          "avg_weight": 0.5891796789091709,
+          "state_changes": 223,
+          "turnover_notional": 223.0,
+          "off_ratio": 0.4108203210908291
+        }
+      },
+      {
+        "name": "B1_TrendBreakRiskOff_ema220_flat",
+        "module_type": "Risk-Off",
+        "description": "Reduce core BTC exposure when price is below the long-term EMA and the EMA slope is negative.",
+        "params": {
+          "ema_len": 220,
+          "off_weight": 0.0
+        },
+        "detail": "avg core exposure 58.9%, state changes 203",
+        "combo_metrics": {
+          "TotalReturn_pct": 1896.78557456601,
+          "CAGR_pct": 61.77840601789255,
+          "Sharpe": 1.1122325433688671,
+          "Calmar": 1.1993315685042827,
+          "MaxDD_pct": -51.510697825571285,
+          "PF": 1.0686177739980793,
+          "ExposureNet_pct": 67.71827578623267,
+          "ExposureGross_pct": 67.71827578623267,
+          "MaxDDDuration_bars_4h": 4540,
+          "MaxDDDuration_days": 756.6666666666666
+        },
+        "module_stats": {
+          "avg_weight": 0.5892529873176453,
+          "state_changes": 203,
+          "turnover_notional": 203.0,
+          "off_ratio": 0.41074701268235464
+        }
+      },
+      {
+        "name": "B1_TrendBreakRiskOff_ema200_to35",
+        "module_type": "Risk-Off",
+        "description": "Reduce core BTC exposure when price is below the long-term EMA and the EMA slope is negative.",
+        "params": {
+          "ema_len": 200,
+          "off_weight": 0.35
+        },
+        "detail": "avg core exposure 73.3%, state changes 223",
+        "combo_metrics": {
+          "TotalReturn_pct": 1505.8718554444254,
+          "CAGR_pct": 56.21334729503478,
+          "Sharpe": 1.012382745294197,
+          "Calmar": 0.9784172753421568,
+          "MaxDD_pct": -57.45334706541922,
+          "PF": 1.0450405863841083,
+          "ExposureNet_pct": 82.08965618356424,
+          "ExposureGross_pct": 82.08965618356424,
+          "MaxDDDuration_bars_4h": 4759,
+          "MaxDDDuration_days": 793.1666666666666
+        },
+        "module_stats": {
+          "avg_weight": 0.7329667912909611,
+          "state_changes": 223,
+          "turnover_notional": 144.9500000000006,
+          "off_ratio": 0.4108203210908291
+        }
+      },
+      {
+        "name": "B2_TrendVolRiskOff_ema200_to35",
+        "module_type": "Risk-Off",
+        "description": "Reduce core BTC exposure only when trend is broken and ATR/price volatility is elevated.",
+        "params": {
+          "ema_len": 200,
+          "off_weight": 0.35,
+          "atr_pct_threshold": 0.025
+        },
+        "detail": "avg core exposure 94.7%, state changes 120",
+        "combo_metrics": {
+          "TotalReturn_pct": 1036.4519420753486,
+          "CAGR_pct": 47.77208077295227,
+          "Sharpe": 0.8476430067875299,
+          "Calmar": 0.6686845322860461,
+          "MaxDD_pct": -71.44188098628936,
+          "PF": 1.027550808179931,
+          "ExposureNet_pct": 103.53236566234145,
+          "ExposureGross_pct": 103.53236566234145,
+          "MaxDDDuration_bars_4h": 5050,
+          "MaxDDDuration_days": 841.6666666666666
+        },
+        "module_stats": {
+          "avg_weight": 0.9473938860787332,
+          "state_changes": 120,
+          "turnover_notional": 78.00000000000003,
+          "off_ratio": 0.08093248295579503
+        }
+      },
+      {
+        "name": "B3_StructureBreakRiskOff_flat",
+        "module_type": "Risk-Off",
+        "description": "Go flat on the core only after a bearish regime is confirmed by a breakdown below the 63-bar structure low.",
+        "params": {
+          "ema_len": 200,
+          "off_weight": 0.0,
+          "breakdown_lookback": 63
+        },
+        "detail": "avg core exposure 97.1%, state changes 418",
+        "combo_metrics": {
+          "TotalReturn_pct": 909.9000049053612,
+          "CAGR_pct": 44.99550859172845,
+          "Sharpe": 0.7946512254025851,
+          "Calmar": 0.6404332264860486,
+          "MaxDD_pct": -70.25792343506501,
+          "PF": 1.0283497588068053,
+          "ExposureNet_pct": 105.91928744226963,
+          "ExposureGross_pct": 105.91928744226963,
+          "MaxDDDuration_bars_4h": 6300,
+          "MaxDDDuration_days": 1050.0
+        },
+        "module_stats": {
+          "avg_weight": 0.9712631038780148,
+          "state_changes": 418,
+          "turnover_notional": 418.0,
+          "off_ratio": 0.02873689612198519
+        }
+      }
+    ],
+    "bear_short": [
+      {
+        "name": "C1_BreakdownQualityShort",
+        "module_type": "Bear Short",
+        "description": "Only short after the core is already risk-off, ADX is bearish/strong, the bar closes near its low, and price breaks the 63-bar low.",
+        "params": {
+          "lookback": 63,
+          "short_weight": 0.25,
+          "adx_min": 18.0,
+          "close_location_max": 0.4
+        },
+        "detail": "active 2.02%, state changes 394",
+        "combo_metrics": {
+          "TotalReturn_pct": 1879.8399661405135,
+          "CAGR_pct": 61.55703261447771,
+          "Sharpe": 1.1028155925529108,
+          "Calmar": 1.1862770469072994,
+          "MaxDD_pct": -51.890941306637316,
+          "PF": 1.0678550606572816,
+          "ExposureNet_pct": 67.21428047797082,
+          "ExposureGross_pct": 68.22227109449453,
+          "MaxDDDuration_bars_4h": 4540,
+          "MaxDDDuration_days": 756.6666666666666
+        },
+        "module_stats": {
+          "active_ratio": 0.020159812330474307,
+          "state_changes": 394,
+          "turnover_notional": 98.5,
+          "short_weight": 0.25
+        }
+      },
+      {
+        "name": "C2_CrashSleeveShort",
+        "module_type": "Bear Short",
+        "description": "Only short in a risk-off regime when volatility is elevated and price breaks the 126-bar low.",
+        "params": {
+          "lookback": 126,
+          "short_weight": 0.25,
+          "atr_pct_threshold": 0.03
+        },
+        "detail": "active 0.50%, state changes 66",
+        "combo_metrics": {
+          "TotalReturn_pct": 1888.2863095650262,
+          "CAGR_pct": 61.667571582963696,
+          "Sharpe": 1.1007110296906242,
+          "Calmar": 1.1901845868015406,
+          "MaxDD_pct": -51.813451683731614,
+          "PF": 1.0682423730479493,
+          "ExposureNet_pct": 67.59365149182611,
+          "ExposureGross_pct": 67.84290008063924,
+          "MaxDDDuration_bars_4h": 4540,
+          "MaxDDDuration_days": 756.6666666666666
+        },
+        "module_stats": {
+          "active_ratio": 0.004984971776262738,
+          "state_changes": 66,
+          "turnover_notional": 16.5,
+          "short_weight": 0.25
+        }
+      },
+      {
+        "name": "C3_ConfirmedBreakShort",
+        "module_type": "Bear Short",
+        "description": "Short only after risk-off is already active and downside confirms with elevated ATR and an 84-bar breakdown.",
+        "params": {
+          "lookback": 84,
+          "short_weight": 0.35,
+          "atr_pct_threshold": 0.025
+        },
+        "detail": "active 0.75%, state changes 96",
+        "combo_metrics": {
+          "TotalReturn_pct": 1900.4613441072086,
+          "CAGR_pct": 61.82621717338517,
+          "Sharpe": 1.109453421741813,
+          "Calmar": 1.2124334125221912,
+          "MaxDD_pct": -50.993495011631055,
+          "PF": 1.0686310800661696,
+          "ExposureNet_pct": 67.45656476797889,
+          "ExposureGross_pct": 67.97998680448647,
+          "MaxDDDuration_bars_4h": 4539,
+          "MaxDDDuration_days": 756.5
+        },
+        "module_stats": {
+          "active_ratio": 0.007477457664394106,
+          "state_changes": 96,
+          "turnover_notional": 33.60000000000006,
+          "short_weight": 0.35
+        }
+      }
+    ]
+  },
+  "parameter_analysis": {
+    "risk_off_grid": [
+      {
+        "ema_len": 180,
+        "off_weight": 0.0,
+        "metrics": {
+          "TotalReturn_pct": 1179.199215072812,
+          "CAGR_pct": 50.6081969586768,
+          "Sharpe": 0.9831552381594536,
+          "Calmar": 1.014212893034872,
+          "MaxDD_pct": -49.898987979969135,
+          "PF": 1.0561494741988695,
+          "ExposureNet_pct": 67.74026830877501,
+          "ExposureGross_pct": 67.74026830877501,
+          "MaxDDDuration_bars_4h": 4703,
+          "MaxDDDuration_days": 783.8333333333334
+        },
+        "avg_core_weight_pct": 58.94729125430687,
+        "state_changes": 261,
+        "off_ratio_pct": 41.05270874569313
+      },
+      {
+        "ema_len": 180,
+        "off_weight": 0.35,
+        "metrics": {
+          "TotalReturn_pct": 1250.3309833750998,
+          "CAGR_pct": 51.92338088028008,
+          "Sharpe": 0.9678082796099017,
+          "Calmar": 0.897278139622785,
+          "MaxDD_pct": -57.867653949653366,
+          "PF": 1.0434399943279056,
+          "ExposureNet_pct": 82.1087163697676,
+          "ExposureGross_pct": 82.1087163697676,
+          "MaxDDDuration_bars_4h": 4952,
+          "MaxDDDuration_days": 825.3333333333334
+        },
+        "avg_core_weight_pct": 73.31573931529945,
+        "state_changes": 261,
+        "off_ratio_pct": 41.05270874569313
+      },
+      {
+        "ema_len": 180,
+        "off_weight": 0.5,
+        "metrics": {
+          "TotalReturn_pct": 1228.5329668937397,
+          "CAGR_pct": 51.52665552732192,
+          "Sharpe": 0.9360583087616844,
+          "Calmar": 0.8408886411690272,
+          "MaxDD_pct": -61.276431865803424,
+          "PF": 1.038985482628445,
+          "ExposureNet_pct": 88.26662268162158,
+          "ExposureGross_pct": 88.26662268162158,
+          "MaxDDDuration_bars_4h": 5036,
+          "MaxDDDuration_days": 839.3333333333334
+        },
+        "avg_core_weight_pct": 79.47364562715343,
+        "state_changes": 261,
+        "off_ratio_pct": 41.05270874569313
+      },
+      {
+        "ema_len": 200,
+        "off_weight": 0.0,
+        "metrics": {
+          "TotalReturn_pct": 1574.9757682690997,
+          "CAGR_pct": 57.27437517953793,
+          "Sharpe": 1.057699402335812,
+          "Calmar": 1.1681859965592,
+          "MaxDD_pct": -49.02847264753652,
+          "PF": 1.0596292328415733,
+          "ExposureNet_pct": 67.71094494538524,
+          "ExposureGross_pct": 67.71094494538524,
+          "MaxDDDuration_bars_4h": 4533,
+          "MaxDDDuration_days": 755.5
+        },
+        "avg_core_weight_pct": 58.91796789091709,
+        "state_changes": 223,
+        "off_ratio_pct": 41.08203210908291
+      },
+      {
+        "ema_len": 200,
+        "off_weight": 0.35,
+        "metrics": {
+          "TotalReturn_pct": 1505.8718554444254,
+          "CAGR_pct": 56.21334729503478,
+          "Sharpe": 1.012382745294197,
+          "Calmar": 0.9784172753421568,
+          "MaxDD_pct": -57.45334706541922,
+          "PF": 1.0450405863841083,
+          "ExposureNet_pct": 82.08965618356424,
+          "ExposureGross_pct": 82.08965618356424,
+          "MaxDDDuration_bars_4h": 4759,
+          "MaxDDDuration_days": 793.1666666666666
+        },
+        "avg_core_weight_pct": 73.2966791290961,
+        "state_changes": 223,
+        "off_ratio_pct": 41.08203210908291
+      },
+      {
+        "ema_len": 200,
+        "off_weight": 0.5,
+        "metrics": {
+          "TotalReturn_pct": 1416.4789573402934,
+          "CAGR_pct": 54.78241680800937,
+          "Sharpe": 0.9684567531247376,
+          "Calmar": 0.8977055272493404,
+          "MaxDD_pct": -61.02492982957137,
+          "PF": 1.0400700361784165,
+          "ExposureNet_pct": 88.2519609999267,
+          "ExposureGross_pct": 88.2519609999267,
+          "MaxDDDuration_bars_4h": 4963,
+          "MaxDDDuration_days": 827.1666666666666
+        },
+        "avg_core_weight_pct": 79.45898394545854,
+        "state_changes": 223,
+        "off_ratio_pct": 41.08203210908291
+      },
+      {
+        "ema_len": 220,
+        "off_weight": 0.0,
+        "metrics": {
+          "TotalReturn_pct": 1896.78557456601,
+          "CAGR_pct": 61.77840601789255,
+          "Sharpe": 1.1122325433688671,
+          "Calmar": 1.1993315685042827,
+          "MaxDD_pct": -51.510697825571285,
+          "PF": 1.0686177739980793,
+          "ExposureNet_pct": 67.71827578623267,
+          "ExposureGross_pct": 67.71827578623267,
+          "MaxDDDuration_bars_4h": 4540,
+          "MaxDDDuration_days": 756.6666666666666
+        },
+        "avg_core_weight_pct": 58.92529873176453,
+        "state_changes": 203,
+        "off_ratio_pct": 41.074701268235465
+      },
+      {
+        "ema_len": 220,
+        "off_weight": 0.35,
+        "metrics": {
+          "TotalReturn_pct": 1699.7851525363171,
+          "CAGR_pct": 59.10093563461631,
+          "Sharpe": 1.0460739797305796,
+          "Calmar": 1.0089096112845823,
+          "MaxDD_pct": -58.57901934283958,
+          "PF": 1.0489958607784984,
+          "ExposureNet_pct": 82.09442123011509,
+          "ExposureGross_pct": 82.09442123011509,
+          "MaxDDDuration_bars_4h": 4963,
+          "MaxDDDuration_days": 827.1666666666666
+        },
+        "avg_core_weight_pct": 73.30144417564695,
+        "state_changes": 203,
+        "off_ratio_pct": 41.074701268235465
+      },
+      {
+        "ema_len": 220,
+        "off_weight": 0.5,
+        "metrics": {
+          "TotalReturn_pct": 1554.9316583003292,
+          "CAGR_pct": 56.97045819086646,
+          "Sharpe": 0.9930720382246645,
+          "Calmar": 0.9214119747893708,
+          "MaxDD_pct": -61.82951790255338,
+          "PF": 1.0426841868818906,
+          "ExposureNet_pct": 88.25562642035042,
+          "ExposureGross_pct": 88.25562642035042,
+          "MaxDDDuration_bars_4h": 5036,
+          "MaxDDDuration_days": 839.3333333333334
+        },
+        "avg_core_weight_pct": 79.46264936588227,
+        "state_changes": 203,
+        "off_ratio_pct": 41.074701268235465
+      }
+    ],
+    "bear_short_grid": [
+      {
+        "lookback": 42,
+        "short_weight": 0.2,
+        "metrics": {
+          "TotalReturn_pct": 1898.4610850855163,
+          "CAGR_pct": 61.8002087291206,
+          "Sharpe": 1.1108803633336746,
+          "Calmar": 1.205467638361331,
+          "MaxDD_pct": -51.26658465351219,
+          "PF": 1.0686080477330013,
+          "ExposureNet_pct": 67.55846345575837,
+          "ExposureGross_pct": 67.87808811670699,
+          "MaxDDDuration_bars_4h": 4539,
+          "MaxDDDuration_days": 756.5
+        },
+        "active_ratio_pct": 0.7990616523715269,
+        "state_changes": 104
+      },
+      {
+        "lookback": 42,
+        "short_weight": 0.25,
+        "metrics": {
+          "TotalReturn_pct": 1898.7926826616217,
+          "CAGR_pct": 61.804521849644736,
+          "Sharpe": 1.1103093899657903,
+          "Calmar": 1.206838025316343,
+          "MaxDD_pct": -51.211944397794554,
+          "PF": 1.068602249040224,
+          "ExposureNet_pct": 67.51851037313979,
+          "ExposureGross_pct": 67.91804119932556,
+          "MaxDDDuration_bars_4h": 4539,
+          "MaxDDDuration_days": 756.5
+        },
+        "active_ratio_pct": 0.7990616523715269,
+        "state_changes": 104
+      },
+      {
+        "lookback": 42,
+        "short_weight": 0.35,
+        "metrics": {
+          "TotalReturn_pct": 1899.3492020020237,
+          "CAGR_pct": 61.81175919887796,
+          "Sharpe": 1.108891529470818,
+          "Calmar": 1.2093736926710308,
+          "MaxDD_pct": -51.11055381265992,
+          "PF": 1.0685870398830803,
+          "ExposureNet_pct": 67.43860420790264,
+          "ExposureGross_pct": 67.9979473645627,
+          "MaxDDDuration_bars_4h": 4539,
+          "MaxDDDuration_days": 756.5
+        },
+        "active_ratio_pct": 0.7990616523715269,
+        "state_changes": 104
+      },
+      {
+        "lookback": 63,
+        "short_weight": 0.2,
+        "metrics": {
+          "TotalReturn_pct": 1898.3828088669732,
+          "CAGR_pct": 61.7991904954307,
+          "Sharpe": 1.110904981666796,
+          "Calmar": 1.2057928122143386,
+          "MaxDD_pct": -51.25191481440464,
+          "PF": 1.0686055754676538,
+          "ExposureNet_pct": 67.56286196026684,
+          "ExposureGross_pct": 67.87368961219852,
+          "MaxDDDuration_bars_4h": 4539,
+          "MaxDDDuration_days": 756.5
+        },
+        "active_ratio_pct": 0.7770691298291914,
+        "state_changes": 102
+      },
+      {
+        "lookback": 63,
+        "short_weight": 0.25,
+        "metrics": {
+          "TotalReturn_pct": 1898.6946429510585,
+          "CAGR_pct": 61.80324670054531,
+          "Sharpe": 1.1103399662708093,
+          "Calmar": 1.2072459911956366,
+          "MaxDD_pct": -51.19358204646958,
+          "PF": 1.0685991366535421,
+          "ExposureNet_pct": 67.52400850377538,
+          "ExposureGross_pct": 67.91254306868997,
+          "MaxDDDuration_bars_4h": 4539,
+          "MaxDDDuration_days": 756.5
+        },
+        "active_ratio_pct": 0.7770691298291914,
+        "state_changes": 102
+      },
+      {
+        "lookback": 63,
+        "short_weight": 0.35,
+        "metrics": {
+          "TotalReturn_pct": 1899.2115480862096,
+          "CAGR_pct": 61.80996921281532,
+          "Sharpe": 1.1089336872874602,
+          "Calmar": 1.2099483165198854,
+          "MaxDD_pct": -51.08480120092756,
+          "PF": 1.068582626003094,
+          "ExposureNet_pct": 67.44630159079247,
+          "ExposureGross_pct": 67.99024998167289,
+          "MaxDDDuration_bars_4h": 4539,
+          "MaxDDDuration_days": 756.5
+        },
+        "active_ratio_pct": 0.7770691298291914,
+        "state_changes": 102
+      },
+      {
+        "lookback": 84,
+        "short_weight": 0.2,
+        "metrics": {
+          "TotalReturn_pct": 1899.0880868721292,
+          "CAGR_pct": 61.808363693897526,
+          "Sharpe": 1.1112031859669114,
+          "Calmar": 1.2071818034724555,
+          "MaxDD_pct": -51.20054288103575,
+          "PF": 1.0686331513649818,
+          "ExposureNet_pct": 67.5687266329448,
+          "ExposureGross_pct": 67.86782493952056,
+          "MaxDDDuration_bars_4h": 4539,
+          "MaxDDDuration_days": 756.5
+        },
+        "active_ratio_pct": 0.7477457664394106,
+        "state_changes": 96
+      },
+      {
+        "lookback": 84,
+        "short_weight": 0.25,
+        "metrics": {
+          "TotalReturn_pct": 1899.5802442539298,
+          "CAGR_pct": 61.81476332996021,
+          "Sharpe": 1.1107124345186246,
+          "Calmar": 1.208995886777141,
+          "MaxDD_pct": -51.12901045076489,
+          "PF": 1.0686336644242125,
+          "ExposureNet_pct": 67.53133934462282,
+          "ExposureGross_pct": 67.90521222784253,
+          "MaxDDDuration_bars_4h": 4539,
+          "MaxDDDuration_days": 756.5
+        },
+        "active_ratio_pct": 0.7477457664394106,
+        "state_changes": 96
+      },
+      {
+        "lookback": 84,
+        "short_weight": 0.35,
+        "metrics": {
+          "TotalReturn_pct": 1900.4613441072086,
+          "CAGR_pct": 61.82621717338517,
+          "Sharpe": 1.109453421741813,
+          "Calmar": 1.2124334125221912,
+          "MaxDD_pct": -50.993495011631055,
+          "PF": 1.0686310800661696,
+          "ExposureNet_pct": 67.45656476797889,
+          "ExposureGross_pct": 67.97998680448647,
+          "MaxDDDuration_bars_4h": 4539,
+          "MaxDDDuration_days": 756.5
+        },
+        "active_ratio_pct": 0.7477457664394106,
+        "state_changes": 96
+      }
+    ]
+  },
+  "schemes": {
+    "B&H": {
+      "description": "Pure BTC buy-and-hold.",
+      "metrics": {
+        "TotalReturn_pct": 856.1554740406305,
+        "CAGR_pct": 43.72712137418806,
+        "Sharpe": 0.7498899885417771,
+        "Calmar": 0.5675750096826172,
+        "MaxDD_pct": -77.04201317573842,
+        "PF": 1.0243757559393318,
+        "ExposureNet_pct": 100.0,
+        "ExposureGross_pct": 100.0,
+        "MaxDDDuration_bars_4h": 5103,
+        "MaxDDDuration_days": 850.5
+      },
+      "yearly_returns": [
+        {
+          "year": 2019,
+          "Return_pct": 1.5053611738149897
+        },
+        {
+          "year": 2020,
+          "Return_pct": 300.26159531619817
+        },
+        {
+          "year": 2021,
+          "Return_pct": 57.70939692593253
+        },
+        {
+          "year": 2022,
+          "Return_pct": -64.64642795327174
+        },
+        {
+          "year": 2023,
+          "Return_pct": 155.75912589717103
+        },
+        {
+          "year": 2024,
+          "Return_pct": 120.96025841123428
+        },
+        {
+          "year": 2025,
+          "Return_pct": -6.650105346620538
+        },
+        {
+          "year": 2026,
+          "Return_pct": -22.81577889412909
+        }
+      ],
+      "delta_vs_bh": {
+        "Return_pct": 0.0,
+        "CAGR_pct": 0.0,
+        "Sharpe": 0.0,
+        "Calmar": 0.0,
+        "MaxDD_improvement_pct": 0.0
+      },
+      "delta_vs_addon": {
+        "Return_pct": -104.56425850952405,
+        "CAGR_pct": -2.4166594931576384,
+        "Sharpe": -0.04127560838431743,
+        "Calmar": -0.06793236563286154,
+        "MaxDD_improvement_pct": -4.43265778558424
+      }
+    },
+    "Core+AddOnOverlay": {
+      "description": "100% BTC core plus the already validated 35% long-only AddOnOverlay sleeve.",
+      "metrics": {
+        "TotalReturn_pct": 960.7197325501545,
+        "CAGR_pct": 46.1437808673457,
+        "Sharpe": 0.7911655969260946,
+        "Calmar": 0.6355073753154787,
+        "MaxDD_pct": -72.60935539015418,
+        "PF": 1.0267713205199516,
+        "ExposureNet_pct": 108.79297705446815,
+        "ExposureGross_pct": 108.79297705446815,
+        "MaxDDDuration_bars_4h": 5078,
+        "MaxDDDuration_days": 846.3333333333334
+      },
+      "yearly_returns": [
+        {
+          "year": 2019,
+          "Return_pct": 0.3982191248443234
+        },
+        {
+          "year": 2020,
+          "Return_pct": 345.8498263944372
+        },
+        {
+          "year": 2021,
+          "Return_pct": 56.77211664905324
+        },
+        {
+          "year": 2022,
+          "Return_pct": -59.222775912522806
+        },
+        {
+          "year": 2023,
+          "Return_pct": 130.81292299916805
+        },
+        {
+          "year": 2024,
+          "Return_pct": 108.43770819415627
+        },
+        {
+          "year": 2025,
+          "Return_pct": -5.823089868698639
+        },
+        {
+          "year": 2026,
+          "Return_pct": -21.009479079685146
+        }
+      ],
+      "delta_vs_bh": {
+        "Return_pct": 104.56425850952405,
+        "CAGR_pct": 2.4166594931576384,
+        "Sharpe": 0.04127560838431743,
+        "Calmar": 0.06793236563286154,
+        "MaxDD_improvement_pct": 4.43265778558424
+      },
+      "delta_vs_addon": {
+        "Return_pct": 0.0,
+        "CAGR_pct": 0.0,
+        "Sharpe": 0.0,
+        "Calmar": 0.0,
+        "MaxDD_improvement_pct": 0.0
+      }
+    },
+    "Core+RiskOff": {
+      "description": "Dynamic core-only allocation with the preferred Risk-Off regime, no AddOnOverlay sleeve.",
+      "metrics": {
+        "TotalReturn_pct": 1792.2213160564859,
+        "CAGR_pct": 60.38636610715786,
+        "Sharpe": 1.0823396860238756,
+        "Calmar": 1.113966378416769,
+        "MaxDD_pct": -54.20842789975612,
+        "PF": 1.0666746975249977,
+        "ExposureNet_pct": 58.92529873176453,
+        "ExposureGross_pct": 58.92529873176453,
+        "MaxDDDuration_bars_4h": 4703,
+        "MaxDDDuration_days": 783.8333333333334
+      },
+      "yearly_returns": [
+        {
+          "year": 2019,
+          "Return_pct": 1.5053611738149897
+        },
+        {
+          "year": 2020,
+          "Return_pct": 260.1031541365413
+        },
+        {
+          "year": 2021,
+          "Return_pct": 140.84085761236062
+        },
+        {
+          "year": 2022,
+          "Return_pct": -45.064218517421835
+        },
+        {
+          "year": 2023,
+          "Return_pct": 103.3969637804296
+        },
+        {
+          "year": 2024,
+          "Return_pct": 102.0008067993904
+        },
+        {
+          "year": 2025,
+          "Return_pct": -3.0781096466917512
+        },
+        {
+          "year": 2026,
+          "Return_pct": -3.5627701292672564
+        }
+      ],
+      "module_choice": "B1_TrendBreakRiskOff_ema220_flat",
+      "delta_vs_bh": {
+        "Return_pct": 936.0658420158554,
+        "CAGR_pct": 16.659244732969803,
+        "Sharpe": 0.3324496974820985,
+        "Calmar": 0.5463913687341518,
+        "MaxDD_improvement_pct": 22.8335852759823
+      },
+      "delta_vs_addon": {
+        "Return_pct": 831.5015835063314,
+        "CAGR_pct": 14.242585239812165,
+        "Sharpe": 0.2911740890977811,
+        "Calmar": 0.4784590031012903,
+        "MaxDD_improvement_pct": 18.40092749039806
+      }
+    },
+    "Core+AddOnOverlay+RiskOff": {
+      "description": "Core BTC holding plus unchanged AddOnOverlay sleeve plus preferred Risk-Off regime on the core.",
+      "metrics": {
+        "TotalReturn_pct": 1896.78557456601,
+        "CAGR_pct": 61.77840601789255,
+        "Sharpe": 1.1122325433688671,
+        "Calmar": 1.1993315685042827,
+        "MaxDD_pct": -51.510697825571285,
+        "PF": 1.0686177739980793,
+        "ExposureNet_pct": 67.71827578623267,
+        "ExposureGross_pct": 67.71827578623267,
+        "MaxDDDuration_bars_4h": 4540,
+        "MaxDDDuration_days": 756.6666666666666
+      },
+      "yearly_returns": [
+        {
+          "year": 2019,
+          "Return_pct": 0.3982191248443234
+        },
+        {
+          "year": 2020,
+          "Return_pct": 305.2504091538375
+        },
+        {
+          "year": 2021,
+          "Return_pct": 131.30744305833733
+        },
+        {
+          "year": 2022,
+          "Return_pct": -42.25183235692628
+        },
+        {
+          "year": 2023,
+          "Return_pct": 95.91720176352274
+        },
+        {
+          "year": 2024,
+          "Return_pct": 95.60209068150003
+        },
+        {
+          "year": 2025,
+          "Return_pct": -2.6902834363368378
+        },
+        {
+          "year": 2026,
+          "Return_pct": -3.358360179602282
+        }
+      ],
+      "module_choice": "B1_TrendBreakRiskOff_ema220_flat",
+      "delta_vs_bh": {
+        "Return_pct": 1040.6301005253795,
+        "CAGR_pct": 18.05128464370449,
+        "Sharpe": 0.36234255482709,
+        "Calmar": 0.6317565588216655,
+        "MaxDD_improvement_pct": 25.531315350167134
+      },
+      "delta_vs_addon": {
+        "Return_pct": 936.0658420158554,
+        "CAGR_pct": 15.634625150546853,
+        "Sharpe": 0.32106694644277256,
+        "Calmar": 0.563824193188804,
+        "MaxDD_improvement_pct": 21.098657564582894
+      }
+    },
+    "Core+AddOnOverlay+RiskOff+BearShort": {
+      "description": "Core BTC holding plus unchanged AddOnOverlay sleeve plus preferred Risk-Off regime plus the best strict Bear Short sleeve candidate.",
+      "metrics": {
+        "TotalReturn_pct": 1900.4613441072086,
+        "CAGR_pct": 61.82621717338517,
+        "Sharpe": 1.109453421741813,
+        "Calmar": 1.2124334125221912,
+        "MaxDD_pct": -50.993495011631055,
+        "PF": 1.0686310800661696,
+        "ExposureNet_pct": 67.45656476797889,
+        "ExposureGross_pct": 67.97998680448647,
+        "MaxDDDuration_bars_4h": 4539,
+        "MaxDDDuration_days": 756.5
+      },
+      "yearly_returns": [
+        {
+          "year": 2019,
+          "Return_pct": 0.3982191248443234
+        },
+        {
+          "year": 2020,
+          "Return_pct": 303.8312815177651
+        },
+        {
+          "year": 2021,
+          "Return_pct": 130.9127593861421
+        },
+        {
+          "year": 2022,
+          "Return_pct": -41.775767039795554
+        },
+        {
+          "year": 2023,
+          "Return_pct": 95.62578815664924
+        },
+        {
+          "year": 2024,
+          "Return_pct": 95.2425377446652
+        },
+        {
+          "year": 2025,
+          "Return_pct": -2.6971000187602345
+        },
+        {
+          "year": 2026,
+          "Return_pct": -3.1458413780034444
+        }
+      ],
+      "module_choice": {
+        "risk_off": "B1_TrendBreakRiskOff_ema220_flat",
+        "bear_short": "C3_ConfirmedBreakShort"
+      },
+      "delta_vs_bh": {
+        "Return_pct": 1044.305870066578,
+        "CAGR_pct": 18.09909579919711,
+        "Sharpe": 0.3595634332000359,
+        "Calmar": 0.644858402839574,
+        "MaxDD_improvement_pct": 26.048518164107364
+      },
+      "delta_vs_addon": {
+        "Return_pct": 939.7416115570541,
+        "CAGR_pct": 15.68243630603947,
+        "Sharpe": 0.3182878248157185,
+        "Calmar": 0.5769260372067124,
+        "MaxDD_improvement_pct": 21.615860378523124
+      }
+    }
+  },
+  "scheme_order": [
+    "B&H",
+    "Core+AddOnOverlay",
+    "Core+RiskOff",
+    "Core+AddOnOverlay+RiskOff",
+    "Core+AddOnOverlay+RiskOff+BearShort"
+  ],
+  "risk_windows": [
+    {
+      "window": "covid_crash_2020",
+      "B&H": -14.672565511206304,
+      "Core+AddOnOverlay": -10.244172048641087,
+      "Core+RiskOff": -6.236954502624337,
+      "Core+AddOnOverlay+RiskOff": -2.182581962291441,
+      "Core+AddOnOverlay+RiskOff+BearShort": -2.5746273374178674
+    },
+    {
+      "window": "china_deleveraging_2021",
+      "B&H": -28.764973053988196,
+      "Core+AddOnOverlay": -26.966632535927626,
+      "Core+RiskOff": -1.9242130943525448,
+      "Core+AddOnOverlay+RiskOff": -1.7743290494921182,
+      "Core+AddOnOverlay+RiskOff+BearShort": -2.534007725185705
+    },
+    {
+      "window": "bear_2022",
+      "B&H": -64.64642795327174,
+      "Core+AddOnOverlay": -59.222775912522806,
+      "Core+RiskOff": -45.064218517421835,
+      "Core+AddOnOverlay+RiskOff": -42.25183235692628,
+      "Core+AddOnOverlay+RiskOff+BearShort": -41.775767039795554
+    },
+    {
+      "window": "ftx_shock",
+      "B&H": -13.033628871616521,
+      "Core+AddOnOverlay": -10.752108056961141,
+      "Core+RiskOff": -11.376145883095601,
+      "Core+AddOnOverlay+RiskOff": -10.309552073763061,
+      "Core+AddOnOverlay+RiskOff+BearShort": -9.909436930648486
+    }
+  ],
+  "recommendation": {
+    "recommended_structure": "Core+AddOnOverlay+RiskOff",
+    "main_judgment": "Upgrade from AddOn-only to AddOn + Risk-Off. Do not promote Bear Short into the default system.",
+    "keep_addon_unchanged": "YES",
+    "riskoff_value": "YES",
+    "riskoff_detail": "Risk-Off adds real asset-management value. Even after charging simple one-way turnover costs, the trend-break regime family materially improves return, CAGR, Sharpe, Calmar, and max drawdown versus both pure BTC buy-and-hold and AddOn-only. The result is not a single-point fluke: EMA 200-220 with full risk-off all stay in the same strong plateau.",
+    "bear_short_value": "LOW / NOT WORTH DEFAULT INCLUSION",
+    "bear_short_detail": "Bear Short helps only at the margin. Across the tested neighborhood, the incremental lift over AddOn + Risk-Off stays tiny: only a few total-return points and less than 1 percentage point of max-drawdown improvement. That is too small to justify the extra operational and research complexity right now.",
+    "better_than_bh_framework": "YES",
+    "better_than_addon_only": "YES",
+    "bear_short_worth_adding": "NO",
+    "structure_detail": "As a BTC asset-management framework, the strongest current structure is a three-part stack with only two active defaults: keep the proven AddOnOverlay sleeve, add a low-frequency Risk-Off core allocation rule, and leave Bear Short as an optional research sleeve rather than part of the production default. This gives a cleaner improvement path than either plain B&H or AddOn-only.",
+    "preferred_riskoff_candidate": "B1_TrendBreakRiskOff_ema220_flat",
+    "preferred_bear_short_candidate": "C3_ConfirmedBreakShort",
+    "answers": {
+      "riskoff_has_real_value": true,
+      "bear_short_worth_joining_default_system": false,
+      "bear_short_main_effect": "mostly noise / marginal garnish rather than a core value driver",
+      "system_beats_bh_as_framework": true,
+      "system_beats_addon_only": true,
+      "final_structure_call": "Core+AddOnOverlay+RiskOff"
+    }
+  }
+}

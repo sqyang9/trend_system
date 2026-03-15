@@ -1,0 +1,4 @@
+last_mile_answer=PARTIAL. Re-entry timing helps, but not enough to rescue promotion.
+best_candidate=RO_EMA220_REENTRY_CLOSE_HOLD_3
+promotion_decision=Stop Risk-Off promotion
+recommendation=Stop Risk-Off promotion. Keep AddOn-only baseline unchanged.

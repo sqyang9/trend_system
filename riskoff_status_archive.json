@@ -1,0 +1,97 @@
+{
+  "generated_at_local": "2026-03-15T00:07:33.586266",
+  "locked_baseline": {
+    "primary_mainline": "BTC long-only squeeze_release_20",
+    "research_optimal": "lb20_stop3.2_trail5.0_beoff",
+    "default_tuple": "next_bar_open + legacy_bar_extrema + midpoint + full_model",
+    "stress_tuple": "live_runner_next_5m_close + segment_path_same_bar + pessimistic + full_model",
+    "launch_optimal": "LAUNCH_NO_GO",
+    "official_baseline_status": "AddOn-only remains the locked baseline"
+  },
+  "stages": {
+    "stage_a_exploratory_asset_allocation": {
+      "source_files": [
+        "v90_asset_management_system.py",
+        "BTC_ASSET_MANAGEMENT_SYSTEM_REPORT.md",
+        "btc_asset_management_system_report.json"
+      ],
+      "why_it_looked_promising": "Risk-Off adds real asset-management value. Even after charging simple one-way turnover costs, the trend-break regime family materially improves return, CAGR, Sharpe, Calmar, and max drawdown versus both pure BTC buy-and-hold and AddOn-only. The result is not a single-point fluke: EMA 200-220 with full risk-off all stay in the same strong plateau.",
+      "caveat": "The study used simplified allocation simulation plus full-sample candidate ranking, so it could not be treated as a formal baseline result.",
+      "one_line_conclusion": "Exploration showed Risk-Off might materially improve the AddOn portfolio, but the result was not execution-aligned enough for formal promotion."
+    },
+    "stage_b_aligned_validation": {
+      "source_files": [
+        "v90_asset_management_system_aligned.py",
+        "BTC_RISKOFF_ALIGNMENT_REPORT.md",
+        "btc_riskoff_alignment_report.json"
+      ],
+      "what_changed": "This round formally aligns the Risk-Off core module. The overlay sleeve itself is imported from the locked baseline artifact and not re-explored.",
+      "result": "YES. In the aligned default-tuple framework, AddOn + Risk-Off still beats AddOn-only for the locked narrow candidate set.",
+      "evidence_level": "aligned but preliminary",
+      "one_line_conclusion": "Risk-Off survived execution alignment and causality audit, but the evidence was only strong enough for aligned-but-preliminary status."
+    },
+    "stage_c_core_off_weight_and_with_core_vs_no_core": {
+      "source_files": [
+        "v90_core_riskoff_level_study.py",
+        "BTC_CORE_RISKOFF_LEVEL_REPORT.md",
+        "btc_core_riskoff_level_report.json"
+      ],
+      "recommended_core_off_weight": "0.00",
+      "with_core_vs_no_core": "WITH-CORE FRAMEWORK IS MORE REASONABLE",
+      "one_line_conclusion": "Full flat beat partial residual core, and the with-core framework remained more reasonable than a no-core switching framework."
+    },
+    "stage_d_promotion_v1": {
+      "source_files": [
+        "v90_riskoff_promotion_validation.py",
+        "BTC_RISKOFF_PROMOTION_REPORT.md",
+        "btc_riskoff_promotion_report.json"
+      ],
+      "promotion_answer": "NO. Risk-Off does not yet clear promotion-candidate validation.",
+      "failure_reason": "In walk-forward OOS, AddOn + Risk-Off does not beat AddOn-only consistently enough for promotion. It wins only one of three strict OOS windows.",
+      "one_line_conclusion": "Promotion v1 failed because OOS consistency was too weak and the main blocker was bull/recovery opportunity cost, not EMA instability or causality."
+    },
+    "stage_e_promotion_v2": {
+      "source_files": [
+        "v90_riskoff_promotion_v2.py",
+        "BTC_RISKOFF_PROMOTION_V2_REPORT.md",
+        "btc_riskoff_promotion_v2_report.json"
+      ],
+      "best_repair_candidate": "Core+AddOnOverlay+RO_EMA220_TWOSTAGE_50_TO_0",
+      "why_hysteresis_worse": "Hysteresis delayed recovery without fixing the core OOS problem, so it raised opportunity cost instead of reducing it.",
+      "why_two_stage_better": "Yes. Best candidate lifts avg delta Return to -11.47pp and avg delta Calmar to -0.174 while keeping major-drawdown MaxDD improvement at +18.24pp.",
+      "recommendation": "Keep AddOn-only baseline unchanged. At most, run one final narrow promotion check on the single best repair candidate.",
+      "one_line_conclusion": "Two-stage repair was directionally better than flat or hysteresis, but still not good enough to clear the promotion bar."
+    },
+    "stage_f_narrow_promotion_and_final_reentry": {
+      "source_files": [
+        "v90_riskoff_reentry_final_check.py",
+        "v90_riskoff_reentry_last_mile.py",
+        "BTC_RISKOFF_REENTRY_LAST_MILE_REPORT.md",
+        "btc_riskoff_reentry_last_mile.json"
+      ],
+      "final_key_issue": "Flat-to-risk-on re-entry timing was the last material blocker after trigger and structure issues had already been narrowed down.",
+      "best_candidate": "RO_EMA220_REENTRY_CLOSE_HOLD_3",
+      "why_still_failed": "No. Evidence still does not reach promotion-candidate level.",
+      "final_action": "Stop Risk-Off promotion",
+      "one_line_conclusion": "Even the best re-entry repair candidate improved the profile but still did not reach promotion-candidate strength, so promotion was frozen."
+    }
+  },
+  "final_conclusion": {
+    "riskoff_directionally_valid": true,
+    "riskoff_entered_baseline": false,
+    "official_status": "Frozen aligned-but-preliminary direction. Not part of the locked baseline.",
+    "restart_prerequisites": [
+      "A clearly scoped new hypothesis that is not just more same-line promotion repair.",
+      "Execution-aligned implementation under the locked default tuple.",
+      "A reason to expect better bull/recovery opportunity-cost control than the frozen line delivered.",
+      "Promotion criteria defined before re-opening the line."
+    ],
+    "currently_forbidden_work": [
+      "Continuing same-line Risk-Off promotion repair.",
+      "Reopening Bear Short as a default extension.",
+      "Treating frozen Risk-Off results as active baseline conclusions.",
+      "Re-running broad EMA or regime-filter searches."
+    ],
+    "active_mainline_statement": "The active mainline is still BTC long-only squeeze_release_20 with AddOn-only overlay semantics under the locked default tuple."
+  }
+}

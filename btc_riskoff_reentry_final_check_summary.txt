@@ -1,0 +1,4 @@
+final_check_answer=PARTIAL. Re-entry timing helps, but not enough to rescue promotion.
+best_candidate=RO_EMA220_REENTRY_CLOSE_HOLD_3
+promotion_decision=Freeze Risk-Off promotion
+recommendation=Freeze Risk-Off promotion. Keep AddOn-only baseline unchanged.

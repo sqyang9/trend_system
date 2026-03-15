@@ -1,0 +1,4 @@
+promotion_candidate=False
+best_candidate=Core+AdjustedGradedAddOn[repair_strong048]
+baseline_decision=Keep baseline unchanged
+extension_line_decision=Keep AddOn grading as active extension line

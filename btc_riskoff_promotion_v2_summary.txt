@@ -1,0 +1,4 @@
+promotion_v2_answer=PARTIAL. Promotion v2 reduces opportunity cost, but it still does not clear the promotion bar.
+best_repair_candidate=Core+AddOnOverlay+RO_EMA220_TWOSTAGE_50_TO_0
+promotion_status_after_v2=aligned but preliminary
+recommendation=Keep AddOn-only baseline unchanged. At most, run one final narrow promotion check on the single best repair candidate.

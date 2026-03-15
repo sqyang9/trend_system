@@ -1,0 +1,1300 @@
+{
+  "generated_at_local": "2026-03-13T21:58:57.860991",
+  "seed": 20260309,
+  "research_optimal": {
+    "label": "lb20_stop3.2_trail5.0_beoff",
+    "params": {
+      "candidate_name": "squeeze_release_20",
+      "description": "Squeeze release plus 20-bar breakout inside a bullish EMA200 regime, designed to enter expansion after compression.",
+      "breakout_mode": "squeeze_release",
+      "donchian_entry_len": 20,
+      "squeeze_threshold": 0.9,
+      "squeeze_bars": 6,
+      "ema_len": 200,
+      "ema_slope_len": 20,
+      "use_ema_slope": true,
+      "adx_period": 14,
+      "adx_min": 10.0,
+      "use_adx_filter": true,
+      "close_location_min": 0.6,
+      "range_atr_min": 0.55,
+      "volume_multiple": 1.0,
+      "structure_lookback": 20,
+      "initial_stop_atr": 3.2,
+      "trail_atr_mult": 5.0,
+      "trail_activate_atr": 2.5,
+      "swing_trail_lookback": 20,
+      "use_swing_trail": false,
+      "break_even_after_atr": 1000000000.0,
+      "position_pct": 100.0,
+      "init_equity": 10000.0,
+      "commission_pct": 0.06,
+      "entry_execution_mode": "next_bar_open",
+      "close_delay_bps": 8.0,
+      "intrabar_execution_model": "legacy_bar_extrema",
+      "intrabar_path_mode": "midpoint",
+      "slippage_fixed_bps": 5.0,
+      "slippage_breakout_extra_bps": 5.0,
+      "slippage_stop_extra_bps": 8.0,
+      "slippage_range_weight": 0.05,
+      "slippage_max_bps": 25.0,
+      "slippage_breakout_atr_threshold": 1.1,
+      "enable_daily_loss_limit": false,
+      "daily_loss_limit_pct": 1.5,
+      "cooldown_bars": 0
+    }
+  },
+  "default_tuple": "next_bar_open + legacy_bar_extrema + midpoint + full_model",
+  "stress_tuple": "live_runner_next_5m_close + segment_path_same_bar + pessimistic + full_model",
+  "study_scope": "Aligned formal study of Risk-Off core_off_weight and with-core vs no-core structure choice only.",
+  "candidates": {
+    "ema_lens": [
+      200,
+      220
+    ],
+    "core_off_weights": [
+      0.0,
+      0.25,
+      0.35,
+      0.5
+    ]
+  },
+  "default_bundle": {
+    "schemes": {
+      "B&H": {
+        "metrics": {
+          "TotalReturn_pct": 856.155474040632,
+          "CAGR_pct": 43.7271213741881,
+          "Sharpe": 0.7498899885417762,
+          "Calmar": 0.5675750096826186,
+          "MaxDD_pct": -77.0420131757383,
+          "PF": 1.024375755939332,
+          "Exposure_pct": 100.0,
+          "MaxDDDuration_bars_4h": 5103,
+          "MaxDDDuration_days": 850.5
+        },
+        "yearly_returns": [
+          {
+            "year": 2019,
+            "Return_pct": 1.5053611738149009
+          },
+          {
+            "year": 2020,
+            "Return_pct": 300.26159531619817
+          },
+          {
+            "year": 2021,
+            "Return_pct": 57.70939692593302
+          },
+          {
+            "year": 2022,
+            "Return_pct": -64.6464279532716
+          },
+          {
+            "year": 2023,
+            "Return_pct": 155.75912589717075
+          },
+          {
+            "year": 2024,
+            "Return_pct": 120.9602584112337
+          },
+          {
+            "year": 2025,
+            "Return_pct": -6.65010534662075
+          },
+          {
+            "year": 2026,
+            "Return_pct": -22.815778894128968
+          }
+        ],
+        "kind": "baseline",
+        "delta_vs_addon": {
+          "Return_pct": -104.56425850952405,
+          "CAGR_pct": -2.4166594931576384,
+          "Sharpe": -0.041275608384319984,
+          "Calmar": -0.06793236563286154,
+          "MaxDD_improvement_pct": -4.432657785584212
+        },
+        "delta_vs_bh": {
+          "Return_pct": 0.0,
+          "CAGR_pct": 0.0,
+          "Sharpe": 0.0,
+          "Calmar": 0.0,
+          "MaxDD_improvement_pct": 0.0
+        },
+        "delta_vs_no_core": {
+          "Return_pct": 385.6502574028512,
+          "CAGR_pct": 11.443498075761681,
+          "Sharpe": -0.18329082199529068,
+          "Calmar": -0.36856244000700844,
+          "MaxDD_improvement_pct": -42.55602683993907
+        }
+      },
+      "Core+AddOnOverlay": {
+        "metrics": {
+          "TotalReturn_pct": 960.7197325501561,
+          "CAGR_pct": 46.14378086734574,
+          "Sharpe": 0.7911655969260962,
+          "Calmar": 0.6355073753154802,
+          "MaxDD_pct": -72.6093553901541,
+          "PF": 1.0267713205199516,
+          "Exposure_pct": 108.79297705446815,
+          "MaxDDDuration_bars_4h": 5078,
+          "MaxDDDuration_days": 846.3333333333334
+        },
+        "yearly_returns": [
+          {
+            "year": 2019,
+            "Return_pct": 0.3982191248442568
+          },
+          {
+            "year": 2020,
+            "Return_pct": 345.8498263944373
+          },
+          {
+            "year": 2021,
+            "Return_pct": 56.772116649053686
+          },
+          {
+            "year": 2022,
+            "Return_pct": -59.22277591252269
+          },
+          {
+            "year": 2023,
+            "Return_pct": 130.81292299916797
+          },
+          {
+            "year": 2024,
+            "Return_pct": 108.43770819415579
+          },
+          {
+            "year": 2025,
+            "Return_pct": -5.823089868698828
+          },
+          {
+            "year": 2026,
+            "Return_pct": -21.009479079685043
+          }
+        ],
+        "kind": "with_core_baseline",
+        "delta_vs_addon": {
+          "Return_pct": 0.0,
+          "CAGR_pct": 0.0,
+          "Sharpe": 0.0,
+          "Calmar": 0.0,
+          "MaxDD_improvement_pct": 0.0
+        },
+        "delta_vs_bh": {
+          "Return_pct": 104.56425850952405,
+          "CAGR_pct": 2.4166594931576384,
+          "Sharpe": 0.041275608384319984,
+          "Calmar": 0.06793236563286154,
+          "MaxDD_improvement_pct": 4.432657785584212
+        },
+        "delta_vs_no_core": {
+          "Return_pct": 490.21451591237525,
+          "CAGR_pct": 13.86015756891932,
+          "Sharpe": -0.1420152136109707,
+          "Calmar": -0.3006300743741469,
+          "MaxDD_improvement_pct": -38.12336905435486
+        }
+      },
+      "NoCore_SwitchingOverlay": {
+        "metrics": {
+          "TotalReturn_pct": 470.50521663778085,
+          "CAGR_pct": 32.28362329842642,
+          "Sharpe": 0.9331808105370669,
+          "Calmar": 0.9361374496896271,
+          "MaxDD_pct": -34.48598633579923,
+          "PF": 1.1042160858976668,
+          "Exposure_pct": 25.122791584194708,
+          "MaxDDDuration_bars_4h": 4397,
+          "MaxDDDuration_days": 732.8333333333334
+        },
+        "yearly_returns": [
+          {
+            "year": 2019,
+            "Return_pct": -3.163262997059013
+          },
+          {
+            "year": 2020,
+            "Return_pct": 144.17357541322508
+          },
+          {
+            "year": 2021,
+            "Return_pct": 38.96687210483589
+          },
+          {
+            "year": 2022,
+            "Return_pct": -2.476501610713311
+          },
+          {
+            "year": 2023,
+            "Return_pct": 38.76166796371763
+          },
+          {
+            "year": 2024,
+            "Return_pct": 17.609577917279463
+          },
+          {
+            "year": 2025,
+            "Return_pct": 6.885053185319623
+          },
+          {
+            "year": 2026,
+            "Return_pct": 0.7231984743747644
+          }
+        ],
+        "kind": "no_core_baseline",
+        "delta_vs_addon": {
+          "Return_pct": -490.21451591237525,
+          "CAGR_pct": -13.86015756891932,
+          "Sharpe": 0.1420152136109707,
+          "Calmar": 0.3006300743741469,
+          "MaxDD_improvement_pct": 38.12336905435486
+        },
+        "delta_vs_bh": {
+          "Return_pct": -385.6502574028512,
+          "CAGR_pct": -11.443498075761681,
+          "Sharpe": 0.18329082199529068,
+          "Calmar": 0.36856244000700844,
+          "MaxDD_improvement_pct": 42.55602683993907
+        },
+        "delta_vs_no_core": {
+          "Return_pct": 0.0,
+          "CAGR_pct": 0.0,
+          "Sharpe": 0.0,
+          "Calmar": 0.0,
+          "MaxDD_improvement_pct": 0.0
+        }
+      },
+      "Core+AddOnOverlay+EMA200_OFF_0.00": {
+        "metrics": {
+          "TotalReturn_pct": 1319.6357755378833,
+          "CAGR_pct": 53.149996329411486,
+          "Sharpe": 1.0074723850567469,
+          "Calmar": 1.0476808656277936,
+          "MaxDD_pct": -50.7310938599254,
+          "PF": 1.0549005729480216,
+          "Exposure_pct": 67.71827578623268,
+          "MaxDDDuration_days": 783.8333333333334
+        },
+        "yearly_returns": [
+          {
+            "year": 2019,
+            "Return_pct": 0.39455069564091616,
+            "CAGR_pct": 9.723242113951947,
+            "Sharpe": 0.36064401723517997,
+            "MaxDD_pct": -7.673887467792973
+          },
+          {
+            "year": 2020,
+            "Return_pct": 305.31431533500506,
+            "CAGR_pct": 304.41084976255064,
+            "Sharpe": 2.404921361151574,
+            "MaxDD_pct": -30.33103818361407
+          },
+          {
+            "year": 2021,
+            "Return_pct": 103.77630722515154,
+            "CAGR_pct": 103.94204236734446,
+            "Sharpe": 1.1867839736655177,
+            "MaxDD_pct": -30.49842939323597
+          },
+          {
+            "year": 2022,
+            "Return_pct": -41.53312143296781,
+            "CAGR_pct": -41.56894844260495,
+            "Sharpe": -1.5415846484781324,
+            "MaxDD_pct": -46.65019690097593
+          },
+          {
+            "year": 2023,
+            "Return_pct": 93.10506521710656,
+            "CAGR_pct": 93.2502494349472,
+            "Sharpe": 1.7507703156324272,
+            "MaxDD_pct": -19.75110771342463
+          },
+          {
+            "year": 2024,
+            "Return_pct": 83.23020482743601,
+            "CAGR_pct": 83.05336197189534,
+            "Sharpe": 1.408114852050979,
+            "MaxDD_pct": -24.382244622265368
+          },
+          {
+            "year": 2025,
+            "Return_pct": -15.714167948166002,
+            "CAGR_pct": -15.730622717382825,
+            "Sharpe": -0.45106413954174457,
+            "MaxDD_pct": -29.163794787896148
+          },
+          {
+            "year": 2026,
+            "Return_pct": -3.6873648443780382,
+            "CAGR_pct": -18.858442246617468,
+            "Sharpe": -0.9413313052787265,
+            "MaxDD_pct": -10.128780076353305
+          }
+        ],
+        "core_module": {
+          "ema_len": 200,
+          "core_off_weight": 0.0,
+          "avg_core_exposure_pct": 58.91796789091709,
+          "riskoff_active_ratio_pct": 41.08203210908291
+        },
+        "state_changes": 224,
+        "kind": "full_flat_with_overlay",
+        "delta_vs_addon": {
+          "Return_pct": 358.9160429877272,
+          "CAGR_pct": 7.006215462065747,
+          "Sharpe": 0.21630678813065063,
+          "Calmar": 0.41217349031231343,
+          "MaxDD_improvement_pct": 21.87826153022869
+        },
+        "delta_vs_bh": {
+          "Return_pct": 463.4803014972513,
+          "CAGR_pct": 9.422874955223385,
+          "Sharpe": 0.2575823965149706,
+          "Calmar": 0.48010585594517496,
+          "MaxDD_improvement_pct": 26.310919315812903
+        },
+        "delta_vs_no_core": {
+          "Return_pct": 849.1305589001024,
+          "CAGR_pct": 20.866373030985066,
+          "Sharpe": 0.07429157451967994,
+          "Calmar": 0.11154341593816652,
+          "MaxDD_improvement_pct": -16.24510752412617
+        }
+      },
+      "Core+AddOnOverlay+EMA200_OFF_0.25": {
+        "metrics": {
+          "TotalReturn_pct": 1334.1820966020884,
+          "CAGR_pct": 53.401046477661595,
+          "Sharpe": 0.9941775724410556,
+          "Calmar": 0.948557661410501,
+          "MaxDD_pct": -56.29710100939407,
+          "PF": 1.0456371860717586,
+          "Exposure_pct": 77.98644244743052,
+          "MaxDDDuration_days": 823.8333333333334
+        },
+        "yearly_returns": [
+          {
+            "year": 2019,
+            "Return_pct": 0.39455069564091616,
+            "CAGR_pct": 9.723242113951947,
+            "Sharpe": 0.36064401723517997,
+            "MaxDD_pct": -7.673887467792973
+          },
+          {
+            "year": 2020,
+            "Return_pct": 322.51680816501863,
+            "CAGR_pct": 321.54705676301097,
+            "Sharpe": 2.4284598347770388,
+            "MaxDD_pct": -27.791751709788937
+          },
+          {
+            "year": 2021,
+            "Return_pct": 95.18652612866816,
+            "CAGR_pct": 95.3356670330488,
+            "Sharpe": 1.1188310116001496,
+            "MaxDD_pct": -35.41843888339652
+          },
+          {
+            "year": 2022,
+            "Return_pct": -45.88064959144831,
+            "CAGR_pct": -45.91858525178682,
+            "Sharpe": -1.6068283442995703,
+            "MaxDD_pct": -49.12698575488462
+          },
+          {
+            "year": 2023,
+            "Return_pct": 103.90798271163276,
+            "CAGR_pct": 104.073975502132,
+            "Sharpe": 1.8752456717749741,
+            "MaxDD_pct": -17.739641445330932
+          },
+          {
+            "year": 2024,
+            "Return_pct": 91.13738040440225,
+            "CAGR_pct": 90.94004240405759,
+            "Sharpe": 1.4777056479586372,
+            "MaxDD_pct": -23.118055822671845
+          },
+          {
+            "year": 2025,
+            "Return_pct": -12.627661895730103,
+            "CAGR_pct": -12.641131070661949,
+            "Sharpe": -0.3060795604147856,
+            "MaxDD_pct": -27.10731948054902
+          },
+          {
+            "year": 2026,
+            "Return_pct": -8.172891649921233,
+            "CAGR_pct": -37.764608409063364,
+            "Sharpe": -1.8290213503140373,
+            "MaxDD_pct": -14.917103148202793
+          }
+        ],
+        "core_module": {
+          "ema_len": 200,
+          "core_off_weight": 0.25,
+          "avg_core_exposure_pct": 69.18847591818782,
+          "riskoff_active_ratio_pct": 41.08203210908291
+        },
+        "state_changes": 5715,
+        "kind": "with_core",
+        "delta_vs_addon": {
+          "Return_pct": 373.46236405193235,
+          "CAGR_pct": 7.257265610315855,
+          "Sharpe": 0.20301197551495942,
+          "Calmar": 0.31305028609502084,
+          "MaxDD_improvement_pct": 16.312254380760024
+        },
+        "delta_vs_bh": {
+          "Return_pct": 478.0266225614564,
+          "CAGR_pct": 9.673925103473493,
+          "Sharpe": 0.2442875838992794,
+          "Calmar": 0.38098265172788237,
+          "MaxDD_improvement_pct": 20.744912166344236
+        },
+        "delta_vs_no_core": {
+          "Return_pct": 863.6768799643075,
+          "CAGR_pct": 21.117423179235175,
+          "Sharpe": 0.06099676190398873,
+          "Calmar": 0.01242021172087393,
+          "MaxDD_improvement_pct": -21.811114673594837
+        }
+      },
+      "Core+AddOnOverlay+EMA200_OFF_0.35": {
+        "metrics": {
+          "TotalReturn_pct": 1317.8819586812458,
+          "CAGR_pct": 53.11958210999532,
+          "Sharpe": 0.9765619562434351,
+          "Calmar": 0.9074459435545308,
+          "MaxDD_pct": -58.537461638675815,
+          "PF": 1.0424971554399107,
+          "Exposure_pct": 82.09361373200804,
+          "MaxDDDuration_days": 826.0
+        },
+        "yearly_returns": [
+          {
+            "year": 2019,
+            "Return_pct": 0.39455069564091616,
+            "CAGR_pct": 9.723242113951947,
+            "Sharpe": 0.36064401723517997,
+            "MaxDD_pct": -7.673887467792973
+          },
+          {
+            "year": 2020,
+            "Return_pct": 328.2602063407151,
+            "CAGR_pct": 327.26807407457085,
+            "Sharpe": 2.4108669819300386,
+            "MaxDD_pct": -31.983075577034402
+          },
+          {
+            "year": 2021,
+            "Return_pct": 91.03816958526878,
+            "CAGR_pct": 91.17945020695693,
+            "Sharpe": 1.0819330147767767,
+            "MaxDD_pct": -37.49552557790826
+          },
+          {
+            "year": 2022,
+            "Return_pct": -47.682519298478084,
+            "CAGR_pct": -47.721213681766685,
+            "Sharpe": -1.564417088363537,
+            "MaxDD_pct": -50.25236747290926
+          },
+          {
+            "year": 2023,
+            "Return_pct": 108.09162013682538,
+            "CAGR_pct": 108.26584934108338,
+            "Sharpe": 1.914394645938357,
+            "MaxDD_pct": -16.938216355495072
+          },
+          {
+            "year": 2024,
+            "Return_pct": 94.06233164294362,
+            "CAGR_pct": 93.85727927630099,
+            "Sharpe": 1.492965547651695,
+            "MaxDD_pct": -23.19400192120159
+          },
+          {
+            "year": 2025,
+            "Return_pct": -11.492032581295986,
+            "CAGR_pct": -11.504371649375699,
+            "Sharpe": -0.2449858021022268,
+            "MaxDD_pct": -27.080752352323255
+          },
+          {
+            "year": 2026,
+            "Return_pct": -9.955105317506396,
+            "CAGR_pct": -44.19242376767223,
+            "Sharpe": -1.9770913608595202,
+            "MaxDD_pct": -17.109736887986937
+          }
+        ],
+        "core_module": {
+          "ema_len": 200,
+          "core_off_weight": 0.35,
+          "avg_core_exposure_pct": 73.2966791290961,
+          "riskoff_active_ratio_pct": 41.08203210908291
+        },
+        "state_changes": 5715,
+        "kind": "with_core",
+        "delta_vs_addon": {
+          "Return_pct": 357.1622261310897,
+          "CAGR_pct": 6.975801242649581,
+          "Sharpe": 0.1853963593173389,
+          "Calmar": 0.2719385682390506,
+          "MaxDD_improvement_pct": 14.071893751478278
+        },
+        "delta_vs_bh": {
+          "Return_pct": 461.72648464061376,
+          "CAGR_pct": 9.39246073580722,
+          "Sharpe": 0.22667196770165887,
+          "Calmar": 0.33987093387191214,
+          "MaxDD_improvement_pct": 18.50455153706249
+        },
+        "delta_vs_no_core": {
+          "Return_pct": 847.3767420434649,
+          "CAGR_pct": 20.8359588115689,
+          "Sharpe": 0.043381145706368196,
+          "Calmar": -0.0286915061350963,
+          "MaxDD_improvement_pct": -24.051475302876582
+        }
+      },
+      "Core+AddOnOverlay+EMA200_OFF_0.50": {
+        "metrics": {
+          "TotalReturn_pct": 1270.732047984623,
+          "CAGR_pct": 52.289841530618574,
+          "Sharpe": 0.9407751392808752,
+          "Calmar": 0.8458564750617567,
+          "MaxDD_pct": -61.818810959389836,
+          "PF": 1.038243428569491,
+          "Exposure_pct": 88.25442367892346,
+          "MaxDDDuration_days": 839.3333333333334
+        },
+        "yearly_returns": [
+          {
+            "year": 2019,
+            "Return_pct": 0.39455069564091616,
+            "CAGR_pct": 9.723242113951947,
+            "Sharpe": 0.36064401723517997,
+            "MaxDD_pct": -7.673887467792973
+          },
+          {
+            "year": 2020,
+            "Return_pct": 335.5035936159117,
+            "CAGR_pct": 334.483061090633,
+            "Sharpe": 2.3613448922404077,
+            "MaxDD_pct": -37.94607942992274
+          },
+          {
+            "year": 2021,
+            "Return_pct": 84.14478759335626,
+            "CAGR_pct": 84.27323574754028,
+            "Sharpe": 1.0196938688694974,
+            "MaxDD_pct": -40.65887154496779
+          },
+          {
+            "year": 2022,
+            "Return_pct": -50.412268673145654,
+            "CAGR_pct": -50.45197656777628,
+            "Sharpe": -1.4722264696914213,
+            "MaxDD_pct": -52.71347002651059
+          },
+          {
+            "year": 2023,
+            "Return_pct": 114.1363742280451,
+            "CAGR_pct": 114.32267337970656,
+            "Sharpe": 1.9615833518284378,
+            "MaxDD_pct": -16.77677370253381
+          },
+          {
+            "year": 2024,
+            "Return_pct": 98.14781010532711,
+            "CAGR_pct": 97.93186543174166,
+            "Sharpe": 1.5033284460883176,
+            "MaxDD_pct": -23.806613528915776
+          },
+          {
+            "year": 2025,
+            "Return_pct": -9.909323686791227,
+            "CAGR_pct": -9.920060002390096,
+            "Sharpe": -0.1585603727188842,
+            "MaxDD_pct": -27.42315161026596
+          },
+          {
+            "year": 2026,
+            "Return_pct": -12.602080317742171,
+            "CAGR_pct": -52.72642983961413,
+            "Sharpe": -2.079132450226703,
+            "MaxDD_pct": -21.137352473011106
+          }
+        ],
+        "core_module": {
+          "ema_len": 200,
+          "core_off_weight": 0.5,
+          "avg_core_exposure_pct": 79.45898394545854,
+          "riskoff_active_ratio_pct": 41.08203210908291
+        },
+        "state_changes": 5715,
+        "kind": "with_core",
+        "delta_vs_addon": {
+          "Return_pct": 310.0123154344669,
+          "CAGR_pct": 6.146060663272834,
+          "Sharpe": 0.14960954235477897,
+          "Calmar": 0.21034909974627647,
+          "MaxDD_improvement_pct": 10.790544430764257
+        },
+        "delta_vs_bh": {
+          "Return_pct": 414.576573943991,
+          "CAGR_pct": 8.562720156430473,
+          "Sharpe": 0.19088515073909895,
+          "Calmar": 0.278281465379138,
+          "MaxDD_improvement_pct": 15.223202216348469
+        },
+        "delta_vs_no_core": {
+          "Return_pct": 800.2268313468421,
+          "CAGR_pct": 20.006218232192154,
+          "Sharpe": 0.007594328743808276,
+          "Calmar": -0.09028097462787044,
+          "MaxDD_improvement_pct": -27.332824623590604
+        }
+      },
+      "Core+AddOnOverlay+EMA220_OFF_0.00": {
+        "metrics": {
+          "TotalReturn_pct": 1626.5864245880216,
+          "CAGR_pct": 58.043095877193586,
+          "Sharpe": 1.0680092013935285,
+          "Calmar": 1.0971477751865155,
+          "MaxDD_pct": -52.90362628436833,
+          "PF": 1.0638918114385452,
+          "Exposure_pct": 67.72560662708013,
+          "MaxDDDuration_days": 790.5
+        },
+        "yearly_returns": [
+          {
+            "year": 2019,
+            "Return_pct": 0.39455069564091616,
+            "CAGR_pct": 9.723242113951947,
+            "Sharpe": 0.36064401723517997,
+            "MaxDD_pct": -7.673887467792973
+          },
+          {
+            "year": 2020,
+            "Return_pct": 297.0465633672718,
+            "CAGR_pct": 296.17454597282443,
+            "Sharpe": 2.372494666062129,
+            "MaxDD_pct": -29.00408112393481
+          },
+          {
+            "year": 2021,
+            "Return_pct": 128.32906485455823,
+            "CAGR_pct": 128.54446162716013,
+            "Sharpe": 1.3333129496196543,
+            "MaxDD_pct": -26.864955952916514
+          },
+          {
+            "year": 2022,
+            "Return_pct": -43.76026051658704,
+            "CAGR_pct": -43.797215693974344,
+            "Sharpe": -1.6903689929692414,
+            "MaxDD_pct": -47.752785817406675
+          },
+          {
+            "year": 2023,
+            "Return_pct": 90.67307081978726,
+            "CAGR_pct": 90.81366455711925,
+            "Sharpe": 1.719568617760012,
+            "MaxDD_pct": -19.128078342839004
+          },
+          {
+            "year": 2024,
+            "Return_pct": 90.16050801122822,
+            "CAGR_pct": 89.96573064395315,
+            "Sharpe": 1.4753150432975901,
+            "MaxDD_pct": -23.594908985477268
+          },
+          {
+            "year": 2025,
+            "Return_pct": -5.281217746775047,
+            "CAGR_pct": -5.287086956759069,
+            "Sharpe": -0.06830132927608304,
+            "MaxDD_pct": -23.39442958874136
+          },
+          {
+            "year": 2026,
+            "Return_pct": -3.6624772809337403,
+            "CAGR_pct": -18.741749542525444,
+            "Sharpe": -0.93253261837914,
+            "MaxDD_pct": -9.363535430148351
+          }
+        ],
+        "core_module": {
+          "ema_len": 220,
+          "core_off_weight": 0.0,
+          "avg_core_exposure_pct": 58.92529873176453,
+          "riskoff_active_ratio_pct": 41.074701268235465
+        },
+        "state_changes": 204,
+        "kind": "full_flat_with_overlay",
+        "delta_vs_addon": {
+          "Return_pct": 665.8666920378655,
+          "CAGR_pct": 11.899315009847847,
+          "Sharpe": 0.2768436044674323,
+          "Calmar": 0.46164039987103533,
+          "MaxDD_improvement_pct": 19.705729105785764
+        },
+        "delta_vs_bh": {
+          "Return_pct": 770.4309505473896,
+          "CAGR_pct": 14.315974503005485,
+          "Sharpe": 0.31811921285175226,
+          "Calmar": 0.5295727655038969,
+          "MaxDD_improvement_pct": 24.138386891369976
+        },
+        "delta_vs_no_core": {
+          "Return_pct": 1156.0812079502407,
+          "CAGR_pct": 25.759472578767166,
+          "Sharpe": 0.1348283908564616,
+          "Calmar": 0.16101032549688843,
+          "MaxDD_improvement_pct": -18.417639948569096
+        }
+      },
+      "Core+AddOnOverlay+EMA220_OFF_0.25": {
+        "metrics": {
+          "TotalReturn_pct": 1561.0661755620793,
+          "CAGR_pct": 57.063798829606995,
+          "Sharpe": 1.0384949081649293,
+          "Calmar": 0.9921649911670982,
+          "MaxDD_pct": -57.51442485637597,
+          "PF": 1.050803640314812,
+          "Exposure_pct": 77.99167478760046,
+          "MaxDDDuration_days": 827.1666666666666
+        },
+        "yearly_returns": [
+          {
+            "year": 2019,
+            "Return_pct": 0.39455069564091616,
+            "CAGR_pct": 9.723242113951947,
+            "Sharpe": 0.36064401723517997,
+            "MaxDD_pct": -7.673887467792973
+          },
+          {
+            "year": 2020,
+            "Return_pct": 316.0553099970168,
+            "CAGR_pct": 315.1105894307001,
+            "Sharpe": 2.405528752260561,
+            "MaxDD_pct": -29.62620321852637
+          },
+          {
+            "year": 2021,
+            "Return_pct": 112.55279722373027,
+            "CAGR_pct": 112.7359152414117,
+            "Sharpe": 1.2263289765394616,
+            "MaxDD_pct": -32.889873967904734
+          },
+          {
+            "year": 2022,
+            "Return_pct": -47.44016107160678,
+            "CAGR_pct": -47.47875747807946,
+            "Sharpe": -1.7122225412286127,
+            "MaxDD_pct": -49.91436433465236
+          },
+          {
+            "year": 2023,
+            "Return_pct": 102.07582272423825,
+            "CAGR_pct": 102.23823931309597,
+            "Sharpe": 1.8535826581176529,
+            "MaxDD_pct": -17.256674670064697
+          },
+          {
+            "year": 2024,
+            "Return_pct": 96.527707636564,
+            "CAGR_pct": 96.31609850690357,
+            "Sharpe": 1.525841779231294,
+            "MaxDD_pct": -22.516806835461256
+          },
+          {
+            "year": 2025,
+            "Return_pct": -4.6146022109570195,
+            "CAGR_pct": -4.61974877472533,
+            "Sharpe": -0.032747099121251406,
+            "MaxDD_pct": -23.56536714373424
+          },
+          {
+            "year": 2026,
+            "Return_pct": -8.199349915120846,
+            "CAGR_pct": -37.86428374280947,
+            "Sharpe": -1.8300676189052116,
+            "MaxDD_pct": -14.419380770820489
+          }
+        ],
+        "core_module": {
+          "ema_len": 220,
+          "core_off_weight": 0.25,
+          "avg_core_exposure_pct": 69.1939740488234,
+          "riskoff_active_ratio_pct": 41.074701268235465
+        },
+        "state_changes": 5704,
+        "kind": "with_core",
+        "delta_vs_addon": {
+          "Return_pct": 600.3464430119232,
+          "CAGR_pct": 10.920017962261255,
+          "Sharpe": 0.24732931123883306,
+          "Calmar": 0.35665761585161804,
+          "MaxDD_improvement_pct": 15.094930533778125
+        },
+        "delta_vs_bh": {
+          "Return_pct": 704.9107015214472,
+          "CAGR_pct": 13.336677455418894,
+          "Sharpe": 0.28860491962315304,
+          "Calmar": 0.4245899814844796,
+          "MaxDD_improvement_pct": 19.527588319362337
+        },
+        "delta_vs_no_core": {
+          "Return_pct": 1090.5609589242983,
+          "CAGR_pct": 24.780175531180575,
+          "Sharpe": 0.10531409762786237,
+          "Calmar": 0.05602754147747113,
+          "MaxDD_improvement_pct": -23.028438520576735
+        }
+      },
+      "Core+AddOnOverlay+EMA220_OFF_0.35": {
+        "metrics": {
+          "TotalReturn_pct": 1510.1361687207125,
+          "CAGR_pct": 56.27992058152731,
+          "Sharpe": 1.0140242510938058,
+          "Calmar": 0.9463630517519592,
+          "MaxDD_pct": -59.46969345151296,
+          "PF": 1.0465537185115257,
+          "Exposure_pct": 82.0980556628079,
+          "MaxDDDuration_days": 839.3333333333334
+        },
+        "yearly_returns": [
+          {
+            "year": 2019,
+            "Return_pct": 0.39455069564091616,
+            "CAGR_pct": 9.723242113951947,
+            "Sharpe": 0.36064401723517997,
+            "MaxDD_pct": -7.673887467792973
+          },
+          {
+            "year": 2020,
+            "Return_pct": 322.5872858764471,
+            "CAGR_pct": 321.6172605850823,
+            "Sharpe": 2.3916621380457745,
+            "MaxDD_pct": -32.21059514679047
+          },
+          {
+            "year": 2021,
+            "Return_pct": 105.66981465692989,
+            "CAGR_pct": 105.83926414497728,
+            "Sharpe": 1.1733231870175436,
+            "MaxDD_pct": -35.386502760451535
+          },
+          {
+            "year": 2022,
+            "Return_pct": -48.995431573929174,
+            "CAGR_pct": -49.034634270724496,
+            "Sharpe": -1.6481266519997284,
+            "MaxDD_pct": -50.923216746076086
+          },
+          {
+            "year": 2023,
+            "Return_pct": 106.51210032986592,
+            "CAGR_pct": 106.68320848547386,
+            "Sharpe": 1.8962929596168092,
+            "MaxDD_pct": -16.667744255060246
+          },
+          {
+            "year": 2024,
+            "Return_pct": 98.79309929580667,
+            "CAGR_pct": 98.57542189298525,
+            "Sharpe": 1.5337045086024337,
+            "MaxDD_pct": -22.674421756296116
+          },
+          {
+            "year": 2025,
+            "Return_pct": -4.49987553153306,
+            "CAGR_pct": -4.504897187292778,
+            "Sharpe": -0.018184173818768856,
+            "MaxDD_pct": -24.637821740878152
+          },
+          {
+            "year": 2026,
+            "Return_pct": -9.994245291615977,
+            "CAGR_pct": -44.32721736023439,
+            "Sharpe": -1.9779288440985756,
+            "MaxDD_pct": -17.22578979087389
+          }
+        ],
+        "core_module": {
+          "ema_len": 220,
+          "core_off_weight": 0.35,
+          "avg_core_exposure_pct": 73.30144417564695,
+          "riskoff_active_ratio_pct": 41.074701268235465
+        },
+        "state_changes": 5704,
+        "kind": "with_core",
+        "delta_vs_addon": {
+          "Return_pct": 549.4164361705564,
+          "CAGR_pct": 10.136139714181567,
+          "Sharpe": 0.22285865416770956,
+          "Calmar": 0.31085567643647904,
+          "MaxDD_improvement_pct": 13.139661938641133
+        },
+        "delta_vs_bh": {
+          "Return_pct": 653.9806946800804,
+          "CAGR_pct": 12.552799207339206,
+          "Sharpe": 0.26413426255202954,
+          "Calmar": 0.3787880420693406,
+          "MaxDD_improvement_pct": 17.572319724225345
+        },
+        "delta_vs_no_core": {
+          "Return_pct": 1039.6309520829316,
+          "CAGR_pct": 23.996297283100887,
+          "Sharpe": 0.08084344055673887,
+          "Calmar": 0.01022560206233214,
+          "MaxDD_improvement_pct": -24.983707115713727
+        }
+      },
+      "Core+AddOnOverlay+EMA220_OFF_0.50": {
+        "metrics": {
+          "TotalReturn_pct": 1411.1551443317876,
+          "CAGR_pct": 54.69498370619967,
+          "Sharpe": 0.9681762710132084,
+          "Calmar": 0.8752621171094249,
+          "MaxDD_pct": -62.48983320200266,
+          "PF": 1.0409525313004022,
+          "Exposure_pct": 88.25773299584047,
+          "MaxDDDuration_days": 839.8333333333334
+        },
+        "yearly_returns": [
+          {
+            "year": 2019,
+            "Return_pct": 0.39455069564091616,
+            "CAGR_pct": 9.723242113951947,
+            "Sharpe": 0.36064401723517997,
+            "MaxDD_pct": -7.673887467792973
+          },
+          {
+            "year": 2020,
+            "Return_pct": 331.0715642612668,
+            "CAGR_pct": 330.0684319990607,
+            "Sharpe": 2.3474176751079945,
+            "MaxDD_pct": -38.105006855012135
+          },
+          {
+            "year": 2021,
+            "Return_pct": 94.87788370848239,
+            "CAGR_pct": 95.02643629850962,
+            "Sharpe": 1.0873671960183209,
+            "MaxDD_pct": -39.133157039998736
+          },
+          {
+            "year": 2022,
+            "Return_pct": -51.37832745552122,
+            "CAGR_pct": -51.41835337428628,
+            "Sharpe": -1.5270951911065636,
+            "MaxDD_pct": -53.20322659830905
+          },
+          {
+            "year": 2023,
+            "Return_pct": 112.94272321088168,
+            "CAGR_pct": 113.12662327377043,
+            "Sharpe": 1.9484619401367185,
+            "MaxDD_pct": -16.653345285305367
+          },
+          {
+            "year": 2024,
+            "Return_pct": 101.84831823326617,
+            "CAGR_pct": 101.62239192357552,
+            "Sharpe": 1.5334558195863557,
+            "MaxDD_pct": -23.412298233722062
+          },
+          {
+            "year": 2025,
+            "Return_pct": -4.491224883368917,
+            "CAGR_pct": -4.4962371143943525,
+            "Sharpe": 0.002209076227271001,
+            "MaxDD_pct": -26.232843353301828
+          },
+          {
+            "year": 2026,
+            "Return_pct": -12.652233720845462,
+            "CAGR_pct": -52.87712332839261,
+            "Sharpe": -2.0790643452665396,
+            "MaxDD_pct": -21.252114257392307
+          }
+        ],
+        "core_module": {
+          "ema_len": 220,
+          "core_off_weight": 0.5,
+          "avg_core_exposure_pct": 79.46264936588227,
+          "riskoff_active_ratio_pct": 41.074701268235465
+        },
+        "state_changes": 5704,
+        "kind": "with_core",
+        "delta_vs_addon": {
+          "Return_pct": 450.4354117816315,
+          "CAGR_pct": 8.551202838853932,
+          "Sharpe": 0.17701067408711213,
+          "Calmar": 0.23975474179394474,
+          "MaxDD_improvement_pct": 10.119522188151436
+        },
+        "delta_vs_bh": {
+          "Return_pct": 554.9996702911556,
+          "CAGR_pct": 10.96786233201157,
+          "Sharpe": 0.2182862824714321,
+          "Calmar": 0.30768710742680627,
+          "MaxDD_improvement_pct": 14.552179973735647
+        },
+        "delta_vs_no_core": {
+          "Return_pct": 940.6499276940067,
+          "CAGR_pct": 22.411360407773252,
+          "Sharpe": 0.03499546047614144,
+          "Calmar": -0.06087533258020217,
+          "MaxDD_improvement_pct": -28.003846866203425
+        }
+      }
+    },
+    "causality": {
+      "BH": {
+        "pass": true,
+        "violations": 0,
+        "state_changes": 1,
+        "execution_mode": "next_bar_open"
+      },
+      "EMA200_OFF_0.00": {
+        "pass": true,
+        "violations": 0,
+        "state_changes": 224,
+        "execution_mode": "next_bar_open"
+      },
+      "EMA200_OFF_0.25": {
+        "pass": true,
+        "violations": 0,
+        "state_changes": 5715,
+        "execution_mode": "next_bar_open"
+      },
+      "EMA200_OFF_0.35": {
+        "pass": true,
+        "violations": 0,
+        "state_changes": 5715,
+        "execution_mode": "next_bar_open"
+      },
+      "EMA200_OFF_0.50": {
+        "pass": true,
+        "violations": 0,
+        "state_changes": 5715,
+        "execution_mode": "next_bar_open"
+      },
+      "EMA220_OFF_0.00": {
+        "pass": true,
+        "violations": 0,
+        "state_changes": 204,
+        "execution_mode": "next_bar_open"
+      },
+      "EMA220_OFF_0.25": {
+        "pass": true,
+        "violations": 0,
+        "state_changes": 5704,
+        "execution_mode": "next_bar_open"
+      },
+      "EMA220_OFF_0.35": {
+        "pass": true,
+        "violations": 0,
+        "state_changes": 5704,
+        "execution_mode": "next_bar_open"
+      },
+      "EMA220_OFF_0.50": {
+        "pass": true,
+        "violations": 0,
+        "state_changes": 5704,
+        "execution_mode": "next_bar_open"
+      }
+    },
+    "core_stats": {
+      "BH": {
+        "avg_core_exposure_pct": 100.0,
+        "riskoff_active_ratio_pct": 0.0
+      },
+      "EMA200_OFF_0.00": {
+        "avg_core_exposure_pct": 58.91796789091709,
+        "riskoff_active_ratio_pct": 41.08203210908291
+      },
+      "EMA200_OFF_0.25": {
+        "avg_core_exposure_pct": 69.18847591818782,
+        "riskoff_active_ratio_pct": 41.08203210908291
+      },
+      "EMA200_OFF_0.35": {
+        "avg_core_exposure_pct": 73.2966791290961,
+        "riskoff_active_ratio_pct": 41.08203210908291
+      },
+      "EMA200_OFF_0.50": {
+        "avg_core_exposure_pct": 79.45898394545854,
+        "riskoff_active_ratio_pct": 41.08203210908291
+      },
+      "EMA220_OFF_0.00": {
+        "avg_core_exposure_pct": 58.92529873176453,
+        "riskoff_active_ratio_pct": 41.074701268235465
+      },
+      "EMA220_OFF_0.25": {
+        "avg_core_exposure_pct": 69.1939740488234,
+        "riskoff_active_ratio_pct": 41.074701268235465
+      },
+      "EMA220_OFF_0.35": {
+        "avg_core_exposure_pct": 73.30144417564695,
+        "riskoff_active_ratio_pct": 41.074701268235465
+      },
+      "EMA220_OFF_0.50": {
+        "avg_core_exposure_pct": 79.46264936588227,
+        "riskoff_active_ratio_pct": 41.074701268235465
+      }
+    },
+    "risk_windows": [
+      {
+        "window": "covid_crash_2020",
+        "B&H": -14.672565511206193,
+        "Core+AddOnOverlay": -10.244172048640976,
+        "NoCore_SwitchingOverlay": 15.253795047148365,
+        "Core+AddOnOverlay+EMA200_OFF_0.00": 3.813472628607739,
+        "Core+AddOnOverlay+EMA200_OFF_0.25": 1.8268759789090483,
+        "Core+AddOnOverlay+EMA200_OFF_0.35": 0.7346479355379687,
+        "Core+AddOnOverlay+EMA200_OFF_0.50": -1.2148360914400413,
+        "Core+AddOnOverlay+EMA220_OFF_0.00": -3.163226643175543,
+        "Core+AddOnOverlay+EMA220_OFF_0.25": -3.3317172246793647,
+        "Core+AddOnOverlay+EMA220_OFF_0.35": -3.6959410799914605,
+        "Core+AddOnOverlay+EMA220_OFF_0.50": -4.564728474573066
+      },
+      {
+        "window": "china_deleveraging_2021",
+        "B&H": -28.76497305398823,
+        "Core+AddOnOverlay": -26.96663253592766,
+        "NoCore_SwitchingOverlay": 0.2724592325203945,
+        "Core+AddOnOverlay+EMA200_OFF_0.00": -6.875935957925716,
+        "Core+AddOnOverlay+EMA200_OFF_0.25": -10.969044249687432,
+        "Core+AddOnOverlay+EMA200_OFF_0.35": -12.816109345517667,
+        "Core+AddOnOverlay+EMA200_OFF_0.50": -15.783060522994251,
+        "Core+AddOnOverlay+EMA220_OFF_0.00": -2.392450016716041,
+        "Core+AddOnOverlay+EMA220_OFF_0.25": -7.77814111006977,
+        "Core+AddOnOverlay+EMA220_OFF_0.35": -10.117763242507671,
+        "Core+AddOnOverlay+EMA220_OFF_0.50": -13.790229568849366
+      },
+      {
+        "window": "bear_2022",
+        "B&H": -64.6464279532716,
+        "Core+AddOnOverlay": -59.22277591252269,
+        "NoCore_SwitchingOverlay": -2.476501610713311,
+        "Core+AddOnOverlay+EMA200_OFF_0.00": -41.53312143296781,
+        "Core+AddOnOverlay+EMA200_OFF_0.25": -45.88064959144831,
+        "Core+AddOnOverlay+EMA200_OFF_0.35": -47.682519298478084,
+        "Core+AddOnOverlay+EMA200_OFF_0.50": -50.412268673145654,
+        "Core+AddOnOverlay+EMA220_OFF_0.00": -43.76026051658704,
+        "Core+AddOnOverlay+EMA220_OFF_0.25": -47.44016107160678,
+        "Core+AddOnOverlay+EMA220_OFF_0.35": -48.995431573929174,
+        "Core+AddOnOverlay+EMA220_OFF_0.50": -51.37832745552122
+      },
+      {
+        "window": "ftx_shock",
+        "B&H": -13.03362887161662,
+        "Core+AddOnOverlay": -10.75210805696124,
+        "NoCore_SwitchingOverlay": 0.0,
+        "Core+AddOnOverlay+EMA200_OFF_0.00": -10.471762648928562,
+        "Core+AddOnOverlay+EMA200_OFF_0.25": -10.528599308005159,
+        "Core+AddOnOverlay+EMA200_OFF_0.35": -10.560839550337064,
+        "Core+AddOnOverlay+EMA200_OFF_0.50": -10.614780447617944,
+        "Core+AddOnOverlay+EMA220_OFF_0.00": -10.538151389149386,
+        "Core+AddOnOverlay+EMA220_OFF_0.25": -10.583320754540782,
+        "Core+AddOnOverlay+EMA220_OFF_0.35": -10.610645101534821,
+        "Core+AddOnOverlay+EMA220_OFF_0.50": -10.656482685783564
+      }
+    ]
+  },
+  "stress_check": {
+    "preferred_structure": "Core+AddOnOverlay+EMA220_OFF_0.00",
+    "metrics": {
+      "TotalReturn_pct": 1706.6164254728542,
+      "CAGR_pct": 59.197805809811,
+      "Sharpe": 1.0817948353507947,
+      "Calmar": 1.1165573353563976,
+      "MaxDD_pct": -53.01815136158275,
+      "PF": 1.0657696263308551,
+      "Exposure_pct": 67.72560662708013,
+      "MaxDDDuration_days": 825.3333333333334
+    },
+    "causality": {
+      "pass": true,
+      "violations": 0,
+      "state_changes": 204,
+      "execution_mode": "live_runner_next_5m_close"
+    }
+  },
+  "grid_order": [
+    "Core+AddOnOverlay+EMA200_OFF_0.00",
+    "Core+AddOnOverlay+EMA200_OFF_0.25",
+    "Core+AddOnOverlay+EMA200_OFF_0.35",
+    "Core+AddOnOverlay+EMA200_OFF_0.50",
+    "Core+AddOnOverlay+EMA220_OFF_0.00",
+    "Core+AddOnOverlay+EMA220_OFF_0.25",
+    "Core+AddOnOverlay+EMA220_OFF_0.35",
+    "Core+AddOnOverlay+EMA220_OFF_0.50"
+  ],
+  "selected_risk_windows": [
+    {
+      "window": "covid_crash_2020",
+      "B&H": -14.672565511206193,
+      "Core+AddOnOverlay": -10.244172048640976,
+      "NoCore_SwitchingOverlay": 15.253795047148365,
+      "Core+AddOnOverlay+EMA220_OFF_0.00": -3.163226643175543
+    },
+    {
+      "window": "china_deleveraging_2021",
+      "B&H": -28.76497305398823,
+      "Core+AddOnOverlay": -26.96663253592766,
+      "NoCore_SwitchingOverlay": 0.2724592325203945,
+      "Core+AddOnOverlay+EMA220_OFF_0.00": -2.392450016716041
+    },
+    {
+      "window": "bear_2022",
+      "B&H": -64.6464279532716,
+      "Core+AddOnOverlay": -59.22277591252269,
+      "NoCore_SwitchingOverlay": -2.476501610713311,
+      "Core+AddOnOverlay+EMA220_OFF_0.00": -43.76026051658704
+    },
+    {
+      "window": "ftx_shock",
+      "B&H": -13.03362887161662,
+      "Core+AddOnOverlay": -10.75210805696124,
+      "NoCore_SwitchingOverlay": 0.0,
+      "Core+AddOnOverlay+EMA220_OFF_0.00": -10.538151389149386
+    }
+  ],
+  "stress_delta_preferred": {
+    "Return_pct": 80.03000088483259,
+    "CAGR_pct": 1.1547099326174148,
+    "Sharpe": 0.013785633957266175,
+    "Calmar": 0.019409560169882045,
+    "MaxDD_improvement_pct": -0.11452507721442373
+  },
+  "stress_delta_addon": {
+    "Return_pct": 0.0,
+    "CAGR_pct": 0.0,
+    "Sharpe": 0.0,
+    "Calmar": 0.0,
+    "MaxDD_improvement_pct": 0.0
+  },
+  "judgment": {
+    "recommended_core_off_weight": "0.00",
+    "preferred_structure": "Core+AddOnOverlay+EMA220_OFF_0.00",
+    "with_core_vs_no_core": "WITH-CORE FRAMEWORK IS MORE REASONABLE",
+    "promotion_status": "NO. This raises confidence in full-flat Risk-Off, but it is still not enough to rewrite the locked working baseline.",
+    "answer_1": "Risk-Off trigger should reduce the BTC core to 0.00 under the current aligned evidence set.",
+    "answer_2": "Full flat still beats keeping 25%/35%/50% residual core. The best partial structure is Core+AddOnOverlay+EMA220_OFF_0.25, but it still trails Core+AddOnOverlay+EMA220_OFF_0.00.",
+    "answer_3": "The with-core framework remains more reasonable than the no-core framework. Pure no-core SwitchingOverlay is more defensive, but it gives up too much absolute return and participation.",
+    "answer_4": "This round raises confidence in the full-flat Risk-Off setting, but it is still not enough to promote a new working baseline."
+  }
+}

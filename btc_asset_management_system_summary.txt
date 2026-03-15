@@ -1,0 +1,4 @@
+recommended_structure=Core+AddOnOverlay+RiskOff
+bear_short_worth_adding=NO
+better_than_addon_only=YES
+main_judgment=Upgrade from AddOn-only to AddOn + Risk-Off. Do not promote Bear Short into the default system.

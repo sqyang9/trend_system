@@ -1,0 +1,4 @@
+best_scheme=AddOnOverlay
+positioning_call=The line is best used as an add-on overlay.
+worth_combining_with_bh=YES
+paper_live_rehearsal=YES, AddOnOverlay is strong enough to justify paper/live rehearsal as an overlay sleeve.

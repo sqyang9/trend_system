@@ -1,0 +1,4 @@
+grading_improves_baseline=False
+best_scheme=Core+GradedAddOn[compression_breakout]
+worth_next_round_formal_research=True
+riskoff_status=frozen_not_in_baseline

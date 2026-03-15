@@ -1,0 +1,4 @@
+riskoff_still_holds=True
+evidence_level=aligned but preliminary
+baseline_promotion=NO. The module is now aligned, but this is still not enough to rewrite the locked working baseline.
+preferred_candidate=Core+AddOnOverlay+RO_EMA220_FLAT

@@ -1,0 +1,1296 @@
+{
+  "generated_at_local": "2026-03-15T00:10:03.655457",
+  "seed": 20260309,
+  "locked_baseline": {
+    "mainline": "BTC long-only squeeze_release_20",
+    "research_optimal": "lb20_stop3.2_trail5.0_beoff",
+    "default_tuple": "next_bar_open + legacy_bar_extrema + midpoint + full_model",
+    "stress_tuple": "live_runner_next_5m_close + segment_path_same_bar + pessimistic + full_model",
+    "baseline_status": "AddOn-only remains the locked baseline",
+    "riskoff_status": "Frozen aligned-but-preliminary direction. Not in baseline."
+  },
+  "grading_framework": {
+    "tier_weights": {
+      "weak": 0.25,
+      "base": 0.35,
+      "strong": 0.5
+    },
+    "schemes": [
+      {
+        "name": "breakout_slope",
+        "title": "Breakout Quality + Slope",
+        "description": "Grade entries by breakout distance, EMA slope, and close location.",
+        "features": {
+          "breakout_distance_atr": 0.45,
+          "ema_slope_atr": 0.35,
+          "close_location": 0.2
+        }
+      },
+      {
+        "name": "adx_close_range",
+        "title": "ADX + Close Location + Range",
+        "description": "Grade entries by directional strength, close location, and bar expansion.",
+        "features": {
+          "adx": 0.4,
+          "close_location": 0.3,
+          "bar_range_atr": 0.3
+        }
+      },
+      {
+        "name": "compression_breakout",
+        "title": "Compression + Breakout Release",
+        "description": "Grade entries by squeeze quality, squeeze persistence, and breakout distance.",
+        "features": {
+          "compression_quality": 0.35,
+          "squeeze_count": 0.25,
+          "breakout_distance_atr": 0.4
+        }
+      }
+    ],
+    "note": "No change to AddOn entry/exit mother. Only sleeve size is graded from entry-time signal quality."
+  },
+  "baseline_alignment_check": {
+    "simulated_metrics": {
+      "TotalReturn_pct": 965.4255980743213,
+      "CAGR_pct": 46.24368290692355,
+      "Sharpe": 0.7920767472026041,
+      "Calmar": 0.6366775485878006,
+      "MaxDD_pct": -72.6328154801368,
+      "PF": 1.0267717912771916,
+      "Exposure_pct": 108.79233250256559,
+      "MaxDDDuration_bars_4h": 5078,
+      "MaxDDDuration_days": 846.3333333333334
+    },
+    "artifact_metrics": {
+      "TotalReturn_pct": 960.7197325501561,
+      "CAGR_pct": 46.14378086734574,
+      "Sharpe": 0.7911655969260962,
+      "Calmar": 0.6355073753154802,
+      "MaxDD_pct": -72.6093553901541,
+      "PF": 1.0267713205199516,
+      "Exposure_pct": 108.79297705446815,
+      "MaxDDDuration_bars_4h": 5078,
+      "MaxDDDuration_days": 846.3333333333334
+    },
+    "delta_return_pct": 4.705865524165233,
+    "delta_sharpe": 0.0009111502765078994,
+    "delta_calmar": 0.001170173272320385,
+    "delta_maxdd_improve_pct": -0.023460089982705767
+  },
+  "reference_systems": {
+    "B&H": {
+      "TotalReturn_pct": 856.155474040632,
+      "CAGR_pct": 43.7271213741881,
+      "Sharpe": 0.7498899885417762,
+      "Calmar": 0.5675750096826186,
+      "MaxDD_pct": -77.0420131757383,
+      "PF": 1.024375755939332,
+      "Exposure_pct": 100.0,
+      "MaxDDDuration_bars_4h": 5103,
+      "MaxDDDuration_days": 850.5
+    },
+    "Core+AddOnOverlay": {
+      "TotalReturn_pct": 965.4255980743213,
+      "CAGR_pct": 46.24368290692355,
+      "Sharpe": 0.7920767472026041,
+      "Calmar": 0.6366775485878006,
+      "MaxDD_pct": -72.6328154801368,
+      "PF": 1.0267717912771916,
+      "Exposure_pct": 108.79233250256559,
+      "MaxDDDuration_bars_4h": 5078,
+      "MaxDDDuration_days": 846.3333333333334
+    }
+  },
+  "time_slices": [
+    {
+      "slice": "bull_expansion",
+      "window": {
+        "start": "2020-04-01",
+        "end": "2021-11-10"
+      },
+      "Core+AddOnOverlay": {
+        "TotalReturn_pct": 968.7172542064376,
+        "CAGR_pct": 335.7962520289134,
+        "Sharpe": 1.9719566288408654,
+        "Calmar": 6.546916243160319,
+        "MaxDD_pct": -51.2907511807144,
+        "PF": 1.1037198067112666,
+        "Exposure_pct": 111.7361111111111,
+        "MaxDDDuration_bars_4h": 1129,
+        "MaxDDDuration_days": 188.16666666666666
+      },
+      "Core+AddOnOverlay_delta_vs_baseline": {
+        "Return_pct": 0.0,
+        "CAGR_pct": 0.0,
+        "Sharpe": 0.0,
+        "Calmar": 0.0,
+        "MaxDD_improvement_pct": 0.0
+      },
+      "Core+GradedAddOn[breakout_slope]": {
+        "TotalReturn_pct": 991.8592205378474,
+        "CAGR_pct": 341.6359501279592,
+        "Sharpe": 2.000260584221695,
+        "Calmar": 6.775241001290713,
+        "MaxDD_pct": -50.424176802400986,
+        "PF": 1.105013580456633,
+        "Exposure_pct": 113.03287981859411,
+        "MaxDDDuration_bars_4h": 1129,
+        "MaxDDDuration_days": 188.16666666666666
+      },
+      "Core+GradedAddOn[breakout_slope]_delta_vs_baseline": {
+        "Return_pct": 23.141966331409776,
+        "CAGR_pct": 5.8396980990457905,
+        "Sharpe": 0.028303955380829526,
+        "Calmar": 0.22832475813039377,
+        "MaxDD_improvement_pct": 0.8665743783134161
+      },
+      "Core+GradedAddOn[adx_close_range]": {
+        "TotalReturn_pct": 982.8983623818945,
+        "CAGR_pct": 339.38035981049603,
+        "Sharpe": 1.9970392700904451,
+        "Calmar": 6.738727428464076,
+        "MaxDD_pct": -50.36267802982637,
+        "PF": 1.1056270511319743,
+        "Exposure_pct": 112.80328798185941,
+        "MaxDDDuration_bars_4h": 1129,
+        "MaxDDDuration_days": 188.16666666666666
+      },
+      "Core+GradedAddOn[adx_close_range]_delta_vs_baseline": {
+        "Return_pct": 14.18110817545687,
+        "CAGR_pct": 3.584107781582645,
+        "Sharpe": 0.025082641249579707,
+        "Calmar": 0.19181118530375674,
+        "MaxDD_improvement_pct": 0.9280731508880322
+      },
+      "Core+GradedAddOn[compression_breakout]": {
+        "TotalReturn_pct": 979.8709931587615,
+        "CAGR_pct": 338.6167272313487,
+        "Sharpe": 1.9702722873907685,
+        "Calmar": 6.576820941361228,
+        "MaxDD_pct": -51.486383809206146,
+        "PF": 1.1031175848275578,
+        "Exposure_pct": 112.00255102040815,
+        "MaxDDDuration_bars_4h": 1134,
+        "MaxDDDuration_days": 189.0
+      },
+      "Core+GradedAddOn[compression_breakout]_delta_vs_baseline": {
+        "Return_pct": 11.15373895232392,
+        "CAGR_pct": 2.8204752024353184,
+        "Sharpe": -0.0016843414500968823,
+        "Calmar": 0.029904698200908797,
+        "MaxDD_improvement_pct": -0.1956326284917438
+      }
+    },
+    {
+      "slice": "major_drawdown",
+      "window": {
+        "start": "2021-11-10",
+        "end": "2023-01-01"
+      },
+      "Core+AddOnOverlay": {
+        "TotalReturn_pct": -70.68777248311144,
+        "CAGR_pct": -65.88056762458753,
+        "Sharpe": -1.4226175698189047,
+        "Calmar": -0.9078862381699939,
+        "MaxDD_pct": -72.56478273905938,
+        "PF": 0.8669850991643555,
+        "Exposure_pct": 102.12629896083132,
+        "MaxDDDuration_bars_4h": 2498,
+        "MaxDDDuration_days": 416.3333333333333
+      },
+      "Core+AddOnOverlay_delta_vs_baseline": {
+        "Return_pct": 0.0,
+        "CAGR_pct": 0.0,
+        "Sharpe": 0.0,
+        "Calmar": 0.0,
+        "MaxDD_improvement_pct": 0.0
+      },
+      "Core+GradedAddOn[breakout_slope]": {
+        "TotalReturn_pct": -69.56011752562917,
+        "CAGR_pct": -64.73311011576598,
+        "Sharpe": -1.434270035251872,
+        "Calmar": -0.9062844215976558,
+        "MaxDD_pct": -71.4269257786097,
+        "PF": 0.8670285530127587,
+        "Exposure_pct": 102.0783373301359,
+        "MaxDDDuration_bars_4h": 2498,
+        "MaxDDDuration_days": 416.3333333333333
+      },
+      "Core+GradedAddOn[breakout_slope]_delta_vs_baseline": {
+        "Return_pct": 1.127654957482278,
+        "CAGR_pct": 1.147457508821546,
+        "Sharpe": -0.011652465432967274,
+        "Calmar": 0.001601816572338155,
+        "MaxDD_improvement_pct": 1.1378569604496818
+      },
+      "Core+GradedAddOn[adx_close_range]": {
+        "TotalReturn_pct": -68.82441589595257,
+        "CAGR_pct": -63.9873321489202,
+        "Sharpe": -1.4288465093364935,
+        "Calmar": -0.9050403909843888,
+        "MaxDD_pct": -70.70107896435745,
+        "PF": 0.8678419429330038,
+        "Exposure_pct": 102.52198241406873,
+        "MaxDDDuration_bars_4h": 2498,
+        "MaxDDDuration_days": 416.3333333333333
+      },
+      "Core+GradedAddOn[adx_close_range]_delta_vs_baseline": {
+        "Return_pct": 1.8633565871588758,
+        "CAGR_pct": 1.8932354756673249,
+        "Sharpe": -0.0062289395175887385,
+        "Calmar": 0.0028458471856050993,
+        "MaxDD_improvement_pct": 1.863703774701932
+      },
+      "Core+GradedAddOn[compression_breakout]": {
+        "TotalReturn_pct": -71.39812562360748,
+        "CAGR_pct": -66.60619184949029,
+        "Sharpe": -1.4177115378896135,
+        "Calmar": -0.9088608060602572,
+        "MaxDD_pct": -73.28536053635733,
+        "PF": 0.866821254716174,
+        "Exposure_pct": 102.4920063948841,
+        "MaxDDDuration_bars_4h": 2498,
+        "MaxDDDuration_days": 416.3333333333333
+      },
+      "Core+GradedAddOn[compression_breakout]_delta_vs_baseline": {
+        "Return_pct": -0.7103531404960393,
+        "CAGR_pct": -0.7256242249027594,
+        "Sharpe": 0.004906031929291288,
+        "Calmar": -0.0009745678902632893,
+        "MaxDD_improvement_pct": -0.720577797297949
+      }
+    },
+    {
+      "slice": "recovery_phase",
+      "window": {
+        "start": "2023-01-01",
+        "end": "2024-03-15"
+      },
+      "Core+AddOnOverlay": {
+        "TotalReturn_pct": 278.55640725190074,
+        "CAGR_pct": 202.82378136783262,
+        "Sharpe": 2.506178419223632,
+        "Calmar": 10.978229302892862,
+        "MaxDD_pct": -18.475090633640413,
+        "PF": 1.2431814187312786,
+        "Exposure_pct": 110.74981017463932,
+        "MaxDDDuration_bars_4h": 612,
+        "MaxDDDuration_days": 102.0
+      },
+      "Core+AddOnOverlay_delta_vs_baseline": {
+        "Return_pct": 0.0,
+        "CAGR_pct": 0.0,
+        "Sharpe": 0.0,
+        "Calmar": 0.0,
+        "MaxDD_improvement_pct": 0.0
+      },
+      "Core+GradedAddOn[breakout_slope]": {
+        "TotalReturn_pct": 262.86909786143576,
+        "CAGR_pct": 192.3421345458517,
+        "Sharpe": 2.501817727777657,
+        "Calmar": 10.720310858544268,
+        "MaxDD_pct": -17.941843019650104,
+        "PF": 1.2419850077236811,
+        "Exposure_pct": 110.208807896735,
+        "MaxDDDuration_bars_4h": 612,
+        "MaxDDDuration_days": 102.0
+      },
+      "Core+GradedAddOn[breakout_slope]_delta_vs_baseline": {
+        "Return_pct": -15.687309390464975,
+        "CAGR_pct": -10.481646821980917,
+        "Sharpe": -0.00436069144597484,
+        "Calmar": -0.25791844434859357,
+        "MaxDD_improvement_pct": 0.5332476139903086
+      },
+      "Core+GradedAddOn[adx_close_range]": {
+        "TotalReturn_pct": 260.0848944725282,
+        "CAGR_pct": 190.47397861420436,
+        "Sharpe": 2.5368773439404744,
+        "Calmar": 11.104323271286548,
+        "MaxDD_pct": -17.153137022472155,
+        "PF": 1.2446213847040573,
+        "Exposure_pct": 110.75740318906608,
+        "MaxDDDuration_bars_4h": 733,
+        "MaxDDDuration_days": 122.16666666666667
+      },
+      "Core+GradedAddOn[adx_close_range]_delta_vs_baseline": {
+        "Return_pct": -18.471512779372517,
+        "CAGR_pct": -12.349802753628268,
+        "Sharpe": 0.030698924716842324,
+        "Calmar": 0.12609396839368614,
+        "MaxDD_improvement_pct": 1.321953611168258
+      },
+      "Core+GradedAddOn[compression_breakout]": {
+        "TotalReturn_pct": 293.70197686500137,
+        "CAGR_pct": 212.87453601837987,
+        "Sharpe": 2.5406291637150527,
+        "Calmar": 11.263028791127791,
+        "MaxDD_pct": -18.90029227183253,
+        "PF": 1.2458481999442734,
+        "Exposure_pct": 113.75854214123007,
+        "MaxDDDuration_bars_4h": 612,
+        "MaxDDDuration_days": 102.0
+      },
+      "Core+GradedAddOn[compression_breakout]_delta_vs_baseline": {
+        "Return_pct": 15.145569613100633,
+        "CAGR_pct": 10.050754650547248,
+        "Sharpe": 0.034450744491420604,
+        "Calmar": 0.2847994882349294,
+        "MaxDD_improvement_pct": -0.4252016381921173
+      }
+    },
+    {
+      "slice": "sideways_volatility",
+      "window": {
+        "start": "2024-03-15",
+        "end": "2026-03-01"
+      },
+      "Core+AddOnOverlay": {
+        "TotalReturn_pct": -1.6749591673895226,
+        "CAGR_pct": -0.8581735052440087,
+        "Sharpe": 0.16933096468058478,
+        "Calmar": -0.018236934059245497,
+        "MaxDD_pct": -47.05689577294624,
+        "PF": 0.9989929640025622,
+        "Exposure_pct": 108.74999999999999,
+        "MaxDDDuration_bars_4h": 1269,
+        "MaxDDDuration_days": 211.5
+      },
+      "Core+AddOnOverlay_delta_vs_baseline": {
+        "Return_pct": 0.0,
+        "CAGR_pct": 0.0,
+        "Sharpe": 0.0,
+        "Calmar": 0.0,
+        "MaxDD_improvement_pct": 0.0
+      },
+      "Core+GradedAddOn[breakout_slope]": {
+        "TotalReturn_pct": -1.0847692485900784,
+        "CAGR_pct": -0.5549757726193261,
+        "Sharpe": 0.17431905693614347,
+        "Calmar": -0.011906219425158775,
+        "MaxDD_pct": -46.612258081403965,
+        "PF": 0.999343540254051,
+        "Exposure_pct": 110.90432960893854,
+        "MaxDDDuration_bars_4h": 1269,
+        "MaxDDDuration_days": 211.5
+      },
+      "Core+GradedAddOn[breakout_slope]_delta_vs_baseline": {
+        "Return_pct": 0.5901899187994442,
+        "CAGR_pct": 0.30319773262468264,
+        "Sharpe": 0.004988092255558685,
+        "Calmar": 0.006330714634086722,
+        "MaxDD_improvement_pct": 0.44463769154227606
+      },
+      "Core+GradedAddOn[adx_close_range]": {
+        "TotalReturn_pct": -0.679889551597257,
+        "CAGR_pct": -0.3474894121164085,
+        "Sharpe": 0.17370997662127302,
+        "Calmar": -0.007572588507789924,
+        "MaxDD_pct": -45.887798044083084,
+        "PF": 0.9995791999114407,
+        "Exposure_pct": 110.21298882681565,
+        "MaxDDDuration_bars_4h": 1269,
+        "MaxDDDuration_days": 211.5
+      },
+      "Core+GradedAddOn[adx_close_range]_delta_vs_baseline": {
+        "Return_pct": 0.9950696157922656,
+        "CAGR_pct": 0.5106840931276002,
+        "Sharpe": 0.004379011940688238,
+        "Calmar": 0.010664345551455574,
+        "MaxDD_improvement_pct": 1.1690977288631572
+      },
+      "Core+GradedAddOn[compression_breakout]": {
+        "TotalReturn_pct": -1.0440695531567012,
+        "CAGR_pct": -0.5340998535820152,
+        "Sharpe": 0.17400918552132338,
+        "Calmar": -0.011437253420273233,
+        "MaxDD_pct": -46.69826172036116,
+        "PF": 0.9993684539364415,
+        "Exposure_pct": 109.30400372439479,
+        "MaxDDDuration_bars_4h": 1269,
+        "MaxDDDuration_days": 211.5
+      },
+      "Core+GradedAddOn[compression_breakout]_delta_vs_baseline": {
+        "Return_pct": 0.6308896142328213,
+        "CAGR_pct": 0.32407365166199353,
+        "Sharpe": 0.0046782208407386006,
+        "Calmar": 0.006799680638972265,
+        "MaxDD_improvement_pct": 0.3586340525850815
+      }
+    }
+  ],
+  "execution_stress": {
+    "Core+AddOnOverlay": {
+      "delta_vs_default_same_scheme": {
+        "Return_pct": 0.7183015566819222,
+        "CAGR_pct": 0.01583555235367129,
+        "Sharpe": 0.00037505603859711023,
+        "Calmar": 0.0007144338548189522,
+        "MaxDD_improvement_pct": 0.05656768674430168
+      }
+    },
+    "Core+GradedAddOn[breakout_slope]": {
+      "delta_vs_default_same_scheme": {
+        "Return_pct": 1.0144257043735934,
+        "CAGR_pct": 0.02205097419878399,
+        "Sharpe": 0.0003047477128665932,
+        "Calmar": 0.0007252544693943097,
+        "MaxDD_improvement_pct": 0.04563751372857894
+      }
+    },
+    "Core+GradedAddOn[adx_close_range]": {
+      "delta_vs_default_same_scheme": {
+        "Return_pct": 1.019235980165945,
+        "CAGR_pct": 0.021655283877251463,
+        "Sharpe": 0.0003467685885021332,
+        "Calmar": 0.000761014835548024,
+        "MaxDD_improvement_pct": 0.04815010807443798
+      }
+    },
+    "Core+GradedAddOn[compression_breakout]": {
+      "delta_vs_default_same_scheme": {
+        "Return_pct": 0.3088807907787441,
+        "CAGR_pct": 0.006734297161564484,
+        "Sharpe": 0.0001518954190171673,
+        "Calmar": 0.0004537772632932091,
+        "MaxDD_improvement_pct": 0.041801881898578586
+      }
+    }
+  },
+  "candidates": {
+    "Core+GradedAddOn[breakout_slope]": {
+      "name": "Core+GradedAddOn[breakout_slope]",
+      "title": "Breakout Quality + Slope",
+      "description": "Grade entries by breakout distance, EMA slope, and close location.",
+      "metrics": {
+        "TotalReturn_pct": 983.3188133156144,
+        "CAGR_pct": 46.635512465184824,
+        "Sharpe": 0.8001445042666228,
+        "Calmar": 0.6522831648940098,
+        "MaxDD_pct": -71.49580883750491,
+        "PF": 1.0271618219172294,
+        "Exposure_pct": 109.69762498167425,
+        "MaxDDDuration_bars_4h": 5078,
+        "MaxDDDuration_days": 846.3333333333334
+      },
+      "yearly_returns": [
+        {
+          "year": 2019,
+          "Return_pct": 0.9069351406333803
+        },
+        {
+          "year": 2020,
+          "Return_pct": 358.4480642428608
+        },
+        {
+          "year": 2021,
+          "Return_pct": 55.9984682470392
+        },
+        {
+          "year": 2022,
+          "Return_pct": -57.98770922129223
+        },
+        {
+          "year": 2023,
+          "Return_pct": 124.95765556715641
+        },
+        {
+          "year": 2024,
+          "Return_pct": 104.16359330697742
+        },
+        {
+          "year": 2025,
+          "Return_pct": -5.239841187294525
+        },
+        {
+          "year": 2026,
+          "Return_pct": -20.74128181360304
+        }
+      ],
+      "delta_vs_addon_baseline": {
+        "Return_pct": 17.893215241293092,
+        "CAGR_pct": 0.3918295582612714,
+        "Sharpe": 0.008067757064018632,
+        "Calmar": 0.015605616306209269,
+        "MaxDD_improvement_pct": 1.1370066426318886
+      },
+      "delta_vs_bh": {
+        "Return_pct": 127.16333927498238,
+        "CAGR_pct": 2.908391090996723,
+        "Sharpe": 0.050254515724846516,
+        "Calmar": 0.08470815521139119,
+        "MaxDD_improvement_pct": 5.5462043382333945
+      },
+      "addon_active_ratio_pct": 25.120950007330308,
+      "avg_addon_weight_when_active": 0.3860373504522906,
+      "state_changes": 112,
+      "turnover_notional": 730591.3744609255,
+      "grade_counts": {
+        "weak": 19,
+        "base": 18,
+        "strong": 19
+      },
+      "walk_forward": {
+        "windows": [
+          {
+            "train_window": {
+              "start": "2020-01-01",
+              "end": "2023-01-01"
+            },
+            "test_window": {
+              "start": "2023-01-01",
+              "end": "2024-01-01"
+            },
+            "thresholds": {
+              "score_q1": 0.3753623188405797,
+              "score_q2": 0.6253623188405797,
+              "train_trade_count": 23,
+              "feature_weights": {
+                "breakout_distance_atr": 0.45,
+                "ema_slope_atr": 0.35,
+                "close_location": 0.2
+              }
+            },
+            "candidate_metrics": {
+              "TotalReturn_pct": 129.00980745951372,
+              "CAGR_pct": 129.22662577033898,
+              "Sharpe": 2.046027625070371,
+              "Calmar": 7.09532417596414,
+              "MaxDD_pct": -18.21292763593556,
+              "PF": 1.164047494859412,
+              "Exposure_pct": 109.42465753424655,
+              "MaxDDDuration_bars_4h": 612,
+              "MaxDDDuration_days": 102.0
+            },
+            "baseline_metrics": {
+              "TotalReturn_pct": 129.72350022759832,
+              "CAGR_pct": 129.9418113703378,
+              "Sharpe": 2.031870910294252,
+              "Calmar": 7.076033572114342,
+              "MaxDD_pct": -18.36365105479718,
+              "PF": 1.1628466822225962,
+              "Exposure_pct": 109.44520547945204,
+              "MaxDDDuration_bars_4h": 612,
+              "MaxDDDuration_days": 102.0
+            },
+            "delta_vs_baseline": {
+              "Return_pct": -0.7136927680845986,
+              "CAGR_pct": -0.7151855999988186,
+              "Sharpe": 0.014156714776119017,
+              "Calmar": 0.019290603849797527,
+              "MaxDD_improvement_pct": 0.15072341886162022
+            },
+            "strict_outperform": false
+          },
+          {
+            "train_window": {
+              "start": "2021-01-01",
+              "end": "2024-01-01"
+            },
+            "test_window": {
+              "start": "2024-01-01",
+              "end": "2025-01-01"
+            },
+            "thresholds": {
+              "score_q1": 0.4283333333333333,
+              "score_q2": 0.5841666666666665,
+              "train_trade_count": 20,
+              "feature_weights": {
+                "breakout_distance_atr": 0.45,
+                "ema_slope_atr": 0.35,
+                "close_location": 0.2
+              }
+            },
+            "candidate_metrics": {
+              "TotalReturn_pct": 100.75004163075288,
+              "CAGR_pct": 100.52708912650546,
+              "Sharpe": 1.3774228678145448,
+              "Calmar": 3.0879484533819768,
+              "MaxDD_pct": -32.55465259350634,
+              "PF": 1.0926353358005012,
+              "Exposure_pct": 115.70127504553736,
+              "MaxDDDuration_bars_4h": 1448,
+              "MaxDDDuration_days": 241.33333333333334
+            },
+            "baseline_metrics": {
+              "TotalReturn_pct": 107.31811311895187,
+              "CAGR_pct": 107.07723572840746,
+              "Sharpe": 1.4458466048335734,
+              "Calmar": 3.5047670167172202,
+              "MaxDD_pct": -30.551884110317427,
+              "PF": 1.0968751993751495,
+              "Exposure_pct": 113.37204007285973,
+              "MaxDDDuration_bars_4h": 1448,
+              "MaxDDDuration_days": 241.33333333333334
+            },
+            "delta_vs_baseline": {
+              "Return_pct": -6.568071488198996,
+              "CAGR_pct": -6.550146601902,
+              "Sharpe": -0.0684237370190286,
+              "Calmar": -0.4168185633352435,
+              "MaxDD_improvement_pct": -2.0027684831889125
+            },
+            "strict_outperform": false
+          },
+          {
+            "train_window": {
+              "start": "2022-01-01",
+              "end": "2025-01-01"
+            },
+            "test_window": {
+              "start": "2025-01-01",
+              "end": "2026-01-01"
+            },
+            "thresholds": {
+              "score_q1": 0.43999999999999995,
+              "score_q2": 0.5740000000000001,
+              "train_trade_count": 25,
+              "feature_weights": {
+                "breakout_distance_atr": 0.45,
+                "ema_slope_atr": 0.35,
+                "close_location": 0.2
+              }
+            },
+            "candidate_metrics": {
+              "TotalReturn_pct": -3.497842664768136,
+              "CAGR_pct": -3.501766685194685,
+              "Sharpe": 0.10009160446742751,
+              "Calmar": -0.1107978618563665,
+              "MaxDD_pct": -31.605002357664823,
+              "PF": 0.9949246469388976,
+              "Exposure_pct": 106.7054794520548,
+              "MaxDDDuration_bars_4h": 708,
+              "MaxDDDuration_days": 118.0
+            },
+            "baseline_metrics": {
+              "TotalReturn_pct": -4.551667034739005,
+              "CAGR_pct": -4.556745097720838,
+              "Sharpe": 0.07402099310454709,
+              "Calmar": -0.14528166493983516,
+              "MaxDD_pct": -31.364901411392154,
+              "PF": 0.9932681970316114,
+              "Exposure_pct": 106.7442922374429,
+              "MaxDDDuration_bars_4h": 708,
+              "MaxDDDuration_days": 118.0
+            },
+            "delta_vs_baseline": {
+              "Return_pct": 1.0538243699708687,
+              "CAGR_pct": 1.054978412526153,
+              "Sharpe": 0.026070611362880428,
+              "Calmar": 0.034483803083468656,
+              "MaxDD_improvement_pct": -0.2401009462726691
+            },
+            "strict_outperform": true
+          }
+        ],
+        "strict_win_ratio": 0.3333333333333333,
+        "avg_delta_return_pct": -2.075979962104242,
+        "avg_delta_sharpe": -0.009398803626676383,
+        "avg_delta_calmar": -0.1210147188006591,
+        "stress_entry_count": 56
+      },
+      "time_slice_deltas": {
+        "bull_expansion": {
+          "Return_pct": 23.141966331409776,
+          "CAGR_pct": 5.8396980990457905,
+          "Sharpe": 0.028303955380829526,
+          "Calmar": 0.22832475813039377,
+          "MaxDD_improvement_pct": 0.8665743783134161
+        },
+        "recovery_phase": {
+          "Return_pct": -15.687309390464975,
+          "CAGR_pct": -10.481646821980917,
+          "Sharpe": -0.00436069144597484,
+          "Calmar": -0.25791844434859357,
+          "MaxDD_improvement_pct": 0.5332476139903086
+        },
+        "major_drawdown": {
+          "Return_pct": 1.127654957482278,
+          "CAGR_pct": 1.147457508821546,
+          "Sharpe": -0.011652465432967274,
+          "Calmar": 0.001601816572338155,
+          "MaxDD_improvement_pct": 1.1378569604496818
+        }
+      },
+      "execution_stress": {
+        "Return_pct": 1.0144257043735934,
+        "CAGR_pct": 0.02205097419878399,
+        "Sharpe": 0.0003047477128665932,
+        "Calmar": 0.0007252544693943097,
+        "MaxDD_improvement_pct": 0.04563751372857894
+      },
+      "causality_violations_default": 0,
+      "thresholds_full_sample": {
+        "score_q1": 0.41488095238095235,
+        "score_q2": 0.5848214285714285,
+        "train_trade_count": 56,
+        "feature_weights": {
+          "breakout_distance_atr": 0.45,
+          "ema_slope_atr": 0.35,
+          "close_location": 0.2
+        }
+      }
+    },
+    "Core+GradedAddOn[adx_close_range]": {
+      "name": "Core+GradedAddOn[adx_close_range]",
+      "title": "ADX + Close Location + Range",
+      "description": "Grade entries by directional strength, close location, and bar expansion.",
+      "metrics": {
+        "TotalReturn_pct": 1013.2113962241117,
+        "CAGR_pct": 47.278151980791996,
+        "Sharpe": 0.8100221147028455,
+        "Calmar": 0.6680399211276493,
+        "MaxDD_pct": -70.77144716289801,
+        "PF": 1.027956303602668,
+        "Exposure_pct": 109.75956604603432,
+        "MaxDDDuration_bars_4h": 5077,
+        "MaxDDDuration_days": 846.1666666666666
+      },
+      "yearly_returns": [
+        {
+          "year": 2019,
+          "Return_pct": 0.4327302140304745
+        },
+        {
+          "year": 2020,
+          "Return_pct": 360.98903349413814
+        },
+        {
+          "year": 2021,
+          "Return_pct": 57.00661035039754
+        },
+        {
+          "year": 2022,
+          "Return_pct": -57.05417007422445
+        },
+        {
+          "year": 2023,
+          "Return_pct": 125.30794046402166
+        },
+        {
+          "year": 2024,
+          "Return_pct": 102.68516181598524
+        },
+        {
+          "year": 2025,
+          "Return_pct": -5.405364004210266
+        },
+        {
+          "year": 2026,
+          "Return_pct": -20.293068237208455
+        }
+      ],
+      "delta_vs_addon_baseline": {
+        "Return_pct": 47.78579814979037,
+        "CAGR_pct": 1.0344690738684434,
+        "Sharpe": 0.017945367500241338,
+        "Calmar": 0.03136237253984875,
+        "MaxDD_improvement_pct": 1.8613683172387852
+      },
+      "delta_vs_bh": {
+        "Return_pct": 157.05592218347965,
+        "CAGR_pct": 3.551030606603895,
+        "Sharpe": 0.06013212616106922,
+        "Calmar": 0.10046491144503067,
+        "MaxDD_improvement_pct": 6.270566012840291
+      },
+      "addon_active_ratio_pct": 25.120950007330308,
+      "avg_addon_weight_when_active": 0.3885030639042894,
+      "state_changes": 112,
+      "turnover_notional": 787287.3601034408,
+      "grade_counts": {
+        "weak": 19,
+        "base": 18,
+        "strong": 19
+      },
+      "walk_forward": {
+        "windows": [
+          {
+            "train_window": {
+              "start": "2020-01-01",
+              "end": "2023-01-01"
+            },
+            "test_window": {
+              "start": "2023-01-01",
+              "end": "2024-01-01"
+            },
+            "thresholds": {
+              "score_q1": 0.4289855072463768,
+              "score_q2": 0.6637681159420289,
+              "train_trade_count": 23,
+              "feature_weights": {
+                "adx": 0.4,
+                "close_location": 0.3,
+                "bar_range_atr": 0.3
+              }
+            },
+            "candidate_metrics": {
+              "TotalReturn_pct": 124.2161695742111,
+              "CAGR_pct": 124.42302738964469,
+              "Sharpe": 2.082480365287596,
+              "Calmar": 7.335421983898033,
+              "MaxDD_pct": -16.961945429010818,
+              "PF": 1.1676574393747532,
+              "Exposure_pct": 109.65296803652969,
+              "MaxDDDuration_bars_4h": 612,
+              "MaxDDDuration_days": 102.0
+            },
+            "baseline_metrics": {
+              "TotalReturn_pct": 129.72350022759832,
+              "CAGR_pct": 129.9418113703378,
+              "Sharpe": 2.031870910294252,
+              "Calmar": 7.076033572114342,
+              "MaxDD_pct": -18.36365105479718,
+              "PF": 1.1628466822225962,
+              "Exposure_pct": 109.44520547945204,
+              "MaxDDDuration_bars_4h": 612,
+              "MaxDDDuration_days": 102.0
+            },
+            "delta_vs_baseline": {
+              "Return_pct": -5.507330653387228,
+              "CAGR_pct": -5.518783980693115,
+              "Sharpe": 0.050609454993344016,
+              "Calmar": 0.2593884117836902,
+              "MaxDD_improvement_pct": 1.401705625786363
+            },
+            "strict_outperform": false
+          },
+          {
+            "train_window": {
+              "start": "2021-01-01",
+              "end": "2024-01-01"
+            },
+            "test_window": {
+              "start": "2024-01-01",
+              "end": "2025-01-01"
+            },
+            "thresholds": {
+              "score_q1": 0.47,
+              "score_q2": 0.6316666666666666,
+              "train_trade_count": 20,
+              "feature_weights": {
+                "adx": 0.4,
+                "close_location": 0.3,
+                "bar_range_atr": 0.3
+              }
+            },
+            "candidate_metrics": {
+              "TotalReturn_pct": 93.5939270278874,
+              "CAGR_pct": 93.39011479003719,
+              "Sharpe": 1.363929297499541,
+              "Calmar": 2.9785231711439613,
+              "MaxDD_pct": -31.354503364218868,
+              "PF": 1.09279163327862,
+              "Exposure_pct": 115.69444444444446,
+              "MaxDDDuration_bars_4h": 1449,
+              "MaxDDDuration_days": 241.5
+            },
+            "baseline_metrics": {
+              "TotalReturn_pct": 107.31811311895187,
+              "CAGR_pct": 107.07723572840746,
+              "Sharpe": 1.4458466048335734,
+              "Calmar": 3.5047670167172202,
+              "MaxDD_pct": -30.551884110317427,
+              "PF": 1.0968751993751495,
+              "Exposure_pct": 113.37204007285973,
+              "MaxDDDuration_bars_4h": 1448,
+              "MaxDDDuration_days": 241.33333333333334
+            },
+            "delta_vs_baseline": {
+              "Return_pct": -13.724186091064468,
+              "CAGR_pct": -13.68712093837027,
+              "Sharpe": -0.08191730733403246,
+              "Calmar": -0.526243845573259,
+              "MaxDD_improvement_pct": -0.8026192539014403
+            },
+            "strict_outperform": false
+          },
+          {
+            "train_window": {
+              "start": "2022-01-01",
+              "end": "2025-01-01"
+            },
+            "test_window": {
+              "start": "2025-01-01",
+              "end": "2026-01-01"
+            },
+            "thresholds": {
+              "score_q1": 0.4559999999999999,
+              "score_q2": 0.6119999999999999,
+              "train_trade_count": 25,
+              "feature_weights": {
+                "adx": 0.4,
+                "close_location": 0.3,
+                "bar_range_atr": 0.3
+              }
+            },
+            "candidate_metrics": {
+              "TotalReturn_pct": -3.312249885185514,
+              "CAGR_pct": -3.3159692962956178,
+              "Sharpe": 0.09144095096003063,
+              "Calmar": -0.10996330259243448,
+              "MaxDD_pct": -30.1552355933311,
+              "PF": 0.9949329452859939,
+              "Exposure_pct": 107.72146118721462,
+              "MaxDDDuration_bars_4h": 839,
+              "MaxDDDuration_days": 139.83333333333334
+            },
+            "baseline_metrics": {
+              "TotalReturn_pct": -4.551667034739005,
+              "CAGR_pct": -4.556745097720838,
+              "Sharpe": 0.07402099310454709,
+              "Calmar": -0.14528166493983516,
+              "MaxDD_pct": -31.364901411392154,
+              "PF": 0.9932681970316114,
+              "Exposure_pct": 106.7442922374429,
+              "MaxDDDuration_bars_4h": 708,
+              "MaxDDDuration_days": 118.0
+            },
+            "delta_vs_baseline": {
+              "Return_pct": 1.2394171495534905,
+              "CAGR_pct": 1.2407758014252201,
+              "Sharpe": 0.017419957855483545,
+              "Calmar": 0.035318362347400684,
+              "MaxDD_improvement_pct": 1.2096658180610547
+            },
+            "strict_outperform": true
+          }
+        ],
+        "strict_win_ratio": 0.3333333333333333,
+        "avg_delta_return_pct": -5.997366531632736,
+        "avg_delta_sharpe": -0.004629298161734967,
+        "avg_delta_calmar": -0.07717902381405603,
+        "stress_entry_count": 56
+      },
+      "time_slice_deltas": {
+        "bull_expansion": {
+          "Return_pct": 14.18110817545687,
+          "CAGR_pct": 3.584107781582645,
+          "Sharpe": 0.025082641249579707,
+          "Calmar": 0.19181118530375674,
+          "MaxDD_improvement_pct": 0.9280731508880322
+        },
+        "recovery_phase": {
+          "Return_pct": -18.471512779372517,
+          "CAGR_pct": -12.349802753628268,
+          "Sharpe": 0.030698924716842324,
+          "Calmar": 0.12609396839368614,
+          "MaxDD_improvement_pct": 1.321953611168258
+        },
+        "major_drawdown": {
+          "Return_pct": 1.8633565871588758,
+          "CAGR_pct": 1.8932354756673249,
+          "Sharpe": -0.0062289395175887385,
+          "Calmar": 0.0028458471856050993,
+          "MaxDD_improvement_pct": 1.863703774701932
+        }
+      },
+      "execution_stress": {
+        "Return_pct": 1.019235980165945,
+        "CAGR_pct": 0.021655283877251463,
+        "Sharpe": 0.0003467685885021332,
+        "Calmar": 0.000761014835548024,
+        "MaxDD_improvement_pct": 0.04815010807443798
+      },
+      "causality_violations_default": 0,
+      "thresholds_full_sample": {
+        "score_q1": 0.42976190476190473,
+        "score_q2": 0.6083333333333331,
+        "train_trade_count": 56,
+        "feature_weights": {
+          "adx": 0.4,
+          "close_location": 0.3,
+          "bar_range_atr": 0.3
+        }
+      }
+    },
+    "Core+GradedAddOn[compression_breakout]": {
+      "name": "Core+GradedAddOn[compression_breakout]",
+      "title": "Compression + Breakout Release",
+      "description": "Grade entries by squeeze quality, squeeze persistence, and breakout distance.",
+      "metrics": {
+        "TotalReturn_pct": 979.8313980454143,
+        "CAGR_pct": 46.559572690357484,
+        "Sharpe": 0.7928876942417478,
+        "Calmar": 0.6347290303583254,
+        "MaxDD_pct": -73.35346338905136,
+        "PF": 1.0271331054768618,
+        "Exposure_pct": 109.604896642721,
+        "MaxDDDuration_bars_4h": 5077,
+        "MaxDDDuration_days": 846.1666666666666
+      },
+      "yearly_returns": [
+        {
+          "year": 2019,
+          "Return_pct": 0.9069351406333803
+        },
+        {
+          "year": 2020,
+          "Return_pct": 345.56738688255695
+        },
+        {
+          "year": 2021,
+          "Return_pct": 54.92481557656297
+        },
+        {
+          "year": 2022,
+          "Return_pct": -60.05683227390626
+        },
+        {
+          "year": 2023,
+          "Return_pct": 137.60051202515734
+        },
+        {
+          "year": 2024,
+          "Return_pct": 110.42212079808907
+        },
+        {
+          "year": 2025,
+          "Return_pct": -5.337097300368221
+        },
+        {
+          "year": 2026,
+          "Return_pct": -20.794849668169924
+        }
+      ],
+      "delta_vs_addon_baseline": {
+        "Return_pct": 14.40579997109296,
+        "CAGR_pct": 0.31588978343393137,
+        "Sharpe": 0.0008109470391436391,
+        "Calmar": -0.0019485182294751713,
+        "MaxDD_improvement_pct": -0.7206479089145574
+      },
+      "delta_vs_bh": {
+        "Return_pct": 123.67592400478225,
+        "CAGR_pct": 2.832451316169383,
+        "Sharpe": 0.04299770569997152,
+        "Calmar": 0.06715402067570675,
+        "MaxDD_improvement_pct": 3.6885497866869486
+      },
+      "addon_active_ratio_pct": 25.120950007330308,
+      "avg_addon_weight_when_active": 0.38234607528450537,
+      "state_changes": 112,
+      "turnover_notional": 689995.1580428022,
+      "grade_counts": {
+        "weak": 19,
+        "base": 18,
+        "strong": 19
+      },
+      "walk_forward": {
+        "windows": [
+          {
+            "train_window": {
+              "start": "2020-01-01",
+              "end": "2023-01-01"
+            },
+            "test_window": {
+              "start": "2023-01-01",
+              "end": "2024-01-01"
+            },
+            "thresholds": {
+              "score_q1": 0.4971014492753623,
+              "score_q2": 0.5695652173913044,
+              "train_trade_count": 23,
+              "feature_weights": {
+                "compression_quality": 0.35,
+                "squeeze_count": 0.25,
+                "breakout_distance_atr": 0.4
+              }
+            },
+            "candidate_metrics": {
+              "TotalReturn_pct": 137.26636548718824,
+              "CAGR_pct": 137.50060767097,
+              "Sharpe": 2.0766172608657127,
+              "Calmar": 7.434098143192271,
+              "MaxDD_pct": -18.49593656452939,
+              "PF": 1.1652299357865707,
+              "Exposure_pct": 110.71689497716895,
+              "MaxDDDuration_bars_4h": 612,
+              "MaxDDDuration_days": 102.0
+            },
+            "baseline_metrics": {
+              "TotalReturn_pct": 129.72350022759832,
+              "CAGR_pct": 129.9418113703378,
+              "Sharpe": 2.031870910294252,
+              "Calmar": 7.076033572114342,
+              "MaxDD_pct": -18.36365105479718,
+              "PF": 1.1628466822225962,
+              "Exposure_pct": 109.44520547945204,
+              "MaxDDDuration_bars_4h": 612,
+              "MaxDDDuration_days": 102.0
+            },
+            "delta_vs_baseline": {
+              "Return_pct": 7.542865259589917,
+              "CAGR_pct": 7.558796300632196,
+              "Sharpe": 0.0447463505714607,
+              "Calmar": 0.35806457107792866,
+              "MaxDD_improvement_pct": -0.13228550973220976
+            },
+            "strict_outperform": true
+          },
+          {
+            "train_window": {
+              "start": "2021-01-01",
+              "end": "2024-01-01"
+            },
+            "test_window": {
+              "start": "2024-01-01",
+              "end": "2025-01-01"
+            },
+            "thresholds": {
+              "score_q1": 0.4433333333333333,
+              "score_q2": 0.5424999999999999,
+              "train_trade_count": 20,
+              "feature_weights": {
+                "compression_quality": 0.35,
+                "squeeze_count": 0.25,
+                "breakout_distance_atr": 0.4
+              }
+            },
+            "candidate_metrics": {
+              "TotalReturn_pct": 112.03676059065072,
+              "CAGR_pct": 111.7828006843784,
+              "Sharpe": 1.48873605412019,
+              "Calmar": 3.7169543350829106,
+              "MaxDD_pct": -30.073762173859198,
+              "PF": 1.0993014752000936,
+              "Exposure_pct": 113.4949908925319,
+              "MaxDDDuration_bars_4h": 1448,
+              "MaxDDDuration_days": 241.33333333333334
+            },
+            "baseline_metrics": {
+              "TotalReturn_pct": 107.31811311895187,
+              "CAGR_pct": 107.07723572840746,
+              "Sharpe": 1.4458466048335734,
+              "Calmar": 3.5047670167172202,
+              "MaxDD_pct": -30.551884110317427,
+              "PF": 1.0968751993751495,
+              "Exposure_pct": 113.37204007285973,
+              "MaxDDDuration_bars_4h": 1448,
+              "MaxDDDuration_days": 241.33333333333334
+            },
+            "delta_vs_baseline": {
+              "Return_pct": 4.718647471698844,
+              "CAGR_pct": 4.705564955970942,
+              "Sharpe": 0.04288944928661653,
+              "Calmar": 0.21218731836569038,
+              "MaxDD_improvement_pct": 0.47812193645822987
+            },
+            "strict_outperform": true
+          },
+          {
+            "train_window": {
+              "start": "2022-01-01",
+              "end": "2025-01-01"
+            },
+            "test_window": {
+              "start": "2025-01-01",
+              "end": "2026-01-01"
+            },
+            "thresholds": {
+              "score_q1": 0.45,
+              "score_q2": 0.5479999999999999,
+              "train_trade_count": 25,
+              "feature_weights": {
+                "compression_quality": 0.35,
+                "squeeze_count": 0.25,
+                "breakout_distance_atr": 0.4
+              }
+            },
+            "candidate_metrics": {
+              "TotalReturn_pct": -3.2645787770630763,
+              "CAGR_pct": -3.268245566725292,
+              "Sharpe": 0.0908083348426191,
+              "Calmar": -0.10864754697361738,
+              "MaxDD_pct": -30.081172173347937,
+              "PF": 0.9949728056909544,
+              "Exposure_pct": 107.00228310502283,
+              "MaxDDDuration_bars_4h": 662,
+              "MaxDDDuration_days": 110.33333333333333
+            },
+            "baseline_metrics": {
+              "TotalReturn_pct": -4.551667034739005,
+              "CAGR_pct": -4.556745097720838,
+              "Sharpe": 0.07402099310454709,
+              "Calmar": -0.14528166493983516,
+              "MaxDD_pct": -31.364901411392154,
+              "PF": 0.9932681970316114,
+              "Exposure_pct": 106.7442922374429,
+              "MaxDDDuration_bars_4h": 708,
+              "MaxDDDuration_days": 118.0
+            },
+            "delta_vs_baseline": {
+              "Return_pct": 1.2870882576759284,
+              "CAGR_pct": 1.288499530995546,
+              "Sharpe": 0.016787341738072017,
+              "Calmar": 0.03663411796621778,
+              "MaxDD_improvement_pct": 1.2837292380442165
+            },
+            "strict_outperform": true
+          }
+        ],
+        "strict_win_ratio": 1.0,
+        "avg_delta_return_pct": 4.516200329654897,
+        "avg_delta_sharpe": 0.03480771386538308,
+        "avg_delta_calmar": 0.20229533580327894,
+        "stress_entry_count": 56
+      },
+      "time_slice_deltas": {
+        "bull_expansion": {
+          "Return_pct": 11.15373895232392,
+          "CAGR_pct": 2.8204752024353184,
+          "Sharpe": -0.0016843414500968823,
+          "Calmar": 0.029904698200908797,
+          "MaxDD_improvement_pct": -0.1956326284917438
+        },
+        "recovery_phase": {
+          "Return_pct": 15.145569613100633,
+          "CAGR_pct": 10.050754650547248,
+          "Sharpe": 0.034450744491420604,
+          "Calmar": 0.2847994882349294,
+          "MaxDD_improvement_pct": -0.4252016381921173
+        },
+        "major_drawdown": {
+          "Return_pct": -0.7103531404960393,
+          "CAGR_pct": -0.7256242249027594,
+          "Sharpe": 0.004906031929291288,
+          "Calmar": -0.0009745678902632893,
+          "MaxDD_improvement_pct": -0.720577797297949
+        }
+      },
+      "execution_stress": {
+        "Return_pct": 0.3088807907787441,
+        "CAGR_pct": 0.006734297161564484,
+        "Sharpe": 0.0001518954190171673,
+        "Calmar": 0.0004537772632932091,
+        "MaxDD_improvement_pct": 0.041801881898578586
+      },
+      "causality_violations_default": 0,
+      "thresholds_full_sample": {
+        "score_q1": 0.46041666666666664,
+        "score_q2": 0.5607142857142856,
+        "train_trade_count": 56,
+        "feature_weights": {
+          "compression_quality": 0.35,
+          "squeeze_count": 0.25,
+          "breakout_distance_atr": 0.4
+        }
+      }
+    }
+  },
+  "best_candidate": "Core+GradedAddOn[compression_breakout]",
+  "judgment": {
+    "grading_improves_baseline": false,
+    "best_scheme": "Core+GradedAddOn[compression_breakout]",
+    "main_conclusion": "Core+GradedAddOn[compression_breakout] is the most reasonable graded AddOn variant, and it is worth a formal next-round study, but it still does not justify baseline promotion.",
+    "improvement_driver": "risk-adjusted improvement more than raw-return expansion",
+    "worth_next_round_formal_research": true,
+    "answer_1": "No clear formal upgrade is proven. Core+GradedAddOn[compression_breakout] is the best exploratory grading variant, but the improvement is not strong enough to rewrite the binary AddOn baseline.",
+    "answer_2": "The most reasonable grading scheme is Core+GradedAddOn[compression_breakout], because it leads the small candidate set on OOS strict ratio and full-sample risk-adjusted deltas without changing the mother logic.",
+    "answer_3": "The improvement mainly comes from risk-adjusted improvement more than raw-return expansion.",
+    "answer_4": "Yes. The best graded sleeve is worth a next-round formal study.",
+    "answer_5": "Current Risk-Off status is frozen: directionally valid, execution-aligned, repeatedly failed promotion, and not part of the baseline.",
+    "answer_6": "No. The team should not continue Risk-Off promotion on the same frozen line.",
+    "answer_7": "The active mainline is the locked BTC long-only mother with AddOn-only baseline semantics; Risk-Off is archived and frozen, while AddOn grading is the active extension line."
+  }
+}

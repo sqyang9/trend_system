@@ -1,0 +1,4 @@
+riskoff_direction=valid_but_frozen
+riskoff_baseline_status=not_in_baseline
+promotion_status=frozen
+active_mainline=addon_only_on_locked_long_only_mother

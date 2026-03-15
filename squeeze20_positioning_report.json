@@ -1,0 +1,2492 @@
+{
+  "generated_at_local": "2026-03-12T01:00:17.630409",
+  "seed": 20260309,
+  "current_research_optimal": "lb20_stop3.2_trail5.0_beoff",
+  "default_research_tuple": "next_bar_open + legacy_bar_extrema + midpoint + full_model",
+  "stress_tuple": "live_runner_next_5m_close + segment_path_same_bar + pessimistic + full_model",
+  "base": {
+    "label": "lb20_stop3.2_trail5.0_beoff",
+    "params": {
+      "candidate_name": "squeeze_release_20",
+      "description": "Squeeze release plus 20-bar breakout inside a bullish EMA200 regime, designed to enter expansion after compression.",
+      "breakout_mode": "squeeze_release",
+      "donchian_entry_len": 20,
+      "squeeze_threshold": 0.9,
+      "squeeze_bars": 6,
+      "ema_len": 200,
+      "ema_slope_len": 20,
+      "use_ema_slope": true,
+      "adx_period": 14,
+      "adx_min": 10.0,
+      "use_adx_filter": true,
+      "close_location_min": 0.6,
+      "range_atr_min": 0.55,
+      "volume_multiple": 1.0,
+      "structure_lookback": 20,
+      "initial_stop_atr": 3.2,
+      "trail_atr_mult": 5.0,
+      "trail_activate_atr": 2.5,
+      "swing_trail_lookback": 20,
+      "use_swing_trail": false,
+      "break_even_after_atr": 1000000000.0,
+      "position_pct": 100.0,
+      "init_equity": 10000.0,
+      "commission_pct": 0.06,
+      "entry_execution_mode": "next_bar_open",
+      "close_delay_bps": 8.0,
+      "intrabar_execution_model": "legacy_bar_extrema",
+      "intrabar_path_mode": "midpoint",
+      "slippage_fixed_bps": 5.0,
+      "slippage_breakout_extra_bps": 5.0,
+      "slippage_stop_extra_bps": 8.0,
+      "slippage_range_weight": 0.05,
+      "slippage_max_bps": 25.0,
+      "slippage_breakout_atr_threshold": 1.1,
+      "enable_daily_loss_limit": false,
+      "daily_loss_limit_pct": 1.5,
+      "cooldown_bars": 0
+    },
+    "stats": {
+      "Return_pct": 470.50521663778085,
+      "CAGR_pct": 32.28362329842642,
+      "Sharpe": 0.9331808105370669,
+      "Calmar": 0.9361374496896271,
+      "MaxDD_pct": -34.48598633579923,
+      "PF": 1.9473497384118057,
+      "Trades": 56
+    },
+    "behavior": {
+      "avg_hold_4h_bars": 61.7235863095238,
+      "median_hold_4h_bars": 40.364583333333336,
+      "top10_winner_contrib_pct": 81.60158095336637,
+      "exit_mix": {
+        "TRAIL": 0.7142857142857143,
+        "SL": 0.2857142857142857
+      }
+    },
+    "buy_hold_delta": {
+      "return_vs_bh_pct": -385.6502574028512,
+      "cagr_vs_bh_pct": -11.443498075761681,
+      "sharpe_vs_bh": 0.18329082199529034,
+      "calmar_vs_bh": 0.36856244000700844
+    },
+    "full_gate": {
+      "full_size": {
+        "gate_summary": {
+          "baseline_gate": false,
+          "yearly": true,
+          "rolling_oos": true,
+          "regime": true,
+          "cost_stress": true,
+          "slippage_stress": true,
+          "execution_mode_stress": true,
+          "intrabar_path_stress": true,
+          "live_safety_check": true
+        },
+        "final_pass": false,
+        "baseline_gate": {
+          "Sharpe": 0.9331808105370669,
+          "MaxDD_pct": -0.34485986335799235,
+          "ProfitFactor": 1.9473497384118057,
+          "Trades": 56,
+          "pass": false
+        },
+        "trend_gate_mismatch": {
+          "likely_trade_count_mismatch": false,
+          "comment": "No obvious gate mismatch detected."
+        }
+      },
+      "launch_35pct": {
+        "gate_summary": {
+          "baseline_gate": false,
+          "yearly": true,
+          "rolling_oos": true,
+          "regime": true,
+          "cost_stress": true,
+          "slippage_stress": true,
+          "execution_mode_stress": true,
+          "intrabar_path_stress": true,
+          "live_safety_check": true
+        },
+        "final_pass": false,
+        "baseline_gate": {
+          "Sharpe": 0.9257158546015805,
+          "MaxDD_pct": -0.14723986373007902,
+          "ProfitFactor": 2.3763790002471814,
+          "Trades": 56,
+          "pass": false
+        },
+        "trend_gate_mismatch": {
+          "likely_trade_count_mismatch": true,
+          "comment": "Legacy baseline_gate trade threshold may be too high for a low-frequency trend mother."
+        }
+      }
+    }
+  },
+  "candidate_grid": {
+    "donchian_entry_len": [
+      20,
+      21,
+      22
+    ],
+    "initial_stop_atr": [
+      3.1,
+      3.2,
+      3.3
+    ],
+    "trail_atr_mult": [
+      5.0,
+      5.2
+    ],
+    "break_even": "disabled by default; one restrained 4.0 side-check only if raw evidence is strong"
+  },
+  "ranked_candidates": [
+    {
+      "label": "lb20_stop3.1_trail5.0_beoff",
+      "params": {
+        "candidate_name": "squeeze_release_20",
+        "description": "Squeeze release plus 20-bar breakout inside a bullish EMA200 regime, designed to enter expansion after compression.",
+        "breakout_mode": "squeeze_release",
+        "donchian_entry_len": 20,
+        "squeeze_threshold": 0.9,
+        "squeeze_bars": 6,
+        "ema_len": 200,
+        "ema_slope_len": 20,
+        "use_ema_slope": true,
+        "adx_period": 14,
+        "adx_min": 10.0,
+        "use_adx_filter": true,
+        "close_location_min": 0.6,
+        "range_atr_min": 0.55,
+        "volume_multiple": 1.0,
+        "structure_lookback": 20,
+        "initial_stop_atr": 3.1,
+        "trail_atr_mult": 5.0,
+        "trail_activate_atr": 2.5,
+        "swing_trail_lookback": 20,
+        "use_swing_trail": false,
+        "break_even_after_atr": 1000000000.0,
+        "position_pct": 100.0,
+        "init_equity": 10000.0,
+        "commission_pct": 0.06,
+        "entry_execution_mode": "next_bar_open",
+        "close_delay_bps": 8.0,
+        "intrabar_execution_model": "legacy_bar_extrema",
+        "intrabar_path_mode": "midpoint",
+        "slippage_fixed_bps": 5.0,
+        "slippage_breakout_extra_bps": 5.0,
+        "slippage_stop_extra_bps": 8.0,
+        "slippage_range_weight": 0.05,
+        "slippage_max_bps": 25.0,
+        "slippage_breakout_atr_threshold": 1.1,
+        "enable_daily_loss_limit": false,
+        "daily_loss_limit_pct": 1.5,
+        "cooldown_bars": 0
+      },
+      "stats": {
+        "Return_pct": 472.77912114079726,
+        "CAGR_pct": 32.36819411247536,
+        "Sharpe": 0.9351529547506587,
+        "Calmar": 0.9385897737503475,
+        "MaxDD_pct": -34.48598633579921,
+        "PF": 1.9546342335510416,
+        "Trades": 56
+      },
+      "behavior": {
+        "avg_hold_4h_bars": 61.7079613095238,
+        "median_hold_4h_bars": 40.364583333333336,
+        "top10_winner_contrib_pct": 81.59608638306405,
+        "exit_mix": {
+          "TRAIL": 0.7142857142857143,
+          "SL": 0.2857142857142857
+        }
+      },
+      "buy_hold_delta": {
+        "return_vs_bh_pct": -383.3763528998348,
+        "cagr_vs_bh_pct": -11.358927261712743,
+        "sharpe_vs_bh": 0.18526296620888216,
+        "calmar_vs_bh": 0.3710147640677288
+      },
+      "delta_vs_base": {
+        "Return_pct": 2.2739045030164107,
+        "CAGR_pct": 0.08457081404893785,
+        "Sharpe": 0.00197214421359182,
+        "Calmar": 0.002452324060720379,
+        "MaxDD_pct": 2.1316282072803006e-14
+      },
+      "vs_buy_hold_change": {
+        "return_gap_change_pct": 2.2739045030164107,
+        "cagr_gap_change_pct": 0.08457081404893785,
+        "sharpe_edge_change": 0.00197214421359182,
+        "calmar_edge_change": 0.002452324060720379,
+        "return_gap_shrinks": true,
+        "cagr_gap_shrinks": true,
+        "risk_adjusted_edge_kept": true
+      }
+    },
+    {
+      "label": "lb20_stop3.2_trail5.0_beoff",
+      "params": {
+        "candidate_name": "squeeze_release_20",
+        "description": "Squeeze release plus 20-bar breakout inside a bullish EMA200 regime, designed to enter expansion after compression.",
+        "breakout_mode": "squeeze_release",
+        "donchian_entry_len": 20,
+        "squeeze_threshold": 0.9,
+        "squeeze_bars": 6,
+        "ema_len": 200,
+        "ema_slope_len": 20,
+        "use_ema_slope": true,
+        "adx_period": 14,
+        "adx_min": 10.0,
+        "use_adx_filter": true,
+        "close_location_min": 0.6,
+        "range_atr_min": 0.55,
+        "volume_multiple": 1.0,
+        "structure_lookback": 20,
+        "initial_stop_atr": 3.2,
+        "trail_atr_mult": 5.0,
+        "trail_activate_atr": 2.5,
+        "swing_trail_lookback": 20,
+        "use_swing_trail": false,
+        "break_even_after_atr": 1000000000.0,
+        "position_pct": 100.0,
+        "init_equity": 10000.0,
+        "commission_pct": 0.06,
+        "entry_execution_mode": "next_bar_open",
+        "close_delay_bps": 8.0,
+        "intrabar_execution_model": "legacy_bar_extrema",
+        "intrabar_path_mode": "midpoint",
+        "slippage_fixed_bps": 5.0,
+        "slippage_breakout_extra_bps": 5.0,
+        "slippage_stop_extra_bps": 8.0,
+        "slippage_range_weight": 0.05,
+        "slippage_max_bps": 25.0,
+        "slippage_breakout_atr_threshold": 1.1,
+        "enable_daily_loss_limit": false,
+        "daily_loss_limit_pct": 1.5,
+        "cooldown_bars": 0
+      },
+      "stats": {
+        "Return_pct": 470.50521663778085,
+        "CAGR_pct": 32.28362329842642,
+        "Sharpe": 0.9331808105370669,
+        "Calmar": 0.9361374496896271,
+        "MaxDD_pct": -34.48598633579923,
+        "PF": 1.9473497384118057,
+        "Trades": 56
+      },
+      "behavior": {
+        "avg_hold_4h_bars": 61.7235863095238,
+        "median_hold_4h_bars": 40.364583333333336,
+        "top10_winner_contrib_pct": 81.60158095336637,
+        "exit_mix": {
+          "TRAIL": 0.7142857142857143,
+          "SL": 0.2857142857142857
+        }
+      },
+      "buy_hold_delta": {
+        "return_vs_bh_pct": -385.6502574028512,
+        "cagr_vs_bh_pct": -11.443498075761681,
+        "sharpe_vs_bh": 0.18329082199529034,
+        "calmar_vs_bh": 0.36856244000700844
+      },
+      "delta_vs_base": {
+        "Return_pct": 0.0,
+        "CAGR_pct": 0.0,
+        "Sharpe": 0.0,
+        "Calmar": 0.0,
+        "MaxDD_pct": 0.0
+      },
+      "vs_buy_hold_change": {
+        "return_gap_change_pct": 0.0,
+        "cagr_gap_change_pct": 0.0,
+        "sharpe_edge_change": 0.0,
+        "calmar_edge_change": 0.0,
+        "return_gap_shrinks": false,
+        "cagr_gap_shrinks": false,
+        "risk_adjusted_edge_kept": true
+      }
+    },
+    {
+      "label": "lb20_stop3.3_trail5.0_beoff",
+      "params": {
+        "candidate_name": "squeeze_release_20",
+        "description": "Squeeze release plus 20-bar breakout inside a bullish EMA200 regime, designed to enter expansion after compression.",
+        "breakout_mode": "squeeze_release",
+        "donchian_entry_len": 20,
+        "squeeze_threshold": 0.9,
+        "squeeze_bars": 6,
+        "ema_len": 200,
+        "ema_slope_len": 20,
+        "use_ema_slope": true,
+        "adx_period": 14,
+        "adx_min": 10.0,
+        "use_adx_filter": true,
+        "close_location_min": 0.6,
+        "range_atr_min": 0.55,
+        "volume_multiple": 1.0,
+        "structure_lookback": 20,
+        "initial_stop_atr": 3.3,
+        "trail_atr_mult": 5.0,
+        "trail_activate_atr": 2.5,
+        "swing_trail_lookback": 20,
+        "use_swing_trail": false,
+        "break_even_after_atr": 1000000000.0,
+        "position_pct": 100.0,
+        "init_equity": 10000.0,
+        "commission_pct": 0.06,
+        "entry_execution_mode": "next_bar_open",
+        "close_delay_bps": 8.0,
+        "intrabar_execution_model": "legacy_bar_extrema",
+        "intrabar_path_mode": "midpoint",
+        "slippage_fixed_bps": 5.0,
+        "slippage_breakout_extra_bps": 5.0,
+        "slippage_stop_extra_bps": 8.0,
+        "slippage_range_weight": 0.05,
+        "slippage_max_bps": 25.0,
+        "slippage_breakout_atr_threshold": 1.1,
+        "enable_daily_loss_limit": false,
+        "daily_loss_limit_pct": 1.5,
+        "cooldown_bars": 0
+      },
+      "stats": {
+        "Return_pct": 466.54596026732344,
+        "CAGR_pct": 32.13569352042016,
+        "Sharpe": 0.9297018317342769,
+        "Calmar": 0.9318478876464882,
+        "MaxDD_pct": -34.485986335799225,
+        "PF": 1.937834718989435,
+        "Trades": 56
+      },
+      "behavior": {
+        "avg_hold_4h_bars": 61.72953869047618,
+        "median_hold_4h_bars": 40.364583333333336,
+        "top10_winner_contrib_pct": 81.6041051212638,
+        "exit_mix": {
+          "TRAIL": 0.7142857142857143,
+          "SL": 0.2857142857142857
+        }
+      },
+      "buy_hold_delta": {
+        "return_vs_bh_pct": -389.6095137733086,
+        "cagr_vs_bh_pct": -11.59142785376794,
+        "sharpe_vs_bh": 0.17981184319250032,
+        "calmar_vs_bh": 0.36427287796386953
+      },
+      "delta_vs_base": {
+        "Return_pct": -3.9592563704574104,
+        "CAGR_pct": -0.14792977800625806,
+        "Sharpe": -0.0034789788027900226,
+        "Calmar": -0.004289562043138906,
+        "MaxDD_pct": 7.105427357601002e-15
+      },
+      "vs_buy_hold_change": {
+        "return_gap_change_pct": -3.9592563704574104,
+        "cagr_gap_change_pct": -0.14792977800625806,
+        "sharpe_edge_change": -0.0034789788027900226,
+        "calmar_edge_change": -0.004289562043138906,
+        "return_gap_shrinks": false,
+        "cagr_gap_shrinks": false,
+        "risk_adjusted_edge_kept": true
+      }
+    },
+    {
+      "label": "lb21_stop3.1_trail5.0_beoff",
+      "params": {
+        "candidate_name": "squeeze_release_20",
+        "description": "Squeeze release plus 20-bar breakout inside a bullish EMA200 regime, designed to enter expansion after compression.",
+        "breakout_mode": "squeeze_release",
+        "donchian_entry_len": 21,
+        "squeeze_threshold": 0.9,
+        "squeeze_bars": 6,
+        "ema_len": 200,
+        "ema_slope_len": 20,
+        "use_ema_slope": true,
+        "adx_period": 14,
+        "adx_min": 10.0,
+        "use_adx_filter": true,
+        "close_location_min": 0.6,
+        "range_atr_min": 0.55,
+        "volume_multiple": 1.0,
+        "structure_lookback": 20,
+        "initial_stop_atr": 3.1,
+        "trail_atr_mult": 5.0,
+        "trail_activate_atr": 2.5,
+        "swing_trail_lookback": 20,
+        "use_swing_trail": false,
+        "break_even_after_atr": 1000000000.0,
+        "position_pct": 100.0,
+        "init_equity": 10000.0,
+        "commission_pct": 0.06,
+        "entry_execution_mode": "next_bar_open",
+        "close_delay_bps": 8.0,
+        "intrabar_execution_model": "legacy_bar_extrema",
+        "intrabar_path_mode": "midpoint",
+        "slippage_fixed_bps": 5.0,
+        "slippage_breakout_extra_bps": 5.0,
+        "slippage_stop_extra_bps": 8.0,
+        "slippage_range_weight": 0.05,
+        "slippage_max_bps": 25.0,
+        "slippage_breakout_atr_threshold": 1.1,
+        "enable_daily_loss_limit": false,
+        "daily_loss_limit_pct": 1.5,
+        "cooldown_bars": 0
+      },
+      "stats": {
+        "Return_pct": 458.73757443214805,
+        "CAGR_pct": 31.841387315867276,
+        "Sharpe": 0.9271423496228823,
+        "Calmar": 0.923313806536348,
+        "MaxDD_pct": -34.48598633579923,
+        "PF": 1.9221681035391411,
+        "Trades": 56
+      },
+      "behavior": {
+        "avg_hold_4h_bars": 59.55617559523809,
+        "median_hold_4h_bars": 38.875,
+        "top10_winner_contrib_pct": 81.51126045038767,
+        "exit_mix": {
+          "TRAIL": 0.7142857142857143,
+          "SL": 0.2857142857142857
+        }
+      },
+      "buy_hold_delta": {
+        "return_vs_bh_pct": -397.417899608484,
+        "cagr_vs_bh_pct": -11.885734058320825,
+        "sharpe_vs_bh": 0.17725236108110576,
+        "calmar_vs_bh": 0.35573879685372933
+      },
+      "delta_vs_base": {
+        "Return_pct": -11.767642205632797,
+        "CAGR_pct": -0.44223598255914354,
+        "Sharpe": -0.006038460914184585,
+        "Calmar": -0.012823643153279107,
+        "MaxDD_pct": 0.0
+      },
+      "vs_buy_hold_change": {
+        "return_gap_change_pct": -11.767642205632797,
+        "cagr_gap_change_pct": -0.44223598255914354,
+        "sharpe_edge_change": -0.006038460914184585,
+        "calmar_edge_change": -0.012823643153279107,
+        "return_gap_shrinks": false,
+        "cagr_gap_shrinks": false,
+        "risk_adjusted_edge_kept": true
+      }
+    },
+    {
+      "label": "lb21_stop3.2_trail5.0_beoff",
+      "params": {
+        "candidate_name": "squeeze_release_20",
+        "description": "Squeeze release plus 20-bar breakout inside a bullish EMA200 regime, designed to enter expansion after compression.",
+        "breakout_mode": "squeeze_release",
+        "donchian_entry_len": 21,
+        "squeeze_threshold": 0.9,
+        "squeeze_bars": 6,
+        "ema_len": 200,
+        "ema_slope_len": 20,
+        "use_ema_slope": true,
+        "adx_period": 14,
+        "adx_min": 10.0,
+        "use_adx_filter": true,
+        "close_location_min": 0.6,
+        "range_atr_min": 0.55,
+        "volume_multiple": 1.0,
+        "structure_lookback": 20,
+        "initial_stop_atr": 3.2,
+        "trail_atr_mult": 5.0,
+        "trail_activate_atr": 2.5,
+        "swing_trail_lookback": 20,
+        "use_swing_trail": false,
+        "break_even_after_atr": 1000000000.0,
+        "position_pct": 100.0,
+        "init_equity": 10000.0,
+        "commission_pct": 0.06,
+        "entry_execution_mode": "next_bar_open",
+        "close_delay_bps": 8.0,
+        "intrabar_execution_model": "legacy_bar_extrema",
+        "intrabar_path_mode": "midpoint",
+        "slippage_fixed_bps": 5.0,
+        "slippage_breakout_extra_bps": 5.0,
+        "slippage_stop_extra_bps": 8.0,
+        "slippage_range_weight": 0.05,
+        "slippage_max_bps": 25.0,
+        "slippage_breakout_atr_threshold": 1.1,
+        "enable_daily_loss_limit": false,
+        "daily_loss_limit_pct": 1.5,
+        "cooldown_bars": 0
+      },
+      "stats": {
+        "Return_pct": 456.5194141682488,
+        "CAGR_pct": 31.75715308176439,
+        "Sharpe": 0.9251604406190889,
+        "Calmar": 0.9208712423804998,
+        "MaxDD_pct": -34.48598633579925,
+        "PF": 1.9151913411080017,
+        "Trades": 56
+      },
+      "behavior": {
+        "avg_hold_4h_bars": 59.57180059523809,
+        "median_hold_4h_bars": 38.875,
+        "top10_winner_contrib_pct": 81.51671904567287,
+        "exit_mix": {
+          "TRAIL": 0.7142857142857143,
+          "SL": 0.2857142857142857
+        }
+      },
+      "buy_hold_delta": {
+        "return_vs_bh_pct": -399.63605987238327,
+        "cagr_vs_bh_pct": -11.969968292423712,
+        "sharpe_vs_bh": 0.1752704520773123,
+        "calmar_vs_bh": 0.35329623269788113
+      },
+      "delta_vs_base": {
+        "Return_pct": -13.985802469532075,
+        "CAGR_pct": -0.5264702166620303,
+        "Sharpe": -0.008020369917978054,
+        "Calmar": -0.015266207309127311,
+        "MaxDD_pct": -1.4210854715202004e-14
+      },
+      "vs_buy_hold_change": {
+        "return_gap_change_pct": -13.985802469532075,
+        "cagr_gap_change_pct": -0.5264702166620303,
+        "sharpe_edge_change": -0.008020369917978054,
+        "calmar_edge_change": -0.015266207309127311,
+        "return_gap_shrinks": false,
+        "cagr_gap_shrinks": false,
+        "risk_adjusted_edge_kept": true
+      }
+    },
+    {
+      "label": "lb21_stop3.3_trail5.0_beoff",
+      "params": {
+        "candidate_name": "squeeze_release_20",
+        "description": "Squeeze release plus 20-bar breakout inside a bullish EMA200 regime, designed to enter expansion after compression.",
+        "breakout_mode": "squeeze_release",
+        "donchian_entry_len": 21,
+        "squeeze_threshold": 0.9,
+        "squeeze_bars": 6,
+        "ema_len": 200,
+        "ema_slope_len": 20,
+        "use_ema_slope": true,
+        "adx_period": 14,
+        "adx_min": 10.0,
+        "use_adx_filter": true,
+        "close_location_min": 0.6,
+        "range_atr_min": 0.55,
+        "volume_multiple": 1.0,
+        "structure_lookback": 20,
+        "initial_stop_atr": 3.3,
+        "trail_atr_mult": 5.0,
+        "trail_activate_atr": 2.5,
+        "swing_trail_lookback": 20,
+        "use_swing_trail": false,
+        "break_even_after_atr": 1000000000.0,
+        "position_pct": 100.0,
+        "init_equity": 10000.0,
+        "commission_pct": 0.06,
+        "entry_execution_mode": "next_bar_open",
+        "close_delay_bps": 8.0,
+        "intrabar_execution_model": "legacy_bar_extrema",
+        "intrabar_path_mode": "midpoint",
+        "slippage_fixed_bps": 5.0,
+        "slippage_breakout_extra_bps": 5.0,
+        "slippage_stop_extra_bps": 8.0,
+        "slippage_range_weight": 0.05,
+        "slippage_max_bps": 25.0,
+        "slippage_breakout_atr_threshold": 1.1,
+        "enable_daily_loss_limit": false,
+        "daily_loss_limit_pct": 1.5,
+        "cooldown_bars": 0
+      },
+      "stats": {
+        "Return_pct": 452.6572180452853,
+        "CAGR_pct": 31.609812043470086,
+        "Sharpe": 0.9216643716694091,
+        "Calmar": 0.9165987521910183,
+        "MaxDD_pct": -34.48598633579923,
+        "PF": 1.9060486255432214,
+        "Trades": 56
+      },
+      "behavior": {
+        "avg_hold_4h_bars": 59.577752976190474,
+        "median_hold_4h_bars": 38.875,
+        "top10_winner_contrib_pct": 81.5192161751926,
+        "exit_mix": {
+          "TRAIL": 0.7142857142857143,
+          "SL": 0.2857142857142857
+        }
+      },
+      "buy_hold_delta": {
+        "return_vs_bh_pct": -403.49825599534677,
+        "cagr_vs_bh_pct": -12.117309330718015,
+        "sharpe_vs_bh": 0.1717743831276325,
+        "calmar_vs_bh": 0.3490237425083996
+      },
+      "delta_vs_base": {
+        "Return_pct": -17.84799859249557,
+        "CAGR_pct": -0.673811254956334,
+        "Sharpe": -0.011516438867657852,
+        "Calmar": -0.019538697498608815,
+        "MaxDD_pct": 0.0
+      },
+      "vs_buy_hold_change": {
+        "return_gap_change_pct": -17.84799859249557,
+        "cagr_gap_change_pct": -0.673811254956334,
+        "sharpe_edge_change": -0.011516438867657852,
+        "calmar_edge_change": -0.019538697498608815,
+        "return_gap_shrinks": false,
+        "cagr_gap_shrinks": false,
+        "risk_adjusted_edge_kept": true
+      }
+    },
+    {
+      "label": "lb22_stop3.1_trail5.0_beoff",
+      "params": {
+        "candidate_name": "squeeze_release_20",
+        "description": "Squeeze release plus 20-bar breakout inside a bullish EMA200 regime, designed to enter expansion after compression.",
+        "breakout_mode": "squeeze_release",
+        "donchian_entry_len": 22,
+        "squeeze_threshold": 0.9,
+        "squeeze_bars": 6,
+        "ema_len": 200,
+        "ema_slope_len": 20,
+        "use_ema_slope": true,
+        "adx_period": 14,
+        "adx_min": 10.0,
+        "use_adx_filter": true,
+        "close_location_min": 0.6,
+        "range_atr_min": 0.55,
+        "volume_multiple": 1.0,
+        "structure_lookback": 20,
+        "initial_stop_atr": 3.1,
+        "trail_atr_mult": 5.0,
+        "trail_activate_atr": 2.5,
+        "swing_trail_lookback": 20,
+        "use_swing_trail": false,
+        "break_even_after_atr": 1000000000.0,
+        "position_pct": 100.0,
+        "init_equity": 10000.0,
+        "commission_pct": 0.06,
+        "entry_execution_mode": "next_bar_open",
+        "close_delay_bps": 8.0,
+        "intrabar_execution_model": "legacy_bar_extrema",
+        "intrabar_path_mode": "midpoint",
+        "slippage_fixed_bps": 5.0,
+        "slippage_breakout_extra_bps": 5.0,
+        "slippage_stop_extra_bps": 8.0,
+        "slippage_range_weight": 0.05,
+        "slippage_max_bps": 25.0,
+        "slippage_breakout_atr_threshold": 1.1,
+        "enable_daily_loss_limit": false,
+        "daily_loss_limit_pct": 1.5,
+        "cooldown_bars": 0
+      },
+      "stats": {
+        "Return_pct": 449.59960000682315,
+        "CAGR_pct": 31.49255110200533,
+        "Sharpe": 0.919513648661422,
+        "Calmar": 0.9131985031645609,
+        "MaxDD_pct": -34.485986335799204,
+        "PF": 1.9072936745962359,
+        "Trades": 56
+      },
+      "behavior": {
+        "avg_hold_4h_bars": 59.53831845238095,
+        "median_hold_4h_bars": 38.875,
+        "top10_winner_contrib_pct": 81.5471020463234,
+        "exit_mix": {
+          "TRAIL": 0.7142857142857143,
+          "SL": 0.2857142857142857
+        }
+      },
+      "buy_hold_delta": {
+        "return_vs_bh_pct": -406.5558740338089,
+        "cagr_vs_bh_pct": -12.234570272182772,
+        "sharpe_vs_bh": 0.16962366011964547,
+        "calmar_vs_bh": 0.3456234934819422
+      },
+      "delta_vs_base": {
+        "Return_pct": -20.905616630957695,
+        "CAGR_pct": -0.7910721964210907,
+        "Sharpe": -0.013667161875644873,
+        "Calmar": -0.02293894652506623,
+        "MaxDD_pct": 2.842170943040401e-14
+      },
+      "vs_buy_hold_change": {
+        "return_gap_change_pct": -20.905616630957695,
+        "cagr_gap_change_pct": -0.7910721964210907,
+        "sharpe_edge_change": -0.013667161875644873,
+        "calmar_edge_change": -0.02293894652506623,
+        "return_gap_shrinks": false,
+        "cagr_gap_shrinks": false,
+        "risk_adjusted_edge_kept": true
+      }
+    },
+    {
+      "label": "lb22_stop3.2_trail5.0_beoff",
+      "params": {
+        "candidate_name": "squeeze_release_20",
+        "description": "Squeeze release plus 20-bar breakout inside a bullish EMA200 regime, designed to enter expansion after compression.",
+        "breakout_mode": "squeeze_release",
+        "donchian_entry_len": 22,
+        "squeeze_threshold": 0.9,
+        "squeeze_bars": 6,
+        "ema_len": 200,
+        "ema_slope_len": 20,
+        "use_ema_slope": true,
+        "adx_period": 14,
+        "adx_min": 10.0,
+        "use_adx_filter": true,
+        "close_location_min": 0.6,
+        "range_atr_min": 0.55,
+        "volume_multiple": 1.0,
+        "structure_lookback": 20,
+        "initial_stop_atr": 3.2,
+        "trail_atr_mult": 5.0,
+        "trail_activate_atr": 2.5,
+        "swing_trail_lookback": 20,
+        "use_swing_trail": false,
+        "break_even_after_atr": 1000000000.0,
+        "position_pct": 100.0,
+        "init_equity": 10000.0,
+        "commission_pct": 0.06,
+        "entry_execution_mode": "next_bar_open",
+        "close_delay_bps": 8.0,
+        "intrabar_execution_model": "legacy_bar_extrema",
+        "intrabar_path_mode": "midpoint",
+        "slippage_fixed_bps": 5.0,
+        "slippage_breakout_extra_bps": 5.0,
+        "slippage_stop_extra_bps": 8.0,
+        "slippage_range_weight": 0.05,
+        "slippage_max_bps": 25.0,
+        "slippage_breakout_atr_threshold": 1.1,
+        "enable_daily_loss_limit": false,
+        "daily_loss_limit_pct": 1.5,
+        "cooldown_bars": 0
+      },
+      "stats": {
+        "Return_pct": 447.417717044989,
+        "CAGR_pct": 31.408539741401455,
+        "Sharpe": 0.9175325999580499,
+        "Calmar": 0.9107624017352485,
+        "MaxDD_pct": -34.48598633579921,
+        "PF": 1.9004470951878014,
+        "Trades": 56
+      },
+      "behavior": {
+        "avg_hold_4h_bars": 59.55394345238095,
+        "median_hold_4h_bars": 38.875,
+        "top10_winner_contrib_pct": 81.55256156391586,
+        "exit_mix": {
+          "TRAIL": 0.7142857142857143,
+          "SL": 0.2857142857142857
+        }
+      },
+      "buy_hold_delta": {
+        "return_vs_bh_pct": -408.73775699564305,
+        "cagr_vs_bh_pct": -12.318581632786646,
+        "sharpe_vs_bh": 0.16764261141627335,
+        "calmar_vs_bh": 0.3431873920526298
+      },
+      "delta_vs_base": {
+        "Return_pct": -23.087499592791858,
+        "CAGR_pct": -0.8750835570249649,
+        "Sharpe": -0.015648210579016997,
+        "Calmar": -0.025375047954378616,
+        "MaxDD_pct": 2.1316282072803006e-14
+      },
+      "vs_buy_hold_change": {
+        "return_gap_change_pct": -23.087499592791858,
+        "cagr_gap_change_pct": -0.8750835570249649,
+        "sharpe_edge_change": -0.015648210579016997,
+        "calmar_edge_change": -0.025375047954378616,
+        "return_gap_shrinks": false,
+        "cagr_gap_shrinks": false,
+        "risk_adjusted_edge_kept": true
+      }
+    },
+    {
+      "label": "lb22_stop3.3_trail5.0_beoff",
+      "params": {
+        "candidate_name": "squeeze_release_20",
+        "description": "Squeeze release plus 20-bar breakout inside a bullish EMA200 regime, designed to enter expansion after compression.",
+        "breakout_mode": "squeeze_release",
+        "donchian_entry_len": 22,
+        "squeeze_threshold": 0.9,
+        "squeeze_bars": 6,
+        "ema_len": 200,
+        "ema_slope_len": 20,
+        "use_ema_slope": true,
+        "adx_period": 14,
+        "adx_min": 10.0,
+        "use_adx_filter": true,
+        "close_location_min": 0.6,
+        "range_atr_min": 0.55,
+        "volume_multiple": 1.0,
+        "structure_lookback": 20,
+        "initial_stop_atr": 3.3,
+        "trail_atr_mult": 5.0,
+        "trail_activate_atr": 2.5,
+        "swing_trail_lookback": 20,
+        "use_swing_trail": false,
+        "break_even_after_atr": 1000000000.0,
+        "position_pct": 100.0,
+        "init_equity": 10000.0,
+        "commission_pct": 0.06,
+        "entry_execution_mode": "next_bar_open",
+        "close_delay_bps": 8.0,
+        "intrabar_execution_model": "legacy_bar_extrema",
+        "intrabar_path_mode": "midpoint",
+        "slippage_fixed_bps": 5.0,
+        "slippage_breakout_extra_bps": 5.0,
+        "slippage_stop_extra_bps": 8.0,
+        "slippage_range_weight": 0.05,
+        "slippage_max_bps": 25.0,
+        "slippage_breakout_atr_threshold": 1.1,
+        "enable_daily_loss_limit": false,
+        "daily_loss_limit_pct": 1.5,
+        "cooldown_bars": 0
+      },
+      "stats": {
+        "Return_pct": 443.6186859050382,
+        "CAGR_pct": 31.261588549505113,
+        "Sharpe": 0.9140383249459477,
+        "Calmar": 0.9065012160331655,
+        "MaxDD_pct": -34.48598633579921,
+        "PF": 1.8914529778913343,
+        "Trades": 56
+      },
+      "behavior": {
+        "avg_hold_4h_bars": 59.55989583333333,
+        "median_hold_4h_bars": 38.875,
+        "top10_winner_contrib_pct": 81.55501114560803,
+        "exit_mix": {
+          "TRAIL": 0.7142857142857143,
+          "SL": 0.2857142857142857
+        }
+      },
+      "buy_hold_delta": {
+        "return_vs_bh_pct": -412.53678813559384,
+        "cagr_vs_bh_pct": -12.465532824682988,
+        "sharpe_vs_bh": 0.16414833640417115,
+        "calmar_vs_bh": 0.3389262063505468
+      },
+      "delta_vs_base": {
+        "Return_pct": -26.886530732742642,
+        "CAGR_pct": -1.0220347489213069,
+        "Sharpe": -0.019142485591119196,
+        "Calmar": -0.02963623365646162,
+        "MaxDD_pct": 2.1316282072803006e-14
+      },
+      "vs_buy_hold_change": {
+        "return_gap_change_pct": -26.886530732742642,
+        "cagr_gap_change_pct": -1.0220347489213069,
+        "sharpe_edge_change": -0.019142485591119196,
+        "calmar_edge_change": -0.02963623365646162,
+        "return_gap_shrinks": false,
+        "cagr_gap_shrinks": false,
+        "risk_adjusted_edge_kept": true
+      }
+    },
+    {
+      "label": "lb20_stop3.1_trail5.2_beoff",
+      "params": {
+        "candidate_name": "squeeze_release_20",
+        "description": "Squeeze release plus 20-bar breakout inside a bullish EMA200 regime, designed to enter expansion after compression.",
+        "breakout_mode": "squeeze_release",
+        "donchian_entry_len": 20,
+        "squeeze_threshold": 0.9,
+        "squeeze_bars": 6,
+        "ema_len": 200,
+        "ema_slope_len": 20,
+        "use_ema_slope": true,
+        "adx_period": 14,
+        "adx_min": 10.0,
+        "use_adx_filter": true,
+        "close_location_min": 0.6,
+        "range_atr_min": 0.55,
+        "volume_multiple": 1.0,
+        "structure_lookback": 20,
+        "initial_stop_atr": 3.1,
+        "trail_atr_mult": 5.2,
+        "trail_activate_atr": 2.5,
+        "swing_trail_lookback": 20,
+        "use_swing_trail": false,
+        "break_even_after_atr": 1000000000.0,
+        "position_pct": 100.0,
+        "init_equity": 10000.0,
+        "commission_pct": 0.06,
+        "entry_execution_mode": "next_bar_open",
+        "close_delay_bps": 8.0,
+        "intrabar_execution_model": "legacy_bar_extrema",
+        "intrabar_path_mode": "midpoint",
+        "slippage_fixed_bps": 5.0,
+        "slippage_breakout_extra_bps": 5.0,
+        "slippage_stop_extra_bps": 8.0,
+        "slippage_range_weight": 0.05,
+        "slippage_max_bps": 25.0,
+        "slippage_breakout_atr_threshold": 1.1,
+        "enable_daily_loss_limit": false,
+        "daily_loss_limit_pct": 1.5,
+        "cooldown_bars": 0
+      },
+      "stats": {
+        "Return_pct": 409.2495338426442,
+        "CAGR_pct": 29.891441058096667,
+        "Sharpe": 0.8733698895721362,
+        "Calmar": 0.8551487402905004,
+        "MaxDD_pct": -34.95466887777011,
+        "PF": 1.8713846281020872,
+        "Trades": 56
+      },
+      "behavior": {
+        "avg_hold_4h_bars": 62.4140625,
+        "median_hold_4h_bars": 40.66666666666667,
+        "top10_winner_contrib_pct": 82.45402546952576,
+        "exit_mix": {
+          "TRAIL": 0.7142857142857143,
+          "SL": 0.2857142857142857
+        }
+      },
+      "buy_hold_delta": {
+        "return_vs_bh_pct": -446.90594019798783,
+        "cagr_vs_bh_pct": -13.835680316091434,
+        "sharpe_vs_bh": 0.12347990103035966,
+        "calmar_vs_bh": 0.2875737306078817
+      },
+      "delta_vs_base": {
+        "Return_pct": -61.255682795136636,
+        "CAGR_pct": -2.3921822403297526,
+        "Sharpe": -0.05981092096493068,
+        "Calmar": -0.08098870939912672,
+        "MaxDD_pct": -0.4686825419708782
+      },
+      "vs_buy_hold_change": {
+        "return_gap_change_pct": -61.255682795136636,
+        "cagr_gap_change_pct": -2.3921822403297526,
+        "sharpe_edge_change": -0.05981092096493068,
+        "calmar_edge_change": -0.08098870939912672,
+        "return_gap_shrinks": false,
+        "cagr_gap_shrinks": false,
+        "risk_adjusted_edge_kept": true
+      }
+    },
+    {
+      "label": "lb20_stop3.2_trail5.2_beoff",
+      "params": {
+        "candidate_name": "squeeze_release_20",
+        "description": "Squeeze release plus 20-bar breakout inside a bullish EMA200 regime, designed to enter expansion after compression.",
+        "breakout_mode": "squeeze_release",
+        "donchian_entry_len": 20,
+        "squeeze_threshold": 0.9,
+        "squeeze_bars": 6,
+        "ema_len": 200,
+        "ema_slope_len": 20,
+        "use_ema_slope": true,
+        "adx_period": 14,
+        "adx_min": 10.0,
+        "use_adx_filter": true,
+        "close_location_min": 0.6,
+        "range_atr_min": 0.55,
+        "volume_multiple": 1.0,
+        "structure_lookback": 20,
+        "initial_stop_atr": 3.2,
+        "trail_atr_mult": 5.2,
+        "trail_activate_atr": 2.5,
+        "swing_trail_lookback": 20,
+        "use_swing_trail": false,
+        "break_even_after_atr": 1000000000.0,
+        "position_pct": 100.0,
+        "init_equity": 10000.0,
+        "commission_pct": 0.06,
+        "entry_execution_mode": "next_bar_open",
+        "close_delay_bps": 8.0,
+        "intrabar_execution_model": "legacy_bar_extrema",
+        "intrabar_path_mode": "midpoint",
+        "slippage_fixed_bps": 5.0,
+        "slippage_breakout_extra_bps": 5.0,
+        "slippage_stop_extra_bps": 8.0,
+        "slippage_range_weight": 0.05,
+        "slippage_max_bps": 25.0,
+        "slippage_breakout_atr_threshold": 1.1,
+        "enable_daily_loss_limit": false,
+        "daily_loss_limit_pct": 1.5,
+        "cooldown_bars": 0
+      },
+      "stats": {
+        "Return_pct": 407.22783862816544,
+        "CAGR_pct": 29.808452656072106,
+        "Sharpe": 0.871430362599477,
+        "Calmar": 0.8527745681215472,
+        "MaxDD_pct": -34.954668877770125,
+        "PF": 1.864780431070196,
+        "Trades": 56
+      },
+      "behavior": {
+        "avg_hold_4h_bars": 62.4296875,
+        "median_hold_4h_bars": 40.66666666666667,
+        "top10_winner_contrib_pct": 82.45885995326422,
+        "exit_mix": {
+          "TRAIL": 0.7142857142857143,
+          "SL": 0.2857142857142857
+        }
+      },
+      "buy_hold_delta": {
+        "return_vs_bh_pct": -448.9276354124666,
+        "cagr_vs_bh_pct": -13.918668718115995,
+        "sharpe_vs_bh": 0.12154037405770046,
+        "calmar_vs_bh": 0.2851995584389285
+      },
+      "delta_vs_base": {
+        "Return_pct": -63.277378009615404,
+        "CAGR_pct": -2.475170642354314,
+        "Sharpe": -0.06175044793758988,
+        "Calmar": -0.08336288156807992,
+        "MaxDD_pct": -0.46868254197089243
+      },
+      "vs_buy_hold_change": {
+        "return_gap_change_pct": -63.277378009615404,
+        "cagr_gap_change_pct": -2.475170642354314,
+        "sharpe_edge_change": -0.06175044793758988,
+        "calmar_edge_change": -0.08336288156807992,
+        "return_gap_shrinks": false,
+        "cagr_gap_shrinks": false,
+        "risk_adjusted_edge_kept": true
+      }
+    },
+    {
+      "label": "lb20_stop3.3_trail5.2_beoff",
+      "params": {
+        "candidate_name": "squeeze_release_20",
+        "description": "Squeeze release plus 20-bar breakout inside a bullish EMA200 regime, designed to enter expansion after compression.",
+        "breakout_mode": "squeeze_release",
+        "donchian_entry_len": 20,
+        "squeeze_threshold": 0.9,
+        "squeeze_bars": 6,
+        "ema_len": 200,
+        "ema_slope_len": 20,
+        "use_ema_slope": true,
+        "adx_period": 14,
+        "adx_min": 10.0,
+        "use_adx_filter": true,
+        "close_location_min": 0.6,
+        "range_atr_min": 0.55,
+        "volume_multiple": 1.0,
+        "structure_lookback": 20,
+        "initial_stop_atr": 3.3,
+        "trail_atr_mult": 5.2,
+        "trail_activate_atr": 2.5,
+        "swing_trail_lookback": 20,
+        "use_swing_trail": false,
+        "break_even_after_atr": 1000000000.0,
+        "position_pct": 100.0,
+        "init_equity": 10000.0,
+        "commission_pct": 0.06,
+        "entry_execution_mode": "next_bar_open",
+        "close_delay_bps": 8.0,
+        "intrabar_execution_model": "legacy_bar_extrema",
+        "intrabar_path_mode": "midpoint",
+        "slippage_fixed_bps": 5.0,
+        "slippage_breakout_extra_bps": 5.0,
+        "slippage_stop_extra_bps": 8.0,
+        "slippage_range_weight": 0.05,
+        "slippage_max_bps": 25.0,
+        "slippage_breakout_atr_threshold": 1.1,
+        "enable_daily_loss_limit": false,
+        "daily_loss_limit_pct": 1.5,
+        "cooldown_bars": 0
+      },
+      "stats": {
+        "Return_pct": 403.7077217338849,
+        "CAGR_pct": 29.66329080530068,
+        "Sharpe": 0.8680114591303905,
+        "Calmar": 0.848621707990644,
+        "MaxDD_pct": -34.95466887777011,
+        "PF": 1.8560306950727676,
+        "Trades": 56
+      },
+      "behavior": {
+        "avg_hold_4h_bars": 62.43563988095237,
+        "median_hold_4h_bars": 40.66666666666667,
+        "top10_winner_contrib_pct": 82.46018519921283,
+        "exit_mix": {
+          "TRAIL": 0.7142857142857143,
+          "SL": 0.2857142857142857
+        }
+      },
+      "buy_hold_delta": {
+        "return_vs_bh_pct": -452.44775230674713,
+        "cagr_vs_bh_pct": -14.063830568887422,
+        "sharpe_vs_bh": 0.11812147058861389,
+        "calmar_vs_bh": 0.2810466983080253
+      },
+      "delta_vs_base": {
+        "Return_pct": -66.79749490389594,
+        "CAGR_pct": -2.6203324931257406,
+        "Sharpe": -0.06516935140667646,
+        "Calmar": -0.08751574169898313,
+        "MaxDD_pct": -0.4686825419708782
+      },
+      "vs_buy_hold_change": {
+        "return_gap_change_pct": -66.79749490389594,
+        "cagr_gap_change_pct": -2.6203324931257406,
+        "sharpe_edge_change": -0.06516935140667646,
+        "calmar_edge_change": -0.08751574169898313,
+        "return_gap_shrinks": false,
+        "cagr_gap_shrinks": false,
+        "risk_adjusted_edge_kept": true
+      }
+    },
+    {
+      "label": "lb21_stop3.1_trail5.2_beoff",
+      "params": {
+        "candidate_name": "squeeze_release_20",
+        "description": "Squeeze release plus 20-bar breakout inside a bullish EMA200 regime, designed to enter expansion after compression.",
+        "breakout_mode": "squeeze_release",
+        "donchian_entry_len": 21,
+        "squeeze_threshold": 0.9,
+        "squeeze_bars": 6,
+        "ema_len": 200,
+        "ema_slope_len": 20,
+        "use_ema_slope": true,
+        "adx_period": 14,
+        "adx_min": 10.0,
+        "use_adx_filter": true,
+        "close_location_min": 0.6,
+        "range_atr_min": 0.55,
+        "volume_multiple": 1.0,
+        "structure_lookback": 20,
+        "initial_stop_atr": 3.1,
+        "trail_atr_mult": 5.2,
+        "trail_activate_atr": 2.5,
+        "swing_trail_lookback": 20,
+        "use_swing_trail": false,
+        "break_even_after_atr": 1000000000.0,
+        "position_pct": 100.0,
+        "init_equity": 10000.0,
+        "commission_pct": 0.06,
+        "entry_execution_mode": "next_bar_open",
+        "close_delay_bps": 8.0,
+        "intrabar_execution_model": "legacy_bar_extrema",
+        "intrabar_path_mode": "midpoint",
+        "slippage_fixed_bps": 5.0,
+        "slippage_breakout_extra_bps": 5.0,
+        "slippage_stop_extra_bps": 8.0,
+        "slippage_range_weight": 0.05,
+        "slippage_max_bps": 25.0,
+        "slippage_breakout_atr_threshold": 1.1,
+        "enable_daily_loss_limit": false,
+        "daily_loss_limit_pct": 1.5,
+        "cooldown_bars": 0
+      },
+      "stats": {
+        "Return_pct": 398.03986669240385,
+        "CAGR_pct": 29.427761764422034,
+        "Sharpe": 0.8663022715956088,
+        "Calmar": 0.8418835797679952,
+        "MaxDD_pct": -34.95466887777011,
+        "PF": 1.8446949556215047,
+        "Trades": 56
+      },
+      "behavior": {
+        "avg_hold_4h_bars": 60.262276785714285,
+        "median_hold_4h_bars": 40.01041666666667,
+        "top10_winner_contrib_pct": 82.37975202822294,
+        "exit_mix": {
+          "TRAIL": 0.7142857142857143,
+          "SL": 0.2857142857142857
+        }
+      },
+      "buy_hold_delta": {
+        "return_vs_bh_pct": -458.1156073482282,
+        "cagr_vs_bh_pct": -14.299359609766068,
+        "sharpe_vs_bh": 0.11641228305383222,
+        "calmar_vs_bh": 0.27430857008537657
+      },
+      "delta_vs_base": {
+        "Return_pct": -72.465349945377,
+        "CAGR_pct": -2.8558615340043865,
+        "Sharpe": -0.06687853894145812,
+        "Calmar": -0.09425386992163187,
+        "MaxDD_pct": -0.4686825419708782
+      },
+      "vs_buy_hold_change": {
+        "return_gap_change_pct": -72.465349945377,
+        "cagr_gap_change_pct": -2.8558615340043865,
+        "sharpe_edge_change": -0.06687853894145812,
+        "calmar_edge_change": -0.09425386992163187,
+        "return_gap_shrinks": false,
+        "cagr_gap_shrinks": false,
+        "risk_adjusted_edge_kept": true
+      }
+    },
+    {
+      "label": "lb21_stop3.2_trail5.2_beoff",
+      "params": {
+        "candidate_name": "squeeze_release_20",
+        "description": "Squeeze release plus 20-bar breakout inside a bullish EMA200 regime, designed to enter expansion after compression.",
+        "breakout_mode": "squeeze_release",
+        "donchian_entry_len": 21,
+        "squeeze_threshold": 0.9,
+        "squeeze_bars": 6,
+        "ema_len": 200,
+        "ema_slope_len": 20,
+        "use_ema_slope": true,
+        "adx_period": 14,
+        "adx_min": 10.0,
+        "use_adx_filter": true,
+        "close_location_min": 0.6,
+        "range_atr_min": 0.55,
+        "volume_multiple": 1.0,
+        "structure_lookback": 20,
+        "initial_stop_atr": 3.2,
+        "trail_atr_mult": 5.2,
+        "trail_activate_atr": 2.5,
+        "swing_trail_lookback": 20,
+        "use_swing_trail": false,
+        "break_even_after_atr": 1000000000.0,
+        "position_pct": 100.0,
+        "init_equity": 10000.0,
+        "commission_pct": 0.06,
+        "entry_execution_mode": "next_bar_open",
+        "close_delay_bps": 8.0,
+        "intrabar_execution_model": "legacy_bar_extrema",
+        "intrabar_path_mode": "midpoint",
+        "slippage_fixed_bps": 5.0,
+        "slippage_breakout_extra_bps": 5.0,
+        "slippage_stop_extra_bps": 8.0,
+        "slippage_range_weight": 0.05,
+        "slippage_max_bps": 25.0,
+        "slippage_breakout_atr_threshold": 1.1,
+        "enable_daily_loss_limit": false,
+        "daily_loss_limit_pct": 1.5,
+        "cooldown_bars": 0
+      },
+      "stats": {
+        "Return_pct": 396.06267329663575,
+        "CAGR_pct": 29.34506960981238,
+        "Sharpe": 0.8643531659981005,
+        "Calmar": 0.8395178827877483,
+        "MaxDD_pct": -34.95466887777013,
+        "PF": 1.8383334436384786,
+        "Trades": 56
+      },
+      "behavior": {
+        "avg_hold_4h_bars": 60.277901785714285,
+        "median_hold_4h_bars": 40.01041666666667,
+        "top10_winner_contrib_pct": 82.38456110993414,
+        "exit_mix": {
+          "TRAIL": 0.7142857142857143,
+          "SL": 0.2857142857142857
+        }
+      },
+      "buy_hold_delta": {
+        "return_vs_bh_pct": -460.0928007439963,
+        "cagr_vs_bh_pct": -14.38205176437572,
+        "sharpe_vs_bh": 0.11446317745632395,
+        "calmar_vs_bh": 0.27194287310512966
+      },
+      "delta_vs_base": {
+        "Return_pct": -74.4425433411451,
+        "CAGR_pct": -2.9385536886140393,
+        "Sharpe": -0.06882764453896639,
+        "Calmar": -0.09661956690187878,
+        "MaxDD_pct": -0.46868254197089954
+      },
+      "vs_buy_hold_change": {
+        "return_gap_change_pct": -74.4425433411451,
+        "cagr_gap_change_pct": -2.9385536886140393,
+        "sharpe_edge_change": -0.06882764453896639,
+        "calmar_edge_change": -0.09661956690187878,
+        "return_gap_shrinks": false,
+        "cagr_gap_shrinks": false,
+        "risk_adjusted_edge_kept": true
+      }
+    },
+    {
+      "label": "lb21_stop3.3_trail5.2_beoff",
+      "params": {
+        "candidate_name": "squeeze_release_20",
+        "description": "Squeeze release plus 20-bar breakout inside a bullish EMA200 regime, designed to enter expansion after compression.",
+        "breakout_mode": "squeeze_release",
+        "donchian_entry_len": 21,
+        "squeeze_threshold": 0.9,
+        "squeeze_bars": 6,
+        "ema_len": 200,
+        "ema_slope_len": 20,
+        "use_ema_slope": true,
+        "adx_period": 14,
+        "adx_min": 10.0,
+        "use_adx_filter": true,
+        "close_location_min": 0.6,
+        "range_atr_min": 0.55,
+        "volume_multiple": 1.0,
+        "structure_lookback": 20,
+        "initial_stop_atr": 3.3,
+        "trail_atr_mult": 5.2,
+        "trail_activate_atr": 2.5,
+        "swing_trail_lookback": 20,
+        "use_swing_trail": false,
+        "break_even_after_atr": 1000000000.0,
+        "position_pct": 100.0,
+        "init_equity": 10000.0,
+        "commission_pct": 0.06,
+        "entry_execution_mode": "next_bar_open",
+        "close_delay_bps": 8.0,
+        "intrabar_execution_model": "legacy_bar_extrema",
+        "intrabar_path_mode": "midpoint",
+        "slippage_fixed_bps": 5.0,
+        "slippage_breakout_extra_bps": 5.0,
+        "slippage_stop_extra_bps": 8.0,
+        "slippage_range_weight": 0.05,
+        "slippage_max_bps": 25.0,
+        "slippage_breakout_atr_threshold": 1.1,
+        "enable_daily_loss_limit": false,
+        "daily_loss_limit_pct": 1.5,
+        "cooldown_bars": 0
+      },
+      "stats": {
+        "Return_pct": 392.6200416744906,
+        "CAGR_pct": 29.200425949799968,
+        "Sharpe": 0.8609174898804348,
+        "Calmar": 0.8353798473076185,
+        "MaxDD_pct": -34.954668877770125,
+        "PF": 1.8298797631600339,
+        "Trades": 56
+      },
+      "behavior": {
+        "avg_hold_4h_bars": 60.283854166666664,
+        "median_hold_4h_bars": 40.01041666666667,
+        "top10_winner_contrib_pct": 82.38586507770529,
+        "exit_mix": {
+          "TRAIL": 0.7142857142857143,
+          "SL": 0.2857142857142857
+        }
+      },
+      "buy_hold_delta": {
+        "return_vs_bh_pct": -463.53543236614144,
+        "cagr_vs_bh_pct": -14.526695424388134,
+        "sharpe_vs_bh": 0.11102750133865824,
+        "calmar_vs_bh": 0.26780483762499985
+      },
+      "delta_vs_base": {
+        "Return_pct": -77.88517496329024,
+        "CAGR_pct": -3.0831973486264523,
+        "Sharpe": -0.0722633206566321,
+        "Calmar": -0.1007576023820086,
+        "MaxDD_pct": -0.46868254197089243
+      },
+      "vs_buy_hold_change": {
+        "return_gap_change_pct": -77.88517496329024,
+        "cagr_gap_change_pct": -3.0831973486264523,
+        "sharpe_edge_change": -0.0722633206566321,
+        "calmar_edge_change": -0.1007576023820086,
+        "return_gap_shrinks": false,
+        "cagr_gap_shrinks": false,
+        "risk_adjusted_edge_kept": true
+      }
+    },
+    {
+      "label": "lb22_stop3.1_trail5.2_beoff",
+      "params": {
+        "candidate_name": "squeeze_release_20",
+        "description": "Squeeze release plus 20-bar breakout inside a bullish EMA200 regime, designed to enter expansion after compression.",
+        "breakout_mode": "squeeze_release",
+        "donchian_entry_len": 22,
+        "squeeze_threshold": 0.9,
+        "squeeze_bars": 6,
+        "ema_len": 200,
+        "ema_slope_len": 20,
+        "use_ema_slope": true,
+        "adx_period": 14,
+        "adx_min": 10.0,
+        "use_adx_filter": true,
+        "close_location_min": 0.6,
+        "range_atr_min": 0.55,
+        "volume_multiple": 1.0,
+        "structure_lookback": 20,
+        "initial_stop_atr": 3.1,
+        "trail_atr_mult": 5.2,
+        "trail_activate_atr": 2.5,
+        "swing_trail_lookback": 20,
+        "use_swing_trail": false,
+        "break_even_after_atr": 1000000000.0,
+        "position_pct": 100.0,
+        "init_equity": 10000.0,
+        "commission_pct": 0.06,
+        "entry_execution_mode": "next_bar_open",
+        "close_delay_bps": 8.0,
+        "intrabar_execution_model": "legacy_bar_extrema",
+        "intrabar_path_mode": "midpoint",
+        "slippage_fixed_bps": 5.0,
+        "slippage_breakout_extra_bps": 5.0,
+        "slippage_stop_extra_bps": 8.0,
+        "slippage_range_weight": 0.05,
+        "slippage_max_bps": 25.0,
+        "slippage_breakout_atr_threshold": 1.1,
+        "enable_daily_loss_limit": false,
+        "daily_loss_limit_pct": 1.5,
+        "cooldown_bars": 0
+      },
+      "stats": {
+        "Return_pct": 389.89456736358494,
+        "CAGR_pct": 29.08531101008036,
+        "Sharpe": 0.8587428867505023,
+        "Calmar": 0.8320865836774534,
+        "MaxDD_pct": -34.954668877770146,
+        "PF": 1.8301068009265693,
+        "Trades": 56
+      },
+      "behavior": {
+        "avg_hold_4h_bars": 60.244419642857146,
+        "median_hold_4h_bars": 40.01041666666667,
+        "top10_winner_contrib_pct": 82.39096399111564,
+        "exit_mix": {
+          "TRAIL": 0.7142857142857143,
+          "SL": 0.2857142857142857
+        }
+      },
+      "buy_hold_delta": {
+        "return_vs_bh_pct": -466.2609066770471,
+        "cagr_vs_bh_pct": -14.64181036410774,
+        "sharpe_vs_bh": 0.10885289820872568,
+        "calmar_vs_bh": 0.2645115739948347
+      },
+      "delta_vs_base": {
+        "Return_pct": -80.61064927419591,
+        "CAGR_pct": -3.1983122883460595,
+        "Sharpe": -0.07443792378656466,
+        "Calmar": -0.10405086601217373,
+        "MaxDD_pct": -0.46868254197091375
+      },
+      "vs_buy_hold_change": {
+        "return_gap_change_pct": -80.61064927419591,
+        "cagr_gap_change_pct": -3.1983122883460595,
+        "sharpe_edge_change": -0.07443792378656466,
+        "calmar_edge_change": -0.10405086601217373,
+        "return_gap_shrinks": false,
+        "cagr_gap_shrinks": false,
+        "risk_adjusted_edge_kept": true
+      }
+    },
+    {
+      "label": "lb22_stop3.2_trail5.2_beoff",
+      "params": {
+        "candidate_name": "squeeze_release_20",
+        "description": "Squeeze release plus 20-bar breakout inside a bullish EMA200 regime, designed to enter expansion after compression.",
+        "breakout_mode": "squeeze_release",
+        "donchian_entry_len": 22,
+        "squeeze_threshold": 0.9,
+        "squeeze_bars": 6,
+        "ema_len": 200,
+        "ema_slope_len": 20,
+        "use_ema_slope": true,
+        "adx_period": 14,
+        "adx_min": 10.0,
+        "use_adx_filter": true,
+        "close_location_min": 0.6,
+        "range_atr_min": 0.55,
+        "volume_multiple": 1.0,
+        "structure_lookback": 20,
+        "initial_stop_atr": 3.2,
+        "trail_atr_mult": 5.2,
+        "trail_activate_atr": 2.5,
+        "swing_trail_lookback": 20,
+        "use_swing_trail": false,
+        "break_even_after_atr": 1000000000.0,
+        "position_pct": 100.0,
+        "init_equity": 10000.0,
+        "commission_pct": 0.06,
+        "entry_execution_mode": "next_bar_open",
+        "close_delay_bps": 8.0,
+        "intrabar_execution_model": "legacy_bar_extrema",
+        "intrabar_path_mode": "midpoint",
+        "slippage_fixed_bps": 5.0,
+        "slippage_breakout_extra_bps": 5.0,
+        "slippage_stop_extra_bps": 8.0,
+        "slippage_range_weight": 0.05,
+        "slippage_max_bps": 25.0,
+        "slippage_breakout_atr_threshold": 1.1,
+        "enable_daily_loss_limit": false,
+        "daily_loss_limit_pct": 1.5,
+        "cooldown_bars": 0
+      },
+      "stats": {
+        "Return_pct": 387.94971039932824,
+        "CAGR_pct": 29.002837649262215,
+        "Sharpe": 0.8567946187869175,
+        "Calmar": 0.8297271460553568,
+        "MaxDD_pct": -34.95466887777013,
+        "PF": 1.8238685767418823,
+        "Trades": 56
+      },
+      "behavior": {
+        "avg_hold_4h_bars": 60.260044642857146,
+        "median_hold_4h_bars": 40.01041666666667,
+        "top10_winner_contrib_pct": 82.395755264859,
+        "exit_mix": {
+          "TRAIL": 0.7142857142857143,
+          "SL": 0.2857142857142857
+        }
+      },
+      "buy_hold_delta": {
+        "return_vs_bh_pct": -468.2057636413038,
+        "cagr_vs_bh_pct": -14.724283724925886,
+        "sharpe_vs_bh": 0.10690463024514096,
+        "calmar_vs_bh": 0.26215213637273815
+      },
+      "delta_vs_base": {
+        "Return_pct": -82.55550623845261,
+        "CAGR_pct": -3.280785649164205,
+        "Sharpe": -0.07638619175014938,
+        "Calmar": -0.10641030363427029,
+        "MaxDD_pct": -0.46868254197089954
+      },
+      "vs_buy_hold_change": {
+        "return_gap_change_pct": -82.55550623845261,
+        "cagr_gap_change_pct": -3.280785649164205,
+        "sharpe_edge_change": -0.07638619175014938,
+        "calmar_edge_change": -0.10641030363427029,
+        "return_gap_shrinks": false,
+        "cagr_gap_shrinks": false,
+        "risk_adjusted_edge_kept": true
+      }
+    },
+    {
+      "label": "lb22_stop3.3_trail5.2_beoff",
+      "params": {
+        "candidate_name": "squeeze_release_20",
+        "description": "Squeeze release plus 20-bar breakout inside a bullish EMA200 regime, designed to enter expansion after compression.",
+        "breakout_mode": "squeeze_release",
+        "donchian_entry_len": 22,
+        "squeeze_threshold": 0.9,
+        "squeeze_bars": 6,
+        "ema_len": 200,
+        "ema_slope_len": 20,
+        "use_ema_slope": true,
+        "adx_period": 14,
+        "adx_min": 10.0,
+        "use_adx_filter": true,
+        "close_location_min": 0.6,
+        "range_atr_min": 0.55,
+        "volume_multiple": 1.0,
+        "structure_lookback": 20,
+        "initial_stop_atr": 3.3,
+        "trail_atr_mult": 5.2,
+        "trail_activate_atr": 2.5,
+        "swing_trail_lookback": 20,
+        "use_swing_trail": false,
+        "break_even_after_atr": 1000000000.0,
+        "position_pct": 100.0,
+        "init_equity": 10000.0,
+        "commission_pct": 0.06,
+        "entry_execution_mode": "next_bar_open",
+        "close_delay_bps": 8.0,
+        "intrabar_execution_model": "legacy_bar_extrema",
+        "intrabar_path_mode": "midpoint",
+        "slippage_fixed_bps": 5.0,
+        "slippage_breakout_extra_bps": 5.0,
+        "slippage_stop_extra_bps": 8.0,
+        "slippage_range_weight": 0.05,
+        "slippage_max_bps": 25.0,
+        "slippage_breakout_atr_threshold": 1.1,
+        "enable_daily_loss_limit": false,
+        "daily_loss_limit_pct": 1.5,
+        "cooldown_bars": 0
+      },
+      "stats": {
+        "Return_pct": 384.56338203103246,
+        "CAGR_pct": 28.858576699495366,
+        "Sharpe": 0.8533606892232306,
+        "Calmar": 0.8256000593342296,
+        "MaxDD_pct": -34.954668877770125,
+        "PF": 1.8155580088717693,
+        "Trades": 56
+      },
+      "behavior": {
+        "avg_hold_4h_bars": 60.26599702380952,
+        "median_hold_4h_bars": 40.01041666666667,
+        "top10_winner_contrib_pct": 82.39699536889364,
+        "exit_mix": {
+          "TRAIL": 0.7142857142857143,
+          "SL": 0.2857142857142857
+        }
+      },
+      "buy_hold_delta": {
+        "return_vs_bh_pct": -471.5920920095996,
+        "cagr_vs_bh_pct": -14.868544674692735,
+        "sharpe_vs_bh": 0.10347070068145403,
+        "calmar_vs_bh": 0.258025049651611
+      },
+      "delta_vs_base": {
+        "Return_pct": -85.94183460674839,
+        "CAGR_pct": -3.425046598931054,
+        "Sharpe": -0.07982012131383631,
+        "Calmar": -0.11053739035539745,
+        "MaxDD_pct": -0.46868254197089243
+      },
+      "vs_buy_hold_change": {
+        "return_gap_change_pct": -85.94183460674839,
+        "cagr_gap_change_pct": -3.425046598931054,
+        "sharpe_edge_change": -0.07982012131383631,
+        "calmar_edge_change": -0.11053739035539745,
+        "return_gap_shrinks": false,
+        "cagr_gap_shrinks": false,
+        "risk_adjusted_edge_kept": true
+      }
+    }
+  ],
+  "best_raw_non_base": {
+    "label": "lb20_stop3.1_trail5.0_beoff",
+    "params": {
+      "candidate_name": "squeeze_release_20",
+      "description": "Squeeze release plus 20-bar breakout inside a bullish EMA200 regime, designed to enter expansion after compression.",
+      "breakout_mode": "squeeze_release",
+      "donchian_entry_len": 20,
+      "squeeze_threshold": 0.9,
+      "squeeze_bars": 6,
+      "ema_len": 200,
+      "ema_slope_len": 20,
+      "use_ema_slope": true,
+      "adx_period": 14,
+      "adx_min": 10.0,
+      "use_adx_filter": true,
+      "close_location_min": 0.6,
+      "range_atr_min": 0.55,
+      "volume_multiple": 1.0,
+      "structure_lookback": 20,
+      "initial_stop_atr": 3.1,
+      "trail_atr_mult": 5.0,
+      "trail_activate_atr": 2.5,
+      "swing_trail_lookback": 20,
+      "use_swing_trail": false,
+      "break_even_after_atr": 1000000000.0,
+      "position_pct": 100.0,
+      "init_equity": 10000.0,
+      "commission_pct": 0.06,
+      "entry_execution_mode": "next_bar_open",
+      "close_delay_bps": 8.0,
+      "intrabar_execution_model": "legacy_bar_extrema",
+      "intrabar_path_mode": "midpoint",
+      "slippage_fixed_bps": 5.0,
+      "slippage_breakout_extra_bps": 5.0,
+      "slippage_stop_extra_bps": 8.0,
+      "slippage_range_weight": 0.05,
+      "slippage_max_bps": 25.0,
+      "slippage_breakout_atr_threshold": 1.1,
+      "enable_daily_loss_limit": false,
+      "daily_loss_limit_pct": 1.5,
+      "cooldown_bars": 0
+    },
+    "stats": {
+      "Return_pct": 472.77912114079726,
+      "CAGR_pct": 32.36819411247536,
+      "Sharpe": 0.9351529547506587,
+      "Calmar": 0.9385897737503475,
+      "MaxDD_pct": -34.48598633579921,
+      "PF": 1.9546342335510416,
+      "Trades": 56
+    },
+    "behavior": {
+      "avg_hold_4h_bars": 61.7079613095238,
+      "median_hold_4h_bars": 40.364583333333336,
+      "top10_winner_contrib_pct": 81.59608638306405,
+      "exit_mix": {
+        "TRAIL": 0.7142857142857143,
+        "SL": 0.2857142857142857
+      }
+    },
+    "buy_hold_delta": {
+      "return_vs_bh_pct": -383.3763528998348,
+      "cagr_vs_bh_pct": -11.358927261712743,
+      "sharpe_vs_bh": 0.18526296620888216,
+      "calmar_vs_bh": 0.3710147640677288
+    },
+    "delta_vs_base": {
+      "Return_pct": 2.2739045030164107,
+      "CAGR_pct": 0.08457081404893785,
+      "Sharpe": 0.00197214421359182,
+      "Calmar": 0.002452324060720379,
+      "MaxDD_pct": 2.1316282072803006e-14
+    },
+    "vs_buy_hold_change": {
+      "return_gap_change_pct": 2.2739045030164107,
+      "cagr_gap_change_pct": 0.08457081404893785,
+      "sharpe_edge_change": 0.00197214421359182,
+      "calmar_edge_change": 0.002452324060720379,
+      "return_gap_shrinks": true,
+      "cagr_gap_shrinks": true,
+      "risk_adjusted_edge_kept": true
+    }
+  },
+  "gate_checks": {
+    "lb20_stop3.1_trail5.0_beoff": {
+      "full_size": {
+        "gate_summary": {
+          "baseline_gate": false,
+          "yearly": true,
+          "rolling_oos": true,
+          "regime": true,
+          "cost_stress": true,
+          "slippage_stress": true,
+          "execution_mode_stress": true,
+          "intrabar_path_stress": true,
+          "live_safety_check": true
+        },
+        "final_pass": false,
+        "baseline_gate": {
+          "Sharpe": 0.9351529547506587,
+          "MaxDD_pct": -0.3448598633579921,
+          "ProfitFactor": 1.9546342335510416,
+          "Trades": 56,
+          "pass": false
+        },
+        "trend_gate_mismatch": {
+          "likely_trade_count_mismatch": false,
+          "comment": "No obvious gate mismatch detected."
+        },
+        "key_rows": {
+          "yearly": {
+            "rows": [
+              {
+                "year": 2020,
+                "Return_pct": 140.04876686662215,
+                "Sharpe": 2.089288327643737,
+                "MaxDD_pct": -0.3233998436743013,
+                "Trades": 12
+              },
+              {
+                "year": 2021,
+                "Return_pct": 48.80991003824271,
+                "Sharpe": 0.8689227368938572,
+                "MaxDD_pct": -0.26778854206653957,
+                "Trades": 7
+              },
+              {
+                "year": 2022,
+                "Return_pct": -2.476501610713344,
+                "Sharpe": -0.11012928868615497,
+                "MaxDD_pct": -0.09865595505070557,
+                "Trades": 3
+              },
+              {
+                "year": 2023,
+                "Return_pct": 38.952295298384556,
+                "Sharpe": 1.2427956491445444,
+                "MaxDD_pct": -0.17643143905803105,
+                "Trades": 9
+              },
+              {
+                "year": 2024,
+                "Return_pct": 20.086039423370615,
+                "Sharpe": 0.6146241485823265,
+                "MaxDD_pct": -0.3448598633579937,
+                "Trades": 12
+              },
+              {
+                "year": 2025,
+                "Return_pct": 11.743422614813227,
+                "Sharpe": 0.5580013767337769,
+                "MaxDD_pct": -0.16760782344503344,
+                "Trades": 10
+              },
+              {
+                "year": 2026,
+                "Return_pct": 1.410576493176996,
+                "Sharpe": 0.5249605623416376,
+                "MaxDD_pct": -0.04315885712306733,
+                "Trades": 1
+              }
+            ],
+            "positive_ratio": 0.8571428571428571,
+            "avg_sharpe": 0.826923358950532,
+            "worst_return_pct": -2.476501610713344,
+            "pass": true
+          },
+          "rolling_oos": {
+            "rows": [
+              {
+                "oos_year": 2021,
+                "Return_pct": 48.80991003824271,
+                "Sharpe": 0.8689227368938572,
+                "Trades": 7
+              },
+              {
+                "oos_year": 2022,
+                "Return_pct": -2.476501610713344,
+                "Sharpe": -0.11012928868615497,
+                "Trades": 3
+              },
+              {
+                "oos_year": 2023,
+                "Return_pct": 38.952295298384556,
+                "Sharpe": 1.2427956491445444,
+                "Trades": 9
+              },
+              {
+                "oos_year": 2024,
+                "Return_pct": 20.086039423370615,
+                "Sharpe": 0.6146241485823265,
+                "Trades": 12
+              },
+              {
+                "oos_year": 2025,
+                "Return_pct": 11.743422614813227,
+                "Sharpe": 0.5580013767337769,
+                "Trades": 10
+              },
+              {
+                "oos_year": 2026,
+                "Return_pct": 1.410576493176996,
+                "Sharpe": 0.5249605623416376,
+                "Trades": 1
+              }
+            ],
+            "avg_sharpe": 0.6165291975016647,
+            "positive_ratio": 0.8333333333333334,
+            "pass": true
+          },
+          "regime": {
+            "rows": [
+              {
+                "regime": "bull_2020_2021",
+                "Return_pct": 238.02772969781728,
+                "Sharpe": 1.46156307801086,
+                "MaxDD_pct": -0.33661076555855485,
+                "Trades": 20
+              },
+              {
+                "regime": "bear_2022",
+                "Return_pct": -2.476501610713344,
+                "Sharpe": -0.11012928868615497,
+                "MaxDD_pct": -0.09865595505070557,
+                "Trades": 3
+              },
+              {
+                "regime": "mixed_2023_2025",
+                "Return_pct": 75.12846456164336,
+                "Sharpe": 0.7303791237196546,
+                "MaxDD_pct": -0.34485986335799235,
+                "Trades": 31
+              }
+            ],
+            "pass": true
+          },
+          "cost_stress": {
+            "rows": [
+              {
+                "commission_pct": 0.06,
+                "Return_pct": 472.77912114079726,
+                "Sharpe": 0.9351529547506587,
+                "MaxDD_pct": -0.3448598633579921
+              },
+              {
+                "commission_pct": 0.1,
+                "Return_pct": 447.95203820819535,
+                "Sharpe": 0.9132710271862153,
+                "MaxDD_pct": -0.3475842247411538
+              },
+              {
+                "commission_pct": 0.15,
+                "Return_pct": 418.40031490788607,
+                "Sharpe": 0.8859711754184045,
+                "MaxDD_pct": -0.35097680226785466
+              },
+              {
+                "commission_pct": 0.2,
+                "Return_pct": 390.4153253793649,
+                "Sharpe": 0.8587335768268044,
+                "MaxDD_pct": -0.35435511788628216
+              }
+            ],
+            "pass": true
+          },
+          "slippage_stress": {
+            "rows": [
+              {
+                "scenario": "default",
+                "Return_pct": 472.77912114079726,
+                "Sharpe": 0.9351529547506587,
+                "MaxDD_pct": -0.3448598633579921
+              },
+              {
+                "scenario": "stress_1",
+                "Return_pct": 425.2513551909988,
+                "Sharpe": 0.8930498010092102,
+                "MaxDD_pct": -0.3495698394325433
+              },
+              {
+                "scenario": "stress_2",
+                "Return_pct": 373.1886830084194,
+                "Sharpe": 0.8422552663817496,
+                "MaxDD_pct": -0.35573959418302936
+              }
+            ],
+            "pass": true
+          },
+          "execution_mode_stress": {
+            "rows": [
+              {
+                "mode": "next_bar_open",
+                "Return_pct": 472.77912114079726,
+                "Sharpe": 0.9351529547506587,
+                "MaxDD_pct": -0.3448598633579921
+              },
+              {
+                "mode": "live_runner_next_5m_close",
+                "Return_pct": 478.0164738678245,
+                "Sharpe": 0.9401613606659874,
+                "MaxDD_pct": -0.34286322350860343
+              }
+            ],
+            "pass": true
+          },
+          "intrabar_path_stress": {
+            "rows": [
+              {
+                "scenario": "default",
+                "Return_pct": 472.77912114079726,
+                "Sharpe": 0.9351529547506587,
+                "MaxDD_pct": -0.3448598633579921
+              },
+              {
+                "scenario": "stress",
+                "Return_pct": 478.0164738678245,
+                "Sharpe": 0.9401613606659874,
+                "MaxDD_pct": -0.34286322350860343
+              }
+            ],
+            "pass": true
+          },
+          "live_safety_check": {
+            "has_protection_interface": true,
+            "paper_protection_roundtrip": true,
+            "state_has_protection_bucket": true,
+            "state_has_strategy_targets": true,
+            "runner_has_native_protection_sync": true,
+            "runner_has_kill_switch_mode": true,
+            "reconcile_detects_missing_protection": true,
+            "pass": true
+          }
+        }
+      },
+      "launch_35pct": {
+        "gate_summary": {
+          "baseline_gate": false,
+          "yearly": true,
+          "rolling_oos": true,
+          "regime": true,
+          "cost_stress": true,
+          "slippage_stress": true,
+          "execution_mode_stress": true,
+          "intrabar_path_stress": true,
+          "live_safety_check": true
+        },
+        "final_pass": false,
+        "baseline_gate": {
+          "Sharpe": 0.9274953753597723,
+          "MaxDD_pct": -0.14723986373007902,
+          "ProfitFactor": 2.3842584751971967,
+          "Trades": 56,
+          "pass": false
+        },
+        "trend_gate_mismatch": {
+          "likely_trade_count_mismatch": true,
+          "comment": "Legacy baseline_gate trade threshold may be too high for a low-frequency trend mother."
+        },
+        "key_rows": {
+          "yearly": {
+            "rows": [
+              {
+                "year": 2020,
+                "Return_pct": 42.244965714771546,
+                "Sharpe": 2.052228175808804,
+                "MaxDD_pct": -0.1316872870790251,
+                "Trades": 12
+              },
+              {
+                "year": 2021,
+                "Return_pct": 16.249199549458847,
+                "Sharpe": 0.7974539099180142,
+                "MaxDD_pct": -0.09701991813328681,
+                "Trades": 7
+              },
+              {
+                "year": 2022,
+                "Return_pct": -0.7616672885174869,
+                "Sharpe": -0.12148758516054754,
+                "MaxDD_pct": -0.03684834725995689,
+                "Trades": 3
+              },
+              {
+                "year": 2023,
+                "Return_pct": 13.693561936937648,
+                "Sharpe": 1.2388271262041062,
+                "MaxDD_pct": -0.06522187608320895,
+                "Trades": 9
+              },
+              {
+                "year": 2024,
+                "Return_pct": 9.261032090779842,
+                "Sharpe": 0.6803074633475841,
+                "MaxDD_pct": -0.14228921038126097,
+                "Trades": 12
+              },
+              {
+                "year": 2025,
+                "Return_pct": 4.236483344901609,
+                "Sharpe": 0.523940267850701,
+                "MaxDD_pct": -0.06307332062959026,
+                "Trades": 10
+              },
+              {
+                "year": 2026,
+                "Return_pct": 0.49370177261194303,
+                "Sharpe": 0.48879979867278694,
+                "MaxDD_pct": -0.015237863038292554,
+                "Trades": 1
+              }
+            ],
+            "positive_ratio": 0.8571428571428571,
+            "avg_sharpe": 0.8085813080916356,
+            "worst_return_pct": -0.7616672885174869,
+            "pass": true
+          },
+          "rolling_oos": {
+            "rows": [
+              {
+                "oos_year": 2021,
+                "Return_pct": 16.249199549458847,
+                "Sharpe": 0.7974539099180142,
+                "Trades": 7
+              },
+              {
+                "oos_year": 2022,
+                "Return_pct": -0.7616672885174869,
+                "Sharpe": -0.12148758516054754,
+                "Trades": 3
+              },
+              {
+                "oos_year": 2023,
+                "Return_pct": 13.693561936937648,
+                "Sharpe": 1.2388271262041062,
+                "Trades": 9
+              },
+              {
+                "oos_year": 2024,
+                "Return_pct": 9.261032090779842,
+                "Sharpe": 0.6803074633475841,
+                "Trades": 12
+              },
+              {
+                "oos_year": 2025,
+                "Return_pct": 4.236483344901609,
+                "Sharpe": 0.523940267850701,
+                "Trades": 10
+              },
+              {
+                "oos_year": 2026,
+                "Return_pct": 0.49370177261194303,
+                "Sharpe": 0.48879979867278694,
+                "Trades": 1
+              }
+            ],
+            "avg_sharpe": 0.6013068301387742,
+            "positive_ratio": 0.8333333333333334,
+            "pass": true
+          },
+          "regime": {
+            "rows": [
+              {
+                "regime": "bull_2020_2021",
+                "Return_pct": 63.37437607508012,
+                "Sharpe": 1.4120508239653158,
+                "MaxDD_pct": -0.14723986373007913,
+                "Trades": 20
+              },
+              {
+                "regime": "bear_2022",
+                "Return_pct": -0.7616672885174869,
+                "Sharpe": -0.12148758516054754,
+                "MaxDD_pct": -0.03684834725995689,
+                "Trades": 3
+              },
+              {
+                "regime": "mixed_2023_2025",
+                "Return_pct": 26.659148801756594,
+                "Sharpe": 0.7546930080734262,
+                "MaxDD_pct": -0.14228921038126008,
+                "Trades": 31
+              }
+            ],
+            "pass": true
+          },
+          "cost_stress": {
+            "rows": [
+              {
+                "commission_pct": 0.06,
+                "Return_pct": 104.84118367745899,
+                "Sharpe": 0.9274953753597723,
+                "MaxDD_pct": -0.14723986373007902
+              },
+              {
+                "commission_pct": 0.1,
+                "Return_pct": 101.63617960023372,
+                "Sharpe": 0.9068934513586244,
+                "MaxDD_pct": -0.14776001082037238
+              },
+              {
+                "commission_pct": 0.15,
+                "Return_pct": 97.69911518008566,
+                "Sharpe": 0.8811860415606676,
+                "MaxDD_pct": -0.14840995725688677
+              },
+              {
+                "commission_pct": 0.2,
+                "Return_pct": 93.8375773930011,
+                "Sharpe": 0.8555318038110447,
+                "MaxDD_pct": -0.14905963989692583
+              }
+            ],
+            "pass": true
+          },
+          "slippage_stress": {
+            "rows": [
+              {
+                "scenario": "default",
+                "Return_pct": 104.84118367745899,
+                "Sharpe": 0.9274953753597723,
+                "MaxDD_pct": -0.14723986373007902
+              },
+              {
+                "scenario": "stress_1",
+                "Return_pct": 98.60821188433555,
+                "Sharpe": 0.8879570664707351,
+                "MaxDD_pct": -0.14800212048384598
+              },
+              {
+                "scenario": "stress_2",
+                "Return_pct": 91.33151902680845,
+                "Sharpe": 0.8399821990652747,
+                "MaxDD_pct": -0.14918850550877283
+              }
+            ],
+            "pass": true
+          },
+          "execution_mode_stress": {
+            "rows": [
+              {
+                "mode": "next_bar_open",
+                "Return_pct": 104.84118367745899,
+                "Sharpe": 0.9274953753597723,
+                "MaxDD_pct": -0.14723986373007902
+              },
+              {
+                "mode": "live_runner_next_5m_close",
+                "Return_pct": 105.56131627101668,
+                "Sharpe": 0.9322384291263809,
+                "MaxDD_pct": -0.1450683581077835
+              }
+            ],
+            "pass": true
+          },
+          "intrabar_path_stress": {
+            "rows": [
+              {
+                "scenario": "default",
+                "Return_pct": 104.84118367745899,
+                "Sharpe": 0.9274953753597723,
+                "MaxDD_pct": -0.14723986373007902
+              },
+              {
+                "scenario": "stress",
+                "Return_pct": 105.56131627101668,
+                "Sharpe": 0.9322384291263809,
+                "MaxDD_pct": -0.1450683581077835
+              }
+            ],
+            "pass": true
+          },
+          "live_safety_check": {
+            "has_protection_interface": true,
+            "paper_protection_roundtrip": true,
+            "state_has_protection_bucket": true,
+            "state_has_strategy_targets": true,
+            "runner_has_native_protection_sync": true,
+            "runner_has_kill_switch_mode": true,
+            "reconcile_detects_missing_protection": true,
+            "pass": true
+          }
+        }
+      }
+    },
+    "lb20_stop3.3_trail5.0_beoff": {
+      "full_size": {
+        "gate_summary": {
+          "baseline_gate": false,
+          "yearly": true,
+          "rolling_oos": true,
+          "regime": true,
+          "cost_stress": true,
+          "slippage_stress": true,
+          "execution_mode_stress": true,
+          "intrabar_path_stress": true,
+          "live_safety_check": true
+        },
+        "final_pass": false,
+        "baseline_gate": {
+          "Sharpe": 0.9297018317342769,
+          "MaxDD_pct": -0.34485986335799224,
+          "ProfitFactor": 1.937834718989435,
+          "Trades": 56,
+          "pass": false
+        },
+        "trend_gate_mismatch": {
+          "likely_trade_count_mismatch": false,
+          "comment": "No obvious gate mismatch detected."
+        },
+        "key_rows": {
+          "yearly": {
+            "rows": [
+              {
+                "year": 2020,
+                "Return_pct": 140.04876686662215,
+                "Sharpe": 2.089288327643737,
+                "MaxDD_pct": -0.3233998436743013,
+                "Trades": 12
+              },
+              {
+                "year": 2021,
+                "Return_pct": 48.80991003824271,
+                "Sharpe": 0.8689227368938572,
+                "MaxDD_pct": -0.26778854206653957,
+                "Trades": 7
+              },
+              {
+                "year": 2022,
+                "Return_pct": -2.476501610713344,
+                "Sharpe": -0.11012928868615497,
+                "MaxDD_pct": -0.09865595505070557,
+                "Trades": 3
+              },
+              {
+                "year": 2023,
+                "Return_pct": 38.51573989955001,
+                "Sharpe": 1.2282855926822371,
+                "MaxDD_pct": -0.17901889758699996,
+                "Trades": 9
+              },
+              {
+                "year": 2024,
+                "Return_pct": 20.086039423370615,
+                "Sharpe": 0.6146241485823265,
+                "MaxDD_pct": -0.3448598633579937,
+                "Trades": 12
+              },
+              {
+                "year": 2025,
+                "Return_pct": 11.162409568055898,
+                "Sharpe": 0.5353225938289714,
+                "MaxDD_pct": -0.17057414482300604,
+                "Trades": 10
+              },
+              {
+                "year": 2026,
+                "Return_pct": 1.410576493176996,
+                "Sharpe": 0.5249605623416376,
+                "MaxDD_pct": -0.04315885712306733,
+                "Trades": 1
+              }
+            ],
+            "positive_ratio": 0.8571428571428571,
+            "avg_sharpe": 0.821610667612373,
+            "worst_return_pct": -2.476501610713344,
+            "pass": true
+          },
+          "rolling_oos": {
+            "rows": [
+              {
+                "oos_year": 2021,
+                "Return_pct": 48.80991003824271,
+                "Sharpe": 0.8689227368938572,
+                "Trades": 7
+              },
+              {
+                "oos_year": 2022,
+                "Return_pct": -2.476501610713344,
+                "Sharpe": -0.11012928868615497,
+                "Trades": 3
+              },
+              {
+                "oos_year": 2023,
+                "Return_pct": 38.51573989955001,
+                "Sharpe": 1.2282855926822371,
+                "Trades": 9
+              },
+              {
+                "oos_year": 2024,
+                "Return_pct": 20.086039423370615,
+                "Sharpe": 0.6146241485823265,
+                "Trades": 12
+              },
+              {
+                "oos_year": 2025,
+                "Return_pct": 11.162409568055898,
+                "Sharpe": 0.5353225938289714,
+                "Trades": 10
+              },
+              {
+                "oos_year": 2026,
+                "Return_pct": 1.410576493176996,
+                "Sharpe": 0.5249605623416376,
+                "Trades": 1
+              }
+            ],
+            "avg_sharpe": 0.6103310576071458,
+            "positive_ratio": 0.8333333333333334,
+            "pass": true
+          },
+          "regime": {
+            "rows": [
+              {
+                "regime": "bull_2020_2021",
+                "Return_pct": 237.1560158847858,
+                "Sharpe": 1.4587276577769088,
+                "MaxDD_pct": -0.3383215292275472,
+                "Trades": 20
+              },
+              {
+                "regime": "bear_2022",
+                "Return_pct": -2.476501610713344,
+                "Sharpe": -0.11012928868615497,
+                "MaxDD_pct": -0.09865595505070557,
+                "Trades": 3
+              },
+              {
+                "regime": "mixed_2023_2025",
+                "Return_pct": 73.67052765793333,
+                "Sharpe": 0.7203988775960827,
+                "MaxDD_pct": -0.34485986335799235,
+                "Trades": 31
+              }
+            ],
+            "pass": true
+          },
+          "cost_stress": {
+            "rows": [
+              {
+                "commission_pct": 0.06,
+                "Return_pct": 466.54596026732344,
+                "Sharpe": 0.9297018317342769,
+                "MaxDD_pct": -0.34485986335799224
+              },
+              {
+                "commission_pct": 0.1,
+                "Return_pct": 441.98651518821964,
+                "Sharpe": 0.9078342771913284,
+                "MaxDD_pct": -0.3475842247411537
+              },
+              {
+                "commission_pct": 0.15,
+                "Return_pct": 412.75351260832895,
+                "Sharpe": 0.8805529401547401,
+                "MaxDD_pct": -0.35097680226785455
+              },
+              {
+                "commission_pct": 0.2,
+                "Return_pct": 385.07050564513855,
+                "Sharpe": 0.8533344508697832,
+                "MaxDD_pct": -0.35435511788628204
+              }
+            ],
+            "pass": true
+          },
+          "slippage_stress": {
+            "rows": [
+              {
+                "scenario": "default",
+                "Return_pct": 466.54596026732344,
+                "Sharpe": 0.9297018317342769,
+                "MaxDD_pct": -0.34485986335799224
+              },
+              {
+                "scenario": "stress_1",
+                "Return_pct": 419.4813675310252,
+                "Sharpe": 0.8875651873397497,
+                "MaxDD_pct": -0.3495698394325435
+              },
+              {
+                "scenario": "stress_2",
+                "Return_pct": 367.93927943558737,
+                "Sharpe": 0.8367551932080576,
+                "MaxDD_pct": -0.3557395941830297
+              }
+            ],
+            "pass": true
+          },
+          "execution_mode_stress": {
+            "rows": [
+              {
+                "mode": "next_bar_open",
+                "Return_pct": 466.54596026732344,
+                "Sharpe": 0.9297018317342769,
+                "MaxDD_pct": -0.34485986335799224
+              },
+              {
+                "mode": "live_runner_next_5m_close",
+                "Return_pct": 471.726326605663,
+                "Sharpe": 0.9347037005460016,
+                "MaxDD_pct": -0.34286322350860343
+              }
+            ],
+            "pass": true
+          },
+          "intrabar_path_stress": {
+            "rows": [
+              {
+                "scenario": "default",
+                "Return_pct": 466.54596026732344,
+                "Sharpe": 0.9297018317342769,
+                "MaxDD_pct": -0.34485986335799224
+              },
+              {
+                "scenario": "stress",
+                "Return_pct": 471.726326605663,
+                "Sharpe": 0.9347037005460016,
+                "MaxDD_pct": -0.34286322350860343
+              }
+            ],
+            "pass": true
+          },
+          "live_safety_check": {
+            "has_protection_interface": true,
+            "paper_protection_roundtrip": true,
+            "state_has_protection_bucket": true,
+            "state_has_strategy_targets": true,
+            "runner_has_native_protection_sync": true,
+            "runner_has_kill_switch_mode": true,
+            "reconcile_detects_missing_protection": true,
+            "pass": true
+          }
+        }
+      }
+    }
+  },
+  "break_even_side_check": {
+    "status": "not tested; no raw candidate cleared the evidence threshold for a restrained break-even side check",
+    "row": null
+  },
+  "positioning_decision": {
+    "verdict": "B",
+    "label": "Better Defined As High-Quality Overlay",
+    "repeatable_candidate_count": 0,
+    "stable_gate_candidate_count": 2,
+    "rationale": "The line keeps strong risk-adjusted behavior and healthier drawdown structure, but the allowed neighborhood only offers incremental absolute-return improvement. That is not enough to materially change the gap to BTC buy-and-hold."
+  },
+  "recommendation": {
+    "continue_independent_push": false,
+    "framing": "high-quality trend overlay",
+    "main_call": "Formally treat the line as a high-quality overlay unless a later local improvement materially shrinks the BTC buy-and-hold gap.",
+    "next_step": "Stop treating marginal local improvements as evidence of imminent main-strategy status; future work should only continue if it can materially reduce the BTC buy-and-hold gap without degrading the current risk structure."
+  }
+}

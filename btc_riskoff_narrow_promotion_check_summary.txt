@@ -1,0 +1,3 @@
+main_finding=The remaining blocker is still upside opportunity cost after Risk-Off, especially in recovery-like windows. The main drag is not the 50% bridge itself; it is staying flat for too long after risk conditions improve.
+promotion_implication=Do not promote Risk-Off yet. If work continues, focus only on re-entry timing out of flat state for RO_EMA220_TWOSTAGE_50_TO_0.
+best_candidate=RO_EMA220_TWOSTAGE_50_TO_0
