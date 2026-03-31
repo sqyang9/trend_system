@@ -1,0 +1,93 @@
+{
+  "FormalPortfolio": {
+    "metrics": {
+      "TotalReturn_pct": 1591.1602362468632,
+      "CAGR_pct": 57.51230453517089,
+      "Sharpe": 0.9860856099590507,
+      "Calmar": 1.0075435418366576,
+      "MaxDD_pct": -57.081706295622055,
+      "PF": 1.03851927956254,
+      "Exposure_pct": 136.84943556663245,
+      "MaxDDDuration_bars_4h": 5046,
+      "MaxDDDuration_days": 841.0,
+      "UlcerIndex": 27.944230461905647,
+      "underwater_ratio_pct": 98.40932414601966,
+      "recovery_bars_from_maxdd": 2781,
+      "recovery_days_from_maxdd": 463.5
+    },
+    "path": {
+      "worst_3m_cluster_return_pct": -39.910333235706666,
+      "worst_6m_cluster_return_pct": -44.55302119768783,
+      "rolling_180d_worst_maxdd_pct": -45.4842901806752,
+      "rolling_365d_worst_return_pct": -55.97851449279532,
+      "longest_negative_month_streak": 5,
+      "recovery_days_from_maxdd": 463.5
+    },
+    "avg_total_exposure_pct": 136.84943556663245,
+    "peak_total_exposure_pct": 300.0,
+    "sleeve1_active_ratio_pct": 25.120950007330308,
+    "sleeve2_active_ratio_pct": 11.728485559302156
+  },
+  "RO_LOWVALUE_WEEKLY_RSI30_HOLD": {
+    "metrics": {
+      "TotalReturn_pct": 3036.0610004131095,
+      "CAGR_pct": 73.94110172001105,
+      "Sharpe": 1.261251759185614,
+      "Calmar": 1.8836468686931866,
+      "MaxDD_pct": -39.254226972653846,
+      "PF": 1.0784626000977373,
+      "Exposure_pct": 97.38706067263169,
+      "MaxDDDuration_days": 754.8333333333334,
+      "UlcerIndex": 16.68699640153493,
+      "underwater_ratio_pct": 98.15276352440992,
+      "recovery_bars_from_maxdd": 1976,
+      "recovery_days_from_maxdd": 329.3333333333333
+    },
+    "path": {
+      "worst_3m_cluster_return_pct": -14.752345625771895,
+      "worst_6m_cluster_return_pct": -25.51484620730413,
+      "rolling_180d_worst_maxdd_pct": -31.476104017304262,
+      "rolling_365d_worst_return_pct": -36.45966726330679,
+      "longest_negative_month_streak": 5,
+      "recovery_days_from_maxdd": 329.3333333333333
+    },
+    "avg_core_exposure_pct": 60.53762510599924,
+    "peak_total_exposure_pct": 300.0,
+    "avg_total_exposure_pct": 97.38706067263169,
+    "riskoff_active_ratio_pct": 39.73024483213605,
+    "sleeve1_active_ratio_pct": 25.120950007330308,
+    "sleeve2_active_ratio_pct": 11.728485559302156,
+    "formal_total_exposure_avg_pct": 136.84943556663245
+  },
+  "RO_LOWVALUE_4H_RSI10_HOLD": {
+    "metrics": {
+      "TotalReturn_pct": 3117.3356222599305,
+      "CAGR_pct": 74.65756354606212,
+      "Sharpe": 1.2781972843207692,
+      "Calmar": 1.613602111179789,
+      "MaxDD_pct": -46.26764121638145,
+      "PF": 1.083687439311289,
+      "Exposure_pct": 97.936833433224,
+      "MaxDDDuration_days": 753.5,
+      "UlcerIndex": 18.3625916227509,
+      "underwater_ratio_pct": 98.10878170356253,
+      "recovery_bars_from_maxdd": 2256,
+      "recovery_days_from_maxdd": 376.0
+    },
+    "path": {
+      "worst_3m_cluster_return_pct": -22.059696960595492,
+      "worst_6m_cluster_return_pct": -29.444184740954285,
+      "rolling_180d_worst_maxdd_pct": -29.00502371282362,
+      "rolling_365d_worst_return_pct": -44.68482625516611,
+      "longest_negative_month_streak": 6,
+      "recovery_days_from_maxdd": 376.0
+    },
+    "avg_core_exposure_pct": 61.08739786659153,
+    "peak_total_exposure_pct": 300.0,
+    "avg_total_exposure_pct": 97.936833433224,
+    "riskoff_active_ratio_pct": 39.18047207154376,
+    "sleeve1_active_ratio_pct": 25.120950007330308,
+    "sleeve2_active_ratio_pct": 11.728485559302156,
+    "formal_total_exposure_avg_pct": 136.84943556663245
+  }
+}

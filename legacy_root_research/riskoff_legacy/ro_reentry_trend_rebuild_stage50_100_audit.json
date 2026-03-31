@@ -1,0 +1,625 @@
+{
+  "generated_at_local": "2026-03-26T23:10:26.973741",
+  "seed": 20260309,
+  "research_optimal": {
+    "label": "lb20_stop3.2_trail5.0_beoff",
+    "params": {
+      "candidate_name": "squeeze_release_20",
+      "description": "Squeeze release plus 20-bar breakout inside a bullish EMA200 regime, designed to enter expansion after compression.",
+      "breakout_mode": "squeeze_release",
+      "donchian_entry_len": 20,
+      "squeeze_threshold": 0.9,
+      "squeeze_bars": 6,
+      "ema_len": 200,
+      "ema_slope_len": 20,
+      "use_ema_slope": true,
+      "adx_period": 14,
+      "adx_min": 10.0,
+      "use_adx_filter": true,
+      "close_location_min": 0.6,
+      "range_atr_min": 0.55,
+      "volume_multiple": 1.0,
+      "structure_lookback": 20,
+      "initial_stop_atr": 3.2,
+      "trail_atr_mult": 5.0,
+      "trail_activate_atr": 2.5,
+      "swing_trail_lookback": 20,
+      "use_swing_trail": false,
+      "break_even_after_atr": 1000000000.0,
+      "position_pct": 100.0,
+      "init_equity": 10000.0,
+      "commission_pct": 0.06,
+      "entry_execution_mode": "next_bar_open",
+      "close_delay_bps": 8.0,
+      "intrabar_execution_model": "legacy_bar_extrema",
+      "intrabar_path_mode": "midpoint",
+      "slippage_fixed_bps": 5.0,
+      "slippage_breakout_extra_bps": 5.0,
+      "slippage_stop_extra_bps": 8.0,
+      "slippage_range_weight": 0.05,
+      "slippage_max_bps": 25.0,
+      "slippage_breakout_atr_threshold": 1.1,
+      "enable_daily_loss_limit": false,
+      "daily_loss_limit_pct": 1.5,
+      "cooldown_bars": 0
+    }
+  },
+  "default_tuple": "next_bar_open + legacy_bar_extrema + midpoint + full_model",
+  "stress_tuple": "live_runner_next_5m_close + segment_path_same_bar + pessimistic + full_model",
+  "scope": {
+    "study_type": "riskoff_core_reentry_deep_dive_single_candidate",
+    "candidate": {
+      "name": "RO_REENTRY_TREND_REBUILD_STAGE50_100",
+      "kind": "trend_rebuild_stage50_100",
+      "description": "Keep bearish de-risking identical to EMA220 two-stage logic. From flat, restore 50% on simple trend-rebuild confirmation; restore 100% only after stronger rebuild follow-through."
+    },
+    "archived_baseline": {
+      "name": "RO_EMA220_FLAT",
+      "kind": "flat_reference",
+      "description": "Archived flat Risk-Off baseline: bearish EMA220 regime takes core fully flat."
+    },
+    "best_archived_repair": {
+      "name": "RO_EMA220_REENTRY_CLOSE_HOLD_3",
+      "kind": "close_hold_3",
+      "description": "Best archived repair: flat exits directly back to 100% after three close>EMA220 bars."
+    },
+    "note": "Single candidate audit only. No broad Risk-Off expansion."
+  },
+  "full_sample": {
+    "CoreOnly": {
+      "metrics": {
+        "TotalReturn_pct": 856.155474040632,
+        "CAGR_pct": 43.7271213741881,
+        "Sharpe": 0.7498899885417762,
+        "Calmar": 0.5675750096826186,
+        "MaxDD_pct": -77.0420131757383,
+        "PF": 1.024375755939332,
+        "Exposure_pct": 100.0,
+        "MaxDDDuration_days": 850.5
+      },
+      "avg_core_exposure_pct": 100.0,
+      "riskoff_active_ratio_pct": 0.0,
+      "state_changes": 0,
+      "delta_vs_addon": {
+        "Return_pct": -104.56425850952405,
+        "CAGR_pct": -2.4166594931576384,
+        "Sharpe": -0.041275608384319984,
+        "Calmar": -0.06793236563286154,
+        "MaxDD_improvement_pct": -4.432657785584212
+      }
+    },
+    "Core+AddOnOverlay": {
+      "metrics": {
+        "TotalReturn_pct": 960.7197325501561,
+        "CAGR_pct": 46.14378086734574,
+        "Sharpe": 0.7911655969260962,
+        "Calmar": 0.6355073753154802,
+        "MaxDD_pct": -72.6093553901541,
+        "PF": 1.0267713205199516,
+        "Exposure_pct": 108.79297705446815,
+        "MaxDDDuration_bars_4h": 5078,
+        "MaxDDDuration_days": 846.3333333333334
+      },
+      "avg_core_exposure_pct": 100.0,
+      "riskoff_active_ratio_pct": 0.0,
+      "state_changes": 0,
+      "delta_vs_addon": {
+        "Return_pct": 0.0,
+        "CAGR_pct": 0.0,
+        "Sharpe": 0.0,
+        "Calmar": 0.0,
+        "MaxDD_improvement_pct": 0.0
+      }
+    },
+    "Core+AddOnOverlay+RO_EMA220_FLAT": {
+      "metrics": {
+        "TotalReturn_pct": 1626.5864245880216,
+        "CAGR_pct": 58.043095877193586,
+        "Sharpe": 1.0680092013935285,
+        "Calmar": 1.0971477751865155,
+        "MaxDD_pct": -52.90362628436833,
+        "PF": 1.0638918114385452,
+        "Exposure_pct": 67.72560662708011,
+        "MaxDDDuration_days": 790.5
+      },
+      "avg_core_exposure_pct": 58.92529873176453,
+      "riskoff_active_ratio_pct": 41.074701268235465,
+      "state_changes": 204,
+      "delta_vs_addon": {
+        "Return_pct": 665.8666920378655,
+        "CAGR_pct": 11.899315009847847,
+        "Sharpe": 0.2768436044674323,
+        "Calmar": 0.46164039987103533,
+        "MaxDD_improvement_pct": 19.705729105785764
+      }
+    },
+    "Core+AddOnOverlay+RO_EMA220_REENTRY_CLOSE_HOLD_3": {
+      "metrics": {
+        "TotalReturn_pct": 1821.4488279292266,
+        "CAGR_pct": 60.78183893688325,
+        "Sharpe": 1.10630702343303,
+        "Calmar": 1.0340194942005387,
+        "MaxDD_pct": -58.78210157331441,
+        "PF": 1.0712866517470838,
+        "Exposure_pct": 66.83522334843792,
+        "MaxDDDuration_days": 839.5
+      },
+      "avg_core_exposure_pct": 58.034601568799935,
+      "riskoff_active_ratio_pct": 42.232974122131814,
+      "state_changes": 206,
+      "delta_vs_addon": {
+        "Return_pct": 860.7290953790705,
+        "CAGR_pct": 14.638058069537507,
+        "Sharpe": 0.31514142650693366,
+        "Calmar": 0.39851211888505855,
+        "MaxDD_improvement_pct": 13.827253816839686
+      }
+    },
+    "Core+AddOnOverlay+RO_REENTRY_TREND_REBUILD_STAGE50_100": {
+      "metrics": {
+        "TotalReturn_pct": 1439.6045592956393,
+        "CAGR_pct": 55.15924463387947,
+        "Sharpe": 1.0507557443281397,
+        "Calmar": 0.9558300261825771,
+        "MaxDD_pct": -57.708214978531416,
+        "PF": 1.0677400059038986,
+        "Exposure_pct": 64.44578919179789,
+        "MaxDDDuration_days": 839.8333333333334
+      },
+      "avg_core_exposure_pct": 55.644747452532805,
+      "riskoff_active_ratio_pct": 45.377904845685805,
+      "state_changes": 379,
+      "delta_vs_addon": {
+        "Return_pct": 478.8848267454832,
+        "CAGR_pct": 9.015463766533728,
+        "Sharpe": 0.25959014740204345,
+        "Calmar": 0.3203226508670969,
+        "MaxDD_improvement_pct": 14.901140411622677
+      }
+    }
+  },
+  "candidate_summary": {
+    "Core+AddOnOverlay+RO_EMA220_FLAT": {
+      "metrics": {
+        "TotalReturn_pct": 1626.5864245880216,
+        "CAGR_pct": 58.043095877193586,
+        "Sharpe": 1.0680092013935285,
+        "Calmar": 1.0971477751865155,
+        "MaxDD_pct": -52.90362628436833,
+        "PF": 1.0638918114385452,
+        "Exposure_pct": 67.72560662708011,
+        "MaxDDDuration_days": 790.5
+      },
+      "avg_core_exposure_pct": 58.92529873176453,
+      "riskoff_active_ratio_pct": 41.074701268235465,
+      "state_changes": 204,
+      "strict_oos_win_ratio": 0.3333333333333333,
+      "avg_delta_return_pct": -19.291726746794833,
+      "avg_delta_sharpe": -0.13863144660541674,
+      "avg_delta_calmar": -0.7669395794525241,
+      "bull_delta_return_pct": -233.06612052424646,
+      "recovery_delta_return_pct": -77.5882573937395,
+      "major_drawdown_dmaxdd_pct": 20.261682374894782,
+      "avg_flat_state_upside_drag": 233618.10245956611,
+      "oos_windows": [
+        {
+          "name": "OOS_2023",
+          "window": {
+            "start": "2023-01-01",
+            "end": "2024-01-01"
+          },
+          "delta_vs_addon": {
+            "Return_pct": -40.13985217938071,
+            "CAGR_pct": -40.21985322202916,
+            "Sharpe": -0.3129071195157611,
+            "Calmar": -2.349168952701686,
+            "MaxDD_improvement_pct": -0.6644140314547933
+          },
+          "strict_outperform": false,
+          "state_distribution": {
+            "state_1.00_pct": 69.22374429223744,
+            "state_0.50_pct": 0.0,
+            "state_0.00_pct": 30.776255707762555
+          },
+          "flat_state_upside_drag": 48160.32333496811,
+          "pnl_attribution": {
+            "flat_state_upside_drag": 48160.32333496811,
+            "flat_state_downside_protection": 51386.398123249455,
+            "reduced_state_upside_drag": 0.0,
+            "reduced_state_downside_protection": 0.0
+          }
+        },
+        {
+          "name": "OOS_2024",
+          "window": {
+            "start": "2024-01-01",
+            "end": "2025-01-01"
+          },
+          "delta_vs_addon": {
+            "Return_pct": -18.277200182927572,
+            "CAGR_pct": -18.22801137632827,
+            "Sharpe": 0.016658802695158625,
+            "Calmar": 0.09466359543655889,
+            "MaxDD_improvement_pct": 5.502992360398043
+          },
+          "strict_outperform": true,
+          "state_distribution": {
+            "state_1.00_pct": 70.44626593806922,
+            "state_0.50_pct": 0.0,
+            "state_0.00_pct": 29.553734061930783
+          },
+          "flat_state_upside_drag": 198246.0372738503,
+          "pnl_attribution": {
+            "flat_state_upside_drag": 198246.0372738503,
+            "flat_state_downside_protection": 213905.428813515,
+            "reduced_state_upside_drag": 0.0,
+            "reduced_state_downside_protection": 0.0
+          }
+        },
+        {
+          "name": "OOS_2025",
+          "window": {
+            "start": "2025-01-01",
+            "end": "2026-01-01"
+          },
+          "delta_vs_addon": {
+            "Return_pct": 0.541872121923781,
+            "CAGR_pct": 0.5424555892661775,
+            "Sharpe": -0.11964602299564774,
+            "Calmar": -0.04631338109244518,
+            "MaxDD_improvement_pct": 9.048818823543336
+          },
+          "strict_outperform": false,
+          "state_distribution": {
+            "state_1.00_pct": 50.95890410958904,
+            "state_0.50_pct": 0.0,
+            "state_0.00_pct": 49.04109589041096
+          },
+          "flat_state_upside_drag": 454447.9467698799,
+          "pnl_attribution": {
+            "flat_state_upside_drag": 454447.9467698799,
+            "flat_state_downside_protection": 503478.4996496116,
+            "reduced_state_upside_drag": 0.0,
+            "reduced_state_downside_protection": 0.0
+          }
+        }
+      ]
+    },
+    "Core+AddOnOverlay+RO_EMA220_REENTRY_CLOSE_HOLD_3": {
+      "metrics": {
+        "TotalReturn_pct": 1821.4488279292266,
+        "CAGR_pct": 60.78183893688325,
+        "Sharpe": 1.10630702343303,
+        "Calmar": 1.0340194942005387,
+        "MaxDD_pct": -58.78210157331441,
+        "PF": 1.0712866517470838,
+        "Exposure_pct": 66.83522334843792,
+        "MaxDDDuration_days": 839.5
+      },
+      "avg_core_exposure_pct": 58.034601568799935,
+      "riskoff_active_ratio_pct": 42.232974122131814,
+      "state_changes": 206,
+      "strict_oos_win_ratio": 0.6666666666666666,
+      "avg_delta_return_pct": -11.073541428373575,
+      "avg_delta_sharpe": 0.048777195371311,
+      "avg_delta_calmar": -0.05141997678354079,
+      "bull_delta_return_pct": -181.7231039873143,
+      "recovery_delta_return_pct": -61.5684140958264,
+      "major_drawdown_dmaxdd_pct": 14.045499635061006,
+      "avg_flat_state_upside_drag": 258103.70779067467,
+      "oos_windows": [
+        {
+          "name": "OOS_2023",
+          "window": {
+            "start": "2023-01-01",
+            "end": "2024-01-01"
+          },
+          "delta_vs_addon": {
+            "Return_pct": -30.70802149827992,
+            "CAGR_pct": -30.770025511943373,
+            "Sharpe": -0.17757004113727937,
+            "Calmar": -1.0724893367612296,
+            "MaxDD_improvement_pct": 1.8206041089585128
+          },
+          "strict_outperform": false,
+          "state_distribution": {
+            "state_1.00_pct": 68.08219178082192,
+            "state_0.50_pct": 0.6392694063926941,
+            "state_0.00_pct": 31.27853881278539
+          },
+          "flat_state_upside_drag": 58030.20680406474,
+          "pnl_attribution": {
+            "flat_state_upside_drag": 58030.20680406474,
+            "flat_state_downside_protection": 53158.588990932614,
+            "reduced_state_upside_drag": 0.0,
+            "reduced_state_downside_protection": 0.0
+          }
+        },
+        {
+          "name": "OOS_2024",
+          "window": {
+            "start": "2024-01-01",
+            "end": "2025-01-01"
+          },
+          "delta_vs_addon": {
+            "Return_pct": -14.887371446345995,
+            "CAGR_pct": -14.847102194089928,
+            "Sharpe": 0.061456507035846375,
+            "Calmar": 0.39899465980775917,
+            "MaxDD_improvement_pct": 6.425876468444425
+          },
+          "strict_outperform": true,
+          "state_distribution": {
+            "state_1.00_pct": 69.26229508196722,
+            "state_0.50_pct": 0.546448087431694,
+            "state_0.00_pct": 30.191256830601095
+          },
+          "flat_state_upside_drag": 221805.92797833367,
+          "pnl_attribution": {
+            "flat_state_upside_drag": 221805.92797833367,
+            "flat_state_downside_protection": 218866.70510868038,
+            "reduced_state_upside_drag": 0.0,
+            "reduced_state_downside_protection": 0.0
+          }
+        },
+        {
+          "name": "OOS_2025",
+          "window": {
+            "start": "2025-01-01",
+            "end": "2026-01-01"
+          },
+          "delta_vs_addon": {
+            "Return_pct": 12.374768659505186,
+            "CAGR_pct": 12.38894404918639,
+            "Sharpe": 0.262445120215366,
+            "Calmar": 0.5192347466028481,
+            "MaxDD_improvement_pct": 13.125348326347094
+          },
+          "strict_outperform": true,
+          "state_distribution": {
+            "state_1.00_pct": 49.17808219178082,
+            "state_0.50_pct": 0.730593607305936,
+            "state_0.00_pct": 50.09132420091325
+          },
+          "flat_state_upside_drag": 494474.98858962563,
+          "pnl_attribution": {
+            "flat_state_upside_drag": 494474.98858962563,
+            "flat_state_downside_protection": 517033.3635077168,
+            "reduced_state_upside_drag": 0.0,
+            "reduced_state_downside_protection": 0.0
+          }
+        }
+      ]
+    },
+    "Core+AddOnOverlay+RO_REENTRY_TREND_REBUILD_STAGE50_100": {
+      "metrics": {
+        "TotalReturn_pct": 1439.6045592956393,
+        "CAGR_pct": 55.15924463387947,
+        "Sharpe": 1.0507557443281397,
+        "Calmar": 0.9558300261825771,
+        "MaxDD_pct": -57.708214978531416,
+        "PF": 1.0677400059038986,
+        "Exposure_pct": 64.44578919179789,
+        "MaxDDDuration_days": 839.8333333333334
+      },
+      "avg_core_exposure_pct": 55.644747452532805,
+      "riskoff_active_ratio_pct": 45.377904845685805,
+      "state_changes": 379,
+      "strict_oos_win_ratio": 0.3333333333333333,
+      "avg_delta_return_pct": -18.540676980563255,
+      "avg_delta_sharpe": -0.03836410245052779,
+      "avg_delta_calmar": -0.7131434715868658,
+      "bull_delta_return_pct": -286.0266393727197,
+      "recovery_delta_return_pct": -79.42232883688683,
+      "major_drawdown_dmaxdd_pct": 15.091442480864778,
+      "avg_flat_state_upside_drag": 267600.76600289514,
+      "oos_windows": [
+        {
+          "name": "OOS_2023",
+          "window": {
+            "start": "2023-01-01",
+            "end": "2024-01-01"
+          },
+          "delta_vs_addon": {
+            "Return_pct": -45.95516709194493,
+            "CAGR_pct": -46.0459999868508,
+            "Sharpe": -0.29404674768355843,
+            "Calmar": -2.34258870027341,
+            "MaxDD_improvement_pct": 0.587523317251172
+          },
+          "strict_outperform": false,
+          "state_distribution": {
+            "state_1.00_pct": 63.97260273972603,
+            "state_0.50_pct": 2.6027397260273974,
+            "state_0.00_pct": 33.42465753424658
+          },
+          "flat_state_upside_drag": 66737.23062724134,
+          "pnl_attribution": {
+            "flat_state_upside_drag": 66737.23062724134,
+            "flat_state_downside_protection": 60532.477255390826,
+            "reduced_state_upside_drag": 3410.2291778159306,
+            "reduced_state_downside_protection": 1187.5197415985895
+          }
+        },
+        {
+          "name": "OOS_2024",
+          "window": {
+            "start": "2024-01-01",
+            "end": "2025-01-01"
+          },
+          "delta_vs_addon": {
+            "Return_pct": -17.948082928422053,
+            "CAGR_pct": -17.899755933120332,
+            "Sharpe": 0.046245433207139586,
+            "Calmar": -0.09735030693618141,
+            "MaxDD_improvement_pct": 4.161120252532047
+          },
+          "strict_outperform": false,
+          "state_distribution": {
+            "state_1.00_pct": 66.71220400728598,
+            "state_0.50_pct": 2.0491803278688523,
+            "state_0.00_pct": 31.23861566484517
+          },
+          "flat_state_upside_drag": 227348.38906044973,
+          "pnl_attribution": {
+            "flat_state_upside_drag": 227348.38906044973,
+            "flat_state_downside_protection": 226630.45377773503,
+            "reduced_state_upside_drag": 6733.742369129352,
+            "reduced_state_downside_protection": 2273.2636045604013
+          }
+        },
+        {
+          "name": "OOS_2025",
+          "window": {
+            "start": "2025-01-01",
+            "end": "2026-01-01"
+          },
+          "delta_vs_addon": {
+            "Return_pct": 8.281219078677216,
+            "CAGR_pct": 8.290513385923049,
+            "Sharpe": 0.13270900712483547,
+            "Calmar": 0.3005085924489941,
+            "MaxDD_improvement_pct": 12.075068356628101
+          },
+          "strict_outperform": true,
+          "state_distribution": {
+            "state_1.00_pct": 45.84474885844749,
+            "state_0.50_pct": 2.054794520547945,
+            "state_0.00_pct": 52.10045662100457
+          },
+          "flat_state_upside_drag": 508716.67832099437,
+          "pnl_attribution": {
+            "flat_state_upside_drag": 508716.67832099437,
+            "flat_state_downside_protection": 531805.6806771687,
+            "reduced_state_upside_drag": 11281.800723637934,
+            "reduced_state_downside_protection": 3792.2904117182625
+          }
+        }
+      ]
+    }
+  },
+  "execution_stress": {
+    "Core+AddOnOverlay+RO_EMA220_FLAT": {
+      "delta_vs_default_same_scheme": {
+        "Return_pct": 80.03000088483259,
+        "CAGR_pct": 1.1547099326174148,
+        "Sharpe": 0.013785633957266619,
+        "Calmar": 0.019409560169882045,
+        "MaxDD_improvement_pct": -0.11452507721442373
+      },
+      "delta_vs_addon_under_stress": {
+        "Return_pct": 745.8966929226981,
+        "CAGR_pct": 13.054024942465261,
+        "Sharpe": 0.2906292384246989,
+        "Calmar": 0.4810499600409174,
+        "MaxDD_improvement_pct": 19.59120402857134
+      }
+    },
+    "Core+AddOnOverlay+RO_EMA220_REENTRY_CLOSE_HOLD_3": {
+      "delta_vs_default_same_scheme": {
+        "Return_pct": 149.15641526114132,
+        "CAGR_pct": 1.9429103031880075,
+        "Sharpe": 0.023054301471413963,
+        "Calmar": 0.046036613457978603,
+        "MaxDD_improvement_pct": 0.7066471637708815
+      },
+      "delta_vs_addon_under_stress": {
+        "Return_pct": 1009.8855106402118,
+        "CAGR_pct": 16.580968372725515,
+        "Sharpe": 0.3381957279783476,
+        "Calmar": 0.44454873234303716,
+        "MaxDD_improvement_pct": 14.533900980610568
+      }
+    },
+    "Core+AddOnOverlay+RO_REENTRY_TREND_REBUILD_STAGE50_100": {
+      "delta_vs_default_same_scheme": {
+        "Return_pct": 132.77142578572239,
+        "CAGR_pct": 2.075884424295225,
+        "Sharpe": 0.02572868230754466,
+        "Calmar": 0.05191625881900175,
+        "MaxDD_improvement_pct": 0.9130375514223488
+      },
+      "delta_vs_addon_under_stress": {
+        "Return_pct": 611.6562525312056,
+        "CAGR_pct": 11.091348190828953,
+        "Sharpe": 0.2853188297095881,
+        "Calmar": 0.37223890968609863,
+        "MaxDD_improvement_pct": 15.814177963045026
+      }
+    }
+  },
+  "causality_audit": {
+    "default_total_violations": 0,
+    "stress_total_violations": 0,
+    "default_details": {
+      "RO_EMA220_FLAT": {
+        "violations": 0,
+        "rebalance_count": 204,
+        "pass": true,
+        "execution_mode": "next_bar_open"
+      },
+      "RO_EMA220_REENTRY_CLOSE_HOLD_3": {
+        "violations": 0,
+        "rebalance_count": 206,
+        "pass": true,
+        "execution_mode": "next_bar_open"
+      },
+      "RO_REENTRY_TREND_REBUILD_STAGE50_100": {
+        "violations": 0,
+        "rebalance_count": 379,
+        "pass": true,
+        "execution_mode": "next_bar_open"
+      }
+    },
+    "stress_details": {
+      "RO_EMA220_FLAT": {
+        "violations": 0,
+        "rebalance_count": 204,
+        "pass": true,
+        "execution_mode": "live_runner_next_5m_close"
+      },
+      "RO_EMA220_REENTRY_CLOSE_HOLD_3": {
+        "violations": 0,
+        "rebalance_count": 206,
+        "pass": true,
+        "execution_mode": "live_runner_next_5m_close"
+      },
+      "RO_REENTRY_TREND_REBUILD_STAGE50_100": {
+        "violations": 0,
+        "rebalance_count": 379,
+        "pass": true,
+        "execution_mode": "live_runner_next_5m_close"
+      }
+    }
+  },
+  "vs_best_archived": {
+    "strict_oos_win_ratio_delta": -0.3333333333333333,
+    "avg_delta_return_pct_delta": -7.46713555218968,
+    "avg_delta_calmar_delta": -0.6617234948033249,
+    "bull_delta_return_pct_delta": -104.30353538540544,
+    "recovery_delta_return_pct_delta": -17.853914741060436,
+    "major_drawdown_dmaxdd_pct_delta": 1.045942845803772,
+    "avg_flat_state_upside_drag_delta": 9497.058212220465
+  },
+  "trigger_diagnostics": {
+    "stage50_trigger_count": 2263,
+    "full_trigger_count": 1913,
+    "state_1.00_pct": 54.622095154314195,
+    "state_0.50_pct": 2.0453045964372114,
+    "state_0.00_pct": 43.332600249248586
+  },
+  "judgment": {
+    "candidate_verdict": "not yet sufficient",
+    "line_status": "exploratory",
+    "recommendation": "Stay exploratory. The line is not strong enough to reopen promotion yet, but this single test does not justify re-freezing the entire re-entry deep dive.",
+    "main_failure_mode": "Trend-rebuild restoration is active but still not early enough: flat state remains 43.33% of the time, and bull/recovery drag is still worse than RO_EMA220_REENTRY_CLOSE_HOLD_3.",
+    "answer_1": "No. It does not beat RO_EMA220_REENTRY_CLOSE_HOLD_3: strict OOS stays 0.33 vs 0.67, avg dReturn is -18.54pp vs -11.07pp, and avg dCalmar is -0.713 vs -0.051.",
+    "answer_2": "No. Bull/recovery opportunity cost is not materially reduced: bull -286.03pp vs old best -181.72pp, recovery -79.42pp vs -61.57pp.",
+    "answer_3": "Yes. Downside-control value is broadly preserved: major-drawdown dMaxDD is +15.09pp.",
+    "answer_4": "Stay exploratory. The line is not strong enough to reopen promotion yet, but this single test does not justify re-freezing the entire re-entry deep dive.",
+    "final_answer_1": "No",
+    "final_answer_2": "No",
+    "final_answer_3": "Yes",
+    "final_answer_4": "stay exploratory"
+  }
+}

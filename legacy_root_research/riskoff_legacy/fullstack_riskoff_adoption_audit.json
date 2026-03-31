@@ -1,0 +1,236 @@
+{
+  "default": {
+    "FormalPortfolio": {
+      "combo_equity": "timestamp\n2019-12-16 04:00:00+00:00     10000.000000\n2019-12-16 08:00:00+00:00     10050.051753\n2019-12-16 12:00:00+00:00     10040.551845\n2019-12-16 16:00:00+00:00      9794.688559\n2019-12-16 20:00:00+00:00      9768.032101\n                                 ...      \n2026-03-07 00:00:00+00:00    169537.422522\n2026-03-07 04:00:00+00:00    169166.642537\n2026-03-07 08:00:00+00:00    169400.879070\n2026-03-07 12:00:00+00:00    169227.753884\n2026-03-07 16:00:00+00:00    169116.023625\nLength: 13642, dtype: float64",
+      "combo_exposure": "timestamp\n2019-12-16 04:00:00+00:00    1.0\n2019-12-16 08:00:00+00:00    1.0\n2019-12-16 12:00:00+00:00    1.0\n2019-12-16 16:00:00+00:00    1.0\n2019-12-16 20:00:00+00:00    1.0\n                            ... \n2026-03-07 00:00:00+00:00    1.0\n2026-03-07 04:00:00+00:00    1.0\n2026-03-07 08:00:00+00:00    1.0\n2026-03-07 12:00:00+00:00    1.0\n2026-03-07 16:00:00+00:00    1.0\nLength: 13642, dtype: float64",
+      "metrics": {
+        "TotalReturn_pct": 1591.1602362468632,
+        "CAGR_pct": 57.51230453517089,
+        "Sharpe": 0.9860856099590507,
+        "Calmar": 1.0075435418366576,
+        "MaxDD_pct": -57.081706295622055,
+        "PF": 1.03851927956254,
+        "Exposure_pct": 136.84943556663245,
+        "MaxDDDuration_bars_4h": 5046,
+        "MaxDDDuration_days": 841.0,
+        "UlcerIndex": 27.944230461905647,
+        "underwater_ratio_pct": 98.40932414601966,
+        "recovery_bars_from_maxdd": 2781,
+        "recovery_days_from_maxdd": 463.5
+      },
+      "path": {
+        "worst_3m_cluster_return_pct": -39.910333235706666,
+        "worst_6m_cluster_return_pct": -44.55302119768783,
+        "rolling_180d_worst_maxdd_pct": -45.4842901806752,
+        "rolling_365d_worst_return_pct": -55.97851449279532,
+        "longest_negative_month_streak": 5,
+        "recovery_days_from_maxdd": 463.5
+      },
+      "avg_total_exposure_pct": 136.84943556663245,
+      "peak_total_exposure_pct": 300.0,
+      "sleeve1_active_ratio_pct": 25.120950007330308,
+      "sleeve2_active_ratio_pct": 11.728485559302156
+    },
+    "RO_LOWVALUE_WEEKLY_RSI30_HOLD": {
+      "combo_equity": "timestamp\n2019-12-16 04:00:00+00:00      9947.172305\n2019-12-16 08:00:00+00:00      9996.959646\n2019-12-16 12:00:00+00:00      9987.509924\n2019-12-16 16:00:00+00:00      9742.945477\n2019-12-16 20:00:00+00:00      9716.429839\n                                 ...      \n2026-03-07 00:00:00+00:00    281793.219561\n2026-03-07 04:00:00+00:00    280923.749174\n2026-03-07 08:00:00+00:00    281473.028363\n2026-03-07 12:00:00+00:00    281067.053854\n2026-03-07 16:00:00+00:00    280805.049010\nName: equity, Length: 13642, dtype: float64",
+      "combo_exposure": "timestamp\n2019-12-16 04:00:00+00:00    1.0\n2019-12-16 08:00:00+00:00    1.0\n2019-12-16 12:00:00+00:00    1.0\n2019-12-16 16:00:00+00:00    1.0\n2019-12-16 20:00:00+00:00    1.0\n                            ... \n2026-03-07 00:00:00+00:00    1.0\n2026-03-07 04:00:00+00:00    1.0\n2026-03-07 08:00:00+00:00    1.0\n2026-03-07 12:00:00+00:00    1.0\n2026-03-07 16:00:00+00:00    1.0\nLength: 13642, dtype: float64",
+      "metrics": {
+        "TotalReturn_pct": 2722.9635559875132,
+        "CAGR_pct": 71.02657656943077,
+        "Sharpe": 1.1984156075088865,
+        "Calmar": 1.746640189115748,
+        "MaxDD_pct": -40.66468698707122,
+        "PF": 1.074913831193552,
+        "Exposure_pct": 96.94326345110687,
+        "MaxDDDuration_days": 754.8333333333334,
+        "UlcerIndex": 17.33734157867262,
+        "underwater_ratio_pct": 98.16009382788448,
+        "recovery_bars_from_maxdd": 1975,
+        "recovery_days_from_maxdd": 329.1666666666667
+      },
+      "path": {
+        "worst_3m_cluster_return_pct": -15.263110649075333,
+        "worst_6m_cluster_return_pct": -27.28688884951493,
+        "rolling_180d_worst_maxdd_pct": -32.848127433358066,
+        "rolling_365d_worst_return_pct": -37.241130816669795,
+        "longest_negative_month_streak": 6,
+        "recovery_days_from_maxdd": 329.1666666666667
+      },
+      "avg_total_exposure_pct": 96.94326345110687,
+      "peak_total_exposure_pct": 300.0,
+      "avg_core_exposure_pct": 60.26975516786395,
+      "riskoff_active_ratio_pct": 39.73024483213605,
+      "sleeve1_active_ratio_pct": 24.666471191907345,
+      "sleeve2_active_ratio_pct": 12.007037091335581,
+      "sleeve1_accepted_trades": 56,
+      "sleeve2_accepted_trades": 97,
+      "sleeve1_forced_exits": 3,
+      "sleeve2_forced_exits": 0,
+      "causality": {
+        "violations": 0,
+        "rebalance_count": 147,
+        "pass": true,
+        "execution_mode": "next_bar_open"
+      }
+    },
+    "RO_LOWVALUE_4H_RSI10_HOLD": {
+      "combo_equity": "timestamp\n2019-12-16 04:00:00+00:00      9947.172305\n2019-12-16 08:00:00+00:00      9996.959646\n2019-12-16 12:00:00+00:00      9987.509924\n2019-12-16 16:00:00+00:00      9742.945477\n2019-12-16 20:00:00+00:00      9716.429839\n                                 ...      \n2026-03-07 00:00:00+00:00    288425.140265\n2026-03-07 04:00:00+00:00    288425.140265\n2026-03-07 08:00:00+00:00    288425.140265\n2026-03-07 12:00:00+00:00    288425.140265\n2026-03-07 16:00:00+00:00    288425.140265\nName: equity, Length: 13642, dtype: float64",
+      "combo_exposure": "timestamp\n2019-12-16 04:00:00+00:00    1.0\n2019-12-16 08:00:00+00:00    1.0\n2019-12-16 12:00:00+00:00    1.0\n2019-12-16 16:00:00+00:00    1.0\n2019-12-16 20:00:00+00:00    1.0\n                            ... \n2026-03-07 00:00:00+00:00    0.0\n2026-03-07 04:00:00+00:00    0.0\n2026-03-07 08:00:00+00:00    0.0\n2026-03-07 12:00:00+00:00    0.0\n2026-03-07 16:00:00+00:00    0.0\nLength: 13642, dtype: float64",
+      "metrics": {
+        "TotalReturn_pct": 2799.569158279388,
+        "CAGR_pct": 71.76383790246604,
+        "Sharpe": 1.2146745212829344,
+        "Calmar": 1.4869504584011322,
+        "MaxDD_pct": -48.26242696722477,
+        "PF": 1.0800467997359489,
+        "Exposure_pct": 97.49303621169916,
+        "MaxDDDuration_days": 753.5,
+        "UlcerIndex": 19.18996403760735,
+        "underwater_ratio_pct": 98.11611200703709,
+        "recovery_bars_from_maxdd": 2256,
+        "recovery_days_from_maxdd": 376.0
+      },
+      "path": {
+        "worst_3m_cluster_return_pct": -24.379915324392993,
+        "worst_6m_cluster_return_pct": -31.812815654461257,
+        "rolling_180d_worst_maxdd_pct": -31.49098841004403,
+        "rolling_365d_worst_return_pct": -47.04533019443622,
+        "longest_negative_month_streak": 6,
+        "recovery_days_from_maxdd": 376.0
+      },
+      "avg_total_exposure_pct": 97.49303621169916,
+      "peak_total_exposure_pct": 300.0,
+      "avg_core_exposure_pct": 60.81952792845624,
+      "riskoff_active_ratio_pct": 39.18047207154376,
+      "sleeve1_active_ratio_pct": 24.666471191907345,
+      "sleeve2_active_ratio_pct": 12.007037091335581,
+      "sleeve1_accepted_trades": 56,
+      "sleeve2_accepted_trades": 97,
+      "sleeve1_forced_exits": 3,
+      "sleeve2_forced_exits": 0,
+      "causality": {
+        "violations": 0,
+        "rebalance_count": 146,
+        "pass": true,
+        "execution_mode": "next_bar_open"
+      }
+    }
+  },
+  "stress": {
+    "FormalPortfolio": {
+      "combo_equity": "timestamp\n2019-12-16 04:00:00+00:00     10000.000000\n2019-12-16 08:00:00+00:00     10050.051753\n2019-12-16 12:00:00+00:00     10040.551845\n2019-12-16 16:00:00+00:00      9794.688559\n2019-12-16 20:00:00+00:00      9768.032101\n                                 ...      \n2026-03-07 00:00:00+00:00    171017.003974\n2026-03-07 04:00:00+00:00    170646.223989\n2026-03-07 08:00:00+00:00    170880.460522\n2026-03-07 12:00:00+00:00    170707.335336\n2026-03-07 16:00:00+00:00    170595.605077\nLength: 13642, dtype: float64",
+      "combo_exposure": "timestamp\n2019-12-16 04:00:00+00:00    1.0\n2019-12-16 08:00:00+00:00    1.0\n2019-12-16 12:00:00+00:00    1.0\n2019-12-16 16:00:00+00:00    1.0\n2019-12-16 20:00:00+00:00    1.0\n                            ... \n2026-03-07 00:00:00+00:00    1.0\n2026-03-07 04:00:00+00:00    1.0\n2026-03-07 08:00:00+00:00    1.0\n2026-03-07 12:00:00+00:00    1.0\n2026-03-07 16:00:00+00:00    1.0\nLength: 13642, dtype: float64",
+      "metrics": {
+        "TotalReturn_pct": 1605.956050769884,
+        "CAGR_pct": 57.73288897815405,
+        "Sharpe": 0.9902090319020185,
+        "Calmar": 1.0142970362948949,
+        "MaxDD_pct": -56.91911433463845,
+        "PF": 1.0388492418326392,
+        "Exposure_pct": 136.8640961735816,
+        "MaxDDDuration_bars_4h": 5046,
+        "MaxDDDuration_days": 841.0,
+        "UlcerIndex": 27.851379309580597,
+        "underwater_ratio_pct": 98.43131505644334,
+        "recovery_bars_from_maxdd": 2781,
+        "recovery_days_from_maxdd": 463.5
+      },
+      "path": {
+        "worst_3m_cluster_return_pct": -39.78984686791411,
+        "worst_6m_cluster_return_pct": -44.25128015287083,
+        "rolling_180d_worst_maxdd_pct": -45.43141280695422,
+        "rolling_365d_worst_return_pct": -55.811691292318486,
+        "longest_negative_month_streak": 5,
+        "recovery_days_from_maxdd": 463.5
+      },
+      "avg_total_exposure_pct": 136.8640961735816,
+      "peak_total_exposure_pct": 300.0,
+      "sleeve1_active_ratio_pct": 25.120950007330308,
+      "sleeve2_active_ratio_pct": 11.743146166251282
+    },
+    "RO_LOWVALUE_WEEKLY_RSI30_HOLD": {
+      "combo_equity": "timestamp\n2019-12-16 04:00:00+00:00      9950.492151\n2019-12-16 08:00:00+00:00     10000.296109\n2019-12-16 12:00:00+00:00      9990.843233\n2019-12-16 16:00:00+00:00      9746.197163\n2019-12-16 20:00:00+00:00      9719.672676\n                                 ...      \n2026-03-07 00:00:00+00:00    295656.583824\n2026-03-07 04:00:00+00:00    294738.754032\n2026-03-07 08:00:00+00:00    295318.583790\n2026-03-07 12:00:00+00:00    294890.029229\n2026-03-07 16:00:00+00:00    294613.451839\nName: equity, Length: 13642, dtype: float64",
+      "combo_exposure": "timestamp\n2019-12-16 04:00:00+00:00    1.0\n2019-12-16 08:00:00+00:00    1.0\n2019-12-16 12:00:00+00:00    1.0\n2019-12-16 16:00:00+00:00    1.0\n2019-12-16 20:00:00+00:00    1.0\n                            ... \n2026-03-07 00:00:00+00:00    1.0\n2026-03-07 04:00:00+00:00    1.0\n2026-03-07 08:00:00+00:00    1.0\n2026-03-07 12:00:00+00:00    1.0\n2026-03-07 16:00:00+00:00    1.0\nLength: 13642, dtype: float64",
+      "metrics": {
+        "TotalReturn_pct": 2860.7927663761466,
+        "CAGR_pct": 72.34139698882778,
+        "Sharpe": 1.2162099922400906,
+        "Calmar": 1.7918032517757108,
+        "MaxDD_pct": -40.37351585177451,
+        "PF": 1.076846674475124,
+        "Exposure_pct": 95.89503005424424,
+        "MaxDDDuration_days": 754.8333333333334,
+        "UlcerIndex": 17.183312562873628,
+        "underwater_ratio_pct": 98.13077261398621,
+        "recovery_bars_from_maxdd": 1975,
+        "recovery_days_from_maxdd": 329.1666666666667
+      },
+      "path": {
+        "worst_3m_cluster_return_pct": -14.830502457087958,
+        "worst_6m_cluster_return_pct": -26.78027865535794,
+        "rolling_180d_worst_maxdd_pct": -32.08164088700806,
+        "rolling_365d_worst_return_pct": -37.11535949629674,
+        "longest_negative_month_streak": 6,
+        "recovery_days_from_maxdd": 329.1666666666667
+      },
+      "avg_total_exposure_pct": 95.89503005424424,
+      "peak_total_exposure_pct": 300.0,
+      "avg_core_exposure_pct": 60.26975516786395,
+      "riskoff_active_ratio_pct": 39.73024483213605,
+      "sleeve1_active_ratio_pct": 24.263304500806335,
+      "sleeve2_active_ratio_pct": 11.361970385573963,
+      "sleeve1_accepted_trades": 56,
+      "sleeve2_accepted_trades": 97,
+      "sleeve1_forced_exits": 3,
+      "sleeve2_forced_exits": 0,
+      "causality": {
+        "violations": 0,
+        "rebalance_count": 147,
+        "pass": true,
+        "execution_mode": "live_runner_next_5m_close"
+      }
+    },
+    "RO_LOWVALUE_4H_RSI10_HOLD": {
+      "combo_equity": "timestamp\n2019-12-16 04:00:00+00:00      9950.492151\n2019-12-16 08:00:00+00:00     10000.296109\n2019-12-16 12:00:00+00:00      9990.843233\n2019-12-16 16:00:00+00:00      9746.197163\n2019-12-16 20:00:00+00:00      9719.672676\n                                 ...      \n2026-03-07 00:00:00+00:00    304561.297352\n2026-03-07 04:00:00+00:00    304561.297352\n2026-03-07 08:00:00+00:00    304561.297352\n2026-03-07 12:00:00+00:00    304561.297352\n2026-03-07 16:00:00+00:00    304561.297352\nName: equity, Length: 13642, dtype: float64",
+      "combo_exposure": "timestamp\n2019-12-16 04:00:00+00:00    1.0\n2019-12-16 08:00:00+00:00    1.0\n2019-12-16 12:00:00+00:00    1.0\n2019-12-16 16:00:00+00:00    1.0\n2019-12-16 20:00:00+00:00    1.0\n                            ... \n2026-03-07 00:00:00+00:00    0.0\n2026-03-07 04:00:00+00:00    0.0\n2026-03-07 08:00:00+00:00    0.0\n2026-03-07 12:00:00+00:00    0.0\n2026-03-07 16:00:00+00:00    0.0\nLength: 13642, dtype: float64",
+      "metrics": {
+        "TotalReturn_pct": 2960.7661683087053,
+        "CAGR_pct": 73.2633086768818,
+        "Sharpe": 1.2346702894169135,
+        "Calmar": 1.5323369969135103,
+        "MaxDD_pct": -47.81148587056989,
+        "PF": 1.082349945119767,
+        "Exposure_pct": 96.44480281483654,
+        "MaxDDDuration_days": 753.5,
+        "UlcerIndex": 18.927073850750606,
+        "underwater_ratio_pct": 98.07946048966427,
+        "recovery_bars_from_maxdd": 2256,
+        "recovery_days_from_maxdd": 376.0
+      },
+      "path": {
+        "worst_3m_cluster_return_pct": -23.692271088436186,
+        "worst_6m_cluster_return_pct": -30.54883041533736,
+        "rolling_180d_worst_maxdd_pct": -31.031113582428183,
+        "rolling_365d_worst_return_pct": -46.9083972011503,
+        "longest_negative_month_streak": 6,
+        "recovery_days_from_maxdd": 376.0
+      },
+      "avg_total_exposure_pct": 96.44480281483654,
+      "peak_total_exposure_pct": 300.0,
+      "avg_core_exposure_pct": 60.81952792845624,
+      "riskoff_active_ratio_pct": 39.18047207154376,
+      "sleeve1_active_ratio_pct": 24.263304500806335,
+      "sleeve2_active_ratio_pct": 11.361970385573963,
+      "sleeve1_accepted_trades": 56,
+      "sleeve2_accepted_trades": 97,
+      "sleeve1_forced_exits": 3,
+      "sleeve2_forced_exits": 0,
+      "causality": {
+        "violations": 0,
+        "rebalance_count": 146,
+        "pass": true,
+        "execution_mode": "live_runner_next_5m_close"
+      }
+    }
+  }
+}

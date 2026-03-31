@@ -1,0 +1,626 @@
+{
+  "generated_at_local": "2026-03-23T08:14:30.238938",
+  "candidate_name": "washout_reversal_reclaim",
+  "locked_context": {
+    "baseline": "Core BTC holding + ConstAddOn[1.00x]",
+    "current_sleeve": "squeeze_release_20 / lb20_stop3.2_trail5.0_beoff",
+    "default_tuple": "next_bar_open + legacy_bar_extrema + midpoint + full_model",
+    "stress_tuple": "live_runner_next_5m_close + segment_path_same_bar + pessimistic + full_model"
+  },
+  "standalone": {
+    "default": {
+      "metrics": {
+        "TotalReturn_pct": -27.976558862119127,
+        "CAGR_pct": -5.136153191193483,
+        "Sharpe": -0.2425785890408952,
+        "Calmar": -0.11530134369021808,
+        "MaxDD_pct": -44.545475593006664,
+        "Trades": 60
+      },
+      "params": {
+        "candidate_name": "washout_reversal_reclaim",
+        "description": "Capture sharp BTC washouts that reclaim short-term structure while the higher-timeframe trend backdrop has not fully broken.",
+        "breakout_mode": "washout_reversal_reclaim",
+        "donchian_entry_len": 20,
+        "squeeze_threshold": 0.92,
+        "squeeze_bars": 6,
+        "ema_len": 200,
+        "ema_slope_len": 20,
+        "use_ema_slope": false,
+        "adx_period": 14,
+        "adx_min": 0.0,
+        "use_adx_filter": false,
+        "close_location_min": 0.55,
+        "range_atr_min": 0.55,
+        "volume_multiple": 1.0,
+        "structure_lookback": 20,
+        "initial_stop_atr": 2.6,
+        "trail_atr_mult": 4.0,
+        "trail_activate_atr": 1.6,
+        "swing_trail_lookback": 8,
+        "use_swing_trail": true,
+        "break_even_after_atr": 1000000000.0,
+        "position_pct": 100.0,
+        "init_equity": 10000.0,
+        "commission_pct": 0.06,
+        "entry_execution_mode": "next_bar_open",
+        "close_delay_bps": 8.0,
+        "intrabar_execution_model": "legacy_bar_extrema",
+        "intrabar_path_mode": "midpoint",
+        "slippage_fixed_bps": 5.0,
+        "slippage_breakout_extra_bps": 5.0,
+        "slippage_stop_extra_bps": 8.0,
+        "slippage_range_weight": 0.05,
+        "slippage_max_bps": 25.0,
+        "slippage_breakout_atr_threshold": 1.1,
+        "enable_daily_loss_limit": false,
+        "daily_loss_limit_pct": 1.5,
+        "cooldown_bars": 0
+      }
+    },
+    "stress": {
+      "metrics": {
+        "TotalReturn_pct": -25.518873187703008,
+        "CAGR_pct": -4.623356841639881,
+        "Sharpe": -0.21254909940818859,
+        "Calmar": -0.10353291322568485,
+        "MaxDD_pct": -44.65591373403854,
+        "Trades": 60
+      },
+      "params": {
+        "candidate_name": "washout_reversal_reclaim",
+        "description": "Capture sharp BTC washouts that reclaim short-term structure while the higher-timeframe trend backdrop has not fully broken.",
+        "breakout_mode": "washout_reversal_reclaim",
+        "donchian_entry_len": 20,
+        "squeeze_threshold": 0.92,
+        "squeeze_bars": 6,
+        "ema_len": 200,
+        "ema_slope_len": 20,
+        "use_ema_slope": false,
+        "adx_period": 14,
+        "adx_min": 0.0,
+        "use_adx_filter": false,
+        "close_location_min": 0.55,
+        "range_atr_min": 0.55,
+        "volume_multiple": 1.0,
+        "structure_lookback": 20,
+        "initial_stop_atr": 2.6,
+        "trail_atr_mult": 4.0,
+        "trail_activate_atr": 1.6,
+        "swing_trail_lookback": 8,
+        "use_swing_trail": true,
+        "break_even_after_atr": 1000000000.0,
+        "position_pct": 100.0,
+        "init_equity": 10000.0,
+        "commission_pct": 0.06,
+        "entry_execution_mode": "live_runner_next_5m_close",
+        "close_delay_bps": 8.0,
+        "intrabar_execution_model": "segment_path_same_bar",
+        "intrabar_path_mode": "pessimistic",
+        "slippage_fixed_bps": 5.0,
+        "slippage_breakout_extra_bps": 5.0,
+        "slippage_stop_extra_bps": 8.0,
+        "slippage_range_weight": 0.05,
+        "slippage_max_bps": 25.0,
+        "slippage_breakout_atr_threshold": 1.1,
+        "enable_daily_loss_limit": false,
+        "daily_loss_limit_pct": 1.5,
+        "cooldown_bars": 0
+      }
+    },
+    "stress_vs_default": {
+      "Return_pct": 2.457685674416119,
+      "CAGR_pct": 0.5127963495536019,
+      "Sharpe": 0.030029489632706602,
+      "Calmar": 0.011768430464533228,
+      "MaxDD_improvement_pct": -0.11043814103187799
+    },
+    "behavior": {
+      "unique_entries": 60,
+      "avg_hold_4h_bars": 15.167708333333332,
+      "median_hold_4h_bars": 12.927083333333332,
+      "max_winner_hold_4h_bars": 47.125,
+      "top10_winner_contrib_pct": 79.36932120205307,
+      "top3_winner_contrib_pct": 33.30964385657935,
+      "exit_mix": {
+        "TRAIL": 0.8333333333333334,
+        "SL": 0.16666666666666666
+      },
+      "avg_initial_stop_pct": 3.893053621601554,
+      "market_exposure_pct": 6.487794149989004,
+      "beta_like": 0.05495420560391816,
+      "mfe_pct_mean": 3.681016789862491,
+      "mae_pct_mean": -2.210805560426796
+    },
+    "trade_clustering": {
+      "trade_count": 60,
+      "entries_per_year": {
+        "2020": 9,
+        "2021": 9,
+        "2022": 7,
+        "2023": 6,
+        "2024": 14,
+        "2025": 14,
+        "2026": 1
+      },
+      "entries_per_month_top3_share_pct": 18.333333333333332,
+      "longest_gap_days": 177.66666666666666
+    },
+    "trade_stats": {
+      "trade_count": 60,
+      "win_rate_pct": 30.0,
+      "avg_trade_pnl_pct": -0.3721134161352818
+    },
+    "yearly": [
+      {
+        "year": 2019,
+        "TotalReturn_pct": 0.0,
+        "CAGR_pct": 0.0,
+        "Sharpe": 0.0,
+        "Calmar": 0.0,
+        "MaxDD_pct": 0.0,
+        "PF": 0.0,
+        "Exposure_pct": 0.0,
+        "MaxDDDuration_bars_4h": 0,
+        "MaxDDDuration_days": 0.0,
+        "Trades": 0
+      },
+      {
+        "year": 2020,
+        "TotalReturn_pct": 16.083854320383573,
+        "CAGR_pct": 16.056251371219844,
+        "Sharpe": 0.9602259949175497,
+        "Calmar": 1.5867446903121358,
+        "MaxDD_pct": -10.118988561456188,
+        "PF": 1.2705073387770878,
+        "Exposure_pct": 8.788706739526411,
+        "MaxDDDuration_bars_4h": 1653,
+        "MaxDDDuration_days": 275.5,
+        "Trades": 9
+      },
+      {
+        "year": 2021,
+        "TotalReturn_pct": -15.931547987446205,
+        "CAGR_pct": -15.94820821336993,
+        "Sharpe": -0.5686208775023379,
+        "Calmar": -0.7259021573040386,
+        "MaxDD_pct": -21.970189856716658,
+        "PF": 0.7910299059542732,
+        "Exposure_pct": 5.114155251141553,
+        "MaxDDDuration_bars_4h": 2018,
+        "MaxDDDuration_days": 336.3333333333333,
+        "Trades": 9
+      },
+      {
+        "year": 2022,
+        "TotalReturn_pct": -1.1237754184231785,
+        "CAGR_pct": -1.1250516062535243,
+        "Sharpe": -0.01010794744286975,
+        "Calmar": -0.07092362299104635,
+        "MaxDD_pct": -15.862861467124356,
+        "PF": 0.9765775829135483,
+        "Exposure_pct": 4.474885844748858,
+        "MaxDDDuration_bars_4h": 1784,
+        "MaxDDDuration_days": 297.3333333333333,
+        "Trades": 7
+      },
+      {
+        "year": 2023,
+        "TotalReturn_pct": -6.134604929392317,
+        "CAGR_pct": -6.141391421968844,
+        "Sharpe": -0.885746659309043,
+        "Calmar": -0.8071835592926331,
+        "MaxDD_pct": -7.608419858490167,
+        "PF": 0.6732978943919313,
+        "Exposure_pct": 3.4703196347031966,
+        "MaxDDDuration_bars_4h": 1238,
+        "MaxDDDuration_days": 206.33333333333334,
+        "Trades": 6
+      },
+      {
+        "year": 2024,
+        "TotalReturn_pct": -20.810206930929244,
+        "CAGR_pct": -20.78073961065645,
+        "Sharpe": -1.2137964971442743,
+        "Calmar": -0.8374234445589853,
+        "MaxDD_pct": -24.81509175038713,
+        "PF": 0.6595323323545138,
+        "Exposure_pct": 6.375227686703097,
+        "MaxDDDuration_bars_4h": 2017,
+        "MaxDDDuration_days": 336.1666666666667,
+        "Trades": 14
+      },
+      {
+        "year": 2025,
+        "TotalReturn_pct": 1.7040941706593093,
+        "CAGR_pct": 1.7060568804090792,
+        "Sharpe": 0.1626733982293225,
+        "Calmar": 0.15011661111096256,
+        "MaxDD_pct": -11.364877396199702,
+        "PF": 1.0225306182802754,
+        "Exposure_pct": 11.735159817351597,
+        "MaxDDDuration_bars_4h": 1213,
+        "MaxDDDuration_days": 202.16666666666666,
+        "Trades": 14
+      },
+      {
+        "year": 2026,
+        "TotalReturn_pct": -1.266628982638951,
+        "CAGR_pct": -6.844701259257291,
+        "Sharpe": -0.5777226295309805,
+        "Calmar": -1.5823953824766146,
+        "MaxDD_pct": -4.325531618112166,
+        "PF": 0.7766201219828291,
+        "Exposure_pct": 2.278481012658228,
+        "MaxDDDuration_bars_4h": 18,
+        "MaxDDDuration_days": 3.0,
+        "Trades": 1
+      }
+    ]
+  },
+  "complementarity": {
+    "systems": {
+      "CoreOnly": {
+        "equity": "timestamp\n2019-12-16 04:00:00+00:00    10000.000000\n2019-12-16 08:00:00+00:00    10050.051753\n2019-12-16 12:00:00+00:00    10040.551845\n2019-12-16 16:00:00+00:00     9794.688559\n2019-12-16 20:00:00+00:00     9768.032101\n                                 ...     \n2026-03-07 00:00:00+00:00    96515.518879\n2026-03-07 04:00:00+00:00    96144.738894\n2026-03-07 08:00:00+00:00    96378.975428\n2026-03-07 12:00:00+00:00    96205.850242\n2026-03-07 16:00:00+00:00    96094.119982\nLength: 13642, dtype: float64",
+        "exposure": "timestamp\n2019-12-16 04:00:00+00:00    1.0\n2019-12-16 08:00:00+00:00    1.0\n2019-12-16 12:00:00+00:00    1.0\n2019-12-16 16:00:00+00:00    1.0\n2019-12-16 20:00:00+00:00    1.0\n                            ... \n2026-03-07 00:00:00+00:00    1.0\n2026-03-07 04:00:00+00:00    1.0\n2026-03-07 08:00:00+00:00    1.0\n2026-03-07 12:00:00+00:00    1.0\n2026-03-07 16:00:00+00:00    1.0\nLength: 13642, dtype: float64",
+        "metrics": {
+          "TotalReturn_pct": 860.9411998241809,
+          "CAGR_pct": 43.83862646995993,
+          "Sharpe": 0.7509592073344679,
+          "Calmar": 0.5690223381099986,
+          "MaxDD_pct": -77.0420131757383,
+          "PF": 1.0243899352935413,
+          "Exposure_pct": 100.0,
+          "MaxDDDuration_bars_4h": 5103,
+          "MaxDDDuration_days": 850.5,
+          "UlcerIndex": 37.79741832467991,
+          "underwater_ratio_pct": 98.14543322093535,
+          "recovery_bars_from_maxdd": 2838,
+          "recovery_days_from_maxdd": 473.0
+        }
+      },
+      "Core+BinaryAddOn": {
+        "equity": "timestamp\n2019-12-16 04:00:00+00:00     10000.000000\n2019-12-16 08:00:00+00:00     10050.051753\n2019-12-16 12:00:00+00:00     10040.551845\n2019-12-16 16:00:00+00:00      9794.688559\n2019-12-16 20:00:00+00:00      9768.032101\n                                 ...      \n2026-03-07 00:00:00+00:00    106963.958704\n2026-03-07 04:00:00+00:00    106593.178719\n2026-03-07 08:00:00+00:00    106827.415253\n2026-03-07 12:00:00+00:00    106654.290067\n2026-03-07 16:00:00+00:00    106542.559807\nLength: 13642, dtype: float64",
+        "exposure": "timestamp\n2019-12-16 04:00:00+00:00    1.0\n2019-12-16 08:00:00+00:00    1.0\n2019-12-16 12:00:00+00:00    1.0\n2019-12-16 16:00:00+00:00    1.0\n2019-12-16 20:00:00+00:00    1.0\n                            ... \n2026-03-07 00:00:00+00:00    1.0\n2026-03-07 04:00:00+00:00    1.0\n2026-03-07 08:00:00+00:00    1.0\n2026-03-07 12:00:00+00:00    1.0\n2026-03-07 16:00:00+00:00    1.0\nLength: 13642, dtype: float64",
+        "metrics": {
+          "TotalReturn_pct": 965.4255980743213,
+          "CAGR_pct": 46.24368290692355,
+          "Sharpe": 0.7920767472026035,
+          "Calmar": 0.6366775485878006,
+          "MaxDD_pct": -72.6328154801368,
+          "PF": 1.0267717912771916,
+          "Exposure_pct": 108.79233250256559,
+          "MaxDDDuration_bars_4h": 5078,
+          "MaxDDDuration_days": 846.3333333333334,
+          "UlcerIndex": 35.3789930789881,
+          "underwater_ratio_pct": 98.16742413135904,
+          "recovery_bars_from_maxdd": 2813,
+          "recovery_days_from_maxdd": 468.8333333333333
+        }
+      },
+      "Core+ConstAddOn[1.00x]": {
+        "equity": "timestamp\n2019-12-16 04:00:00+00:00     10000.000000\n2019-12-16 08:00:00+00:00     10050.051753\n2019-12-16 12:00:00+00:00     10040.551845\n2019-12-16 16:00:00+00:00      9794.688559\n2019-12-16 20:00:00+00:00      9768.032101\n                                 ...      \n2026-03-07 00:00:00+00:00    143520.715536\n2026-03-07 04:00:00+00:00    143149.935551\n2026-03-07 08:00:00+00:00    143384.172085\n2026-03-07 12:00:00+00:00    143211.046899\n2026-03-07 16:00:00+00:00    143099.316639\nLength: 13642, dtype: float64",
+        "exposure": "timestamp\n2019-12-16 04:00:00+00:00    1.0\n2019-12-16 08:00:00+00:00    1.0\n2019-12-16 12:00:00+00:00    1.0\n2019-12-16 16:00:00+00:00    1.0\n2019-12-16 20:00:00+00:00    1.0\n                            ... \n2026-03-07 00:00:00+00:00    1.0\n2026-03-07 04:00:00+00:00    1.0\n2026-03-07 08:00:00+00:00    1.0\n2026-03-07 12:00:00+00:00    1.0\n2026-03-07 16:00:00+00:00    1.0\nLength: 13642, dtype: float64",
+        "metrics": {
+          "TotalReturn_pct": 1330.993166392115,
+          "CAGR_pct": 53.3413872960742,
+          "Sharpe": 0.8920499785734151,
+          "Calmar": 0.837435058608726,
+          "MaxDD_pct": -63.69614783586085,
+          "PF": 1.033442084797412,
+          "Exposure_pct": 125.1209500073303,
+          "MaxDDDuration_bars_4h": 5039,
+          "MaxDDDuration_days": 839.8333333333334,
+          "UlcerIndex": 30.3265443997718,
+          "underwater_ratio_pct": 98.32869080779945,
+          "recovery_bars_from_maxdd": 2774,
+          "recovery_days_from_maxdd": 462.3333333333333
+        }
+      },
+      "Core+ConstAddOn[1.00x]+Washout": {
+        "equity": "timestamp\n2019-12-16 04:00:00+00:00     10000.000000\n2019-12-16 08:00:00+00:00     10050.051753\n2019-12-16 12:00:00+00:00     10040.551845\n2019-12-16 16:00:00+00:00      9794.688559\n2019-12-16 20:00:00+00:00      9768.032101\n                                 ...      \n2026-03-07 00:00:00+00:00    140723.059650\n2026-03-07 04:00:00+00:00    140352.279665\n2026-03-07 08:00:00+00:00    140586.516198\n2026-03-07 12:00:00+00:00    140413.391012\n2026-03-07 16:00:00+00:00    140301.660753\nLength: 13642, dtype: float64",
+        "exposure": "timestamp\n2019-12-16 04:00:00+00:00    1.0\n2019-12-16 08:00:00+00:00    1.0\n2019-12-16 12:00:00+00:00    1.0\n2019-12-16 16:00:00+00:00    1.0\n2019-12-16 20:00:00+00:00    1.0\n                            ... \n2026-03-07 00:00:00+00:00    1.0\n2026-03-07 04:00:00+00:00    1.0\n2026-03-07 08:00:00+00:00    1.0\n2026-03-07 12:00:00+00:00    1.0\n2026-03-07 16:00:00+00:00    1.0\nLength: 13642, dtype: float64",
+        "metrics": {
+          "TotalReturn_pct": 1303.016607529996,
+          "CAGR_pct": 52.855759986712904,
+          "Sharpe": 0.8870010723770335,
+          "Calmar": 0.8219589870895982,
+          "MaxDD_pct": -64.30461959405686,
+          "PF": 1.0324768738955903,
+          "Exposure_pct": 131.6082685823193,
+          "MaxDDDuration_bars_4h": 5041,
+          "MaxDDDuration_days": 840.1666666666666,
+          "UlcerIndex": 30.640924103854523,
+          "underwater_ratio_pct": 98.32136050432489,
+          "recovery_bars_from_maxdd": 2776,
+          "recovery_days_from_maxdd": 462.6666666666667
+        }
+      }
+    },
+    "delta_vs_const1x": {
+      "Return_pct": -27.976558862118964,
+      "CAGR_pct": -0.4856273093612984,
+      "Sharpe": -0.005048906196381542,
+      "Calmar": -0.015476071519127776,
+      "MaxDD_improvement_pct": -0.6084717581960106
+    },
+    "delta_vs_binary": {
+      "Return_pct": 337.5910094556747,
+      "CAGR_pct": 6.612077079789351,
+      "Sharpe": 0.09492432517443006,
+      "Calmar": 0.18528143850179768,
+      "MaxDD_improvement_pct": 8.32819588607994
+    },
+    "delta_vs_archived": {
+      "Return_pct": 315.79745341095224,
+      "CAGR_pct": 6.13555882624695,
+      "Sharpe": 0.09090282101971914,
+      "Calmar": 0.18311254181828673,
+      "MaxDD_improvement_pct": 8.827510210037715
+    },
+    "orthogonality": {
+      "current_active_ratio_pct": 25.120950007330308,
+      "candidate_active_ratio_pct": 6.487318574989004,
+      "active_overlap_ratio_pct": 0.8869667204222255,
+      "candidate_only_active_ratio_pct": 5.600351854566779,
+      "current_only_active_ratio_pct": 24.233983286908078,
+      "candidate_entry_overlap_with_current_pct": 1.6666666666666667,
+      "candidate_entries_when_current_flat_pct": 98.33333333333333,
+      "active_return_correlation": 0.08706703824459525,
+      "candidate_abs_pnl_when_current_flat_pct_of_total_abs": 85.28605308610844
+    },
+    "time_slices": [
+      {
+        "slice": "bull_expansion",
+        "window": {
+          "start": "2020-04-01",
+          "end": "2021-11-10"
+        },
+        "CoreOnly": {
+          "TotalReturn_pct": 951.9547018078441,
+          "CAGR_pct": 331.53640579646134,
+          "Sharpe": 1.919517524052497,
+          "Calmar": 6.123748663582048,
+          "MaxDD_pct": -54.13945346387408,
+          "PF": 1.1000326465563,
+          "Exposure_pct": 100.0,
+          "MaxDDDuration_bars_4h": 1134,
+          "MaxDDDuration_days": 189.0
+        },
+        "Core+BinaryAddOn": {
+          "TotalReturn_pct": 968.7172542064376,
+          "CAGR_pct": 335.7962520289134,
+          "Sharpe": 1.9719566288408656,
+          "Calmar": 6.546916243160322,
+          "MaxDD_pct": -51.29075118071438,
+          "PF": 1.1037198067112668,
+          "Exposure_pct": 111.7361111111111,
+          "MaxDDDuration_bars_4h": 1129,
+          "MaxDDDuration_days": 188.16666666666666
+        },
+        "Core+ConstAddOn[1.00x]": {
+          "TotalReturn_pct": 1057.887566657717,
+          "CAGR_pct": 358.04555655844314,
+          "Sharpe": 2.050792315676847,
+          "Calmar": 7.80614372727045,
+          "MaxDD_pct": -45.86714888525884,
+          "PF": 1.1120852427080214,
+          "Exposure_pct": 133.53174603174602,
+          "MaxDDDuration_bars_4h": 1129,
+          "MaxDDDuration_days": 188.16666666666666
+        },
+        "Core+ConstAddOn[1.00x]+Washout": {
+          "TotalReturn_pct": 972.7992995434032,
+          "CAGR_pct": 336.82977679827684,
+          "Sharpe": 2.0097423063907947,
+          "Calmar": 7.3239272356012455,
+          "MaxDD_pct": -45.99032267291844,
+          "PF": 1.1104833241282075,
+          "Exposure_pct": 140.58956916099774,
+          "MaxDDDuration_bars_4h": 1129,
+          "MaxDDDuration_days": 188.16666666666666
+        },
+        "plus_washout_vs_const1x": {
+          "Return_pct": -85.08826711431368,
+          "CAGR_pct": -21.2157797601663,
+          "Sharpe": -0.04105000928605218,
+          "Calmar": -0.4822164916692042,
+          "MaxDD_improvement_pct": -0.12317378765959575
+        }
+      },
+      {
+        "slice": "major_drawdown",
+        "window": {
+          "start": "2021-11-10",
+          "end": "2023-01-01"
+        },
+        "CoreOnly": {
+          "TotalReturn_pct": -75.14168434590813,
+          "CAGR_pct": -70.46871275628928,
+          "Sharpe": -1.372911906848189,
+          "Calmar": -0.9153608046551185,
+          "MaxDD_pct": -76.98462988355706,
+          "PF": 0.8668875465985147,
+          "Exposure_pct": 100.0,
+          "MaxDDDuration_bars_4h": 2498,
+          "MaxDDDuration_days": 416.3333333333333
+        },
+        "Core+BinaryAddOn": {
+          "TotalReturn_pct": -70.68777248311144,
+          "CAGR_pct": -65.88056762458751,
+          "Sharpe": -1.422617569818907,
+          "Calmar": -0.9078862381699938,
+          "MaxDD_pct": -72.56478273905938,
+          "PF": 0.8669850991643555,
+          "Exposure_pct": 102.12629896083132,
+          "MaxDDDuration_bars_4h": 2498,
+          "MaxDDDuration_days": 416.3333333333333
+        },
+        "Core+ConstAddOn[1.00x]": {
+          "TotalReturn_pct": -61.57436678893613,
+          "CAGR_pct": -56.7461880578044,
+          "Sharpe": -1.4793663277403393,
+          "Calmar": -0.8922633575898752,
+          "MaxDD_pct": -63.59802582399392,
+          "PF": 0.8671884621226984,
+          "Exposure_pct": 106.07513988808952,
+          "MaxDDDuration_bars_4h": 2498,
+          "MaxDDDuration_days": 416.3333333333333
+        },
+        "Core+ConstAddOn[1.00x]+Washout": {
+          "TotalReturn_pct": -62.061513477668875,
+          "CAGR_pct": -57.227064012654964,
+          "Sharpe": -1.4781292291581047,
+          "Calmar": -0.8912676435180077,
+          "MaxDD_pct": -64.20861839746425,
+          "PF": 0.8669653303272873,
+          "Exposure_pct": 110.91127098321343,
+          "MaxDDDuration_bars_4h": 2498,
+          "MaxDDDuration_days": 416.3333333333333
+        },
+        "plus_washout_vs_const1x": {
+          "Return_pct": -0.4871466887327429,
+          "CAGR_pct": -0.48087595485056056,
+          "Sharpe": 0.0012370985822345304,
+          "Calmar": 0.0009957140718674928,
+          "MaxDD_improvement_pct": -0.6105925734703277
+        }
+      },
+      {
+        "slice": "recovery_phase",
+        "window": {
+          "start": "2023-01-01",
+          "end": "2024-03-15"
+        },
+        "CoreOnly": {
+          "TotalReturn_pct": 331.75757795635536,
+          "CAGR_pct": 237.84949821881307,
+          "Sharpe": 2.4814206307495894,
+          "Calmar": 11.227411483321312,
+          "MaxDD_pct": -21.184713731401605,
+          "PF": 1.2412334446148914,
+          "Exposure_pct": 100.0,
+          "MaxDDDuration_bars_4h": 612,
+          "MaxDDDuration_days": 102.0
+        },
+        "Core+BinaryAddOn": {
+          "TotalReturn_pct": 278.55640725190074,
+          "CAGR_pct": 202.82378136783262,
+          "Sharpe": 2.506178419223627,
+          "Calmar": 10.978229302892862,
+          "MaxDD_pct": -18.475090633640413,
+          "PF": 1.2431814187312786,
+          "Exposure_pct": 110.74981017463932,
+          "MaxDDDuration_bars_4h": 612,
+          "MaxDDDuration_days": 102.0
+        },
+        "Core+ConstAddOn[1.00x]": {
+          "TotalReturn_pct": 232.24081569135063,
+          "CAGR_pct": 171.65395551592826,
+          "Sharpe": 2.448069556429772,
+          "Calmar": 9.83869382277129,
+          "MaxDD_pct": -17.44682359345725,
+          "PF": 1.2467762184007698,
+          "Exposure_pct": 130.71374335611236,
+          "MaxDDDuration_bars_4h": 787,
+          "MaxDDDuration_days": 131.16666666666666
+        },
+        "Core+ConstAddOn[1.00x]+Washout": {
+          "TotalReturn_pct": 232.6366759996868,
+          "CAGR_pct": 171.9233273962505,
+          "Sharpe": 2.4304328154946377,
+          "Calmar": 9.56100549006628,
+          "MaxDD_pct": -17.981720392784617,
+          "PF": 1.2441350087172014,
+          "Exposure_pct": 133.97873955960515,
+          "MaxDDDuration_bars_4h": 787,
+          "MaxDDDuration_days": 131.16666666666666
+        },
+        "plus_washout_vs_const1x": {
+          "Return_pct": 0.3958603083361538,
+          "CAGR_pct": 0.2693718803222396,
+          "Sharpe": -0.01763674093513412,
+          "Calmar": -0.2776883327050097,
+          "MaxDD_improvement_pct": -0.5348967993273668
+        }
+      },
+      {
+        "slice": "sideways_volatility",
+        "window": {
+          "start": "2024-03-15",
+          "end": "2026-03-01"
+        },
+        "CoreOnly": {
+          "TotalReturn_pct": -1.9058100462054361,
+          "CAGR_pct": -0.9770107376026793,
+          "Sharpe": 0.1820415604592313,
+          "Calmar": -0.019603430941121994,
+          "MaxDD_pct": -49.838762435875964,
+          "PF": 0.9989508354471921,
+          "Exposure_pct": 100.0,
+          "MaxDDDuration_bars_4h": 1225,
+          "MaxDDDuration_days": 204.16666666666666
+        },
+        "Core+BinaryAddOn": {
+          "TotalReturn_pct": -1.6749591673895337,
+          "CAGR_pct": -0.8581735052440087,
+          "Sharpe": 0.16933096468058492,
+          "Calmar": -0.018236934059245497,
+          "MaxDD_pct": -47.05689577294624,
+          "PF": 0.9989929640025622,
+          "Exposure_pct": 108.74999999999999,
+          "MaxDDDuration_bars_4h": 1269,
+          "MaxDDDuration_days": 211.5
+        },
+        "Core+ConstAddOn[1.00x]": {
+          "TotalReturn_pct": -2.3303521923527026,
+          "CAGR_pct": -1.195914325906955,
+          "Sharpe": 0.13445310165053181,
+          "Calmar": -0.030104924794642534,
+          "MaxDD_pct": -39.72487339080746,
+          "PF": 0.9982589853749075,
+          "Exposure_pct": 125.0,
+          "MaxDDDuration_bars_4h": 1295,
+          "MaxDDDuration_days": 215.83333333333334
+        },
+        "Core+ConstAddOn[1.00x]+Washout": {
+          "TotalReturn_pct": -3.5384005765545345,
+          "CAGR_pct": -1.8213741934474559,
+          "Sharpe": 0.12482788860940079,
+          "Calmar": -0.045021183683992286,
+          "MaxDD_pct": -40.45593750337273,
+          "PF": 0.9973885380995018,
+          "Exposure_pct": 134.00837988826814,
+          "MaxDDDuration_bars_4h": 1298,
+          "MaxDDDuration_days": 216.33333333333334
+        },
+        "plus_washout_vs_const1x": {
+          "Return_pct": -1.208048384201832,
+          "CAGR_pct": -0.625459867540501,
+          "Sharpe": -0.009625213041131023,
+          "Calmar": -0.014916258889349752,
+          "MaxDD_improvement_pct": -0.7310641125652708
+        }
+      }
+    ],
+    "early_recovery_window": {
+      "start": "2022-11-21T16:00:00+00:00",
+      "end": "2023-05-20T16:00:00+00:00"
+    },
+    "early_recovery_delta_vs_const1x": {
+      "Return_pct": 1.113608227846477,
+      "CAGR_pct": 3.6466021622795495,
+      "Sharpe": 0.017403513624917544,
+      "Calmar": 0.19694167486272107,
+      "MaxDD_improvement_pct": -0.06998361893276694
+    }
+  },
+  "decision": {
+    "status": "not a real Sleeve #2 candidate",
+    "action": "reject for S3",
+    "answer_1": "No.",
+    "answer_2": "It helps most where the current sleeve is absent or late. Candidate entries occur with the current sleeve flat 98.3% of the time. Portfolio effect vs Const1x is dReturn -27.98pp and dMaxDD -0.61pp, while early-recovery delta is dReturn +1.11pp and dMaxDD -0.07pp.",
+    "answer_3": "Orthogonal in timing, but not useful enough yet.",
+    "answer_4": "Reject it."
+  }
+}

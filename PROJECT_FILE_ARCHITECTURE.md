@@ -35,6 +35,8 @@ These directories hold self-contained audit rounds or specialized studies.
 
 - [archive](/Users/zhao/Desktop/LG/trading%20and%20programming/02_%E4%BA%A4%E6%98%93%E7%BB%9F_crpyto/trend_system_v1.0/archive)
   - explicit archive packages and restartable snapshots
+- [design_docs](/Users/zhao/Desktop/LG/trading%20and%20programming/02_%E4%BA%A4%E6%98%93%E7%BB%9F_crpyto/trend_system_v1.0/design_docs)
+  - architecture, visualization, and governance support documents moved out of root for readability
 - [legacy_root_research](/Users/zhao/Desktop/LG/trading%20and%20programming/02_%E4%BA%A4%E6%98%93%E7%BB%9F_crpyto/trend_system_v1.0/legacy_root_research)
   - reorganized root-level legacy process reports that are no longer part of the active read path
 - [riskoff_reentry_param_audit](/Users/zhao/Desktop/LG/trading%20and%20programming/02_%E4%BA%A4%E6%98%93%E7%BB%9F_crpyto/trend_system_v1.0/riskoff_reentry_param_audit)
@@ -129,6 +131,7 @@ These exist in the repo but should not be treated as active workstreams.
 - rejected ETH switch line
 - rejected first-pass `module_refinement_research` branches
 - rejected corrected `S2` time/progress stop branch
+- many old process reports now live under `legacy_root_research/`
 
 ## 8. Current Git Archiving Guidance
 

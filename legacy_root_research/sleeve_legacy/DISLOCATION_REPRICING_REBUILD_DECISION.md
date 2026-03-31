@@ -1,0 +1,13 @@
+# Dislocation Repricing Rebuild Decision
+
+## Final Judgment
+
+- Candidate status: not a real Sleeve #3 candidate
+- Decision: reject for T3
+
+## Direct Answers
+
+1. Is dislocation_repricing_rebuild a real Sleeve #3 candidate? No.
+2. Where exactly does it help or fail? It helps or fails according to whether post-shock volatility damage really transitions into orderly repricing and rebuild. Vs the current two-sleeve baseline it delivers dReturn -3.24pp and dMaxDD -0.13pp. In `major_drawdown` it adds dReturn -0.13pp and dMaxDD -0.13pp, but in `recovery_phase` it slips to dReturn +0.88pp even though dMaxDD stays -0.06pp. The early-recovery window is also mixed at dReturn +0.21pp and dMaxDD -0.05pp.
+3. Is the edge complementary or mostly redundant? Mostly redundant or not usefully complementary.
+4. Should T3 advance this family, reject it, or hold it as secondary priority? Reject it.

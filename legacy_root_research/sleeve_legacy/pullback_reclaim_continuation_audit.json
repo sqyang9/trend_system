@@ -1,0 +1,626 @@
+{
+  "generated_at_local": "2026-03-23T21:23:47.987574",
+  "candidate_name": "pullback_reclaim_continuation",
+  "locked_context": {
+    "baseline": "Core BTC holding + ConstAddOn[1.00x]",
+    "current_sleeve": "squeeze_release_20 / lb20_stop3.2_trail5.0_beoff",
+    "default_tuple": "next_bar_open + legacy_bar_extrema + midpoint + full_model",
+    "stress_tuple": "live_runner_next_5m_close + segment_path_same_bar + pessimistic + full_model"
+  },
+  "standalone": {
+    "default": {
+      "metrics": {
+        "TotalReturn_pct": -1.706529025572323,
+        "CAGR_pct": -0.27616758722387447,
+        "Sharpe": 0.10858010372047515,
+        "Calmar": -0.003878466101181447,
+        "MaxDD_pct": -71.20536315626147,
+        "Trades": 214
+      },
+      "params": {
+        "candidate_name": "pullback_reclaim_continuation",
+        "description": "Capture BTC trend continuation after a retracement reset and reclaim of short-term structure inside a still-bullish higher-timeframe backdrop.",
+        "breakout_mode": "pullback_reclaim_continuation",
+        "donchian_entry_len": 20,
+        "squeeze_threshold": 0.92,
+        "squeeze_bars": 6,
+        "ema_len": 200,
+        "ema_slope_len": 20,
+        "use_ema_slope": true,
+        "adx_period": 14,
+        "adx_min": 8.0,
+        "use_adx_filter": false,
+        "close_location_min": 0.58,
+        "range_atr_min": 0.45,
+        "volume_multiple": 1.0,
+        "structure_lookback": 20,
+        "initial_stop_atr": 2.8,
+        "trail_atr_mult": 4.4,
+        "trail_activate_atr": 1.8,
+        "swing_trail_lookback": 10,
+        "use_swing_trail": true,
+        "break_even_after_atr": 1000000000.0,
+        "position_pct": 100.0,
+        "init_equity": 10000.0,
+        "commission_pct": 0.06,
+        "entry_execution_mode": "next_bar_open",
+        "close_delay_bps": 8.0,
+        "intrabar_execution_model": "legacy_bar_extrema",
+        "intrabar_path_mode": "midpoint",
+        "slippage_fixed_bps": 5.0,
+        "slippage_breakout_extra_bps": 5.0,
+        "slippage_stop_extra_bps": 8.0,
+        "slippage_range_weight": 0.05,
+        "slippage_max_bps": 25.0,
+        "slippage_breakout_atr_threshold": 1.1,
+        "enable_daily_loss_limit": false,
+        "daily_loss_limit_pct": 1.5,
+        "cooldown_bars": 0
+      }
+    },
+    "stress": {
+      "metrics": {
+        "TotalReturn_pct": -26.56992160774887,
+        "CAGR_pct": -4.840893446956763,
+        "Sharpe": -0.016758509510953593,
+        "Calmar": -0.06342640395930736,
+        "MaxDD_pct": -76.32300027702259,
+        "Trades": 214
+      },
+      "params": {
+        "candidate_name": "pullback_reclaim_continuation",
+        "description": "Capture BTC trend continuation after a retracement reset and reclaim of short-term structure inside a still-bullish higher-timeframe backdrop.",
+        "breakout_mode": "pullback_reclaim_continuation",
+        "donchian_entry_len": 20,
+        "squeeze_threshold": 0.92,
+        "squeeze_bars": 6,
+        "ema_len": 200,
+        "ema_slope_len": 20,
+        "use_ema_slope": true,
+        "adx_period": 14,
+        "adx_min": 8.0,
+        "use_adx_filter": false,
+        "close_location_min": 0.58,
+        "range_atr_min": 0.45,
+        "volume_multiple": 1.0,
+        "structure_lookback": 20,
+        "initial_stop_atr": 2.8,
+        "trail_atr_mult": 4.4,
+        "trail_activate_atr": 1.8,
+        "swing_trail_lookback": 10,
+        "use_swing_trail": true,
+        "break_even_after_atr": 1000000000.0,
+        "position_pct": 100.0,
+        "init_equity": 10000.0,
+        "commission_pct": 0.06,
+        "entry_execution_mode": "live_runner_next_5m_close",
+        "close_delay_bps": 8.0,
+        "intrabar_execution_model": "segment_path_same_bar",
+        "intrabar_path_mode": "pessimistic",
+        "slippage_fixed_bps": 5.0,
+        "slippage_breakout_extra_bps": 5.0,
+        "slippage_stop_extra_bps": 8.0,
+        "slippage_range_weight": 0.05,
+        "slippage_max_bps": 25.0,
+        "slippage_breakout_atr_threshold": 1.1,
+        "enable_daily_loss_limit": false,
+        "daily_loss_limit_pct": 1.5,
+        "cooldown_bars": 0
+      }
+    },
+    "stress_vs_default": {
+      "Return_pct": -24.863392582176548,
+      "CAGR_pct": -4.564725859732889,
+      "Sharpe": -0.12533861323142875,
+      "Calmar": -0.05954793785812591,
+      "MaxDD_improvement_pct": -5.117637120761117
+    },
+    "behavior": {
+      "unique_entries": 214,
+      "avg_hold_4h_bars": 16.41997663551402,
+      "median_hold_4h_bars": 11.270833333333332,
+      "max_winner_hold_4h_bars": 74.54166666666667,
+      "top10_winner_contrib_pct": 46.970903469541895,
+      "top3_winner_contrib_pct": 21.038363346905403,
+      "exit_mix": {
+        "TRAIL": 0.9766355140186916,
+        "SL": 0.02336448598130841
+      },
+      "avg_initial_stop_pct": 4.906728472062044,
+      "market_exposure_pct": 25.17410747012682,
+      "beta_like": 0.20823527772584605,
+      "mfe_pct_mean": 4.635779914645703,
+      "mae_pct_mean": -2.435769452925601
+    },
+    "trade_clustering": {
+      "trade_count": 214,
+      "entries_per_year": {
+        "2020": 41,
+        "2021": 40,
+        "2022": 17,
+        "2023": 42,
+        "2024": 37,
+        "2025": 34,
+        "2026": 3
+      },
+      "entries_per_month_top3_share_pct": 12.616822429906541,
+      "longest_gap_days": 105.66666666666667
+    },
+    "trade_stats": {
+      "trade_count": 214,
+      "win_rate_pct": 29.439252336448597,
+      "avg_trade_pnl_pct": 0.24560747674172864
+    },
+    "yearly": [
+      {
+        "year": 2019,
+        "TotalReturn_pct": 0.0,
+        "CAGR_pct": 0.0,
+        "Sharpe": 0.0,
+        "Calmar": 0.0,
+        "MaxDD_pct": 0.0,
+        "PF": 0.0,
+        "Exposure_pct": 0.0,
+        "MaxDDDuration_bars_4h": 0,
+        "MaxDDDuration_days": 0.0,
+        "Trades": 0
+      },
+      {
+        "year": 2020,
+        "TotalReturn_pct": 61.40344210067823,
+        "CAGR_pct": 61.280279894298495,
+        "Sharpe": 1.2784808195211657,
+        "Calmar": 1.7811015789196156,
+        "MaxDD_pct": -34.40583098661336,
+        "PF": 1.1682574786293958,
+        "Exposure_pct": 35.79234972677596,
+        "MaxDDDuration_bars_4h": 1867,
+        "MaxDDDuration_days": 311.1666666666667,
+        "Trades": 41
+      },
+      {
+        "year": 2021,
+        "TotalReturn_pct": 0.8045311882474593,
+        "CAGR_pct": 0.8054537129073003,
+        "Sharpe": 0.19301008167664158,
+        "Calmar": 0.017391930007953804,
+        "MaxDD_pct": -46.31192239958097,
+        "PF": 1.0016114552923812,
+        "Exposure_pct": 31.187214611872143,
+        "MaxDDDuration_bars_4h": 1757,
+        "MaxDDDuration_days": 292.8333333333333,
+        "Trades": 40
+      },
+      {
+        "year": 2022,
+        "TotalReturn_pct": -24.080213101892443,
+        "CAGR_pct": -24.10409623073185,
+        "Sharpe": -1.4423719253517187,
+        "Calmar": -0.849973286403984,
+        "MaxDD_pct": -28.35865152034368,
+        "PF": 0.7193053768721333,
+        "Exposure_pct": 9.771689497716896,
+        "MaxDDDuration_bars_4h": 1669,
+        "MaxDDDuration_days": 278.1666666666667,
+        "Trades": 17
+      },
+      {
+        "year": 2023,
+        "TotalReturn_pct": -18.585559424463703,
+        "CAGR_pct": -18.604675768059654,
+        "Sharpe": -0.5711325588788623,
+        "Calmar": -0.4527197541025067,
+        "MaxDD_pct": -41.095347838184026,
+        "PF": 0.8977314195027076,
+        "Exposure_pct": 27.808219178082194,
+        "MaxDDDuration_bars_4h": 1910,
+        "MaxDDDuration_days": 318.3333333333333,
+        "Trades": 42
+      },
+      {
+        "year": 2024,
+        "TotalReturn_pct": 18.267047729368223,
+        "CAGR_pct": 18.23541283221466,
+        "Sharpe": 0.6568369861189229,
+        "Calmar": 0.7421255445385504,
+        "MaxDD_pct": -24.571870576902644,
+        "PF": 1.0825099755894085,
+        "Exposure_pct": 30.965391621129324,
+        "MaxDDDuration_bars_4h": 1634,
+        "MaxDDDuration_days": 272.3333333333333,
+        "Trades": 37
+      },
+      {
+        "year": 2025,
+        "TotalReturn_pct": -16.854508627994115,
+        "CAGR_pct": -16.87203401408689,
+        "Sharpe": -0.7583802058630696,
+        "Calmar": -0.8337211215977322,
+        "MaxDD_pct": -20.23702360059386,
+        "PF": 0.8830524016603715,
+        "Exposure_pct": 20.182648401826484,
+        "MaxDDDuration_bars_4h": 2077,
+        "MaxDDDuration_days": 346.1666666666667,
+        "Trades": 34
+      },
+      {
+        "year": 2026,
+        "TotalReturn_pct": -1.9086226657146543,
+        "CAGR_pct": -10.16425746089954,
+        "Sharpe": -0.8618829362148563,
+        "Calmar": -2.3207088098928383,
+        "MaxDD_pct": -4.379807331954277,
+        "PF": 0.7836730858517027,
+        "Exposure_pct": 5.063291139240507,
+        "MaxDDDuration_bars_4h": 312,
+        "MaxDDDuration_days": 52.0,
+        "Trades": 3
+      }
+    ]
+  },
+  "complementarity": {
+    "systems": {
+      "CoreOnly": {
+        "equity": "timestamp\n2019-12-16 04:00:00+00:00    10000.000000\n2019-12-16 08:00:00+00:00    10050.051753\n2019-12-16 12:00:00+00:00    10040.551845\n2019-12-16 16:00:00+00:00     9794.688559\n2019-12-16 20:00:00+00:00     9768.032101\n                                 ...     \n2026-03-07 00:00:00+00:00    96515.518879\n2026-03-07 04:00:00+00:00    96144.738894\n2026-03-07 08:00:00+00:00    96378.975428\n2026-03-07 12:00:00+00:00    96205.850242\n2026-03-07 16:00:00+00:00    96094.119982\nLength: 13642, dtype: float64",
+        "exposure": "timestamp\n2019-12-16 04:00:00+00:00    1.0\n2019-12-16 08:00:00+00:00    1.0\n2019-12-16 12:00:00+00:00    1.0\n2019-12-16 16:00:00+00:00    1.0\n2019-12-16 20:00:00+00:00    1.0\n                            ... \n2026-03-07 00:00:00+00:00    1.0\n2026-03-07 04:00:00+00:00    1.0\n2026-03-07 08:00:00+00:00    1.0\n2026-03-07 12:00:00+00:00    1.0\n2026-03-07 16:00:00+00:00    1.0\nLength: 13642, dtype: float64",
+        "metrics": {
+          "TotalReturn_pct": 860.9411998241809,
+          "CAGR_pct": 43.83862646995993,
+          "Sharpe": 0.7509592073344679,
+          "Calmar": 0.5690223381099986,
+          "MaxDD_pct": -77.0420131757383,
+          "PF": 1.0243899352935413,
+          "Exposure_pct": 100.0,
+          "MaxDDDuration_bars_4h": 5103,
+          "MaxDDDuration_days": 850.5,
+          "UlcerIndex": 37.79741832467991,
+          "underwater_ratio_pct": 98.14543322093535,
+          "recovery_bars_from_maxdd": 2838,
+          "recovery_days_from_maxdd": 473.0
+        }
+      },
+      "Core+BinaryAddOn": {
+        "equity": "timestamp\n2019-12-16 04:00:00+00:00     10000.000000\n2019-12-16 08:00:00+00:00     10050.051753\n2019-12-16 12:00:00+00:00     10040.551845\n2019-12-16 16:00:00+00:00      9794.688559\n2019-12-16 20:00:00+00:00      9768.032101\n                                 ...      \n2026-03-07 00:00:00+00:00    106963.958704\n2026-03-07 04:00:00+00:00    106593.178719\n2026-03-07 08:00:00+00:00    106827.415253\n2026-03-07 12:00:00+00:00    106654.290067\n2026-03-07 16:00:00+00:00    106542.559807\nLength: 13642, dtype: float64",
+        "exposure": "timestamp\n2019-12-16 04:00:00+00:00    1.0\n2019-12-16 08:00:00+00:00    1.0\n2019-12-16 12:00:00+00:00    1.0\n2019-12-16 16:00:00+00:00    1.0\n2019-12-16 20:00:00+00:00    1.0\n                            ... \n2026-03-07 00:00:00+00:00    1.0\n2026-03-07 04:00:00+00:00    1.0\n2026-03-07 08:00:00+00:00    1.0\n2026-03-07 12:00:00+00:00    1.0\n2026-03-07 16:00:00+00:00    1.0\nLength: 13642, dtype: float64",
+        "metrics": {
+          "TotalReturn_pct": 965.4255980743213,
+          "CAGR_pct": 46.24368290692355,
+          "Sharpe": 0.7920767472026035,
+          "Calmar": 0.6366775485878006,
+          "MaxDD_pct": -72.6328154801368,
+          "PF": 1.0267717912771916,
+          "Exposure_pct": 108.79233250256559,
+          "MaxDDDuration_bars_4h": 5078,
+          "MaxDDDuration_days": 846.3333333333334,
+          "UlcerIndex": 35.3789930789881,
+          "underwater_ratio_pct": 98.16742413135904,
+          "recovery_bars_from_maxdd": 2813,
+          "recovery_days_from_maxdd": 468.8333333333333
+        }
+      },
+      "Core+ConstAddOn[1.00x]": {
+        "equity": "timestamp\n2019-12-16 04:00:00+00:00     10000.000000\n2019-12-16 08:00:00+00:00     10050.051753\n2019-12-16 12:00:00+00:00     10040.551845\n2019-12-16 16:00:00+00:00      9794.688559\n2019-12-16 20:00:00+00:00      9768.032101\n                                 ...      \n2026-03-07 00:00:00+00:00    143520.715536\n2026-03-07 04:00:00+00:00    143149.935551\n2026-03-07 08:00:00+00:00    143384.172085\n2026-03-07 12:00:00+00:00    143211.046899\n2026-03-07 16:00:00+00:00    143099.316639\nLength: 13642, dtype: float64",
+        "exposure": "timestamp\n2019-12-16 04:00:00+00:00    1.0\n2019-12-16 08:00:00+00:00    1.0\n2019-12-16 12:00:00+00:00    1.0\n2019-12-16 16:00:00+00:00    1.0\n2019-12-16 20:00:00+00:00    1.0\n                            ... \n2026-03-07 00:00:00+00:00    1.0\n2026-03-07 04:00:00+00:00    1.0\n2026-03-07 08:00:00+00:00    1.0\n2026-03-07 12:00:00+00:00    1.0\n2026-03-07 16:00:00+00:00    1.0\nLength: 13642, dtype: float64",
+        "metrics": {
+          "TotalReturn_pct": 1330.993166392115,
+          "CAGR_pct": 53.3413872960742,
+          "Sharpe": 0.8920499785734151,
+          "Calmar": 0.837435058608726,
+          "MaxDD_pct": -63.69614783586085,
+          "PF": 1.033442084797412,
+          "Exposure_pct": 125.1209500073303,
+          "MaxDDDuration_bars_4h": 5039,
+          "MaxDDDuration_days": 839.8333333333334,
+          "UlcerIndex": 30.3265443997718,
+          "underwater_ratio_pct": 98.32869080779945,
+          "recovery_bars_from_maxdd": 2774,
+          "recovery_days_from_maxdd": 462.3333333333333
+        }
+      },
+      "Core+ConstAddOn[1.00x]+PullbackReclaim": {
+        "equity": "timestamp\n2019-12-16 04:00:00+00:00     10000.000000\n2019-12-16 08:00:00+00:00     10050.051753\n2019-12-16 12:00:00+00:00     10040.551845\n2019-12-16 16:00:00+00:00      9794.688559\n2019-12-16 20:00:00+00:00      9768.032101\n                                 ...      \n2026-03-07 00:00:00+00:00    143350.062634\n2026-03-07 04:00:00+00:00    142979.282649\n2026-03-07 08:00:00+00:00    143213.519182\n2026-03-07 12:00:00+00:00    143040.393996\n2026-03-07 16:00:00+00:00    142928.663737\nLength: 13642, dtype: float64",
+        "exposure": "timestamp\n2019-12-16 04:00:00+00:00    1.0\n2019-12-16 08:00:00+00:00    1.0\n2019-12-16 12:00:00+00:00    1.0\n2019-12-16 16:00:00+00:00    1.0\n2019-12-16 20:00:00+00:00    1.0\n                            ... \n2026-03-07 00:00:00+00:00    1.0\n2026-03-07 04:00:00+00:00    1.0\n2026-03-07 08:00:00+00:00    1.0\n2026-03-07 12:00:00+00:00    1.0\n2026-03-07 16:00:00+00:00    1.0\nLength: 13642, dtype: float64",
+        "metrics": {
+          "TotalReturn_pct": 1329.2866373665427,
+          "CAGR_pct": 53.31199400375013,
+          "Sharpe": 0.8806421349068351,
+          "Calmar": 0.833863423581002,
+          "MaxDD_pct": -63.93372403217224,
+          "PF": 1.031870041644556,
+          "Exposure_pct": 150.29321213898254,
+          "MaxDDDuration_bars_4h": 5047,
+          "MaxDDDuration_days": 841.1666666666666,
+          "UlcerIndex": 31.670372748640077,
+          "underwater_ratio_pct": 98.57792112593461,
+          "recovery_bars_from_maxdd": 2782,
+          "recovery_days_from_maxdd": 463.6666666666667
+        }
+      }
+    },
+    "delta_vs_const1x": {
+      "Return_pct": -1.7065290255723085,
+      "CAGR_pct": -0.029393292324073172,
+      "Sharpe": -0.011407843666579986,
+      "Calmar": -0.0035716350277240627,
+      "MaxDD_improvement_pct": -0.23757619631139448
+    },
+    "delta_vs_binary": {
+      "Return_pct": 363.86103929222134,
+      "CAGR_pct": 7.0683110968265765,
+      "Sharpe": 0.08856538770423161,
+      "Calmar": 0.1971858749932014,
+      "MaxDD_improvement_pct": 8.699091447964555
+    },
+    "delta_vs_archived": {
+      "Return_pct": 342.0674832474989,
+      "CAGR_pct": 6.591792843284175,
+      "Sharpe": 0.0845438835495207,
+      "Calmar": 0.19501697830969045,
+      "MaxDD_improvement_pct": 9.198405771922332
+    },
+    "orthogonality": {
+      "current_active_ratio_pct": 25.120950007330308,
+      "candidate_active_ratio_pct": 25.17226213165225,
+      "active_overlap_ratio_pct": 15.554903973024484,
+      "candidate_only_active_ratio_pct": 9.617358158627768,
+      "current_only_active_ratio_pct": 9.56604603430582,
+      "candidate_entry_overlap_with_current_pct": 44.85981308411215,
+      "candidate_entries_when_current_flat_pct": 55.140186915887845,
+      "active_return_correlation": 0.6669450089441701,
+      "candidate_abs_pnl_when_current_flat_pct_of_total_abs": 38.42752983640981
+    },
+    "time_slices": [
+      {
+        "slice": "bull_expansion",
+        "window": {
+          "start": "2020-04-01",
+          "end": "2021-11-10"
+        },
+        "CoreOnly": {
+          "TotalReturn_pct": 951.9547018078441,
+          "CAGR_pct": 331.53640579646134,
+          "Sharpe": 1.919517524052497,
+          "Calmar": 6.123748663582048,
+          "MaxDD_pct": -54.13945346387408,
+          "PF": 1.1000326465563,
+          "Exposure_pct": 100.0,
+          "MaxDDDuration_bars_4h": 1134,
+          "MaxDDDuration_days": 189.0
+        },
+        "Core+BinaryAddOn": {
+          "TotalReturn_pct": 968.7172542064376,
+          "CAGR_pct": 335.7962520289134,
+          "Sharpe": 1.9719566288408656,
+          "Calmar": 6.546916243160322,
+          "MaxDD_pct": -51.29075118071438,
+          "PF": 1.1037198067112668,
+          "Exposure_pct": 111.7361111111111,
+          "MaxDDDuration_bars_4h": 1129,
+          "MaxDDDuration_days": 188.16666666666666
+        },
+        "Core+ConstAddOn[1.00x]": {
+          "TotalReturn_pct": 1057.887566657717,
+          "CAGR_pct": 358.04555655844314,
+          "Sharpe": 2.050792315676847,
+          "Calmar": 7.80614372727045,
+          "MaxDD_pct": -45.86714888525884,
+          "PF": 1.1120852427080214,
+          "Exposure_pct": 133.53174603174602,
+          "MaxDDDuration_bars_4h": 1129,
+          "MaxDDDuration_days": 188.16666666666666
+        },
+        "Core+ConstAddOn[1.00x]+PullbackReclaim": {
+          "TotalReturn_pct": 1000.9283135162842,
+          "CAGR_pct": 343.91165925531635,
+          "Sharpe": 1.9754257060920895,
+          "Calmar": 7.6140118351978545,
+          "MaxDD_pct": -45.168259085898775,
+          "PF": 1.1069103298461824,
+          "Exposure_pct": 169.24603174603175,
+          "MaxDDDuration_bars_4h": 1134,
+          "MaxDDDuration_days": 189.0
+        },
+        "plus_pullback_vs_const1x": {
+          "Return_pct": -56.95925314143267,
+          "CAGR_pct": -14.133897303126787,
+          "Sharpe": -0.07536660958475738,
+          "Calmar": -0.19213189207259518,
+          "MaxDD_improvement_pct": 0.6988897993600673
+        }
+      },
+      {
+        "slice": "major_drawdown",
+        "window": {
+          "start": "2021-11-10",
+          "end": "2023-01-01"
+        },
+        "CoreOnly": {
+          "TotalReturn_pct": -75.14168434590813,
+          "CAGR_pct": -70.46871275628928,
+          "Sharpe": -1.372911906848189,
+          "Calmar": -0.9153608046551185,
+          "MaxDD_pct": -76.98462988355706,
+          "PF": 0.8668875465985147,
+          "Exposure_pct": 100.0,
+          "MaxDDDuration_bars_4h": 2498,
+          "MaxDDDuration_days": 416.3333333333333
+        },
+        "Core+BinaryAddOn": {
+          "TotalReturn_pct": -70.68777248311144,
+          "CAGR_pct": -65.88056762458751,
+          "Sharpe": -1.422617569818907,
+          "Calmar": -0.9078862381699938,
+          "MaxDD_pct": -72.56478273905938,
+          "PF": 0.8669850991643555,
+          "Exposure_pct": 102.12629896083132,
+          "MaxDDDuration_bars_4h": 2498,
+          "MaxDDDuration_days": 416.3333333333333
+        },
+        "Core+ConstAddOn[1.00x]": {
+          "TotalReturn_pct": -61.57436678893613,
+          "CAGR_pct": -56.7461880578044,
+          "Sharpe": -1.4793663277403393,
+          "Calmar": -0.8922633575898752,
+          "MaxDD_pct": -63.59802582399392,
+          "PF": 0.8671884621226984,
+          "Exposure_pct": 106.07513988808952,
+          "MaxDDDuration_bars_4h": 2498,
+          "MaxDDDuration_days": 416.3333333333333
+        },
+        "Core+ConstAddOn[1.00x]+PullbackReclaim": {
+          "TotalReturn_pct": -61.796933112253726,
+          "CAGR_pct": -56.96579524375937,
+          "Sharpe": -1.5752625710387642,
+          "Calmar": -0.892464309355841,
+          "MaxDD_pct": -63.82977408348789,
+          "PF": 0.86239104835944,
+          "Exposure_pct": 115.02797761790569,
+          "MaxDDDuration_bars_4h": 2498,
+          "MaxDDDuration_days": 416.3333333333333
+        },
+        "plus_pullback_vs_const1x": {
+          "Return_pct": -0.22256632331759363,
+          "CAGR_pct": -0.21960718595497042,
+          "Sharpe": -0.09589624329842494,
+          "Calmar": -0.00020095176596579556,
+          "MaxDD_improvement_pct": -0.23174825949396904
+        }
+      },
+      {
+        "slice": "recovery_phase",
+        "window": {
+          "start": "2023-01-01",
+          "end": "2024-03-15"
+        },
+        "CoreOnly": {
+          "TotalReturn_pct": 331.75757795635536,
+          "CAGR_pct": 237.84949821881307,
+          "Sharpe": 2.4814206307495894,
+          "Calmar": 11.227411483321312,
+          "MaxDD_pct": -21.184713731401605,
+          "PF": 1.2412334446148914,
+          "Exposure_pct": 100.0,
+          "MaxDDDuration_bars_4h": 612,
+          "MaxDDDuration_days": 102.0
+        },
+        "Core+BinaryAddOn": {
+          "TotalReturn_pct": 278.55640725190074,
+          "CAGR_pct": 202.82378136783262,
+          "Sharpe": 2.506178419223627,
+          "Calmar": 10.978229302892862,
+          "MaxDD_pct": -18.475090633640413,
+          "PF": 1.2431814187312786,
+          "Exposure_pct": 110.74981017463932,
+          "MaxDDDuration_bars_4h": 612,
+          "MaxDDDuration_days": 102.0
+        },
+        "Core+ConstAddOn[1.00x]": {
+          "TotalReturn_pct": 232.24081569135063,
+          "CAGR_pct": 171.65395551592826,
+          "Sharpe": 2.448069556429772,
+          "Calmar": 9.83869382277129,
+          "MaxDD_pct": -17.44682359345725,
+          "PF": 1.2467762184007698,
+          "Exposure_pct": 130.71374335611236,
+          "MaxDDDuration_bars_4h": 787,
+          "MaxDDDuration_days": 131.16666666666666
+        },
+        "Core+ConstAddOn[1.00x]+PullbackReclaim": {
+          "TotalReturn_pct": 214.52240958252494,
+          "CAGR_pct": 159.54080482572374,
+          "Sharpe": 2.2400135936674164,
+          "Calmar": 8.234681052649556,
+          "MaxDD_pct": -19.374254303922378,
+          "PF": 1.2254278278099124,
+          "Exposure_pct": 161.61731207289293,
+          "MaxDDDuration_bars_4h": 787,
+          "MaxDDDuration_days": 131.16666666666666
+        },
+        "plus_pullback_vs_const1x": {
+          "Return_pct": -17.71840610882569,
+          "CAGR_pct": -12.11315069020452,
+          "Sharpe": -0.2080559627623555,
+          "Calmar": -1.6040127701217344,
+          "MaxDD_improvement_pct": -1.9274307104651278
+        }
+      },
+      {
+        "slice": "sideways_volatility",
+        "window": {
+          "start": "2024-03-15",
+          "end": "2026-03-01"
+        },
+        "CoreOnly": {
+          "TotalReturn_pct": -1.9058100462054361,
+          "CAGR_pct": -0.9770107376026793,
+          "Sharpe": 0.1820415604592313,
+          "Calmar": -0.019603430941121994,
+          "MaxDD_pct": -49.838762435875964,
+          "PF": 0.9989508354471921,
+          "Exposure_pct": 100.0,
+          "MaxDDDuration_bars_4h": 1225,
+          "MaxDDDuration_days": 204.16666666666666
+        },
+        "Core+BinaryAddOn": {
+          "TotalReturn_pct": -1.6749591673895337,
+          "CAGR_pct": -0.8581735052440087,
+          "Sharpe": 0.16933096468058492,
+          "Calmar": -0.018236934059245497,
+          "MaxDD_pct": -47.05689577294624,
+          "PF": 0.9989929640025622,
+          "Exposure_pct": 108.74999999999999,
+          "MaxDDDuration_bars_4h": 1269,
+          "MaxDDDuration_days": 211.5
+        },
+        "Core+ConstAddOn[1.00x]": {
+          "TotalReturn_pct": -2.3303521923527026,
+          "CAGR_pct": -1.195914325906955,
+          "Sharpe": 0.13445310165053181,
+          "Calmar": -0.030104924794642534,
+          "MaxDD_pct": -39.72487339080746,
+          "PF": 0.9982589853749075,
+          "Exposure_pct": 125.0,
+          "MaxDDDuration_bars_4h": 1295,
+          "MaxDDDuration_days": 215.83333333333334
+        },
+        "Core+ConstAddOn[1.00x]+PullbackReclaim": {
+          "TotalReturn_pct": -2.30146058617674,
+          "CAGR_pct": -1.1810023971725703,
+          "Sharpe": 0.13781822524984486,
+          "Calmar": -0.029436792774054327,
+          "MaxDD_pct": -40.11994126661479,
+          "PF": 0.9983121238974033,
+          "Exposure_pct": 146.81098696461825,
+          "MaxDDDuration_bars_4h": 1378,
+          "MaxDDDuration_days": 229.66666666666666
+        },
+        "plus_pullback_vs_const1x": {
+          "Return_pct": 0.028891606175962536,
+          "CAGR_pct": 0.014911928734384627,
+          "Sharpe": 0.0033651235993130413,
+          "Calmar": 0.0006681320205882066,
+          "MaxDD_improvement_pct": -0.39506787580732805
+        }
+      }
+    ],
+    "early_recovery_window": {
+      "start": "2022-11-21T16:00:00+00:00",
+      "end": "2023-05-20T16:00:00+00:00"
+    },
+    "early_recovery_delta_vs_const1x": {
+      "Return_pct": -9.828062803675188,
+      "CAGR_pct": -31.041324611713165,
+      "Sharpe": -0.3728767257187606,
+      "Calmar": -3.0564123170919606,
+      "MaxDD_improvement_pct": -1.8755251322880042
+    }
+  },
+  "decision": {
+    "status": "not a real Sleeve #2 candidate",
+    "action": "reject for S3",
+    "answer_1": "No.",
+    "answer_2": "It helps most where the current sleeve is absent or late. Candidate entries occur with the current sleeve flat 55.1% of the time. Portfolio effect vs Const1x is dReturn -1.71pp and dMaxDD -0.24pp, while early-recovery delta is dReturn -9.83pp and dMaxDD -1.88pp.",
+    "answer_3": "Mostly redundant.",
+    "answer_4": "Reject it."
+  }
+}
