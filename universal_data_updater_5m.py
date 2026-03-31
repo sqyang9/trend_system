@@ -8,8 +8,9 @@ OKX BTC-USDT 永续数据获取和重采样系统
 功能：
 1. 获取 5m 历史数据（支持增量更新）
 2. 从 5m 重采样生成 1h / 4h
-3. 直接获取 1h / 4h 历史数据（支持增量更新）
-4. 提供统一的数据加载接口（回测使用 5m + 4h_from_5m）
+3. 直接获取 1h / 4h / 1d 历史数据（支持增量更新）
+4. 获取 funding rate 历史数据（支持增量更新）
+5. 提供统一的数据加载接口（回测使用 5m + 4h_from_5m）
 
 说明：
 - 默认使用 OKX REST 接口（/market/history-candles）
@@ -42,8 +43,10 @@ class DataLoader5m:
         self.file_5m = self.data_dir / "btc_usdt_swap_5m.csv"
         self.file_1h = self.data_dir / "btc_usdt_swap_1h.csv"
         self.file_4h_original = self.data_dir / "btc_usdt_swap_4h.csv"
+        self.file_1d_original = self.data_dir / "btc_usdt_swap_1d.csv"
         self.file_1h_from_5m = self.data_dir / "btc_usdt_swap_1h_from_5m.csv"
         self.file_4h_from_5m = self.data_dir / "btc_usdt_swap_4h_from_5m.csv"
+        self.file_funding = self.data_dir / "btc_usdt_swap_funding.csv"
 
     @staticmethod
     def _init_exchange():
@@ -64,11 +67,13 @@ class DataLoader5m:
             return val * 60 * 1000
         if unit == "h":
             return val * 60 * 60 * 1000
+        if unit == "d":
+            return val * 24 * 60 * 60 * 1000
         raise ValueError(f"不支持周期: {timeframe}")
 
     @staticmethod
     def _tf_to_okx_bar(timeframe: str) -> str:
-        mapping = {"5m": "5m", "1h": "1H", "4h": "4H"}
+        mapping = {"5m": "5m", "1h": "1H", "4h": "4H", "1d": "1D"}
         if timeframe not in mapping:
             raise ValueError(f"不支持周期: {timeframe}")
         return mapping[timeframe]
@@ -364,13 +369,15 @@ class DataLoader5m:
         return df
 
     def fetch_direct_timeframe_data(self, timeframe: str, start_date: str = "2019-12-16", force: bool = False) -> pd.DataFrame:
-        """直接从OKX抓取 1h / 4h"""
+        """直接从OKX抓取 1h / 4h / 1d"""
         if timeframe == "1h":
             target = self.file_1h
         elif timeframe == "4h":
             target = self.file_4h_original
+        elif timeframe == "1d":
+            target = self.file_1d_original
         else:
-            raise ValueError("只支持 1h / 4h")
+            raise ValueError("只支持 1h / 4h / 1d")
 
         df = self._incremental_fetch_to_file(
             csv_file=target,
@@ -381,9 +388,109 @@ class DataLoader5m:
 
         if timeframe == "1h":
             self._validate_1h_alignment(df)
-        else:
+        elif timeframe == "4h":
             self._validate_4h_alignment(df)
+        else:
+            self._validate_1d_alignment(df)
         return df
+
+    def _validate_1d_alignment(self, df_1d: pd.DataFrame):
+        """验证1d时间戳对齐"""
+        print("验证1d时间戳对齐...")
+
+        if len(df_1d) > 1:
+            time_diffs = (df_1d["timestamp"].diff().dt.total_seconds() / 86400).dropna()
+            non_standard = time_diffs[time_diffs != 1]
+            if len(non_standard) > 0:
+                print(f"发现 {len(non_standard)} 个非标准时间间隔")
+                print(f"  范围: {non_standard.min()} - {non_standard.max()} 天")
+            else:
+                print("1d时间戳对齐正确")
+
+        hours = set(df_1d["timestamp"].dt.hour.unique())
+        expected_hours = {0, 16}
+        if not hours.issubset(expected_hours):
+            print(f"发现非标准小时: {hours - expected_hours}")
+        else:
+            print("1d小时对齐正确")
+
+    def fetch_funding_rate_history(
+        self,
+        symbol: str = "BTC/USDT:USDT",
+        start_date_if_empty: str = "2019-12-16",
+        force: bool = False,
+    ) -> pd.DataFrame:
+        endpoint = "https://www.okx.com/api/v5/public/funding-rate-history"
+        inst_id = self._symbol_to_inst_id(symbol)
+        session = requests.Session()
+        session.headers.update(
+            {
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+                "(KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"
+            }
+        )
+        rows = []
+        seen = set()
+
+        if self.file_funding.exists() and not force:
+            existing = pd.read_csv(self.file_funding)
+            existing["fundingTime"] = pd.to_datetime(existing["fundingTime"], utc=True)
+            after_ms = int(existing["fundingTime"].max().timestamp() * 1000)
+            rows.extend(existing.to_dict("records"))
+            for item in rows:
+                seen.add(str(item["fundingTime"]))
+        else:
+            start_dt = datetime.strptime(start_date_if_empty, "%Y-%m-%d").replace(tzinfo=timezone.utc)
+            after_ms = int(start_dt.timestamp() * 1000)
+
+        cursor_after = after_ms
+        consecutive_failures = 0
+        max_consecutive_failures = 20
+        while True:
+            params = {"instId": inst_id, "after": str(cursor_after), "limit": "100"}
+            try:
+                r = session.get(endpoint, params=params, timeout=20)
+                r.raise_for_status()
+                payload = r.json()
+                if payload.get("code") != "0":
+                    raise RuntimeError(f"okx返回异常: {payload.get('code')} {payload.get('msg')}")
+                data = payload.get("data", [])
+                if not data:
+                    break
+                max_ts = cursor_after
+                for item in data:
+                    ts = pd.to_datetime(int(item["fundingTime"]), unit="ms", utc=True)
+                    key = str(ts)
+                    if key in seen:
+                        continue
+                    seen.add(key)
+                    rows.append(
+                        {
+                            "fundingTime": ts,
+                            "fundingRate": float(item["fundingRate"]),
+                            "realizedRate": float(item.get("realizedRate", item["fundingRate"])),
+                        }
+                    )
+                    max_ts = max(max_ts, int(item["fundingTime"]))
+                print(f"\rfunding增量获取: {len(rows)} 条", end="", flush=True)
+                if max_ts <= cursor_after:
+                    break
+                cursor_after = max_ts
+                consecutive_failures = 0
+                time.sleep(0.08)
+            except Exception as e:
+                consecutive_failures += 1
+                print(f"\nfunding获取失败({consecutive_failures}/{max_consecutive_failures}): {e}")
+                if consecutive_failures >= max_consecutive_failures:
+                    raise
+                time.sleep(1)
+        print()
+        out = pd.DataFrame(rows)
+        if out.empty:
+            return pd.DataFrame(columns=["fundingTime", "fundingRate", "realizedRate"])
+        out = out.sort_values("fundingTime").drop_duplicates(subset="fundingTime").reset_index(drop=True)
+        out.to_csv(self.file_funding, index=False)
+        return out
 
     def _validate_5m_alignment(self, df: pd.DataFrame):
         """验证5m时间戳对齐"""
@@ -613,6 +720,8 @@ def main():
         if args.fetch_direct_tf:
             loader.fetch_direct_timeframe_data("1h", args.start, args.force)
             loader.fetch_direct_timeframe_data("4h", args.start, args.force)
+            loader.fetch_direct_timeframe_data("1d", args.start, args.force)
+            loader.fetch_funding_rate_history(start_date_if_empty=args.start, force=args.force)
 
         if args.compare:
             loader.compare_with_original_4h(df_4h)
@@ -642,6 +751,8 @@ def main():
         df_4h = loader.resample_to_4h(df_5m)
         loader.fetch_direct_timeframe_data("1h", args.start, args.force)
         loader.fetch_direct_timeframe_data("4h", args.start, args.force)
+        loader.fetch_direct_timeframe_data("1d", args.start, args.force)
+        loader.fetch_funding_rate_history(start_date_if_empty=args.start, force=args.force)
         loader.compare_with_original_4h(df_4h)
 
         print("\n测试数据加载接口...")
@@ -651,4 +762,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

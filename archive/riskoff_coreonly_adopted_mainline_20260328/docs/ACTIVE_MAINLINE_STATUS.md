@@ -1,0 +1,26 @@
+# Active Mainline Status
+
+- Locked baseline: BTC long-only `squeeze_release_20 / lb20_stop3.2_trail5.0_beoff`.
+- Default tuple: `next_bar_open + legacy_bar_extrema + midpoint + full_model`.
+- Default baseline: `Core BTC holding + ConstAddOn[1.00x] + RangeRotation + core-only Risk-Off overlay`.
+- Adopted Risk-Off overlay: sell-side `EMA250`, re-entry `Weekly RSI(14) <= 30 hold`.
+- Approved hard total exposure cap: `3.0x`.
+- Legacy reference: `Core BTC holding + Binary AddOn overlay`.
+- Archived: old core-only Risk-Off promotion and re-entry deep-dive line.
+- Rejected structure: full-stack cash-like Risk-Off / re-entry overlay.
+- Superseded interim candidate: `Formal + WRSI14_30_EMA220`.
+- Adopted promoted version: `Formal + WRSI14_30_EMA250`.
+- Secondary non-primary reference branch: `H4RSI14_10_EMA200`.
+- Archived repair line: `compression_breakout -> exhaustion / compound repair`.
+- Retired direction: old `v85` long+short is not an active mainline.
+- Inactive: Bear short sleeve.
+- Closed: single-sleeve Exposure Engine `E2 / E3` dynamic scheduling research.
+- Completed: `SECOND_SLEEVE_DISCOVERY`.
+- Rejected in `SECOND_SLEEVE_DISCOVERY`:
+  - `washout_reversal_reclaim`
+  - `pullback_reclaim_continuation`
+- Promoted official `Sleeve #2`: `range_rotation_mean_reversion`.
+- Current eligible forward directions:
+  - new orthogonal `Sleeve #3`
+  - higher-layer multi-sleeve portfolio architecture
+  - governance / deployment implementation work

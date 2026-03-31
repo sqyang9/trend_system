@@ -1,0 +1,281 @@
+//@version=6
+indicator("BTC Mainline Signal Overlay (Adopted Mainline)", overlay=true, max_labels_count=500, max_lines_count=500)
+
+// -----------------------------------------------------------------------------
+// Adopted mainline:
+// - Core-only Risk-Off overlay
+// - sell-side EMA250
+// - re-entry = Weekly RSI(14) <= 30 hold
+// - adopted posture = Core 0.75 / Sleeve1 1.25 / Sleeve2 1.00
+//
+// This is a chart-state visualization indicator for 4h BTC charts.
+// It is designed to show:
+// - EMA250
+// - core flat grey zones
+// - RE / FLAT core markers
+// - S1B / S1S
+// - S2B / S2S
+//
+// It does not attempt to reproduce the full Python 5m execution engine.
+// It reproduces the 4h state logic and the sleeve state transitions for chart use.
+// -----------------------------------------------------------------------------
+
+// ===== Inputs =====
+showStatusTable = input.bool(true, "Show status table")
+showCoreBg      = input.bool(true, "Shade core flat region")
+showSleeve1     = input.bool(true, "Show Sleeve #1 markers")
+showSleeve2     = input.bool(true, "Show Sleeve #2 markers")
+
+// ===== Shared indicator base =====
+ema250 = ta.ema(close, 250)
+ema200 = ta.ema(close, 200)
+ema20  = ta.ema(close, 20)
+ema50  = ta.ema(close, 50)
+atr14  = ta.atr(14)
+[_, _, adx14] = ta.dmi(14, 14)
+
+emaSlope250 = ema250 - ema250[20]
+emaSlope200 = ema200 - ema200[20]
+
+barRange = high - low
+closeLocation = barRange > 0 ? (close - low) / barRange : 0.5
+barRangeAtr = atr14 > 0 ? barRange / atr14 : 0.0
+volMa20 = ta.sma(volume, 20)
+volOk = na(volMa20) ? true : volume >= volMa20 * 1.0
+
+bbBasis = ta.sma(close, 20)
+bbDev = ta.stdev(close, 20)
+bbUpper = bbBasis + 2.0 * bbDev
+bbLower = bbBasis - 2.0 * bbDev
+bbWidth = bbBasis != 0 ? (bbUpper - bbLower) / bbBasis : 0.0
+bbWidthMa = ta.sma(bbWidth, 200)
+bbWidthNorm = (na(bbWidthMa) or bbWidthMa == 0) ? 0.0 : bbWidth / bbWidthMa
+
+// Previous completed weekly RSI only, to avoid mid-week partial higher-timeframe drift.
+weeklyRsi14Completed = request.security(
+     syminfo.tickerid,
+     "W",
+     ta.rsi(close, 14)[1],
+     barmerge.gaps_off,
+     barmerge.lookahead_off
+)
+
+// ===== Core-level Risk-Off / re-entry =====
+coreWeight = 0.75
+
+bearishCore = close < ema250 and emaSlope250 < 0
+closeConfirmCore = close > ema250
+weeklyReentryTrigger = weeklyRsi14Completed <= 30
+
+var int coreState = 2
+// 2 = normal/full
+// 1 = soft_off
+// 0 = flat
+// 3 = override_hold
+var int bearCount = 0
+var int closeCount = 0
+
+bearCount := bearishCore ? bearCount + 1 : 0
+closeCount := closeConfirmCore ? closeCount + 1 : 0
+
+if barstate.isconfirmed
+    if coreState == 2
+        if bearCount >= 2
+            coreState := 0
+        else if bearCount == 1
+            coreState := 1
+    else if coreState == 1
+        if bearCount >= 2
+            coreState := 0
+        else if bearCount == 0
+            coreState := 2
+    else if coreState == 0
+        if closeCount >= 3
+            coreState := 2
+        else if weeklyReentryTrigger
+            coreState := 3
+            bearCount := 0
+            closeCount := 0
+    else if coreState == 3
+        if closeCount >= 3
+            coreState := 2
+
+coreTargetUnit = coreState == 2 or coreState == 3 ? 1.0 : coreState == 1 ? 0.5 : 0.0
+coreExposure = coreTargetUnit * coreWeight
+
+coreRe = coreTargetUnit > 0 and coreTargetUnit[1] == 0
+coreFlat = coreTargetUnit == 0 and coreTargetUnit[1] > 0
+
+// ===== Sleeve #1: ConstAddOn[1.00x] =====
+// Source: squeeze_release_20 / lb20_stop3.2_trail5.0_beoff
+s1Weight = 1.25
+s1Donchian = ta.highest(high[1], 20)
+s1StructureLow = ta.lowest(low[1], 20)
+
+// Consecutive squeeze count
+var int s1SqueezeCount = 0
+s1SqueezeCount := bbWidthNorm < 0.90 ? s1SqueezeCount + 1 : 0
+s1PrevSqueezeReady = s1SqueezeCount[1] >= 6
+
+s1TrendOk = close > ema200 and emaSlope200 > 0 and adx14 >= 10
+s1Breakout = close > s1Donchian
+s1QualityOk = closeLocation >= 0.60 and barRangeAtr >= 0.55 and volOk
+s1EntrySignal = s1TrendOk and s1Breakout and s1PrevSqueezeReady and s1QualityOk
+
+var bool s1Active = false
+var float s1EntryPrice = na
+var float s1EntryAtr = na
+var float s1Stop = na
+var float s1Highest = na
+
+s1Buy = false
+s1Sell = false
+
+if barstate.isconfirmed
+    s1Buy := false
+    s1Sell := false
+
+    if s1Active
+        s1Highest := math.max(nz(s1Highest, high), high)
+        s1CurStop = nz(s1Stop, close)
+        s1ProfitAtr = (s1Highest - nz(s1EntryPrice, close)) / math.max(nz(s1EntryAtr, atr14), 1e-6)
+
+        if s1ProfitAtr >= 2.5
+            s1CurStop := math.max(s1CurStop, s1Highest - 5.0 * atr14)
+
+        s1CurStop := math.min(s1CurStop, s1Highest)
+
+        if low <= s1CurStop
+            s1Active := false
+            s1Sell := true
+            s1EntryPrice := na
+            s1EntryAtr := na
+            s1Stop := na
+            s1Highest := na
+        else
+            s1Stop := s1CurStop
+
+    if not s1Active and s1EntrySignal
+        s1EntryPrice := close
+        s1EntryAtr := atr14
+        s1Highest := high
+        s1Stop := math.min(s1EntryPrice - 3.2 * atr14, nz(s1StructureLow, s1EntryPrice - 3.2 * atr14))
+        s1Active := true
+        s1Buy := true
+
+s1Exposure = s1Active ? s1Weight : 0.0
+
+// ===== Sleeve #2: RangeRotation =====
+s2Weight = 1.00
+rangeHigh20 = ta.highest(high[1], 20)
+rangeLow20 = ta.lowest(low[1], 20)
+rangeMid20 = (rangeHigh20 + rangeLow20) / 2.0
+rangeWidth = rangeHigh20 - rangeLow20
+rangeWidthAtr = atr14 > 0 ? rangeWidth / atr14 : 0.0
+rangePosition = rangeWidth > 0 ? (close - rangeLow20) / rangeWidth : 0.5
+lowerRotationZone = rangeLow20 + rangeWidth * 0.35
+upperRotationCap = rangeLow20 + rangeWidth * 0.85
+reclaimHigh2 = ta.highest(high[1], 2)
+rotationPivotLow5 = ta.lowest(low[1], 5)
+swingTrailLow8 = ta.lowest(low[1], 8)
+emaSlopeAtr = atr14 > 0 ? emaSlope200 / atr14 : 0.0
+
+touchLowerRotation = low <= lowerRotationZone and rangePosition <= 0.45 and close > rangeLow20
+recentLowerRotationTouch = ta.highest(touchLowerRotation[1] ? 1.0 : 0.0, 6) > 0
+rotationReclaimOk = close > reclaimHigh2 and close > ema20 and close >= rangeMid20 and closeLocation >= 0.55 and close <= upperRotationCap
+bullishBackdropOk = close > ema200 and ema50 >= ema200 and emaSlopeAtr > -0.08
+rotationContextOk = rangeWidthAtr >= 2.5 and rangeWidthAtr <= 7.5 and adx14 <= 28.0 and bbWidthNorm <= 1.15
+s2EntrySignal = recentLowerRotationTouch and rotationReclaimOk and bullishBackdropOk and rotationContextOk
+
+var bool s2Active = false
+var float s2EntryPrice = na
+var float s2EntryAtr = na
+var float s2Stop = na
+var float s2Highest = na
+
+s2Buy = false
+s2Sell = false
+
+if barstate.isconfirmed
+    s2Buy := false
+    s2Sell := false
+
+    if s2Active
+        s2Highest := math.max(nz(s2Highest, high), high)
+        s2CurStop = nz(s2Stop, close)
+        s2ProfitAtr = (s2Highest - nz(s2EntryPrice, close)) / math.max(nz(s2EntryAtr, atr14), 1e-6)
+
+        if s2ProfitAtr >= 1.4
+            s2CurStop := math.max(s2CurStop, s2Highest - 3.6 * atr14)
+
+        s2CurStop := math.max(s2CurStop, nz(swingTrailLow8, s2CurStop))
+        s2CurStop := math.min(s2CurStop, s2Highest)
+
+        if low <= s2CurStop
+            s2Active := false
+            s2Sell := true
+            s2EntryPrice := na
+            s2EntryAtr := na
+            s2Stop := na
+            s2Highest := na
+        else
+            s2Stop := s2CurStop
+
+    if not s2Active and s2EntrySignal
+        s2EntryPrice := close
+        s2EntryAtr := atr14
+        s2Highest := high
+        s2AtrStop = s2EntryPrice - 2.2 * atr14
+        s2Stop := math.max(s2AtrStop, nz(rotationPivotLow5, s2AtrStop))
+        s2Active := true
+        s2Buy := true
+
+s2Exposure = s2Active ? s2Weight : 0.0
+
+// ===== Total state =====
+totalExposure = coreExposure + s1Exposure + s2Exposure
+
+stateText =
+     coreTargetUnit == 1.0 and not s1Active and not s2Active ? "core_full_s1_0_s2_0" :
+     coreTargetUnit == 0.5 and not s1Active and not s2Active ? "core_partial_s1_0_s2_0" :
+     coreTargetUnit == 0.0 and not s1Active and not s2Active ? "core_flat_s1_0_s2_0" :
+     "core_" + (coreTargetUnit == 1.0 ? "full" : coreTargetUnit == 0.5 ? "partial" : "flat") + "_s1_" + (s1Active ? "1" : "0") + "_s2_" + (s2Active ? "1" : "0")
+
+// ===== Visuals =====
+plot(ema250, "EMA250", color=color.new(color.blue, 0), linewidth=2)
+bgcolor(showCoreBg and coreTargetUnit == 0.0 ? color.new(color.gray, 86) : na)
+
+plotshape(coreRe,   title="RE",   style=shape.triangleup, location=location.belowbar, color=color.black, text="RE",   textcolor=color.black, size=size.tiny)
+plotshape(coreFlat, title="FLAT", style=shape.xcross,     location=location.abovebar, color=color.black, text="FLAT", textcolor=color.black, size=size.tiny)
+
+plotshape(showSleeve1 and s1Buy,  title="S1B", style=shape.circle,      location=location.belowbar, color=color.new(color.green, 0), text="S1B", textcolor=color.new(color.green, 0), size=size.tiny)
+plotshape(showSleeve1 and s1Sell, title="S1S", style=shape.circle,      location=location.abovebar, color=color.new(color.green, 0), text="S1S", textcolor=color.new(color.green, 0), size=size.tiny)
+plotshape(showSleeve2 and s2Buy,  title="S2B", style=shape.square,      location=location.belowbar, color=color.new(color.orange, 0), text="S2B", textcolor=color.new(color.orange, 0), size=size.tiny)
+plotshape(showSleeve2 and s2Sell, title="S2S", style=shape.square,      location=location.abovebar, color=color.new(color.orange, 0), text="S2S", textcolor=color.new(color.orange, 0), size=size.tiny)
+
+// ===== Status table =====
+var table t = table.new(position.top_right, 2, 8, border_width=1)
+if showStatusTable and barstate.islast
+    table.cell(t, 0, 0, "Mainline", bgcolor=color.new(color.black, 0), text_color=color.white)
+    table.cell(t, 1, 0, "4H", bgcolor=color.new(color.black, 0), text_color=color.white)
+
+    table.cell(t, 0, 1, "State")
+    table.cell(t, 1, 1, stateText)
+
+    table.cell(t, 0, 2, "Core")
+    table.cell(t, 1, 2, str.tostring(coreExposure, "#.00"))
+
+    table.cell(t, 0, 3, "Sleeve1")
+    table.cell(t, 1, 3, str.tostring(s1Exposure, "#.00"))
+
+    table.cell(t, 0, 4, "Sleeve2")
+    table.cell(t, 1, 4, str.tostring(s2Exposure, "#.00"))
+
+    table.cell(t, 0, 5, "Total")
+    table.cell(t, 1, 5, str.tostring(totalExposure, "#.00"))
+
+    table.cell(t, 0, 6, "Risk-Off")
+    table.cell(t, 1, 6, coreTargetUnit < 1.0 ? "active" : "off")
+
+    table.cell(t, 0, 7, "Weekly RSI")
+    table.cell(t, 1, 7, str.tostring(weeklyRsi14Completed, "#.0"))

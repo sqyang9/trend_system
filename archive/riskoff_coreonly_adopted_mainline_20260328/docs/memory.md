@@ -28,7 +28,7 @@ If future work conflicts with this file, the conflict must be stated explicitly 
   - `segment_path_same_bar`
   - `pessimistic`
   - `full_model`
-- `launch_optimal` is now `LAUNCH_GO` for the adopted formal mainline.
+- `launch_optimal` remains `LAUNCH_NO_GO`.
 - The long-only line is a high-quality BTC trend overlay, not a confirmed standalone BTC buy-and-hold replacement.
 
 ## Archived Research
@@ -54,79 +54,6 @@ If future work conflicts with this file, the conflict must be stated explicitly 
   - weekly branch winner: `EMA250` over `EMA220`
   - 4h branch winner: `EMA200` over `EMA220`
   - non-primary 4h reference: `H4RSI14_10_EMA200`
-- layer-2 portfolio weight audit:
-  - adopted default posture is `Core 0.75 / Sleeve1 1.25 / Sleeve2 1.00`
-  - prior `Core 1.00 / Sleeve1 1.00 / Sleeve2 1.00` posture is superseded
-- current-time entry audit:
-  - latest live state is `core_full_s1_0_s2_0`
-  - preferred onboarding method is `immediate_full`
-  - staged or wait-for-switch entry is not preferred in the current state analog
-- startup warmup audit:
-  - `12m` warmup is preferred
-  - `6m` warmup is acceptable
-  - `3m` warmup is not production-ready
-- ETH transfer / switch audit:
-  - ETH standalone transfer is only directionally valid
-  - BTC-flat to ETH switch fails to improve the BTC adopted mainline
-  - ETH is not an active extension of the baseline
-- isolated regime detector research:
-  - separate folder: `regime_detector_research`
-  - useful layers found:
-    - `vol_soft_off`
-    - `vol_soft_off + S1 distribution lock`
-  - both can beat the adopted baseline on headline metrics in isolated audit
-  - but both also worsen medium-path burden (`Worst3m`, `Worst6m`, `RecoveryDays`)
-  - `S2 tightened stop` was tested and gives back most of the regime advantage
-  - current status:
-    - keep as lightweight reserve research
-    - not part of the locked baseline
-- isolated gravity penalty research:
-  - separate folder: `gravity_penalty_research`
-  - idea: penalize new `S1` / `S2` entry size when `(close - EMA250) / ATR` is extremely stretched
-  - current best probe: `GP12_R5_X0.5`
-  - result:
-    - higher return
-    - but no meaningful improvement in `Calmar`
-    - slightly worse `MaxDD`, `Worst3m`, `Worst6m`
-  - current status:
-    - reserve only
-    - not part of the locked baseline
-- isolated `S2` time/progress stop research:
-  - separate folder: `s2_time_stop_research`
-  - original `range_mid` timeout idea was invalid under native adopted `S2`, because `S2B` already requires `close >= range_mid_20`
-  - corrected replay was rebuilt using a meaningful post-entry progress test:
-    - if `S2` fails to reach `entry + 1.4 ATR` within `N` 4h bars, force exit at the deadline close
-  - corrected replay aligns closely with native adopted `S2`
-  - result:
-    - `TS8 / TS12 / TS16` all fail to beat the adopted baseline
-    - best candidate `ProgressTS16` still loses on `Return`, `Calmar`, and `MaxDD`
-  - current status:
-    - rejected
-    - not part of the locked baseline
-- isolated module refinement research:
-  - separate folder: `module_refinement_research`
-  - objective:
-    - test whether small per-module refinements can clearly beat the current adopted mainline before any deeper audit
-  - screened and first-pass rejected:
-    - `core_slope_significance_filter`
-    - `s1_momentum_gate_tightening`
-    - `s2_divergence_confirmation`
-  - interpretation:
-    - current adopted mainline is not easily improved by small local module refinements
-    - do not keep iterating on these branches unless a genuinely different formulation is proposed
-- live operating layer:
-  - state panel exists
-  - live decision memo exists
-  - startup / onboarding playbook exists
-  - fixed-frequency status runner exists: `live_operating_layer/mainline_live_status.py`
-  - recommended cadence: every `4h` bar close
-  - takes `account_equity` and `current_notional`
-  - returns:
-    - current state
-    - target exposure
-    - target notional
-    - rebalance instruction
-  - use these before inventing new discretionary operating rules
 - `compression_breakout -> exhaustion / compound repair`:
   - directionally valid
   - archived as promising-but-not-promotable
@@ -169,14 +96,9 @@ Archived means the line is preserved for reference and audit, but should not be 
   - sell-side `EMA250`
   - re-entry `Weekly RSI(14) <= 30 hold`
 - Current eligible forward directions:
-  - live monitoring / reporting / dashboard extension
-  - deployment / implementation automation packaging
+  - new orthogonal `Sleeve #3`
   - higher-layer multi-sleeve portfolio architecture
-- `SLEEVE3_DISCOVERY_RESET` is now closed / rejected for the current baseline:
-  - `post_dislocation_repricing_climb`: rejected
-  - `failed_breakdown_reversal_acceptance`: rejected
-  - `reset_base_reacceptance_v2`: rejected
-  - `slow_drift_trend_persistence`: not advanced; line closed
+  - governance / deployment implementation work
 
 ## Research Boundaries
 
@@ -194,10 +116,6 @@ Archived means the line is preserved for reference and audit, but should not be 
 - Do not reopen broad brute-force parameter search.
 - Do not add many new filters just to improve backtest optics.
 - Do not switch the default execution tuple back to a harsher stress tuple or to a more idealized tuple without explicitly documenting the change.
-- Do not treat ETH transfer or BTC-flat-to-ETH switch as part of the active baseline.
-- Do not silently merge `regime_detector_research` into the active baseline; it remains isolated until a future explicit promotion decision.
-- Do not reopen first-pass rejected `module_refinement_research` branches as if they were still active candidates.
-- Do not reopen corrected-but-rejected `S2` time/progress stop as if it were still undecided.
 
 ## Reproducibility Rules
 
@@ -233,5 +151,6 @@ Archived means the line is preserved for reference and audit, but should not be 
 - Preserve archived directions as archive material rather than active workstreams.
 - Treat old second-sleeve discovery as completed, not as the active stage.
 - Current forward priority should shift to:
-  1. higher-layer multi-sleeve portfolio architecture
-  2. governance / deployment implementation work
+  1. new orthogonal `Sleeve #3`
+  2. higher-layer multi-sleeve portfolio architecture
+  3. governance / deployment implementation work
