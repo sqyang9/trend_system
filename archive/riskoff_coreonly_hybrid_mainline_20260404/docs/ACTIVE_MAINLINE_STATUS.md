@@ -1,0 +1,77 @@
+# Active Mainline Status
+
+- Locked baseline: BTC long-only `squeeze_release_20 / lb20_stop3.2_trail5.0_beoff`.
+- Default tuple: `next_bar_open + legacy_bar_extrema + midpoint + full_model`.
+- Default baseline: `Core BTC holding + ConstAddOn[1.00x] + RangeRotation + core-only Risk-Off overlay`.
+- Adopted Risk-Off overlay:
+  - sell-side `EMA250`
+  - stable normal re-entry `3 consecutive 4h closes > EMA250`
+  - high-churn normal re-entry `strict EMA50 + breakout_4`
+  - override `Weekly RSI(14) <= 30 hold`
+- Launch status: `LAUNCH_GO`.
+- Latest reproducibility package:
+  - `archive/riskoff_coreonly_hybrid_mainline_20260404/`
+- Approved hard total exposure cap: `3.0x`.
+- Legacy reference: `Core BTC holding + Binary AddOn overlay`.
+- Archived: old core-only Risk-Off promotion and re-entry deep-dive line.
+- Rejected structure: full-stack cash-like Risk-Off / re-entry overlay.
+- Superseded interim candidate: `high churn -> strict EMA50`.
+- Adopted promoted version: `Formal + EMA250_CLOSE3_HC23_STRICT_BREAKOUT4`.
+- Secondary non-primary reference branch: `H4RSI14_10_EMA200`.
+- Layer-2 weight audit:
+  - adopted default posture `Core 1.00 / Sleeve1 1.00 / Sleeve2 1.00`
+  - old default posture `Core 0.75 / Sleeve1 1.25 / Sleeve2 1.00` is superseded
+- Current-time onboarding audit:
+  - latest live state `core_full_s1_0_s2_0`
+  - current exposures `Core 1.00 / Sleeve1 0.00 / Sleeve2 0.00 / Total 1.00`
+  - preferred onboarding method `immediate_full`
+- Warmup startup audit:
+  - full-history prewarm is not mandatory
+  - practical recommendation `6m-12m` warmup
+  - `3m` warmup is too short and not recommended
+- Live operating layer implemented:
+  - state panel
+  - live decision memo
+  - startup / onboarding playbook
+  - fixed-frequency live status runner (`live_operating_layer/mainline_live_status.py`)
+  - recommended cadence `every 4h` bar close
+- Archived repair line: `compression_breakout -> exhaustion / compound repair`.
+- Retired direction: old `v85` long+short is not an active mainline.
+- Inactive: Bear short sleeve.
+- Closed: single-sleeve Exposure Engine `E2 / E3` dynamic scheduling research.
+- Completed: `SECOND_SLEEVE_DISCOVERY`.
+- Closed: `SLEEVE3_DISCOVERY_RESET` (no promotable `Sleeve #3` found; line rejected for now).
+- Rejected in `SECOND_SLEEVE_DISCOVERY`:
+  - `washout_reversal_reclaim`
+  - `pullback_reclaim_continuation`
+- Rejected in `SLEEVE3_DISCOVERY_RESET`:
+  - `post_dislocation_repricing_climb`
+  - `failed_breakdown_reversal_acceptance`
+  - `reset_base_reacceptance_v2`
+  - `slow_drift_trend_persistence` not advanced; line closed before further testing
+- Rejected transfer line:
+  - ETH standalone transfer is directionally valid but too weak for mainline adoption
+  - BTC-flat to ETH switch overlay shows no portfolio gain and is closed
+- Isolated reserve research:
+  - `regime_detector_research` is kept as a lightweight reserve branch, not part of the adopted baseline
+  - useful incremental layers identified so far:
+    - `vol_soft_off`
+    - `vol_soft_off + S1 distribution lock`
+  - not recommended as an adopted package:
+    - `S2 tightened stop` branch dilutes most of the earlier regime advantage
+  - `gravity_penalty_research` was tested as an isolated dynamic-sizing branch
+  - current best probe (`GP12_R5_X0.5`) raises return but does not improve Calmar or drawdown path enough
+  - current status: reserve only, not part of the adopted baseline
+- Rejected isolated refinement lines:
+  - `s2_time_stop_research`
+    - corrected replay completed
+    - corrected time/progress stop still fails to beat the adopted baseline
+  - `module_refinement_research`
+    - `core_slope_significance_filter`: first-pass rejected
+    - `s1_momentum_gate_tightening`: first-pass rejected
+    - `s2_divergence_confirmation`: first-pass rejected
+- Promoted official `Sleeve #2`: `range_rotation_mean_reversion`.
+- Current eligible forward directions:
+  - live monitoring / reporting / dashboard extension
+  - deployment implementation and automation packaging
+  - higher-layer multi-sleeve portfolio architecture

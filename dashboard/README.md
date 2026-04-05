@@ -22,7 +22,8 @@ Local dashboard data:
 
 - `data/`
 - first run bootstraps from repo-level BTC csv files
-- later runs strictly refresh local BTC data before rendering
+- later runs refresh local BTC data before rendering when network is available
+- if refresh is unavailable but local dashboard cache already exists, rendering falls back to cached dashboard data
 - refreshed timeframes:
   - `5m`
   - `1h`
@@ -42,7 +43,7 @@ Default operating assumption:
 - current actual notional defaults to `0`
 - this package therefore answers: if starting flat now, what notional should be held
 
-Strict runtime rule:
+Runtime rule:
 
-- data refresh must succeed before PNG generation
-- if refresh fails, the run should error out instead of silently using stale data
+- `dashboard/data` is the canonical local data root for current mainline operation and follow-on research
+- if refresh is unavailable, one-click rendering may continue from the latest cached dashboard data

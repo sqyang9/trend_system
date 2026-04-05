@@ -6,6 +6,7 @@ from __future__ import annotations
 
 import contextlib
 import io
+import os
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -48,12 +49,18 @@ def strict_refresh() -> None:
             f"dashboard bootstrap data missing: {missing}. "
             f"Expected local seed files under {DASHBOARD_DATA} or repo data bootstrap."
         )
+    if os.environ.get("DASHBOARD_USE_CACHE_ONLY", "0") == "1":
+        return
 
     loader = DataLoader5m(str(DASHBOARD_DATA))
-    df_5m = loader.fetch_5m_data(force=False)
-    loader.fetch_direct_timeframe_data("1h", force=False)
-    loader.fetch_direct_timeframe_data("4h", force=False)
-    loader.fetch_direct_timeframe_data("1d", force=False)
+    try:
+        loader.fetch_5m_data(force=False)
+        loader.fetch_direct_timeframe_data("1h", force=False)
+        loader.fetch_direct_timeframe_data("4h", force=False)
+        loader.fetch_direct_timeframe_data("1d", force=False)
+    except Exception:
+        if not all((DASHBOARD_DATA / name).exists() for name in BOOTSTRAP_FILES):
+            raise
 
 
 def load_market_data() -> Tuple[pd.DataFrame, pd.DataFrame]:
